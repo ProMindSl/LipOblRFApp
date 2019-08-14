@@ -1,0 +1,12 @@
+# exclude log files
+*.log
+
+.zip
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
