@@ -10,13 +10,24 @@ import UIKit
 
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
+    
+    
     // cell count from Model
     private var _cellCount = 5
     private var _cellReuseIdentifier = "newsCell"
+    private var _cellHeight = 358.0
     
+    /*
+    *   TableVIew methods
+    **/
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return _cellCount
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return CGFloat(_cellHeight);
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
