@@ -143,6 +143,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="K27-Ng-q1a"/>
                     </view>
+                    <connections>
+                        <outlet property="btnCreateClaim" destination="NsM-ii-GOd" id="vQu-iw-w9u"/>
+                        <outlet property="btnCreateIdea" destination="qfK-my-aj4" id="IH2-ba-MDd"/>
+                        <outlet property="btnIdeasList" destination="7Mr-Il-H4q" id="4mT-LA-aRS"/>
+                        <outlet property="btnNewsList" destination="rgg-Q0-Dbf" id="ev5-Wu-2Wg"/>
+                        <outlet property="btnSettings" destination="R1j-7Z-ba0" id="bbn-Jo-4qw"/>
+                        <outlet property="btnSignIn" destination="dJk-oB-FLc" id="ajm-6G-GhR"/>
+                        <outlet property="btnSignOut" destination="1Y4-Nh-1Iz" id="NL3-aE-KEK"/>
+                        <outlet property="btnSignUp" destination="5Mc-w1-ceY" id="vnU-SJ-DFm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kz7-ST-STe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

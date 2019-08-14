@@ -14,9 +14,21 @@ protocol NavigationDelegate{
 
 class NavigationMenuViewController: UIViewController{
     
-    
-    
+    // set delegate
     var delegate: NavigationDelegate?
+    
+    // outlets btns
+    @IBOutlet weak var btnSignIn: UIButton!
+    @IBOutlet weak var btnSignUp: UIButton!
+    @IBOutlet weak var btnNewsList: UIButton!
+    @IBOutlet weak var btnIdeasList: UIButton!
+    @IBOutlet weak var btnCreateIdea: UIButton!
+    @IBOutlet weak var btnCreateClaim: UIButton!
+    @IBOutlet weak var btnSettings: UIButton!
+    @IBOutlet weak var btnSignOut: UIButton!
+    
+    //outlets media
+    
     
     /*override func viewDidLoad() {
         super.viewDidLoad()
