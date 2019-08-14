@@ -8,13 +8,13 @@
 
 import Foundation
 import UIKit
-class EdeasViewController: UIViewController{
+class IdeasViewController: UIViewController{
     
     @IBAction func OpenMenu(_ sender: Any) {
         SidebarLauncher(delegate: self ).show()
     }
 }
-extension EdeasViewController: SidebarDelegate{
+extension IdeasViewController: SidebarDelegate{
     func sidbarDidOpen() {
         print("Sidebar opened")
     }
@@ -23,12 +23,12 @@ extension EdeasViewController: SidebarDelegate{
         guard let item = item else {return}
         print("Did select \(item)")
         switch item {
-        case 0:
+        case UIStoryboard.VIEW_TYPE_NEWS_LIST:
             let v = UIStoryboard.main.LaunchNewsVC()
             present(v!, animated: true)
-        case 1:
+        case UIStoryboard.VIEW_TYPE_IDEAS_LIST:
             break
-        case 2:
+        case UIStoryboard.VIEW_TYPE_LOGIN:
             let v = UIStoryboard.main.LoginVC()
             present(v!, animated: true)
         default:

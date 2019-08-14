@@ -174,10 +174,10 @@ extension LoginViewController: SidebarDelegate{
         print("Did select \(item)")
         switch item
         {
-        case 0:
+        case UIStoryboard.VIEW_TYPE_NEWS_LIST:
             let v = UIStoryboard.main.LaunchNewsVC()
             present(v!, animated: true)
-        case 1:
+        case UIStoryboard.VIEW_TYPE_IDEAS_LIST:
             let v = UIStoryboard.main.IdeasVC()
             present(v!, animated: true)
         case 2:
@@ -186,8 +186,7 @@ extension LoginViewController: SidebarDelegate{
             let v = UIStoryboard.main.NewsListVC()
             present(v!, animated: true)
           */
-        case 4:
-            break
+        
         default:
             break
         }

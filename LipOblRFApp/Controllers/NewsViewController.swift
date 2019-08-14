@@ -23,6 +23,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: _cellReuseIdentifier, for: indexPath) as! NewsViewCell
         
+        
         return cell
     }
     
@@ -48,12 +49,12 @@ extension NewsViewController: SidebarDelegate{
         print("Did select \(item)")
         switch item
         {
-        case 0:
+        case UIStoryboard.VIEW_TYPE_NEWS_LIST:
             break
-        case 1:
+        case UIStoryboard.VIEW_TYPE_IDEAS_LIST:
             let v = UIStoryboard.main.IdeasVC()
             present(v!, animated: true)
-        case 2:
+        case UIStoryboard.VIEW_TYPE_LOGIN:
             let v = UIStoryboard.main.LoginVC()
             present(v!, animated: true)
         default:

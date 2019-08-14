@@ -45,7 +45,7 @@
 		D22D6C9A2304162000DDA0E1 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6C992304162000DDA0E1 /* NewsViewController.swift */; };
 		D22D6C9C230417BC00DDA0E1 /* SidebarLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6C9B230417BC00DDA0E1 /* SidebarLauncher.swift */; };
 		D22D6C9E2304181700DDA0E1 /* NavigationMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6C9D2304181700DDA0E1 /* NavigationMenuViewController.swift */; };
-		D22D6CA0230419DF00DDA0E1 /* EdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6C9F230419DF00DDA0E1 /* EdeasViewController.swift */; };
+		D22D6CA0230419DF00DDA0E1 /* IdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6C9F230419DF00DDA0E1 /* IdeasViewController.swift */; };
 		D22D6CA223041AB500DDA0E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA123041AB500DDA0E1 /* LoginViewController.swift */; };
 		D22D6CA423042CB600DDA0E1 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA323042CB600DDA0E1 /* NewsViewCell.swift */; };
 		D22D6CA623042D4D00DDA0E1 /* AddIdeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */; };
@@ -114,7 +114,7 @@
 		D22D6C992304162000DDA0E1 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D22D6C9B230417BC00DDA0E1 /* SidebarLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarLauncher.swift; sourceTree = "<group>"; };
 		D22D6C9D2304181700DDA0E1 /* NavigationMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenuViewController.swift; sourceTree = "<group>"; };
-		D22D6C9F230419DF00DDA0E1 /* EdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdeasViewController.swift; sourceTree = "<group>"; };
+		D22D6C9F230419DF00DDA0E1 /* IdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasViewController.swift; sourceTree = "<group>"; };
 		D22D6CA123041AB500DDA0E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D22D6CA323042CB600DDA0E1 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdeaViewController.swift; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 				D22D6C992304162000DDA0E1 /* NewsViewController.swift */,
 				D22D6C9B230417BC00DDA0E1 /* SidebarLauncher.swift */,
 				D22D6C9D2304181700DDA0E1 /* NavigationMenuViewController.swift */,
-				D22D6C9F230419DF00DDA0E1 /* EdeasViewController.swift */,
+				D22D6C9F230419DF00DDA0E1 /* IdeasViewController.swift */,
 				D22D6CA123041AB500DDA0E1 /* LoginViewController.swift */,
 				D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */,
 			);
@@ -454,7 +454,7 @@
 				D274FD3A230304F500485D89 /* AppDelegate.swift in Sources */,
 				D22D6C9A2304162000DDA0E1 /* NewsViewController.swift in Sources */,
 				D22D6C9C230417BC00DDA0E1 /* SidebarLauncher.swift in Sources */,
-				D22D6CA0230419DF00DDA0E1 /* EdeasViewController.swift in Sources */,
+				D22D6CA0230419DF00DDA0E1 /* IdeasViewController.swift in Sources */,
 				D22D6CA423042CB600DDA0E1 /* NewsViewCell.swift in Sources */,
 				D22D6C8C2304106D00DDA0E1 /* AccountManager.swift in Sources */,
 				D22D6C9E2304181700DDA0E1 /* NavigationMenuViewController.swift in Sources */,

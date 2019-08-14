@@ -28,32 +28,40 @@ class NavigationMenuViewController: UIViewController{
     @IBOutlet weak var btnSignOut: UIButton!
     
     //outlets media
+    @IBOutlet weak var labelUserFIO: UILabel!
     
     
-    /*override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        [buttonLaunchVC,buttonSecondViewController,buttonThirdViewController].forEach({
+        [btnNewsList,btnIdeasList,btnSignIn].forEach(
+        {
             $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         })
     }
     
     @objc func didSelect(_ sender: UIButton){
         switch sender {
-        case buttonLaunchVC:
+        case btnNewsList:
             delegate?.navigation(didSelect: 0)
-        case buttonSecondViewController:
+        case btnIdeasList:
             delegate?.navigation(didSelect: 1)
-        case buttonThirdViewController:
+        case btnSignIn:
             delegate?.navigation(didSelect: 2)
         default:
             break
         }
     }
     
+    @IBAction func didSelectSignIn(_ sender: Any)
+    {
+        print("signIn init")
+    }
     
-    @IBAction func CloseMenu(_ sender: Any) {
+    @IBAction func CloseMenu(_ sender: Any)
+    {
         delegate?.navigation(didSelect: nil)
     }
     
-    */
+    
 }
