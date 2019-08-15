@@ -107,6 +107,11 @@ class NavigationMenuViewController: UIViewController{
         delegate?.navigation(didSelect: nil)
     }
     
+    @IBAction func didSelectSignOutBtn(_ sender: Any)
+    {
+        accMng.signOut()
+        CloseMenu(self)
+    }
     
 }
 

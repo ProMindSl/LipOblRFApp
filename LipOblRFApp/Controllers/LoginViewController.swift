@@ -40,11 +40,13 @@ class LoginViewController: UIViewController {
     /*
      *   Outlet methods
      **/
-    @IBAction func OpenMenu(_ sender: Any) {
+    @IBAction func OpenMenu(_ sender: Any)
+    {
         SidebarLauncher(delegate: self ).show()
     }
     
-    @IBAction func signInAction(_ sender: Any) {
+    @IBAction func signInAction(_ sender: Any)
+    {
         
         guard let login = tfLogin.text else { return }
         guard let pass = tfPass.text else { return }
