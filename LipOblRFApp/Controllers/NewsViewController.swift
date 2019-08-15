@@ -12,6 +12,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
 {
     
     
+    
     // cell count from Model
     private var _cellCount = 5
     private var _cellReuseIdentifier = "newsCell"
@@ -33,7 +34,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: _cellReuseIdentifier, for: indexPath) as! NewsViewCell
-        
+        cell.ivNewsPic.image = UIImage(named: "newsImageCut.jpg")
         
         return cell
     }

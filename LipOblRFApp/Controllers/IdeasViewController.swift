@@ -8,12 +8,15 @@
 
 import Foundation
 import UIKit
-class IdeasViewController: UIViewController{
+class IdeasViewController: UIViewController
+{
     
-    @IBAction func OpenMenu(_ sender: Any) {
+    @IBAction func OpenMenu(_ sender: Any)
+    {
         SidebarLauncher(delegate: self ).show()
     }
 }
+
 extension IdeasViewController: SidebarDelegate{
     func sidbarDidOpen() {
         print("Sidebar opened")

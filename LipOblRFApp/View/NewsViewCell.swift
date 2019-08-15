@@ -9,7 +9,12 @@
 import UIKit
 
 class NewsViewCell: UITableViewCell {
-
+    
+    // cell outlets
+    @IBOutlet weak var ivNewsPic: UIImageView!
+    @IBOutlet weak var tfTime: UILabel!
+    @IBOutlet weak var tfNewsLabel: UILabel!
+    @IBOutlet weak var tfNewsText: UILabel!
     
     
     override func awakeFromNib()

@@ -240,21 +240,14 @@
                                 <rect key="frame" x="0.0" y="121" width="375" height="474"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="358" id="7VL-p2-fye" customClass="NewsViewCell" customModule="Sidemenu" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="358" id="7VL-p2-fye" customClass="NewsViewCell" customModule="LipOblRFApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="358"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7VL-p2-fye" id="gzM-2C-vwP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="357.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1A-Os-MMQ">
-                                                    <rect key="frame" x="147" y="105" width="81" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg_slidem.png" translatesAutoresizingMaskIntoConstraints="NO" id="htV-Tq-wRg">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="newsImageCut.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="htV-Tq-wRg">
                                                     <rect key="frame" x="16" y="10" width="343" height="338"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -289,6 +282,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="ivNewsPic" destination="htV-Tq-wRg" id="Q91-Af-jhb"/>
+                                            <outlet property="tfNewsLabel" destination="clX-56-BbQ" id="a0P-SP-smu"/>
+                                            <outlet property="tfNewsText" destination="sJe-TU-cWZ" id="a71-kI-QUm"/>
+                                            <outlet property="tfTime" destination="Jde-sN-lFI" id="auo-A4-uPd"/>
                                             <segue destination="KF0-Lb-WYH" kind="show" id="V7N-aD-Hzh"/>
                                         </connections>
                                     </tableViewCell>
@@ -998,6 +995,7 @@
         <image name="lamp.png" width="19" height="19"/>
         <image name="menu.png" width="18" height="12"/>
         <image name="newsImage.jpg" width="375" height="360"/>
+        <image name="newsImageCut.jpg" width="184" height="177"/>
         <image name="preference.png" width="17" height="17"/>
         <image name="star.png" width="19" height="19"/>
         <image name="star_gray.png" width="30" height="26"/>
