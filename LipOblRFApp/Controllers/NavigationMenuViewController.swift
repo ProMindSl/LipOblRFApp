@@ -32,22 +32,47 @@ class NavigationMenuViewController: UIViewController{
     
     //outlets media
     @IBOutlet weak var labelUserFIO: UILabel!
-    
+    @IBOutlet weak var uiPicSignOutBtn: UIImageView!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        [btnNewsList,btnIdeasList,btnSignIn].forEach(
+        setListenersForNavBtns()
+        setState(in: accMng.currentSignState)
+    }
+    
+    /*
+     *   State methods
+    **/
+    private func setState(in stateType:Int)
+    {
+        if stateType == accMng.STATE_SIGNIN
         {
-            $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
-        })
+            btnSignIn.isHidden = true
+            btnSignUp.isHidden = true
+            btnSignOut.isHidden = false
+            
+            labelUserFIO.text = accMng.getUserParsms()["fio"] as? String
+            labelUserFIO.isHidden = false
+            uiPicSignOutBtn.isHidden = false
+        }
+        else if stateType == accMng.STATE_SIGNOUT
+        {
+            btnSignIn.isHidden = false
+            btnSignUp.isHidden = false
+            btnSignOut.isHidden = true
+            labelUserFIO.isHidden = true
+            uiPicSignOutBtn.isHidden = true
+        }
     }
     
     /*
     *   Navigation methods
     **/
-    @objc func didSelect(_ sender: UIButton){
-        switch sender {
+    @objc func didSelect(_ sender: UIButton)
+    {
+        switch sender
+        {
         case btnNewsList:
             delegate?.navigation(didSelect: UIStoryboard.VIEW_TYPE_NEWS_LIST)
         case btnIdeasList:
@@ -57,6 +82,19 @@ class NavigationMenuViewController: UIViewController{
         default:
             break
         }
+    }
+    
+    
+    
+    /*
+     *   UI handlers
+    **/
+    private func setListenersForNavBtns()
+    {
+        [btnNewsList,btnIdeasList,btnSignIn].forEach(
+        {
+            $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
+        })
     }
     
     @IBAction func didSelectSignIn(_ sender: Any)

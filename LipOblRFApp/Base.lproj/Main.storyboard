@@ -156,6 +156,7 @@
                         <outlet property="btnSignOut" destination="1Y4-Nh-1Iz" id="NL3-aE-KEK"/>
                         <outlet property="btnSignUp" destination="5Mc-w1-ceY" id="vnU-SJ-DFm"/>
                         <outlet property="labelUserFIO" destination="ksl-KB-VtY" id="5RY-Ic-SKl"/>
+                        <outlet property="uiPicSignOutBtn" destination="iXI-RP-BBQ" id="ebc-mC-cSn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kz7-ST-STe" userLabel="First Responder" sceneMemberID="firstResponder"/>
