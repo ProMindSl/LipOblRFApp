@@ -38,13 +38,16 @@ class NavigationMenuViewController: UIViewController{
     {
         super.viewDidLoad()
         setListenersForNavBtns()
-        setState(in: accMng.currentSignState)
+        // check signin status
+        updateViewState()
+        
+        
     }
     
     /*
      *   State methods
     **/
-    private func setState(in stateType:Int)
+    private func setViewState(in stateType:Int)
     {
         if stateType == accMng.STATE_SIGNIN
         {
@@ -66,6 +69,30 @@ class NavigationMenuViewController: UIViewController{
         }
     }
     
+    private func updateViewState()
+    {
+        let signInStatus = accMng.getAccessToken()
+        if signInStatus == accMng.REQUEST_LOGIN
+        {
+            setViewState(in: accMng.STATE_SIGNOUT)
+        }
+        else if signInStatus == accMng.REQUEST_REFRESH_AT
+        {
+            accMng.refreshAccessToken(successCompletion:
+            { [unowned self] text in
+                self.setViewState(in: self.accMng.STATE_SIGNIN)
+            },
+            errorCompletion:
+            { [unowned self] text in
+                self.setViewState(in: self.accMng.STATE_SIGNOUT)
+            })
+        }
+        else
+        {
+            setViewState(in: accMng.STATE_SIGNIN)
+        }
+    }
+        
     /*
     *   Navigation methods
     **/
