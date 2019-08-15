@@ -17,12 +17,15 @@ class IdeasViewController: UIViewController
     }
 }
 
-extension IdeasViewController: SidebarDelegate{
-    func sidbarDidOpen() {
+extension IdeasViewController: SidebarDelegate
+{
+    func sidbarDidOpen()
+    {
         print("Sidebar opened")
     }
     
-    func sidebarDidClose(with item: Int?) {
+    func sidebarDidClose(with item: Int?)
+    {
         guard let item = item else {return}
         print("Did select \(item)")
         switch item {

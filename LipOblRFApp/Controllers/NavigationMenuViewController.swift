@@ -17,6 +17,9 @@ class NavigationMenuViewController: UIViewController{
     // set delegate
     var delegate: NavigationDelegate?
     
+    //link to accaunt manager
+    let accMng = AccountManager.shared
+    
     // outlets btns
     @IBOutlet weak var btnSignIn: UIButton!
     @IBOutlet weak var btnSignUp: UIButton!
@@ -40,14 +43,17 @@ class NavigationMenuViewController: UIViewController{
         })
     }
     
+    /*
+    *   Navigation methods
+    **/
     @objc func didSelect(_ sender: UIButton){
         switch sender {
         case btnNewsList:
-            delegate?.navigation(didSelect: 0)
+            delegate?.navigation(didSelect: UIStoryboard.VIEW_TYPE_NEWS_LIST)
         case btnIdeasList:
-            delegate?.navigation(didSelect: 1)
+            delegate?.navigation(didSelect: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
         case btnSignIn:
-            delegate?.navigation(didSelect: 2)
+            delegate?.navigation(didSelect: UIStoryboard.VIEW_TYPE_LOGIN)
         default:
             break
         }
@@ -65,3 +71,8 @@ class NavigationMenuViewController: UIViewController{
     
     
 }
+
+
+    
+    
+
