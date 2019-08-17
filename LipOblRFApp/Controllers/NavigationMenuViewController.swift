@@ -33,6 +33,9 @@ class NavigationMenuViewController: UIViewController{
     //outlets media
     @IBOutlet weak var labelUserFIO: UILabel!
     @IBOutlet weak var uiPicSignOutBtn: UIImageView!
+    @IBOutlet weak var indHeader: UIActivityIndicatorView!
+    @IBOutlet weak var indFooter: UIActivityIndicatorView!
+    
     
     override func viewDidLoad()
     {
@@ -40,7 +43,6 @@ class NavigationMenuViewController: UIViewController{
         setListenersForNavBtns()
         // check signin status
         updateViewState()
-        
         
     }
     
@@ -75,24 +77,48 @@ class NavigationMenuViewController: UIViewController{
         }
     }
     
+    private func initLoadIndication()
+    {
+        DispatchQueue.main.async
+        {
+            self.indHeader.isHidden = false
+            self.indFooter.isHidden = false
+            self.indHeader.startAnimating()
+            self.indFooter.startAnimating()
+        }
+    }
+    private func stopLoadIndication()
+    {
+        DispatchQueue.main.async
+        {
+            self.indHeader.isHidden = true
+            self.indFooter.isHidden = true
+            self.indHeader.stopAnimating()
+            self.indFooter.stopAnimating()
+        }
+    }
+    
     private func updateViewState()
     {
         let signInStatus = accMng.getAccessToken()
-        //let curr = accMng.currentSignState()
-        print("get STATUS \(signInStatus)")
-        print("status OLD \(accMng.currentSignState)")
+        self.stopLoadIndication()
+        
         if signInStatus == accMng.REQUEST_LOGIN
         {
             setViewState(in: accMng.STATE_SIGNOUT)
         }
         else if signInStatus == accMng.REQUEST_REFRESH_AT
         {
+            initLoadIndication()
+            
             accMng.refreshAccessToken(successCompletion:
             { [unowned self] text in
+                self.stopLoadIndication()
                 self.setViewState(in: self.accMng.STATE_SIGNIN)
             },
             errorCompletion:
             { [unowned self] text in
+                self.stopLoadIndication()
                 self.setViewState(in: self.accMng.STATE_SIGNOUT)
             })
         }

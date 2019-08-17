@@ -145,6 +145,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" restorationIdentifier="indicatorHeader" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jnh-1h-GCz">
+                                <rect key="frame" x="111" y="92" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" restorationIdentifier="indicatorFooter" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pfZ-5N-TYk">
+                                <rect key="frame" x="98" y="620" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="K27-Ng-q1a"/>
@@ -158,6 +166,8 @@
                         <outlet property="btnSignIn" destination="dJk-oB-FLc" id="ajm-6G-GhR"/>
                         <outlet property="btnSignOut" destination="1Y4-Nh-1Iz" id="NL3-aE-KEK"/>
                         <outlet property="btnSignUp" destination="5Mc-w1-ceY" id="vnU-SJ-DFm"/>
+                        <outlet property="indFooter" destination="pfZ-5N-TYk" id="Ddl-HF-rN7"/>
+                        <outlet property="indHeader" destination="jnh-1h-GCz" id="lH2-jX-Ul4"/>
                         <outlet property="labelUserFIO" destination="ksl-KB-VtY" id="5RY-Ic-SKl"/>
                         <outlet property="uiPicSignOutBtn" destination="iXI-RP-BBQ" id="ebc-mC-cSn"/>
                     </connections>
