@@ -15,6 +15,7 @@ class IdeasViewController: UIViewController
     {
         SidebarLauncher(delegate: self ).show()
     }
+    
 }
 
 extension IdeasViewController: SidebarDelegate

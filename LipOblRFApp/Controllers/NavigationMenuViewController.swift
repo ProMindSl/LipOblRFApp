@@ -51,27 +51,36 @@ class NavigationMenuViewController: UIViewController{
     {
         if stateType == accMng.STATE_SIGNIN
         {
-            btnSignIn.isHidden = true
-            btnSignUp.isHidden = true
-            btnSignOut.isHidden = false
-            
-            labelUserFIO.text = accMng.getUserParsms()["fio"] as? String
-            labelUserFIO.isHidden = false
-            uiPicSignOutBtn.isHidden = false
+            DispatchQueue.main.async
+            {
+                self.btnSignIn.isHidden = true
+                self.btnSignUp.isHidden = true
+                self.btnSignOut.isHidden = false
+                
+                self.labelUserFIO.text = self.accMng.getUserParsms()["fio"] as? String
+                self.labelUserFIO.isHidden = false
+                self.uiPicSignOutBtn.isHidden = false
+            }
         }
         else if stateType == accMng.STATE_SIGNOUT
         {
-            btnSignIn.isHidden = false
-            btnSignUp.isHidden = false
-            btnSignOut.isHidden = true
-            labelUserFIO.isHidden = true
-            uiPicSignOutBtn.isHidden = true
+            DispatchQueue.main.async
+            {
+                self.btnSignIn.isHidden = false
+                self.btnSignUp.isHidden = false
+                self.btnSignOut.isHidden = true
+                self.labelUserFIO.isHidden = true
+                self.uiPicSignOutBtn.isHidden = true
+            }
         }
     }
     
     private func updateViewState()
     {
         let signInStatus = accMng.getAccessToken()
+        //let curr = accMng.currentSignState()
+        print("get STATUS \(signInStatus)")
+        print("status OLD \(accMng.currentSignState)")
         if signInStatus == accMng.REQUEST_LOGIN
         {
             setViewState(in: accMng.STATE_SIGNOUT)
