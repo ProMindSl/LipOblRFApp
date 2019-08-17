@@ -36,12 +36,12 @@ class AddIdeaViewController: UITableViewController
     }
     
     /*
-     *   -------- Public vars ----------
+     *   -------- Public func ----------
     **/
     
     
     /*
-     *   -------- Private vars ----------
+     *   -------- Privete func ----------
     **/
     private func initUI()
     {
