@@ -972,11 +972,10 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="btnAddFiles" destination="o0c-Au-jnM" id="8nD-5D-87b"/>
+                        <outlet property="btnAddFiles" destination="A3P-mK-qq6" id="bTJ-g7-7RQ"/>
                         <outlet property="btnAddIdea" destination="azi-de-f5m" id="L3v-jA-vrf"/>
-                        <outlet property="btnBack" destination="0LR-N2-apq" id="k6N-ME-e82"/>
+                        <outlet property="btnBack" destination="0LR-N2-apq" id="V4t-nf-qxO"/>
                         <outlet property="mvIdeaLocation" destination="yn4-ru-hWk" id="cA9-A0-nm5"/>
-                        <outlet property="mwLocation" destination="yn4-ru-hWk" id="o7O-XD-XGF"/>
                         <outlet property="tfIdeaScope" destination="iHN-X6-ZYl" id="xbe-kv-L3H"/>
                         <outlet property="tfIdeaTitle" destination="bmN-KV-W85" id="yOe-Lq-6vy"/>
                         <outlet property="tfIdeaTxtBody" destination="Ec1-fV-1Um" id="ytT-WQ-D7P"/>

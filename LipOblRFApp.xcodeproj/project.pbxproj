@@ -49,6 +49,7 @@
 		D22D6CA223041AB500DDA0E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA123041AB500DDA0E1 /* LoginViewController.swift */; };
 		D22D6CA423042CB600DDA0E1 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA323042CB600DDA0E1 /* NewsViewCell.swift */; };
 		D22D6CA623042D4D00DDA0E1 /* AddIdeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */; };
+		D22D6CA823083EA800DDA0E1 /* TypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA723083EA800DDA0E1 /* TypePickerView.swift */; };
 		D274FD3A230304F500485D89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274FD39230304F500485D89 /* AppDelegate.swift */; };
 		D274FD3C230304F500485D89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274FD3B230304F500485D89 /* ViewController.swift */; };
 		D274FD3F230304F500485D89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D274FD3D230304F500485D89 /* Main.storyboard */; };
@@ -118,6 +119,7 @@
 		D22D6CA123041AB500DDA0E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D22D6CA323042CB600DDA0E1 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdeaViewController.swift; sourceTree = "<group>"; };
+		D22D6CA723083EA800DDA0E1 /* TypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePickerView.swift; sourceTree = "<group>"; };
 		D274FD36230304F500485D89 /* LipOblRFApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LipOblRFApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D274FD39230304F500485D89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D274FD3B230304F500485D89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				D22D6CA323042CB600DDA0E1 /* NewsViewCell.swift */,
+				D22D6CA723083EA800DDA0E1 /* TypePickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				D22D6CA0230419DF00DDA0E1 /* IdeasViewController.swift in Sources */,
 				D22D6CA423042CB600DDA0E1 /* NewsViewCell.swift in Sources */,
 				D22D6C8C2304106D00DDA0E1 /* AccountManager.swift in Sources */,
+				D22D6CA823083EA800DDA0E1 /* TypePickerView.swift in Sources */,
 				D22D6C9E2304181700DDA0E1 /* NavigationMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

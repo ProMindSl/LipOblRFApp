@@ -9,79 +9,89 @@
 import UIKit
 import MapKit
 
-class AddIdeaViewController: UITableViewController {
+class AddIdeaViewController: UITableViewController
+{
 
-    
+    // outlets
     @IBOutlet weak var tfIdeaScope: UITextField!
     @IBOutlet weak var tfMapSearch: UITextField!
     @IBOutlet weak var mvIdeaLocation: MKMapView!
     @IBOutlet weak var tfIdeaTitle: UITextField!
     @IBOutlet weak var tfIdeaTxtBody: UITextField!
     @IBOutlet weak var btnAddIdea: UIButton!
+    @IBOutlet weak var btnAddFiles: UIButton!
+    @IBOutlet weak var btnBack: UIButton!
+    
+    // type picker vars
+    var picker: TypePickerView?
+    var pickerAccessory: UIToolbar?
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        initUI()
+        
+    }
+    
+    /*
+     *   -------- Public vars ----------
+    **/
+    
+    
+    /*
+     *   -------- Private vars ----------
+    **/
+    private func initUI()
+    {
+        // init picker
+        picker = TypePickerView()
+        picker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        picker?.backgroundColor = UIColor.white
+        picker?.data = ["Бизнес", "Благо­­устрой­­ство", "Борьба с коррупцией", "Демография", "Дороги и транспорт"]
+        
+        tfIdeaScope.inputView = picker
+        
+        pickerAccessory = UIToolbar()
+        pickerAccessory?.autoresizingMask = .flexibleHeight
+        
+        //this customization is optional
+        pickerAccessory?.barStyle = .default
+        pickerAccessory?.barTintColor = UIColor.blue
+        pickerAccessory?.backgroundColor = UIColor.blue
+        pickerAccessory?.isTranslucent = false
+        var frame = pickerAccessory?.frame
+        frame?.size.height = 44.0
+        pickerAccessory?.frame = frame!
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(AddIdeaViewController.cancelBtnClicked(_:)))
+        cancelButton.tintColor = UIColor.white
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //a flexible space between the two buttons
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AddIdeaViewController.doneBtnClicked(_:)))
+        doneButton.tintColor = UIColor.white
+        //Add the items to the toolbar
+        pickerAccessory?.items = [cancelButton, flexSpace, doneButton]
+        tfIdeaScope.inputAccessoryView = pickerAccessory
+        
 
         
     }
 
-    // MARK: - Table view data source
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    /**
+     Called when the cancel button of the `pickerAccessory` was clicked. Dismsses the picker
+     */
+    @objc func cancelBtnClicked(_ button: UIBarButtonItem?)
+    {
+        tfIdeaScope?.resignFirstResponder()
     }
     
-
-    
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    /**
+     Called when the done button of the `pickerAccessory` was clicked. Dismisses the picker and puts the selected value into the textField
+     */
+    @objc func doneBtnClicked(_ button: UIBarButtonItem?)
+    {
+        tfIdeaScope?.resignFirstResponder()
+        tfIdeaScope.text = picker?.selectedValue
     }
     
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
