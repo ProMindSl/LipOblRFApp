@@ -20,44 +20,7 @@ class AccountManager
     public let STATE_SIGNIN = 101
     public let STATE_SIGNOUT = 100
     
-/*
-    // server answer codes
-    public let API_ANS_TYPE_UNKNOWN_ERROR = "00001"
-    public let API_ANS_TYPE_NOT_DB_CONNECTION = "535"
-    public let API_ANS_TYPE_USER_LOGIN_NOT_EXTIST = "287"
-    public let API_ANS_TYPE_GET_TOKEN_SUCCES = "777"
-    public let API_ANS_TYPE_REFRESH_TOKEN_INVALID = "666"
-    public let API_ANS_TYPE_ACCESS_TOKEN_INVALID = "969"
-    public let API_ANS_TYPE_INCORRECT_TOKEN_TYPE = "932"
-    public let API_ANS_TYPE_INVALID_USER = "342"
-    public let API_ANS_TYPE_PASSWORD_INCORRECT = "321"
-    public let API_ANS_TYPE_RECEIVE_RT_NOT_EQUAL_TO_DB_RT = "113"
-    public let API_ANS_TYPE_HAS_NOT_CREDENTIALS = "112"
-    public let API_ANS_TYPE_SUCCESS_GET_CONTENT = "575"
-    public let API_ANS_TYPE_SUCCESS_SET_CONTENT = "555"
-    public let API_ANS_TYPE_INVALID_INPUT_DATA = "966"
-    
-    // role credentials codes
-    public let CLS_USERS_VIEW = "001"
-    public let CLS_USERS_ADMIN = "111"
-    public let CLS_IDEA_VIEW_ALL = "003"
-    public let CLS_IDEA_VIEW_OWN = "303"
-    public let CLS_IDEA_VIEW_OPEN = "103"
-    public let CLS_IDEA_CREATE = "033"
-    public let CLS_IDEA_ADMIN = "333"
-    public let CLS_CLAIM_VIEW_ALL = "005"
-    public let CLS_CLAIM_VIEW_OWN = "505"
-    public let CLS_CLAIM_CREATE = "055"
-    public let CLS_CLAIM_ADMIN = "555"
-    public let CLS_NEWS_VIEW = "004"
-    public let CLS_NEWS_ADMIN = "444"
-    
-    // Role string type value
-    public let ROLE_TYPE_GUEST = "guest"
-    public let ROLE_TYPE_USER = "user"
-    public let ROLE_TYPE_ADMIN = "admin"
- */
- 
+
     // event/request/action codes inside client
     public let REQUEST_LOGIN = "66"
     public let REQUEST_REFRESH_AT = "12"
