@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         
-        print(accMng.API_ANS_TYPE_ACCESS_TOKEN_INVALID)
+        print(APIVals.API_ANS_TYPE_ACCESS_TOKEN_INVALID)
         
         // ui options
         tfPass.isSecureTextEntry = true
@@ -101,7 +101,7 @@ class LoginViewController: UIViewController {
         var message = ""
         var msgTitle = ""
         // seccess authentication
-        if code == accMng.API_ANS_TYPE_GET_TOKEN_SUCCES
+        if code == APIVals.API_ANS_TYPE_GET_TOKEN_SUCCES
             && accMng.currentSignState == accMng.STATE_SIGNIN
         {
             msgTitle = "Вход выполнен"
@@ -113,17 +113,17 @@ class LoginViewController: UIViewController {
             
             switch code
             {
-            case accMng.API_ANS_TYPE_INVALID_USER,
-                 accMng.API_ANS_TYPE_USER_LOGIN_NOT_EXTIST:
+            case APIVals.API_ANS_TYPE_INVALID_USER,
+                 APIVals.API_ANS_TYPE_USER_LOGIN_NOT_EXTIST:
                 message = "Логин пользователя не найден"
                 
-            case accMng.API_ANS_TYPE_PASSWORD_INCORRECT:
+            case APIVals.API_ANS_TYPE_PASSWORD_INCORRECT:
                 message = "Пароль неверный"
                 
-            case accMng.API_ANS_TYPE_NOT_DB_CONNECTION:
+            case APIVals.API_ANS_TYPE_NOT_DB_CONNECTION:
                 message = "Сервер аутентификации не доступен"
                 
-            case accMng.API_ANS_TYPE_UNKNOWN_ERROR:
+            case APIVals.API_ANS_TYPE_UNKNOWN_ERROR:
                 message = "Неизвестная ошибка"
                 
             default:

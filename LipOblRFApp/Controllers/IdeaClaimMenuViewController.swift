@@ -135,9 +135,7 @@ class IdeaClaimMenuViewController: UIViewController
             self.indViewCenter.stopAnimating()
         }
     }
-    
-    
-   
+ 
 
 }
 

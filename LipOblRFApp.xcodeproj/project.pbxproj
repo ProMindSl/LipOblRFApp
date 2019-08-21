@@ -59,6 +59,8 @@
 		D274FD4F230304F600485D89 /* LipOblRFAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274FD4E230304F600485D89 /* LipOblRFAppTests.swift */; };
 		D274FD5A230304F600485D89 /* LipOblRFAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274FD59230304F600485D89 /* LipOblRFAppUITests.swift */; };
 		D2863CDE230DA90900393186 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CDD230DA90900393186 /* AlertController.swift */; };
+		D2863CE0230DBF8700393186 /* SetContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CDF230DBF8700393186 /* SetContentController.swift */; };
+		D2863CE2230DC08A00393186 /* APIVals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CE1230DC08A00393186 /* APIVals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +139,8 @@
 		D274FD59230304F600485D89 /* LipOblRFAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipOblRFAppUITests.swift; sourceTree = "<group>"; };
 		D274FD5B230304F600485D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2863CDD230DA90900393186 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		D2863CDF230DBF8700393186 /* SetContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContentController.swift; sourceTree = "<group>"; };
+		D2863CE1230DC08A00393186 /* APIVals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIVals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				D22D6C8B2304106D00DDA0E1 /* AccountManager.swift */,
+				D2863CDF230DBF8700393186 /* SetContentController.swift */,
+				D2863CE1230DC08A00393186 /* APIVals.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -464,12 +470,14 @@
 				D22D6CAA23084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift in Sources */,
 				D274FD3A230304F500485D89 /* AppDelegate.swift in Sources */,
 				D22D6C9A2304162000DDA0E1 /* NewsViewController.swift in Sources */,
+				D2863CE2230DC08A00393186 /* APIVals.swift in Sources */,
 				D22D6C9C230417BC00DDA0E1 /* SidebarLauncher.swift in Sources */,
 				D22D6CA0230419DF00DDA0E1 /* IdeasViewController.swift in Sources */,
 				D22D6CA423042CB600DDA0E1 /* NewsViewCell.swift in Sources */,
 				D22D6C8C2304106D00DDA0E1 /* AccountManager.swift in Sources */,
 				D22D6CA823083EA800DDA0E1 /* TypePickerView.swift in Sources */,
 				D22D6C9E2304181700DDA0E1 /* NavigationMenuViewController.swift in Sources */,
+				D2863CE0230DBF8700393186 /* SetContentController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

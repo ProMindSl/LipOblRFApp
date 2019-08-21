@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 class AlertController: NSObject
 {
     static let shared = AlertController()

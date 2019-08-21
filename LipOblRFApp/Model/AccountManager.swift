@@ -20,6 +20,7 @@ class AccountManager
     public let STATE_SIGNIN = 101
     public let STATE_SIGNOUT = 100
     
+/*
     // server answer codes
     public let API_ANS_TYPE_UNKNOWN_ERROR = "00001"
     public let API_ANS_TYPE_NOT_DB_CONNECTION = "535"
@@ -55,7 +56,8 @@ class AccountManager
     public let ROLE_TYPE_GUEST = "guest"
     public let ROLE_TYPE_USER = "user"
     public let ROLE_TYPE_ADMIN = "admin"
-    
+ */
+ 
     // event/request/action codes inside client
     public let REQUEST_LOGIN = "66"
     public let REQUEST_REFRESH_AT = "12"
@@ -182,10 +184,10 @@ class AccountManager
             }
             
             // read need headers
-            self.apiANS = response.allHeaderFields["API-ans"] as? String ?? self.API_ANS_TYPE_UNKNOWN_ERROR
+            self.apiANS = response.allHeaderFields["API-ans"] as? String ?? APIVals.API_ANS_TYPE_UNKNOWN_ERROR
             
             
-            if self.apiANS == self.API_ANS_TYPE_GET_TOKEN_SUCCES // success getting tokens
+            if self.apiANS == APIVals.API_ANS_TYPE_GET_TOKEN_SUCCES // success getting tokens
             {
                 self.currentMsg = self.ERROR_NONE
                 self.currentSignState = self.STATE_SIGNIN
@@ -265,10 +267,10 @@ class AccountManager
                 }
                 
                 // read need headers
-                self.apiANS = response.allHeaderFields["API-ans"] as? String ?? self.API_ANS_TYPE_UNKNOWN_ERROR
+                self.apiANS = response.allHeaderFields["API-ans"] as? String ?? APIVals.API_ANS_TYPE_UNKNOWN_ERROR
                 
                 
-                if self.apiANS == self.API_ANS_TYPE_GET_TOKEN_SUCCES // success getting tokens
+                if self.apiANS == APIVals.API_ANS_TYPE_GET_TOKEN_SUCCES // success getting tokens
                 {
                     self.currentMsg = self.ERROR_NONE
                     self.currentSignState = self.STATE_SIGNIN
@@ -446,50 +448,3 @@ class AccountManager
     
 }
 
-
-/*
- 
- guard let url = URL(string: API_URL_LOGIN) else { return }
- 
- var request = URLRequest(url: url)
- request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
- request.httpMethod = "POST"
- 
- let parameters: [String: Any] = [
- "login": login,
- "pass": password
- ]
- 
- let postString = self.getPostString(params: parameters)
- request.httpBody = postString.data(using: .utf8)
- 
- let task = URLSession.shared.dataTask(with: request)
- { data, response, error in
- guard let data = data,                      // check for fundamental networking error
- let response = response as? HTTPURLResponse,
- error == nil
- else
- {
- print("error", error ?? "Unknown error")
- self.currentMsg = self.ERROR_NETWORK
- return
- }
- 
- guard (200 ... 299) ~= response.statusCode  // check for http errors
- else
- {
- print("statusCode is \(response.statusCode)")
- print("response = \(response)")
- self.currentMsg = self.ERROR_HTTP
- return
- }
- 
- //let responseString = String(data: data, encoding: .utf8)
- //print("responseString = \(responseString)")
- print(response.allHeaderFields["at"])
- }
- 
- task.resume()
- 
- 
- */
