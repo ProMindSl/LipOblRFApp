@@ -44,7 +44,7 @@ class IdeaClaimMenuViewController: UIViewController
     **/
     private func setViewState(in stateType:Int)
     {
-        if stateType == accMng.STATE_SIGNIN
+        if stateType == AccountManager.STATE_SIGNIN
         {
             DispatchQueue.main.async
             {
@@ -54,7 +54,7 @@ class IdeaClaimMenuViewController: UIViewController
                 
             }
         }
-        else if stateType == accMng.STATE_SIGNOUT
+        else if stateType == AccountManager.STATE_SIGNOUT
         {
             DispatchQueue.main.async
             {
@@ -70,9 +70,9 @@ class IdeaClaimMenuViewController: UIViewController
         let signInStatus = accMng.getAccessToken()
         self.stopLoadIndication()
         
-        if signInStatus == accMng.REQUEST_LOGIN
+        if signInStatus == AccountManager.REQUEST_LOGIN
         {
-            setViewState(in: accMng.STATE_SIGNOUT)
+            setViewState(in: AccountManager.STATE_SIGNOUT)
             // relocate to login
             alertController.alert(in: self,
                                   withTitle: "Вход не выполнен",
@@ -84,7 +84,7 @@ class IdeaClaimMenuViewController: UIViewController
                                    })
             
         }
-        else if signInStatus == accMng.REQUEST_REFRESH_AT
+        else if signInStatus == AccountManager.REQUEST_REFRESH_AT
         {
             initLoadIndication()
             
@@ -92,12 +92,12 @@ class IdeaClaimMenuViewController: UIViewController
                 successCompletion:
                 { [unowned self] text in
                     self.stopLoadIndication()
-                    self.setViewState(in: self.accMng.STATE_SIGNIN)
+                    self.setViewState(in: AccountManager.STATE_SIGNIN)
                 },
                 errorCompletion:
                 { [unowned self] text in
                     self.stopLoadIndication()
-                    self.setViewState(in: self.accMng.STATE_SIGNOUT)
+                    self.setViewState(in: AccountManager.STATE_SIGNOUT)
                     
                     // relocate to login
                     self.alertController.alert(in: self,
@@ -113,7 +113,8 @@ class IdeaClaimMenuViewController: UIViewController
         }
         else
         {
-            setViewState(in: accMng.STATE_SIGNIN)
+            let signStatusOk = AccountManager.STATE_SIGNIN
+            setViewState(in: signStatusOk)
         }
     }
     /*

@@ -102,7 +102,7 @@ class LoginViewController: UIViewController {
         var msgTitle = ""
         // seccess authentication
         if code == APIVals.API_ANS_TYPE_GET_TOKEN_SUCCES
-            && accMng.currentSignState == accMng.STATE_SIGNIN
+            && accMng.currentSignState == AccountManager.STATE_SIGNIN
         {
             msgTitle = "Вход выполнен"
             message = "Добро пожаловать, \(self.loginUserParams["fio"] as! String) !"
@@ -137,7 +137,7 @@ class LoginViewController: UIViewController {
         let action = UIAlertAction(title: "OK", style: .default, handler:
         { (alert: UIAlertAction!) in
             // if signIn - ok? exit from login view to news page
-            if self.accMng.currentSignState == self.accMng.STATE_SIGNIN
+            if self.accMng.currentSignState == AccountManager.STATE_SIGNIN
             {
                 let v = UIStoryboard.main.LaunchNewsVC()
                 self.present(v!, animated: true)

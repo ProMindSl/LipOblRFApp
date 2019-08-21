@@ -17,16 +17,16 @@ class AccountManager
     *   -------- Public const ----------
     **/
     // signing state types
-    public let STATE_SIGNIN = 101
-    public let STATE_SIGNOUT = 100
+    static let STATE_SIGNIN = 101
+    static let STATE_SIGNOUT = 100
     
 
     // event/request/action codes inside client
-    public let REQUEST_LOGIN = "66"
-    public let REQUEST_REFRESH_AT = "12"
-    public let ERROR_NONE = "00"
-    public let ERROR_NETWORK = "19"
-    public let ERROR_HTTP = "21"
+    static let REQUEST_LOGIN = "66"
+    static let REQUEST_REFRESH_AT = "12"
+    static let ERROR_NONE = "00"
+    static let ERROR_NETWORK = "19"
+    static let ERROR_HTTP = "21"
     
     /*
      *   -------- Private const ----------
@@ -61,8 +61,8 @@ class AccountManager
     private init()
     {
         // set signout status
-        currentSignState = STATE_SIGNOUT
-        currentMsg = ERROR_NONE
+        currentSignState = AccountManager.STATE_SIGNOUT
+        currentMsg = AccountManager.ERROR_NONE
         apiANS = ""
         _accessToken = "none-AT"
         _refreshToken = "none-RT"
@@ -83,7 +83,7 @@ class AccountManager
     **/
     public func getAccessToken() -> String
     {
-        if currentSignState == STATE_SIGNIN
+        if currentSignState == AccountManager.STATE_SIGNIN
         {
             // check expiere of access token
             if isCurrentAccessJWTValid()
@@ -94,12 +94,12 @@ class AccountManager
             {
                 if isCurrentRefreshJWTValid()
                 {
-                    return self.REQUEST_REFRESH_AT
+                    return AccountManager.REQUEST_REFRESH_AT
                 }
             }
         }
         
-        return self.REQUEST_LOGIN
+        return AccountManager.REQUEST_LOGIN
     }
     
     /*
@@ -133,7 +133,7 @@ class AccountManager
             else
             {
                     print("error", error ?? "Unknown error")
-                    self.currentMsg = self.ERROR_NETWORK
+                    self.currentMsg = AccountManager.ERROR_NETWORK
                     return
             }
             
@@ -142,7 +142,7 @@ class AccountManager
             {
                 print("statusCode is \(response.statusCode)")
                 print("response = \(response)")
-                self.currentMsg = self.ERROR_HTTP
+                self.currentMsg = AccountManager.ERROR_HTTP
                 return
             }
             
@@ -152,8 +152,8 @@ class AccountManager
             
             if self.apiANS == APIVals.API_ANS_TYPE_GET_TOKEN_SUCCES // success getting tokens
             {
-                self.currentMsg = self.ERROR_NONE
-                self.currentSignState = self.STATE_SIGNIN
+                self.currentMsg = AccountManager.ERROR_NONE
+                self.currentSignState = AccountManager.STATE_SIGNIN
                 
                 self.setJWTRefresh(with: response.allHeaderFields["rt"] as! String)
                 self.setJWTAccess(with: response.allHeaderFields["at"] as! String)
@@ -167,7 +167,7 @@ class AccountManager
             {
                 //self.completion("not auth")
                 
-                self.currentSignState = self.STATE_SIGNOUT
+                self.currentSignState = AccountManager.STATE_SIGNOUT
                 print(self.apiANS)
                 
                 errorFunc("not auth")
@@ -181,7 +181,7 @@ class AccountManager
     
     public func signOut()
     {
-        currentSignState = STATE_SIGNOUT
+        currentSignState = AccountManager.STATE_SIGNOUT
         _refreshToken = "none-RT"
         _accessToken = "none-AT"
         _atPayload = [:]
@@ -194,7 +194,7 @@ class AccountManager
     public func refreshAccessToken(successCompletion successFunc: @escaping ((String) -> ()),
                                    errorCompletion errorFunc: @escaping ((String) -> ()))
     {
-        if currentSignState == STATE_SIGNIN
+        if currentSignState == AccountManager.STATE_SIGNIN
             && _refreshToken != "none-RT"
         {
             // create POST-request to API
@@ -216,7 +216,7 @@ class AccountManager
                     else
                 {
                     print("error", error ?? "Unknown error")
-                    self.currentMsg = self.ERROR_NETWORK
+                    self.currentMsg = AccountManager.ERROR_NETWORK
                     return
                 }
                 
@@ -225,7 +225,7 @@ class AccountManager
                 {
                     print("statusCode is \(response.statusCode)")
                     print("response = \(response)")
-                    self.currentMsg = self.ERROR_HTTP
+                    self.currentMsg = AccountManager.ERROR_HTTP
                     return
                 }
                 
@@ -235,8 +235,8 @@ class AccountManager
                 
                 if self.apiANS == APIVals.API_ANS_TYPE_GET_TOKEN_SUCCES // success getting tokens
                 {
-                    self.currentMsg = self.ERROR_NONE
-                    self.currentSignState = self.STATE_SIGNIN
+                    self.currentMsg = AccountManager.ERROR_NONE
+                    self.currentSignState = AccountManager.STATE_SIGNIN
                     
                     self.setJWTRefresh(with: response.allHeaderFields["rt"] as! String)
                     self.setJWTAccess(with: response.allHeaderFields["at"] as! String)
@@ -249,7 +249,7 @@ class AccountManager
                 else                                                // fail getting tokens
                 { print("refresh NOT success")
                     //self.completion("not auth")
-                    self.currentSignState = self.STATE_SIGNOUT
+                    self.currentSignState = AccountManager.STATE_SIGNOUT
                     print(self.apiANS)
                     errorFunc("not refresh")
                 }
@@ -266,7 +266,7 @@ class AccountManager
     **/
     public func getUserParsms() -> [String:Any]
     {
-        if self.currentSignState == STATE_SIGNIN
+        if self.currentSignState == AccountManager.STATE_SIGNIN
             && self._accessToken != "none-AT"
             && self._refreshToken != "none-RT"
         {
@@ -381,7 +381,7 @@ class AccountManager
     {
         var isValid = false
         
-        if currentSignState == STATE_SIGNIN
+        if currentSignState == AccountManager.STATE_SIGNIN
         {
             let jwtExpTime = self._atPayload["exp"] as! Int
             if jwtExpTime > Int(NSDate().timeIntervalSince1970)
@@ -396,7 +396,7 @@ class AccountManager
     {
         var isValid = false
         
-        if currentSignState == STATE_SIGNIN
+        if currentSignState == AccountManager.STATE_SIGNIN
         {
             let jwtExpTime = self._rtPayload["exp"] as! Int
             if jwtExpTime > Int(NSDate().timeIntervalSince1970)

@@ -51,7 +51,7 @@ class NavigationMenuViewController: UIViewController{
     **/
     private func setViewState(in stateType:Int)
     {
-        if stateType == accMng.STATE_SIGNIN
+        if stateType == AccountManager.STATE_SIGNIN
         {
             DispatchQueue.main.async
             {
@@ -64,7 +64,7 @@ class NavigationMenuViewController: UIViewController{
                 self.uiPicSignOutBtn.isHidden = false
             }
         }
-        else if stateType == accMng.STATE_SIGNOUT
+        else if stateType == AccountManager.STATE_SIGNOUT
         {
             DispatchQueue.main.async
             {
@@ -103,28 +103,28 @@ class NavigationMenuViewController: UIViewController{
         let signInStatus = accMng.getAccessToken()
         self.stopLoadIndication()
         
-        if signInStatus == accMng.REQUEST_LOGIN
+        if signInStatus == AccountManager.REQUEST_LOGIN
         {
-            setViewState(in: accMng.STATE_SIGNOUT)
+            setViewState(in: AccountManager.STATE_SIGNOUT)
         }
-        else if signInStatus == accMng.REQUEST_REFRESH_AT
+        else if signInStatus == AccountManager.REQUEST_REFRESH_AT
         {
             initLoadIndication()
             
             accMng.refreshAccessToken(successCompletion:
             { [unowned self] text in
                 self.stopLoadIndication()
-                self.setViewState(in: self.accMng.STATE_SIGNIN)
+                self.setViewState(in: AccountManager.STATE_SIGNIN)
             },
             errorCompletion:
             { [unowned self] text in
                 self.stopLoadIndication()
-                self.setViewState(in: self.accMng.STATE_SIGNOUT)
+                self.setViewState(in: AccountManager.STATE_SIGNOUT)
             })
         }
         else
         {
-            setViewState(in: accMng.STATE_SIGNIN)
+            setViewState(in: AccountManager.STATE_SIGNIN)
         }
     }
         
@@ -145,7 +145,7 @@ class NavigationMenuViewController: UIViewController{
             break
         }
     }
-        
+    
     /*
      *   UI handlers
     **/

@@ -87,7 +87,7 @@ class AddIdeaViewController: UITableViewController
     **/
     private func setViewState(in stateType:Int)
     {
-        if stateType == accMng.STATE_SIGNIN
+        if stateType == AccountManager.STATE_SIGNIN
         {
             DispatchQueue.main.async
             {
@@ -101,7 +101,7 @@ class AddIdeaViewController: UITableViewController
                 //self.btnAddIdea.isHidden = false
             }
         }
-        else if stateType == accMng.STATE_SIGNOUT
+        else if stateType == AccountManager.STATE_SIGNOUT
         {
             DispatchQueue.main.async
             {
@@ -121,9 +121,9 @@ class AddIdeaViewController: UITableViewController
         let signInStatus = accMng.getAccessToken()
         self.stopLoadIndication()
         
-        if signInStatus == accMng.REQUEST_LOGIN
+        if signInStatus == AccountManager.REQUEST_LOGIN
         {
-            setViewState(in: accMng.STATE_SIGNOUT)
+            setViewState(in: AccountManager.STATE_SIGNOUT)
             
             // show error alert and relocate to login
             self.alertController.alert(in: self,
@@ -135,7 +135,7 @@ class AddIdeaViewController: UITableViewController
                                             self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
                                        })
         }
-        else if signInStatus == accMng.REQUEST_REFRESH_AT
+        else if signInStatus == AccountManager.REQUEST_REFRESH_AT
         {
             initLoadIndication()
             
@@ -143,12 +143,12 @@ class AddIdeaViewController: UITableViewController
             successCompletion:
             { [unowned self] text in
                 self.stopLoadIndication()
-                self.setViewState(in: self.accMng.STATE_SIGNIN)
+                self.setViewState(in: AccountManager.STATE_SIGNIN)
             },
             errorCompletion:
             { [unowned self] text in
                 self.stopLoadIndication()
-                self.setViewState(in: self.accMng.STATE_SIGNOUT)
+                self.setViewState(in: AccountManager.STATE_SIGNOUT)
                     
                 // show error alert and relocate to login
                 self.alertController.alert(in: self,
@@ -164,7 +164,8 @@ class AddIdeaViewController: UITableViewController
         }
         else
         {
-            setViewState(in: accMng.STATE_SIGNIN)
+            let signStatusOk = AccountManager.STATE_SIGNIN
+            setViewState(in: signStatusOk)
         }
     }
     /*
