@@ -145,9 +145,7 @@ class NavigationMenuViewController: UIViewController{
             break
         }
     }
-    
-    
-    
+        
     /*
      *   UI handlers
     **/

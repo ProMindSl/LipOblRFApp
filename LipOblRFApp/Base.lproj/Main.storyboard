@@ -179,7 +179,7 @@
         <!--Login View Controller-->
         <scene sceneID="DBf-QF-AN2">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="56f-Yq-a0m" customClass="LoginViewController" customModule="Sidemenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="56f-Yq-a0m" customClass="LoginViewController" customModule="LipOblRFApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JT8-F7-RGV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -569,7 +569,7 @@
                                 <rect key="frame" x="0.0" y="123" width="375" height="472"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ideaCell" rowHeight="211" id="njn-LD-zZp" customClass="IdeaViewCell" customModule="Sidemenu" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ideaCell" rowHeight="211" id="njn-LD-zZp" customClass="IdeaViewCell" customModule="LipOblRFApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="211"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="njn-LD-zZp" id="0rM-yb-mYN">
@@ -674,10 +674,10 @@
             </objects>
             <point key="canvasLocation" x="-836" y="1649"/>
         </scene>
-        <!--View Controller-->
+        <!--Idea Claim Menu View Controller-->
         <scene sceneID="iaK-sU-uuu">
             <objects>
-                <viewController id="0kB-eO-fBN" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IdeaClaimMenuViewController" id="0kB-eO-fBN" customClass="IdeaClaimMenuViewController" customModule="LipOblRFApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fxk-S5-D9i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -715,6 +715,7 @@
                                 <state key="normal" image="menu.png"/>
                                 <connections>
                                     <action selector="OpenMenu:" destination="D08-Np-jC8" eventType="touchUpInside" id="0Vq-sG-1EE"/>
+                                    <action selector="OpenMenu:" destination="0kB-eO-fBN" eventType="touchUpInside" id="BrN-c3-XVc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Суббота, 7 июля" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duB-D5-Xl7">
@@ -757,6 +758,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="x7S-hV-LMw">
+                                <rect key="frame" x="177" y="325" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -772,6 +777,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1xz-fo-qR0"/>
                     </view>
+                    <connections>
+                        <outlet property="btnClimeCreate" destination="BSe-yq-mfV" id="05g-gf-FBK"/>
+                        <outlet property="btnIdeaCreate" destination="N5g-O4-xwu" id="cM0-Gt-6gI"/>
+                        <outlet property="btnIdeaList" destination="aHo-Fl-xxg" id="Fg3-NV-R5e"/>
+                        <outlet property="indViewCenter" destination="x7S-hV-LMw" id="7H6-Bv-QaC"/>
+                        <outlet property="tfCurrDate" destination="duB-D5-Xl7" id="nak-sR-fdQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gda-Tj-cp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -780,7 +792,7 @@
         <!--Add Idea View Controller-->
         <scene sceneID="hE1-fi-1TX">
             <objects>
-                <tableViewController storyboardIdentifier="AddIdeaViewController" id="dwN-fa-NgX" customClass="AddIdeaViewController" customModule="Sidemenu" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddIdeaViewController" id="dwN-fa-NgX" customClass="AddIdeaViewController" customModule="LipOblRFApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e2p-go-MLs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -951,7 +963,14 @@
                                                     <state key="normal" title="Отправить на модерацию" backgroundImage="btnBgSolid.png">
                                                         <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didSelectAddIdea:" destination="dwN-fa-NgX" eventType="touchUpInside" id="xey-sb-MSE"/>
+                                                    </connections>
                                                 </button>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8We-SD-ann">
+                                                    <rect key="frame" x="177" y="33" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -975,6 +994,7 @@
                         <outlet property="btnAddFiles" destination="A3P-mK-qq6" id="bTJ-g7-7RQ"/>
                         <outlet property="btnAddIdea" destination="azi-de-f5m" id="L3v-jA-vrf"/>
                         <outlet property="btnBack" destination="0LR-N2-apq" id="V4t-nf-qxO"/>
+                        <outlet property="indLoadState" destination="8We-SD-ann" id="qwL-K7-xbV"/>
                         <outlet property="mvIdeaLocation" destination="yn4-ru-hWk" id="cA9-A0-nm5"/>
                         <outlet property="tfIdeaScope" destination="iHN-X6-ZYl" id="xbe-kv-L3H"/>
                         <outlet property="tfIdeaTitle" destination="bmN-KV-W85" id="yOe-Lq-6vy"/>
@@ -984,7 +1004,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Fd-fS-yKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="994.45277361319347"/>
+            <point key="canvasLocation" x="164" y="938"/>
         </scene>
     </scenes>
     <resources>
@@ -1014,7 +1034,8 @@
         <image name="star_gray.png" width="30" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="aRc-um-rmt"/>
         <segue reference="MXt-AT-kW6"/>
-        <segue reference="DEo-za-R5u"/>
+        <segue reference="vLR-f2-LjP"/>
     </inferredMetricsTieBreakers>
 </document>

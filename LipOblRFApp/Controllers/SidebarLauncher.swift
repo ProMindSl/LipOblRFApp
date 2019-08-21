@@ -16,16 +16,22 @@ class SidebarLauncher: NSObject{
     var view: UIView?
     var delegate: SidebarDelegate?
     var vc: NavigationMenuViewController?
-    init(delegate: SidebarDelegate) {
+    init(delegate: SidebarDelegate)
+    {
         super.init()
         self.delegate = delegate
     }
     
-    func show(){
+    func show()
+    {
         let bounds = UIScreen.main.bounds
-        let v = UIView(frame: CGRect(x: -bounds.width, y: 0, width: bounds.width, height: bounds.height))
+        let v = UIView(frame: CGRect(x: -bounds.width,
+                                     y: 0,
+                                     width: bounds.width,
+                                     height: bounds.height))
         v.backgroundColor = .clear
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationMenuViewController") as! NavigationMenuViewController
+        let vc = UIStoryboard.init(name: "Main",
+                                   bundle: nil).instantiateViewController(withIdentifier: "NavigationMenuViewController") as! NavigationMenuViewController
         v.addSubview(vc.view)
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -36,7 +42,8 @@ class SidebarLauncher: NSObject{
             ])
         vc.delegate = self
         v.isUserInteractionEnabled = true
-        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:))))
+        v.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                      action: #selector(handleTapGesture(_:))))
         self.view = v
         self.vc = vc
         UIApplication.shared.keyWindow?.addSubview(v)
@@ -70,7 +77,8 @@ class SidebarLauncher: NSObject{
     
 }
 extension SidebarLauncher: NavigationDelegate{
-    func navigation(didSelect: Int?) {
+    func navigation(didSelect: Int?)
+    {
         closeSidebar(option: didSelect)
     }
 }
