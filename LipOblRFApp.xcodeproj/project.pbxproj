@@ -61,6 +61,7 @@
 		D2863CDE230DA90900393186 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CDD230DA90900393186 /* AlertController.swift */; };
 		D2863CE0230DBF8700393186 /* SetContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CDF230DBF8700393186 /* SetContentController.swift */; };
 		D2863CE2230DC08A00393186 /* APIVals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CE1230DC08A00393186 /* APIVals.swift */; };
+		D2863CE4230EBD0300393186 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CE3230EBD0300393186 /* RootViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		D2863CDD230DA90900393186 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		D2863CDF230DBF8700393186 /* SetContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContentController.swift; sourceTree = "<group>"; };
 		D2863CE1230DC08A00393186 /* APIVals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIVals.swift; sourceTree = "<group>"; };
+		D2863CE3230EBD0300393186 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */,
 				D22D6CA923084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift */,
 				D2863CDD230DA90900393186 /* AlertController.swift */,
+				D2863CE3230EBD0300393186 /* RootViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D22D6CA223041AB500DDA0E1 /* LoginViewController.swift in Sources */,
+				D2863CE4230EBD0300393186 /* RootViewController.swift in Sources */,
 				D22D6CA623042D4D00DDA0E1 /* AddIdeaViewController.swift in Sources */,
 				D274FD3C230304F500485D89 /* ViewController.swift in Sources */,
 				D22D6C98230415A700DDA0E1 /* NavigationExtensions.swift in Sources */,
