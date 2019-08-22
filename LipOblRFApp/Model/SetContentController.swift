@@ -99,12 +99,12 @@ class SetContentController
                 
                 
                 if self.apiANS == APIVals.API_ANS_TYPE_SUCCESS_SET_CONTENT // success add idea
-                {
+                {print("success add idea (from SetContentContr)")
                     self.currentMsg = AccountManager.ERROR_NONE
                     successFunc("ok")
                 }
                 else                                                       // fail add idea
-                {
+                {print("error add idea (from SetContentContr)")
                     errorFunc("not ok")
                 }
             }

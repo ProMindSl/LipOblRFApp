@@ -261,7 +261,10 @@ class AddIdeaViewController: UITableViewController
                                                                       andActionTitle: "Ок",
                                                                       completion:
                                                                       { [unowned self] text in
-                                                                        self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                                        DispatchQueue.main.async
+                                                                        {
+                                                                            self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                                        }
                                                                       })
                                              },
                                              errorCompletion:                           // add idea error complete
@@ -291,7 +294,10 @@ class AddIdeaViewController: UITableViewController
                                                                            andActionTitle: "Ок",
                                                                            completion:
                                                     { [unowned self] text in
-                                                        self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                        DispatchQueue.main.async
+                                                        {
+                                                            self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                        }
                                                     })
                                              })
                     
