@@ -27,6 +27,8 @@ class AddIdeaViewController: UITableViewController
     private let accMng = AccountManager.shared
     private let alertController = AlertController.shared
     
+    private let setController = SetContentController()
+    
     // type picker vars
     var picker: TypePickerView?
     var pickerAccessory: UIToolbar?
@@ -37,7 +39,15 @@ class AddIdeaViewController: UITableViewController
         super.viewDidLoad()
         
         initUI()
-        updateViewState()
+        updateViewState(
+            signInCompletion:
+            { text in
+                print("signIn - ok")
+            },
+            signOutCompletion:
+            { text in
+                print("signOut")
+            })
     }
     
     /*
@@ -116,7 +126,8 @@ class AddIdeaViewController: UITableViewController
             }
         }
     }
-    private func updateViewState()
+    private func updateViewState(signInCompletion signInCompFunc: @escaping ((String) -> ()),
+                                 signOutCompletion signOutCompFunc: @escaping ((String) -> ()))
     {
         let signInStatus = accMng.getAccessToken()
         self.stopLoadIndication()
@@ -124,6 +135,7 @@ class AddIdeaViewController: UITableViewController
         if signInStatus == AccountManager.REQUEST_LOGIN
         {
             setViewState(in: AccountManager.STATE_SIGNOUT)
+            signOutCompFunc("not signIn")
             
             // show error alert and relocate to login
             self.alertController.alert(in: self,
@@ -144,6 +156,8 @@ class AddIdeaViewController: UITableViewController
             { [unowned self] text in
                 self.stopLoadIndication()
                 self.setViewState(in: AccountManager.STATE_SIGNIN)
+                
+                signInCompFunc("signIn ok")
             },
             errorCompletion:
             { [unowned self] text in
@@ -154,9 +168,10 @@ class AddIdeaViewController: UITableViewController
                 self.alertController.alert(in: self,
                                            withTitle: "Вход не выполнен",
                                            andMsg: "Раздел доступен только для зарегистрированных пользователей",
-                                           andActionTitle: "Авторизироваться",
+                                           andActionTitle: "Войти",
                                            completion:
                                            { [unowned self] text in
+                                            signOutCompFunc("not signIn")
                                             self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
                                            })
                 
@@ -166,6 +181,8 @@ class AddIdeaViewController: UITableViewController
         {
             let signStatusOk = AccountManager.STATE_SIGNIN
             setViewState(in: signStatusOk)
+            
+            signInCompFunc("signIn ok")
         }
     }
     /*
@@ -193,7 +210,113 @@ class AddIdeaViewController: UITableViewController
     **/
     @IBAction func didSelectAddIdea(_ sender: Any)
     {
+        let scope = 6 //tfIdeaScope.text                                                // gettiog input data
+        let title = tfIdeaTitle.text ?? "Пустой заголовок"
+        let body = tfIdeaTxtBody.text ?? "Пустое описание"
+        let raion = 1
+        let longitude = 52.322343
+        let latitude = 53.231232
         
+        var errMsg = ""
+        
+        if scope == 0                                                                   // check data in inputs
+        {
+            errMsg = "Категория идеи не выбрана"
+        }
+        else if title == "" || title == "Пустой заголовок"
+        {
+            errMsg = "Поле названия идеи пустое"
+        }
+        else if body == "" || body == "Пустое описание"
+        {
+            errMsg = "Поле с описанием идеи пустое"
+        }
+        else if raion == 0 // !!!!!! внести проверку с запросом в API на принадлежность к одному из типов
+        {
+            errMsg = "Район (адрес) не определен"
+        }
+        else if longitude == 0 || latitude == 0
+        {
+            errMsg = "Метка расположения не задана на карте"
+        }
+        else                                                                            // if all requared inputs - ok
+        { print("in here")
+            // Check SignIn status and get at from account manager
+            updateViewState(signInCompletion:                                           // signIn status - ok
+            { [unowned self] text in
+                let at = self.accMng.getAccessToken()
+                self.setController.createIdea(withTitle: title,
+                                             body: body,
+                                             scope: scope,
+                                             region: raion,
+                                             longitude: longitude,
+                                             latitude: latitude,
+                                             at: at,
+                                             successCompletion:                         // add idea success complete
+                                             { [unowned self] text in
+                                                // present alert about success Idea add
+                                                self.alertController.alert(in: self,
+                                                                      withTitle: "Получилось!",
+                                                                      andMsg: "Ваша идея успешно отправлена на модерацию",
+                                                                      andActionTitle: "Ок",
+                                                                      completion:
+                                                                      { [unowned self] text in
+                                                                        self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                                      })
+                                             },
+                                             errorCompletion:                           // add idea error complete
+                                             { [unowned self] text in
+                                                
+                                                // create api answer type string
+                                                var ansMsg = ""
+                                                switch self.accMng.apiANS
+                                                {
+                                                case APIVals.API_ANS_TYPE_NOT_DB_CONNECTION:
+                                                    ansMsg = "Нет соединения с базой данных"
+                                                case APIVals.API_ANS_TYPE_ACCESS_TOKEN_INVALID:
+                                                    ansMsg = "Сессия недействительна"
+                                                case APIVals.API_ANS_TYPE_HAS_NOT_CREDENTIALS:
+                                                    ansMsg = "Недостаточно прав у текущего пользователя"
+                                                case APIVals.API_ANS_TYPE_INVALID_INPUT_DATA:
+                                                    ansMsg = "Ошибочные входные данные"
+                                                default:
+                                                    ansMsg = "Неизвестная ошибка"
+                                                    break
+                                                }
+                                                
+                                                // present alert about error Idea add
+                                                self.alertController.alert(in: self,
+                                                                           withTitle: "Ошибка!",
+                                                                           andMsg: ansMsg,
+                                                                           andActionTitle: "Ок",
+                                                                           completion:
+                                                    { [unowned self] text in
+                                                        self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                    })
+                                             })
+                    
+            },
+            signOutCompletion:                                                        // signOut status
+            { text in
+                print("out from form")
+            })
+            
+            
+            
+            
+        }
+        
+        if errMsg != ""                                                               // if One of requared inputs - not ok
+        {
+            alertController.alert(in: self,
+                                  withTitle: "Не все поля заполнены",
+                                  andMsg: errMsg,
+                                  andActionTitle: "Заполнить",
+                                  completion:
+                                  { text in
+                                    print("coloring error inputs")
+                                  })
+        }
     }
     
     /**
