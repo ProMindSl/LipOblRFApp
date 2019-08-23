@@ -17,27 +17,5 @@ extension UIStoryboard{
     public static let VIEW_TYPE_IDEACLIME_MENU = 5
     public static let VIEW_TYPE_NEWS_DETAIL = 6
     
-    /*struct main {
-        static func LaunchNewsVC() -> NewsViewController?
-        {
-            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsViewController") as? NewsViewController
-        }
-        static func NavigationVC() -> NavigationMenuViewController?
-        {
-            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationMenuViewController") as? NavigationMenuViewController
-        }
-        static func IdeasVC() -> IdeasViewController?
-        {
-            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IdeasViewController") as? IdeasViewController
-        }
-        static func LoginVC() -> LoginViewController?
-        {
-            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
-        }
-        static func IdeasClimesListVC() -> IdeaClaimMenuViewController?
-        {
-            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IdeaClaimMenuViewController") as? IdeaClaimMenuViewController
-        }
-    }*/
 }
 
