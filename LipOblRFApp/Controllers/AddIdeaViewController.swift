@@ -27,7 +27,7 @@ class AddIdeaViewController: UITableViewController
     private let accMng = AccountManager.shared
     private let alertController = AlertController.shared
     
-    private let setController = SetContentController()
+    private let setController = SetContentManager()
     
     // type picker vars
     var picker: TypePickerView?

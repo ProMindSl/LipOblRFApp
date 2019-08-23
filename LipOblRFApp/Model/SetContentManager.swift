@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SetContentController
+class SetContentManager
 {
     /*
      *   -------- Static const ----------
@@ -34,7 +34,7 @@ class SetContentController
     
     init()
     {
-        currentMsg = SetContentController.ERROR_NONE
+        currentMsg = SetContentManager.ERROR_NONE
         apiANS = ""
     }
     

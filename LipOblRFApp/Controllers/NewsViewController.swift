@@ -83,7 +83,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 }
-extension NewsViewController: SidebarDelegate{
+
+extension NewsViewController: SidebarDelegate
+{
     func sidbarDidOpen()
     {
         print("Sidebar opened")

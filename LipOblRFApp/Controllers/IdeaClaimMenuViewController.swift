@@ -47,10 +47,6 @@ class IdeaClaimMenuViewController: UIViewController
     **/
     private func addListeners()
     {
-        //btnIdeaList.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
-        //btnIdeaCreate.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
-        //btnClimeCreate.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
-        
         [btnIdeaList,btnIdeaCreate].forEach(
         {
                 $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
