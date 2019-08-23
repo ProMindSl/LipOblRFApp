@@ -369,10 +369,10 @@
             </objects>
             <point key="canvasLocation" x="-836" y="100"/>
         </scene>
-        <!--Table View Controller-->
+        <!--News Detail View Controller-->
         <scene sceneID="meF-uB-BOw">
             <objects>
-                <tableViewController id="KF0-Lb-WYH" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NewsDetailViewController" id="KF0-Lb-WYH" customClass="NewsDetailViewController" customModule="LipOblRFApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9Kg-bu-yR6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -501,6 +501,14 @@
                     </tableView>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="btnBack" destination="gL7-nK-cbx" id="ubG-vp-Hif"/>
+                        <outlet property="ivPic" destination="RQA-OZ-xe7" id="WTC-UT-pcH"/>
+                        <outlet property="labelAutor" destination="EdU-Wh-eMw" id="f0p-sB-921"/>
+                        <outlet property="labelTag" destination="0DW-fN-NV7" id="lWw-ej-3lF"/>
+                        <outlet property="labelTextBody" destination="eDg-98-Ejy" id="CpF-ej-1Gs"/>
+                        <outlet property="labelTitle" destination="n3K-hX-sgr" id="F4Y-h2-YAT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hMO-57-eB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

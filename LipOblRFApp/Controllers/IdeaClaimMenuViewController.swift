@@ -27,6 +27,7 @@ class IdeaClaimMenuViewController: UIViewController
     {
         super.viewDidLoad()
         updateViewState()
+        addListeners()
     }
     
     
@@ -39,6 +40,31 @@ class IdeaClaimMenuViewController: UIViewController
     /*
      *   -------- Private methods ----------
     **/
+    
+    /*
+     *   Listeners
+    **/
+    private func addListeners()
+    {
+        btnIdeaList.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
+        btnIdeaCreate.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
+        //btnClimeCreate.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
+    }
+    @objc private func didSelect(_ sender: UIButton)
+    {
+        switch sender
+        {
+        case btnIdeaList:
+            sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+        case btnIdeaCreate:
+            sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM)
+        //case btnClimeCreate:
+        //    sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM)
+        default:
+            break
+        }
+    }
+    
     /*
      *   State methods
     **/

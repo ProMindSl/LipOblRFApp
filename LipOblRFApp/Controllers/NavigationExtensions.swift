@@ -15,6 +15,7 @@ extension UIStoryboard{
     public static let VIEW_TYPE_LOGIN = 2
     public static let VIEW_TYPE_ADD_IDEA_FORM = 4
     public static let VIEW_TYPE_IDEACLIME_MENU = 5
+    public static let VIEW_TYPE_NEWS_DETAIL = 6
     
     /*struct main {
         static func LaunchNewsVC() -> NewsViewController?

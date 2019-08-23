@@ -36,7 +36,13 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: _cellReuseIdentifier, for: indexPath) as! NewsViewCell
         cell.ivNewsPic.image = UIImage(named: "newsImageCut.jpg")
         
+        // add listener for news discription
+        
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        sidebarDidClose(with: UIStoryboard.VIEW_TYPE_NEWS_DETAIL)
     }
     
     
@@ -66,18 +72,15 @@ extension NewsViewController: SidebarDelegate{
         case UIStoryboard.VIEW_TYPE_NEWS_LIST:
             break
         case UIStoryboard.VIEW_TYPE_IDEAS_LIST:
-            //let v = UIStoryboard.main.IdeasVC()
-            //present(v!, animated: true)
             rootVC.showIdeaList()
         case UIStoryboard.VIEW_TYPE_LOGIN:
-            //let v = UIStoryboard.main.LoginVC()
-            //present(v!, animated: true)
             rootVC.showLoginScreen()
-        
         case UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM:
             rootVC.showAddIdeaForm()
         case UIStoryboard.VIEW_TYPE_IDEACLIME_MENU:
             rootVC.showIdeaClimeMenu()
+        case UIStoryboard.VIEW_TYPE_NEWS_DETAIL:
+            rootVC.showNewsDitail()
         default:
             break
         }

@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
     
     /*
      *   Outlet methods
-     **/
+    **/
     @IBAction func OpenMenu(_ sender: Any)
     {
         SidebarLauncher(delegate: self ).show()

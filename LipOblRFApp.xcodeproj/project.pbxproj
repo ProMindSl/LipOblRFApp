@@ -51,6 +51,7 @@
 		D22D6CA623042D4D00DDA0E1 /* AddIdeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */; };
 		D22D6CA823083EA800DDA0E1 /* TypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA723083EA800DDA0E1 /* TypePickerView.swift */; };
 		D22D6CAA23084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA923084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift */; };
+		D2730EA6230FFCD600714639 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2730EA5230FFCD600714639 /* NewsDetailViewController.swift */; };
 		D274FD3A230304F500485D89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274FD39230304F500485D89 /* AppDelegate.swift */; };
 		D274FD3C230304F500485D89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274FD3B230304F500485D89 /* ViewController.swift */; };
 		D274FD3F230304F500485D89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D274FD3D230304F500485D89 /* Main.storyboard */; };
@@ -126,6 +127,7 @@
 		D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdeaViewController.swift; sourceTree = "<group>"; };
 		D22D6CA723083EA800DDA0E1 /* TypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePickerView.swift; sourceTree = "<group>"; };
 		D22D6CA923084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaClaimMenuViewController.swift; sourceTree = "<group>"; };
+		D2730EA5230FFCD600714639 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		D274FD36230304F500485D89 /* LipOblRFApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LipOblRFApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D274FD39230304F500485D89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D274FD3B230304F500485D89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -223,8 +225,10 @@
 		D22D6C052303FB9100DDA0E1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D2863CE3230EBD0300393186 /* RootViewController.swift */,
 				D22D6C97230415A700DDA0E1 /* NavigationExtensions.swift */,
 				D22D6C992304162000DDA0E1 /* NewsViewController.swift */,
+				D2730EA5230FFCD600714639 /* NewsDetailViewController.swift */,
 				D22D6C9B230417BC00DDA0E1 /* SidebarLauncher.swift */,
 				D22D6C9D2304181700DDA0E1 /* NavigationMenuViewController.swift */,
 				D22D6C9F230419DF00DDA0E1 /* IdeasViewController.swift */,
@@ -232,7 +236,6 @@
 				D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */,
 				D22D6CA923084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift */,
 				D2863CDD230DA90900393186 /* AlertController.swift */,
-				D2863CE3230EBD0300393186 /* RootViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				D274FD3C230304F500485D89 /* ViewController.swift in Sources */,
 				D22D6C98230415A700DDA0E1 /* NavigationExtensions.swift in Sources */,
 				D2863CDE230DA90900393186 /* AlertController.swift in Sources */,
+				D2730EA6230FFCD600714639 /* NewsDetailViewController.swift in Sources */,
 				D22D6CAA23084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift in Sources */,
 				D274FD3A230304F500485D89 /* AppDelegate.swift in Sources */,
 				D22D6C9A2304162000DDA0E1 /* NewsViewController.swift in Sources */,

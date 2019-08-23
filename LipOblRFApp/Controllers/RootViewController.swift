@@ -72,6 +72,11 @@ class RootViewController: UIViewController
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddIdeaViewController") as? AddIdeaViewController)!
         animateWithTransition(to: new, withAnimationType: .transitionFlipFromRight)
     }
+    public func showNewsDitail()
+    {
+        let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsDetailViewController") as? NewsDetailViewController)!
+        animateWithTransition(to: new, withAnimationType: .transitionFlipFromTop)
+    }
     
     
     private func animateWithTransition(to new: UIViewController, withAnimationType animType: UIView.AnimationOptions,  completion: (() -> Void)? = nil)
