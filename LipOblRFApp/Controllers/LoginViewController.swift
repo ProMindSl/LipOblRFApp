@@ -139,8 +139,7 @@ class LoginViewController: UIViewController {
             // if signIn - ok? exit from login view to news page
             if self.accMng.currentSignState == AccountManager.STATE_SIGNIN
             {
-                let v = UIStoryboard.main.LaunchNewsVC()
-                self.present(v!, animated: true)
+                self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_NEWS_LIST)
                 
             }
         })
@@ -174,21 +173,24 @@ extension LoginViewController: SidebarDelegate{
     {
         guard let item = item else {return}
         print("Did select \(item)")
+        let rootVC = AppDelegate.shared.rootViewController
+        
         switch item
         {
         case UIStoryboard.VIEW_TYPE_NEWS_LIST:
-            let v = UIStoryboard.main.LaunchNewsVC()
-            present(v!, animated: true)
+            //let v = UIStoryboard.main.LaunchNewsVC()
+            //present(v!, animated: true)
+            rootVC.showNewsList()
         case UIStoryboard.VIEW_TYPE_IDEAS_LIST:
-            let v = UIStoryboard.main.IdeasVC()
-            present(v!, animated: true)
+            //let v = UIStoryboard.main.IdeasVC()
+            //present(v!, animated: true)
+            rootVC.showIdeaList()
         case 2:
             break
-        /*case 3:
-            let v = UIStoryboard.main.NewsListVC()
-            present(v!, animated: true)
-          */
-        
+        case UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM:
+            rootVC.showAddIdeaForm()
+        case UIStoryboard.VIEW_TYPE_IDEACLIME_MENU:
+            rootVC.showIdeaClimeMenu()
         default:
             break
         }

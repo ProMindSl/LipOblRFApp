@@ -13,8 +13,10 @@ extension UIStoryboard{
     public static let VIEW_TYPE_NAV_MENU = 3
     public static let VIEW_TYPE_IDEAS_LIST = 1
     public static let VIEW_TYPE_LOGIN = 2
+    public static let VIEW_TYPE_ADD_IDEA_FORM = 4
+    public static let VIEW_TYPE_IDEACLIME_MENU = 5
     
-    struct main {
+    /*struct main {
         static func LaunchNewsVC() -> NewsViewController?
         {
             return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsViewController") as? NewsViewController
@@ -35,6 +37,6 @@ extension UIStoryboard{
         {
             return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IdeaClaimMenuViewController") as? IdeaClaimMenuViewController
         }
-    }
+    }*/
 }
 

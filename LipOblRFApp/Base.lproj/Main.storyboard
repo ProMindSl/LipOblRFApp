@@ -300,7 +300,6 @@
                                             <outlet property="tfNewsLabel" destination="clX-56-BbQ" id="a0P-SP-smu"/>
                                             <outlet property="tfNewsText" destination="sJe-TU-cWZ" id="a71-kI-QUm"/>
                                             <outlet property="tfTime" destination="Jde-sN-lFI" id="auo-A4-uPd"/>
-                                            <segue destination="KF0-Lb-WYH" kind="show" id="V7N-aD-Hzh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -340,9 +339,6 @@
                                 <state key="normal" title="Идеи и жалобы">
                                     <color key="titleColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="0kB-eO-fBN" kind="show" id="dn4-Fs-4S9"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoD-Qs-SYL">
                                 <rect key="frame" x="69" y="612" width="61" height="41"/>
@@ -395,9 +391,6 @@
                                                     <rect key="frame" x="17" y="4" width="45" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Назад"/>
-                                                    <connections>
-                                                        <segue destination="D08-Np-jC8" kind="show" id="EWZ-hs-d0S"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -511,7 +504,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hMO-57-eB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="42.399999999999999" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-87" y="99"/>
         </scene>
         <!--Ideas View Controller-->
         <scene sceneID="2nS-92-rr3">
@@ -540,9 +533,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Новости"/>
-                                <connections>
-                                    <segue destination="D08-Np-jC8" kind="show" id="DEo-za-R5u"/>
-                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barIconTooday.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dgm-Fg-nqS">
                                 <rect key="frame" x="84" y="609" width="30" height="30"/>
@@ -555,9 +545,6 @@
                                 <state key="normal" title="Идеи и жалобы">
                                     <color key="titleColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="0kB-eO-fBN" kind="show" id="CpO-8K-9Ss"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Идеи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWF-Eb-O7G">
                                 <rect key="frame" x="20" y="74" width="88" height="41"/>
@@ -672,7 +659,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G16-6C-AEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-836" y="1649"/>
+            <point key="canvasLocation" x="-836" y="1592"/>
         </scene>
         <!--Idea Claim Menu View Controller-->
         <scene sceneID="iaK-sU-uuu">
@@ -694,9 +681,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Новости"/>
-                                <connections>
-                                    <segue destination="D08-Np-jC8" kind="show" id="vLR-f2-LjP"/>
-                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barIconTooday.png" translatesAutoresizingMaskIntoConstraints="NO" id="8wW-Eb-bPU">
                                 <rect key="frame" x="84" y="609" width="30" height="30"/>
@@ -734,17 +718,11 @@
                                 <rect key="frame" x="20" y="121" width="335" height="298"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="btn_bg_1.png"/>
-                                <connections>
-                                    <segue destination="qzc-wl-8eq" kind="show" id="Yfz-33-HsR"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5g-O4-xwu">
                                 <rect key="frame" x="20" y="440" width="158" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="btn_createidea.png"/>
-                                <connections>
-                                    <segue destination="dwN-fa-NgX" kind="show" id="aRc-um-rmt"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSe-yq-mfV">
                                 <rect key="frame" x="197" y="440" width="158" height="158"/>
@@ -787,7 +765,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gda-Tj-cp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-802.39999999999998" y="872.11394302848578"/>
+            <point key="canvasLocation" x="-836" y="871"/>
         </scene>
         <!--Add Idea View Controller-->
         <scene sceneID="hE1-fi-1TX">
@@ -811,9 +789,6 @@
                                                     <rect key="frame" x="26" y="11" width="45" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Назад"/>
-                                                    <connections>
-                                                        <segue destination="0kB-eO-fBN" kind="show" id="MXt-AT-kW6"/>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Добавить идею" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hER-sG-Vaa">
                                                     <rect key="frame" x="24" y="46" width="169" height="27"/>
@@ -1004,7 +979,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Fd-fS-yKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="164" y="938"/>
+            <point key="canvasLocation" x="-87" y="870"/>
         </scene>
     </scenes>
     <resources>
@@ -1033,9 +1008,4 @@
         <image name="star.png" width="19" height="19"/>
         <image name="star_gray.png" width="30" height="26"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="aRc-um-rmt"/>
-        <segue reference="MXt-AT-kW6"/>
-        <segue reference="vLR-f2-LjP"/>
-    </inferredMetricsTieBreakers>
 </document>

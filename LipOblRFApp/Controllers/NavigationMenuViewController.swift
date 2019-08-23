@@ -137,10 +137,13 @@ class NavigationMenuViewController: UIViewController{
         {
         case btnNewsList:
             delegate?.navigation(didSelect: UIStoryboard.VIEW_TYPE_NEWS_LIST)
+            
         case btnIdeasList:
             delegate?.navigation(didSelect: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
         case btnSignIn:
             delegate?.navigation(didSelect: UIStoryboard.VIEW_TYPE_LOGIN)
+        case btnCreateIdea:
+            delegate?.navigation(didSelect: UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM)
         default:
             break
         }
@@ -151,7 +154,7 @@ class NavigationMenuViewController: UIViewController{
     **/
     private func setListenersForNavBtns()
     {
-        [btnNewsList,btnIdeasList,btnSignIn].forEach(
+        [btnNewsList,btnIdeasList,btnSignIn,btnCreateIdea].forEach(
         {
             $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         })
