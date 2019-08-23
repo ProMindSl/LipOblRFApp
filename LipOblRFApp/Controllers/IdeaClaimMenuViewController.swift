@@ -16,7 +16,8 @@ class IdeaClaimMenuViewController: UIViewController
     @IBOutlet weak var btnIdeaCreate: UIButton!
     @IBOutlet weak var btnClimeCreate: UIButton!
     @IBOutlet weak var indViewCenter: UIActivityIndicatorView!
-
+    @IBOutlet weak var tabBtnNews: UIButton!
+    
     
     
     // link to static vars
@@ -46,9 +47,14 @@ class IdeaClaimMenuViewController: UIViewController
     **/
     private func addListeners()
     {
-        btnIdeaList.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
-        btnIdeaCreate.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
+        //btnIdeaList.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
+        //btnIdeaCreate.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         //btnClimeCreate.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
+        
+        [btnIdeaList,btnIdeaCreate].forEach(
+        {
+                $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
+        })
     }
     @objc private func didSelect(_ sender: UIButton)
     {

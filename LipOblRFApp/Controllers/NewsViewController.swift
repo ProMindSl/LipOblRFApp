@@ -11,12 +11,20 @@ import UIKit
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     
+    @IBOutlet weak var tabBtnNews: UIButton!
+    @IBOutlet weak var tabBtnIdeaClimeMenu: UIButton!
     
     
     // cell count from Model
     private var _cellCount = 5
     private var _cellReuseIdentifier = "newsCell"
     private var _cellHeight = 358.0
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        addListeners()
+    }
     
     /*
     *   TableVIew methods
@@ -50,10 +58,30 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     {
         SidebarLauncher(delegate: self ).show()
     }
-    /*@IBAction func OpenMenu(_ sender: Any) {
-        SidebarLauncher(delegate: self ).show()
-    }*/
     
+    
+    /*
+     *   -------- Privete methods ----------
+    **/
+    private func addListeners()
+    {
+        [tabBtnNews,tabBtnIdeaClimeMenu].forEach(
+        {
+                $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
+        })
+    }
+    @objc func didSelect(_ sender: UIButton)
+    {
+        switch sender
+        {
+        case tabBtnNews:
+            break
+        case tabBtnIdeaClimeMenu:
+            sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEACLIME_MENU)
+        default:
+            break
+        }
+    }
 }
 extension NewsViewController: SidebarDelegate{
     func sidbarDidOpen()

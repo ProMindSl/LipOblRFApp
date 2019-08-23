@@ -324,7 +324,7 @@
                                 <rect key="frame" x="0.0" y="595" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barIconTooday.png" translatesAutoresizingMaskIntoConstraints="NO" id="VCS-yT-TPV">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barIconNews.png" translatesAutoresizingMaskIntoConstraints="NO" id="VCS-yT-TPV">
                                 <rect key="frame" x="84" y="609" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -364,6 +364,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iln-Z7-PFq"/>
                     </view>
+                    <connections>
+                        <outlet property="tabBtnIdeaClimeMenu" destination="xm3-2h-ZOo" id="Oxe-6V-TLy"/>
+                        <outlet property="tabBtnNews" destination="FoD-Qs-SYL" id="uf2-8g-Byt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecs-0s-KBu" sceneMemberID="firstResponder"/>
             </objects>
@@ -532,7 +536,7 @@
                                     <action selector="OpenMenu:" destination="qzc-wl-8eq" eventType="touchUpInside" id="sR4-vV-pd7"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="B0I-fe-axl">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star_blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="B0I-fe-axl">
                                 <rect key="frame" x="246" y="609" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -540,9 +544,11 @@
                                 <rect key="frame" x="69" y="612" width="61" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <state key="normal" title="Новости"/>
+                                <state key="normal" title="Новости">
+                                    <color key="titleColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barIconTooday.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dgm-Fg-nqS">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barIconNewsNA.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dgm-Fg-nqS">
                                 <rect key="frame" x="84" y="609" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -551,7 +557,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Идеи и жалобы">
-                                    <color key="titleColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Идеи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWF-Eb-O7G">
@@ -664,6 +670,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zwa-vA-ZMD"/>
                     </view>
+                    <connections>
+                        <outlet property="tabBtnIdeaClimeMenu" destination="73w-Zk-I9p" id="T9S-1D-E5d"/>
+                        <outlet property="tabBtnNews" destination="APu-4u-F3v" id="lT9-Qa-PR5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G16-6C-AEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -680,7 +690,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1007" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_slidem.png" translatesAutoresizingMaskIntoConstraints="NO" id="9RV-Jh-5Nf">
                                 <rect key="frame" x="0.0" y="595" width="375" height="72"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-Fc-7KE">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star_blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-Fc-7KE">
                                 <rect key="frame" x="246" y="609" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -688,9 +698,11 @@
                                 <rect key="frame" x="69" y="612" width="61" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <state key="normal" title="Новости"/>
+                                <state key="normal" title="Новости">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barIconTooday.png" translatesAutoresizingMaskIntoConstraints="NO" id="8wW-Eb-bPU">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barIconNewsNA.png" translatesAutoresizingMaskIntoConstraints="NO" id="8wW-Eb-bPU">
                                 <rect key="frame" x="84" y="609" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -698,9 +710,7 @@
                                 <rect key="frame" x="225" y="615" width="80" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <state key="normal" title="Идеи и жалобы">
-                                    <color key="titleColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" title="Идеи и жалобы"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNP-es-AZd">
                                 <rect key="frame" x="20" y="40" width="18" height="22"/>
@@ -768,6 +778,7 @@
                         <outlet property="btnIdeaCreate" destination="N5g-O4-xwu" id="cM0-Gt-6gI"/>
                         <outlet property="btnIdeaList" destination="aHo-Fl-xxg" id="Fg3-NV-R5e"/>
                         <outlet property="indViewCenter" destination="x7S-hV-LMw" id="7H6-Bv-QaC"/>
+                        <outlet property="tabBtnNews" destination="pDd-TK-bcq" id="jGR-JC-rOs"/>
                         <outlet property="tfCurrDate" destination="duB-D5-Xl7" id="nak-sR-fdQ"/>
                     </connections>
                 </viewController>
@@ -997,7 +1008,8 @@
         <image name="add.png" width="15" height="15"/>
         <image name="attantion.png" width="19" height="19"/>
         <image name="back.png" width="25" height="25"/>
-        <image name="barIconTooday.png" width="18" height="22"/>
+        <image name="barIconNews.png" width="18" height="22"/>
+        <image name="barIconNewsNA.png" width="18" height="22"/>
         <image name="bg_slidem.png" width="82.5" height="72"/>
         <image name="btnBgBorder.png" width="338" height="45"/>
         <image name="btnBgSolid.png" width="338" height="45"/>
@@ -1014,6 +1026,7 @@
         <image name="newsImageCut.jpg" width="184" height="177"/>
         <image name="preference.png" width="17" height="17"/>
         <image name="star.png" width="19" height="19"/>
+        <image name="star_blue.png" width="30" height="26"/>
         <image name="star_gray.png" width="30" height="26"/>
     </resources>
 </document>

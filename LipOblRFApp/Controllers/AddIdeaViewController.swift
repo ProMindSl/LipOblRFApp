@@ -152,7 +152,7 @@ class AddIdeaViewController: UITableViewController
             self.alertController.alert(in: self,
                                        withTitle: "Вход не выполнен",
                                        andMsg: "Раздел доступен только для зарегистрированных пользователей",
-                                       andActionTitle: "Авторизироваться",
+                                       andActionTitle: "Войти",
                                        completion:
                                        { [unowned self] text in
                                             self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
