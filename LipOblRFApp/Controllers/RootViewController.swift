@@ -54,27 +54,27 @@ class RootViewController: UIViewController
     {
         //let new = UINavigationController(rootViewController: NewsViewController())
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsViewController") as? NewsViewController)!
-        animateDismissTransition(to: new)
+        animateWithTransition(to: new, withAnimationType: .transitionCurlUp)
     }
     
     public func showIdeaList()
     {
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IdeasViewController") as? IdeasViewController)!
-        animateDismissTransition(to: new)
+        animateWithTransition(to: new, withAnimationType: .transitionFlipFromRight)
     }
     public func showIdeaClimeMenu()
     {
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IdeaClaimMenuViewController") as? IdeaClaimMenuViewController)!
-        animateDismissTransition(to: new)
+        animateWithTransition(to: new, withAnimationType: .transitionFlipFromRight)
     }
     public func showAddIdeaForm()
     {
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddIdeaViewController") as? AddIdeaViewController)!
-        animateDismissTransition(to: new)
+        animateWithTransition(to: new, withAnimationType: .transitionFlipFromRight)
     }
     
     
-    private func animateFadeTransition(to new: UIViewController, completion: (() -> Void)? = nil)
+    private func animateWithTransition(to new: UIViewController, withAnimationType animType: UIView.AnimationOptions,  completion: (() -> Void)? = nil)
     {
         current.willMove(toParent: nil)
         addChild(new)
@@ -82,7 +82,7 @@ class RootViewController: UIViewController
         transition(from: current,
                    to: new,
                    duration: 0.3,
-                   options: [.transitionCrossDissolve, .curveEaseOut],
+                   options: [animType, .curveEaseOut],
                    animations:
                    { })
         { completed in
