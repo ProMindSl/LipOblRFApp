@@ -88,8 +88,19 @@ class AddIdeaViewController: UITableViewController
         pickerAccessory?.items = [cancelButton, flexSpace, doneButton]
         tfIdeaScope.inputAccessoryView = pickerAccessory
         
-
+        // listeners
+        btnBack.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         
+    }
+    @objc func didSelect(_ sender: UIButton)
+    {
+        switch sender
+        {
+        case btnBack:
+            sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEACLIME_MENU)
+        default:
+            break
+        }
     }
     
     /*
