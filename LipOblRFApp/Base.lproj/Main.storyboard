@@ -184,45 +184,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cMe-jg-BuQ">
-                                <rect key="frame" x="69" y="243" width="236" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cMe-jg-BuQ">
+                                <rect key="frame" x="69.5" y="243" width="236" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="236" id="Hqk-Fz-yaT"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Вход в систему" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05t-kH-1Dc">
-                                <rect key="frame" x="125" y="196" width="124" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вход в систему" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05t-kH-1Dc">
+                                <rect key="frame" x="125.5" y="196" width="124" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x2-3n-LWw">
-                                <rect key="frame" x="24" y="28" width="18" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x2-3n-LWw">
+                                <rect key="frame" x="20" y="30" width="18" height="22"/>
                                 <state key="normal" image="menu.png"/>
                                 <connections>
                                     <action selector="OpenMenu:" destination="56f-Yq-a0m" eventType="touchUpInside" id="byE-cP-i3Z"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsH-LO-xgJ">
-                                <rect key="frame" x="165" y="340" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsH-LO-xgJ">
+                                <rect key="frame" x="165.5" y="340" width="44" height="30"/>
                                 <state key="normal" title="Войти"/>
                                 <connections>
                                     <action selector="signInAction:" destination="56f-Yq-a0m" eventType="touchUpInside" id="IKa-Xa-cSV"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="пароль" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PEe-Cg-aEo">
-                                <rect key="frame" x="69" y="291" width="236" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="пароль" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PEe-Cg-aEo">
+                                <rect key="frame" x="69.5" y="291" width="236" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="236" id="6MP-NE-iVd"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OsH-LO-xgJ" firstAttribute="top" secondItem="PEe-Cg-aEo" secondAttribute="bottom" constant="19" id="5tJ-Xa-DPc"/>
+                            <constraint firstItem="cMe-jg-BuQ" firstAttribute="top" secondItem="05t-kH-1Dc" secondAttribute="bottom" constant="26" id="7Rv-5Q-dZv"/>
+                            <constraint firstItem="8x2-3n-LWw" firstAttribute="top" secondItem="Opr-Z0-fEe" secondAttribute="top" constant="10" id="FSe-OF-alu"/>
+                            <constraint firstItem="PEe-Cg-aEo" firstAttribute="top" secondItem="cMe-jg-BuQ" secondAttribute="bottom" constant="18" id="Kxg-Ng-eWw"/>
+                            <constraint firstItem="PEe-Cg-aEo" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="V0K-6k-eVJ"/>
+                            <constraint firstItem="8x2-3n-LWw" firstAttribute="leading" secondItem="Opr-Z0-fEe" secondAttribute="leading" constant="20" id="bMJ-sG-wde"/>
+                            <constraint firstItem="05t-kH-1Dc" firstAttribute="top" secondItem="Opr-Z0-fEe" secondAttribute="top" constant="176" id="be9-Jo-ccb"/>
+                            <constraint firstItem="cMe-jg-BuQ" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="cBZ-VO-y3z"/>
+                            <constraint firstItem="OsH-LO-xgJ" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="fHH-Ag-6YJ"/>
+                            <constraint firstItem="05t-kH-1Dc" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="jFP-SK-7ka"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Opr-Z0-fEe"/>
                     </view>
                     <connections>
