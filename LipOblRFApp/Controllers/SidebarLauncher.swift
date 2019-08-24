@@ -7,7 +7,8 @@
 //
 
 import UIKit
-protocol SidebarDelegate {
+protocol SidebarDelegate
+{
     func sidbarDidOpen()
     func sidebarDidClose(with item: Int?)
 }
@@ -48,31 +49,50 @@ class SidebarLauncher: NSObject{
         self.vc = vc
         UIApplication.shared.keyWindow?.addSubview(v)
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseOut], animations: {
-            self.view?.frame = CGRect(x: 0, y: 0, width: self.view!.frame.width, height: self.view!.frame.height)
-            self.view?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        }, completion: {completed in
-            self.delegate?.sidbarDidOpen()
-        })
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 1,
+                       options: [.curveEaseOut],
+                       animations:
+                       {
+                            self.view?.frame = CGRect(x: 0, y: 0, width: self.view!.frame.width, height: self.view!.frame.height)
+                            self.view?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+                       },
+                       completion:
+                       {completed in
+                            self.delegate?.sidbarDidOpen()
+                       })
         
     }
     
-    @objc func handleTapGesture(_ sender: UITapGestureRecognizer){
+    @objc func handleTapGesture(_ sender: UITapGestureRecognizer)
+    {
         closeSidebar(option: nil)
     }
-    func closeSidebar(option: Int?){
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseOut], animations: {
-            if let view = self.view{
-                view.frame = CGRect(x: -view.frame.width, y: 0, width: view.frame.width, height: view.frame.height)
-                self.view?.backgroundColor = .clear
+    
+    func closeSidebar(option: Int?)
+    {
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 1,
+                       options: [.curveEaseOut],
+                       animations:
+                       {
+                            if let view = self.view{
+                            view.frame = CGRect(x: -view.frame.width, y: 0, width: view.frame.width, height: view.frame.height)
+                            self.view?.backgroundColor = .clear
                 
-            }
-        }, completion: {completed in
-            self.view?.removeFromSuperview()
-            self.view = nil
-            self.vc = nil
-            self.delegate?.sidebarDidClose(with: option)
-        })
+                       }
+                       },
+                       completion:
+                       { completed in
+                            self.view?.removeFromSuperview()
+                            self.view = nil
+                            self.vc = nil
+                            self.delegate?.sidebarDidClose(with: option)
+                        })
     }
     
 }
