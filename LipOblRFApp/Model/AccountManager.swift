@@ -34,10 +34,10 @@ class AccountManager
     // API urls
     //private let API_URL_LOGIN = "http://xn--c1aj1aj.xn--p1ai/api/auth/jwt_login.php"
     //private let API_URL_REFRESH_JWT = "http://xn--c1aj1aj.xn--p1ai/api/auth/jwt_refresh_access.php"
-    //private let API_URL_LOGIN = "http://192.168.64.2/m/singleportal/api/auth/jwt_login.php"
-    //private let API_URL_REFRESH_JWT = "http://192.168.64.2/mas/singleportal/api/auth/jwt_refresh_access.php"
-    private let API_URL_LOGIN = "http://192.168.64.2/m/singleportal/appeals_test/auth/jwt_login.php"
-    private let API_URL_REFRESH_JWT = "http://192.168.64.2/m/singleportal/appeals_test/auth/jwt_refresh_access.php"
+    private let API_URL_LOGIN = "http://xn--c1aj1aj.xn--p1ai/appeals_test/auth/jwt_login.php"
+    private let API_URL_REFRESH_JWT = "http://xn--c1aj1aj.xn--p1ai/appeals_test/auth/jwt_refresh_access.php"
+    //private let API_URL_LOGIN = "http://192.168.64.2/m/singleportal/appeals_test/auth/jwt_login.php"
+    //private let API_URL_REFRESH_JWT = "http://192.168.64.2/m/singleportal/appeals_test/auth/jwt_refresh_access.php"
     
     /*
      *   -------- Public vars ----------

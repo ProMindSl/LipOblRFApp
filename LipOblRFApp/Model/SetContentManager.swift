@@ -20,9 +20,9 @@ class SetContentManager
      *   -------- Private const ----------
      **/
     // API urls
-    //private let API_URL_CREATE_IDEA = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/create_idea.php"
-    private let API_URL_CREATE_IDEA = "http://192.168.64.2/m/singleportal/appeals_test/content/create_idea.php"
-    private let API_URL_CREATE_CLAIM = "http://192.168.64.2/m/singleportal/appeals_test/content/create_claim.php"
+    private let API_URL_CREATE_IDEA = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/create_idea.php"
+    //private let API_URL_CREATE_IDEA = "http://192.168.64.2/m/singleportal/appeals_test/content/create_idea.php"
+    private let API_URL_CREATE_CLAIM = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/create_claim.php"
     
     private let accMng = AccountManager.shared
     private let alertController = AlertController.shared

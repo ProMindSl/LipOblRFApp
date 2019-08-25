@@ -9,7 +9,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var tfLogin: UITextField!
     @IBOutlet weak var tfPass: UITextField!
@@ -26,15 +26,14 @@ class LoginViewController: UIViewController {
         ] as [String : Any]
     let accMng = AccountManager.shared
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        
-        
-        print(APIVals.API_ANS_TYPE_ACCESS_TOKEN_INVALID)
         
         // ui options
         tfPass.isSecureTextEntry = true
-        
+        tfLogin.delegate = self
+        tfPass.delegate = self
     }
     
     /*
@@ -92,10 +91,18 @@ class LoginViewController: UIViewController {
         btnSignIn.isUserInteractionEnabled = false
         
     }
+    /*
+     *   Delegate methods
+    **/
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        self.view.endEditing(true)
+        return false
+    }
     
     /*
      *   UI show/close methods
-     **/
+    **/
     func openSignInAlert(with code: String)
     {
         var message = ""
