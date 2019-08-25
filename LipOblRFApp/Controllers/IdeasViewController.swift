@@ -8,13 +8,18 @@
 
 import Foundation
 import UIKit
-class IdeasViewController: UIViewController
+class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     
+    
+    @IBOutlet weak var tvIdeaList: UITableView!
     @IBOutlet weak var tabBtnNews: UIButton!
     @IBOutlet weak var tabBtnIdeaClimeMenu: UIButton!
     
-    
+    // cell count from Model
+    private var _cellCount = 5
+    private var _cellReuseIdentifier = "ideaCell"
+    private var _cellHeight = 200.0
     
     @IBAction func OpenMenu(_ sender: Any)
     {
@@ -25,6 +30,44 @@ class IdeasViewController: UIViewController
     {
         super.viewDidLoad()
         addListeners()
+        
+        // other options
+        tvIdeaList.separatorStyle = .none
+    }
+    
+    /*
+     *   TableVIew methods
+     **/
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return _cellCount
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return CGFloat(_cellHeight);
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: _cellReuseIdentifier, for: indexPath) as! IdeaViewCell
+        
+        // set bg for cell
+        if (indexPath.row % 2) == 0
+        {
+            cell.ivBG.image = UIImage(named: "btn_bg_idea1.png")
+        }
+        else
+        {
+            cell.ivBG.image = UIImage(named: "btn_bg_idea2.png")
+        }
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        
+        sidebarDidClose(with: UIStoryboard.VIEW_TYPE_NEWS_DETAIL)
     }
     
     /*

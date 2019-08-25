@@ -13,6 +13,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tabBtnNews: UIButton!
     @IBOutlet weak var tabBtnIdeaClimeMenu: UIButton!
+    @IBOutlet weak var tvNewsList: UITableView!
     
     
     // cell count from Model
@@ -24,6 +25,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     {
         super.viewDidLoad()
         addListeners()
+        
+        tvNewsList?.separatorStyle = .none
     }
     
     /*
@@ -43,7 +46,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: _cellReuseIdentifier, for: indexPath) as! NewsViewCell
         cell.ivNewsPic.image = UIImage(named: "newsImageCut.jpg")
-        
+        cell.ivNewsPic.layer.cornerRadius = 8
         // add listener for news discription
         
         return cell
