@@ -675,7 +675,7 @@
 		D274FD5F230304F600485D89 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-lipobl";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2L25M55KTC;
 				INFOPLIST_FILE = LipOblRFApp/Info.plist;
@@ -694,7 +694,7 @@
 		D274FD60230304F600485D89 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-lipobl";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2L25M55KTC;
 				INFOPLIST_FILE = LipOblRFApp/Info.plist;
