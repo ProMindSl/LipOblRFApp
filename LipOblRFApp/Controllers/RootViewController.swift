@@ -39,7 +39,7 @@ class RootViewController: UIViewController
     {
         
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController)!
-        animateDismissTransition(to: new)
+        animateWithTransition(to: new, withAnimationType: .transitionCurlUp)
         /*addChild(new)
         new.view.frame = view.bounds
         view.addSubview(new.view)
@@ -54,7 +54,7 @@ class RootViewController: UIViewController
     {
         //let new = UINavigationController(rootViewController: NewsViewController())
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsViewController") as? NewsViewController)!
-        animateWithTransition(to: new, withAnimationType: .transitionCurlUp)
+        animateWithTransition(to: new, withAnimationType: .transitionFlipFromRight)
     }
     
     public func showIdeaList()

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class AddIdeaViewController: UITableViewController
+class AddIdeaViewController: UITableViewController, UITextFieldDelegate
 {
 
     // outlets
@@ -91,6 +91,10 @@ class AddIdeaViewController: UITableViewController
         // listeners
         btnBack.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         
+        // set text field keyboard settings
+        tfIdeaTitle.delegate = self
+        tfIdeaTxtBody.delegate = self
+        
     }
     @objc func didSelect(_ sender: UIButton)
     {
@@ -101,6 +105,15 @@ class AddIdeaViewController: UITableViewController
         default:
             break
         }
+    }
+    
+    /*
+     *   Delegate methods
+     **/
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        self.view.endEditing(true)
+        return false
     }
     
     /*

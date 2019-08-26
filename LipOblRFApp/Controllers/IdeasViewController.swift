@@ -19,7 +19,7 @@ class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewD
     // cell count from Model
     private var _cellCount = 5
     private var _cellReuseIdentifier = "ideaCell"
-    private var _cellHeight = 200.0
+    private var _cellHeight = 180.0
     
     @IBAction func OpenMenu(_ sender: Any)
     {
