@@ -110,12 +110,14 @@ class GetContentManager
     static let CONTENT_TYPE_IDEAS = 3
     static let CONTENT_TYPE_CLAIMS = 4
     static let CONTENT_TYPE_NEWS = 5
+    static let CONTENT_TYPE_CATEGORY = 6
     
     public private(set) var currentMsg: String
     public private(set) var apiANS: String
     
     public private(set) var scopeTypesList:[Scope]
     public private(set) var raionTypeList:[Raion]
+    public private(set) var categoryTypeList:[Category]
     public private(set) var loadedNewsList:[News]
     public private(set) var loadedIdeasList:[Idea]
     public private(set) var loadedClaimList:[Idea]
@@ -128,6 +130,7 @@ class GetContentManager
     private let API_URL_GET_ALL_IDEASCLAIM = ""
     private let API_URL_GET_SCOPE_TYPES = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_scope_types.php"
     private let API_URL_GET_RAION_TYPES = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_raion_types.php"
+    private let API_URL_GET_CATEGORY_TYPES = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_category_types.php"
     private let API_URL_GET_NEWS = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_news.php"
     
     private let PAGE_COUNT_NEWS = 15
@@ -181,6 +184,7 @@ class GetContentManager
     {
         scopeTypesList = []
         raionTypeList = []
+        categoryTypeList = []
         loadedNewsList = []
         loadedIdeasList = []
         loadedClaimList = []
@@ -190,13 +194,6 @@ class GetContentManager
     }
     
     
-    /*public func getScopeTypes() ->  [Int: String]
-    {
-        
-        
-        return [0 : "none"]
-    }
-    */
     
     /*
      *   -------- Public methods ----------
@@ -215,6 +212,10 @@ class GetContentManager
             
         case GetContentManager.CONTENT_TYPE_RAIONS:
             urlType = API_URL_GET_RAION_TYPES
+            
+        case GetContentManager.CONTENT_TYPE_CATEGORY:
+            urlType = API_URL_GET_CATEGORY_TYPES
+            
         default:
             return
         }
@@ -274,6 +275,12 @@ class GetContentManager
                             
                             let res = try JSONDecoder().decode([Raion].self, from: data)
                             self.raionTypeList = res
+                            successFunc("ok")
+                        
+                        case GetContentManager.CONTENT_TYPE_CATEGORY:             // update Categories
+                            
+                            let res = try JSONDecoder().decode([Category].self, from: data)
+                            self.categoryTypeList = res
                             successFunc("ok")
                             
                         default:

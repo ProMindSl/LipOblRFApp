@@ -97,41 +97,70 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
         tfIdeaTxtBody.delegate = self
         
         // load
-        updateViewState(signInCompletion:
+        updateViewState(
+        signInCompletion:
         { text in
-            // load Scopes
-            self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_SCOPES,
-                                       at: self.accMng.getAccessToken(),
-                                       successCompletion:
-                                       { text in
-                                        print("load ok from add IDEA");
-                                        // set picker for scope types
-                                        DispatchQueue.main.async
-                                        {
-                                            self.picker?.data = GetContentManager.getScopeStringList(from: self.getContMng.scopeTypesList)
-                                        }
-                                       },
-                                       errorCompletion:
-                                       { text in
-                                            self.initLoadContentErrorAlert()
-                                       })
-            // load Raions
-            self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_RAIONS,
-                                        at: self.accMng.getAccessToken(),
-                                        successCompletion:
-                                        { text in
+                                                                                                        // load Scopes
+            if self.getContMng.scopeTypesList.count == 0
+            {
+                self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_SCOPES,
+                                           at: self.accMng.getAccessToken(),
+                                           successCompletion:
+                                           { text in
                                             print("load ok from add IDEA");
-                                            
-                                            
-                                        },
-                                        errorCompletion:
-                                        { text in
-                                            self.initLoadContentErrorAlert()
-                                        })
+                                            // set picker for scope types
+                                            DispatchQueue.main.async
+                                            {
+                                                self.picker?.data = GetContentManager.getScopeStringList(from: self.getContMng.scopeTypesList)
+                                            }
+                                           },
+                                           errorCompletion:
+                                           { text in
+                                                self.initLoadContentErrorAlert()
+                                           })
+            }
+            else
+            {
+                DispatchQueue.main.async
+                {
+                    self.picker?.data = GetContentManager.getScopeStringList(from: self.getContMng.scopeTypesList)
+                }
+            }
+            
+                                                                                                            // load Raions
+            if self.getContMng.raionTypeList.count == 0
+            {
+                self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_RAIONS,
+                                            at: self.accMng.getAccessToken(),
+                                            successCompletion:
+                                            { text in
+                                                print("load ok from add IDEA");
+                                                
+                                                
+                                            },
+                                            errorCompletion:
+                                            { text in
+                                                self.initLoadContentErrorAlert()
+                                            })
+            }
+            else
+            {
+                
+            }
+            
+            
         },
         signOutCompletion:
         { text in
-            
+            // exit from add idea form if signuot status
+            self.alertController.alert(in: self,
+                                       withTitle: "Вход не выполнен",
+                                       andMsg: "Раздел доступен только для зарегистрированных пользователей",
+                                       andActionTitle: "Войти",
+                                       completion:
+                                       { [unowned self] text in
+                                            self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
+                                       })
         })
         
     }
