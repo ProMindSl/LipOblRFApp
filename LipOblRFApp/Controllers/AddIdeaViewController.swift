@@ -316,11 +316,12 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
      *   Handlers
     **/
     @IBAction func didSelectAddIdea(_ sender: Any)
-    {
-        let scope = 6 //tfIdeaScope.text                                                // gettiog input data
+    { print(tfIdeaScope.text)
+        let scope = GetContentManager.getScopeIdByName(with: tfIdeaScope.text ?? "none",
+                                                       from: getContMng.scopeTypesList)                                               // gettiog input data
         let title = tfIdeaTitle.text ?? "Пустой заголовок"
         let body = tfIdeaTxtBody.text ?? "Пустое описание"
-        let raion = 1
+        let raion = 1 // currently!!!!!
         let longitude = 52.322343
         let latitude = 53.231232
         
