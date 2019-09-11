@@ -133,6 +133,8 @@ class GetContentManager
     private let API_URL_GET_CATEGORY_TYPES = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_category_types.php"
     private let API_URL_GET_NEWS = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_news.php"
     
+    private let AJWT_WORD = "d1fsdHDSsad62lh8ksdf"
+    
     private let PAGE_COUNT_NEWS = 15
     private let PAGE_COUNT_IDEAS = 15
     private let PAGE_COUNT_CLAIMS = 15
@@ -261,9 +263,6 @@ class GetContentManager
         request.setValue(accessT, forHTTPHeaderField: "at")
         request.httpMethod = "GET"
         
-        //let postString = self.getPostString(params: parameters)
-        //request.httpBody = postString.data(using: .utf8)
-        
         let task = URLSession.shared.dataTask(with: request)
         { data, response, error in
             guard                                                       // check for fundamental networking error
@@ -337,4 +336,124 @@ class GetContentManager
         
         task.resume()
     }
+    
+    public func loadNextContentSegment(byType type: Int,
+                                   at accessT: String,
+                                   successCompletion successFunc: @escaping ((String) -> ()),
+                                   errorCompletion errorFunc: @escaping ((String) -> ()))
+    {
+        // calculate offset
+        var offset: Int
+        
+        // set url by content load type
+        var urlType:String
+        switch type
+        {
+        case GetContentManager.CONTENT_TYPE_NEWS:
+            urlType = API_URL_GET_NEWS
+            offset = loadedNewsList.count
+            
+        default:
+            return
+        }
+        
+        // create GET-request to API
+        guard let url = URL(string: urlType) else { return }
+        
+        var request = URLRequest(url: url)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(accessT, forHTTPHeaderField: "at")
+        request.httpMethod = "POST"
+        
+        let parameters: [String: Any] = [
+            "offset": offset,
+            "limit": PAGE_COUNT_NEWS
+        ]
+        
+        let postString = self.getPostString(params: parameters)
+        request.httpBody = postString.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request)
+        { data, response, error in
+            guard                                                       // check for fundamental networking error
+                let response = response as? HTTPURLResponse,
+                error == nil
+                else
+            {
+                print("error", error ?? "Unknown error")
+                self.currentMsg = AccountManager.ERROR_NETWORK
+                return
+            }
+            
+            guard (200 ... 299) ~= response.statusCode                  // check for http errors
+                else
+            {
+                print("statusCode is \(response.statusCode)")
+                print("response = \(response)")
+                self.currentMsg = AccountManager.ERROR_HTTP
+                return
+            }
+            
+            // read need headers
+            self.apiANS = response.allHeaderFields["API-ans"] as? String ?? APIVals.API_ANS_TYPE_UNKNOWN_ERROR
+            
+            if self.apiANS == APIVals.API_ANS_TYPE_SUCCESS_GET_CONTENT  // success getting content
+            {
+                self.currentMsg = AccountManager.ERROR_NONE
+                
+                if let data = data
+                {
+                    do
+                    {
+                        switch type
+                        {
+                        case GetContentManager.CONTENT_TYPE_NEWS:             // load news
+                            
+                            let res = try JSONDecoder().decode([News].self, from: data)
+                            self.loadedNewsList.append(contentsOf: res)
+                            successFunc("ok")
+                            
+                        
+                            
+                        default:
+                            return
+                        }
+                    }
+                    catch let error
+                    {
+                        print(error)
+                    }
+                }
+                
+            }
+            else                                                // fail getting content
+            { print("load not Success")
+                
+                print(self.apiANS)
+                errorFunc("error get content")
+            }
+        }
+        
+        task.resume()
+    }
+    
+    /*
+     *   -------- Private methods ----------
+     **/
+    /*
+     *   Convert data to POST request string format
+     *   @arguments: Dictionary with parameters
+     *   @returns: String of formated request data
+     **/
+    private func getPostString(params:[String:Any]) -> String
+    {
+        var data = [String]()
+        for(key, value) in params
+        {
+            data.append(key + "=\(value)")
+        }
+        return data.map { String($0) }.joined(separator: "&")
+    }
+    
+    
 }
