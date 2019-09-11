@@ -113,7 +113,7 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
                                        },
                                        errorCompletion:
                                        { text in
-                                        print("load NOT ok from add IDEA");
+                                            self.initLoadContentErrorAlert()
                                        })
             // load Raions
             self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_RAIONS,
@@ -122,10 +122,11 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
                                         { text in
                                             print("load ok from add IDEA");
                                             
+                                            
                                         },
                                         errorCompletion:
                                         { text in
-                                            print("load NOT ok from add IDEA");
+                                            self.initLoadContentErrorAlert()
                                         })
         },
         signOutCompletion:
@@ -265,6 +266,21 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
             self.indLoadState.isHidden = true
             self.indLoadState.stopAnimating()
         }
+    }
+    
+    /*
+     *   Error IU methods
+    **/
+    private func initLoadContentErrorAlert()
+    {
+        self.alertController.alert(in: self,
+                                   withTitle: "Ошибка загрузки данных",
+                                   andMsg: "Загрузка данных с сервера произошла с ошибкой, повторите позже!",
+                                   andActionTitle: "Выйти из формы",
+                                   completion:
+                                   { [unowned self] text in
+                                        self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEACLIME_MENU)
+                                   })
     }
     
     /*
