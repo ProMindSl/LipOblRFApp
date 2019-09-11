@@ -152,7 +152,14 @@ class GetContentManager
         
         for i in 0..<scopeTypeList.count
         {
-            scopeNameList.append(scopeTypeList[i].name)
+            var nameVal = scopeTypeList[i].name
+            
+            // remove some strange text from bd data
+            if nameVal.contains("&shy;")
+            {
+                nameVal = nameVal.replacingOccurrences(of: "&shy;", with: "")
+            }
+            scopeNameList.append(nameVal)
         }
         
         return scopeNameList
