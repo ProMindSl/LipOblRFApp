@@ -105,7 +105,11 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
                                        successCompletion:
                                        { text in
                                         print("load ok from add IDEA");
-                                        
+                                        // set picker for scope types
+                                        DispatchQueue.main.async
+                                        {
+                                            self.picker?.data = GetContentManager.getScopeStringList(from: self.getContMng.scopeTypesList)
+                                        }
                                        },
                                        errorCompletion:
                                        { text in

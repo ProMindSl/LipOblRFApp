@@ -261,14 +261,12 @@ class GetContentManager
                             
                             let res = try JSONDecoder().decode([Scope].self, from: data)
                             self.scopeTypesList = res
-                            print(self.scopeTypesList)
                             successFunc("ok")
                         
                         case GetContentManager.CONTENT_TYPE_RAIONS:             // update Raions
                             
                             let res = try JSONDecoder().decode([Raion].self, from: data)
                             self.raionTypeList = res
-                            print(self.raionTypeList)
                             successFunc("ok")
                             
                         default:
