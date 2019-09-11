@@ -316,7 +316,7 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
      *   Handlers
     **/
     @IBAction func didSelectAddIdea(_ sender: Any)
-    { print(tfIdeaScope.text)
+    {
         let scope = GetContentManager.getScopeIdByName(with: tfIdeaScope.text ?? "none",
                                                        from: getContMng.scopeTypesList)                                               // gettiog input data
         let title = tfIdeaTitle.text ?? "Пустой заголовок"
