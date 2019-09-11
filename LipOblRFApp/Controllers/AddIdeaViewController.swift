@@ -25,6 +25,7 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
     
     // st links
     private let accMng = AccountManager.shared
+    private let getContMng = GetContentManager.shared
     private let alertController = AlertController.shared
     
     private let setController = SetContentManager()
@@ -39,15 +40,15 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
         super.viewDidLoad()
         
         initUI()
-        updateViewState(
-            signInCompletion:
-            { text in
-                print("signIn - ok")
-            },
-            signOutCompletion:
-            { text in
-                print("signOut")
-            })
+//        updateViewState(
+//            signInCompletion:
+//            { text in
+//                print("signIn - ok")
+//            },
+//            signOutCompletion:
+//            { text in
+//                print("signOut")
+//            })
     }
     
     /*
@@ -64,7 +65,7 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
         picker = TypePickerView()
         picker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         picker?.backgroundColor = UIColor.white
-        picker?.data = ["Бизнес", "Благо­­устрой­­ство", "Борьба с коррупцией", "Демография", "Дороги и транспорт"]
+        picker?.data = ["Категории"]
         
         tfIdeaScope.inputView = picker
         
@@ -94,6 +95,38 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
         // set text field keyboard settings
         tfIdeaTitle.delegate = self
         tfIdeaTxtBody.delegate = self
+        
+        // load
+        updateViewState(signInCompletion:
+        { text in
+            /*self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_SCOPES,
+                                       at: self.accMng.getAccessToken(),
+                                       successCompletion:
+                                       { text in
+                                        print("load ok from add IDEA");
+                                        
+                                       },
+                                       errorCompletion:
+                                       { text in
+                                        print("load NOT ok from add IDEA");
+                                       })*/
+            print(self.accMng.getAccessToken())
+            self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_RAIONS,
+                                        at: self.accMng.getAccessToken(),
+                                        successCompletion:
+                                        { text in
+                                            print("load ok from add IDEA");
+                                            
+                                        },
+                                        errorCompletion:
+                                        { text in
+                                            print("load NOT ok from add IDEA");
+                                        })
+        },
+        signOutCompletion:
+        { text in
+            
+        })
         
     }
     @objc func didSelect(_ sender: UIButton)
