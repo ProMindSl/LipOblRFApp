@@ -143,6 +143,32 @@ class GetContentManager
     **/
     
     
+    /*
+     *   -------- Static methods ----------
+    **/
+    public static func getScopeStringList(from scopeTypeList: [Scope]) -> [String]
+    {
+        var scopeNameList: [String] = []
+        
+        for i in 0..<scopeTypeList.count
+        {
+            scopeNameList.append(scopeTypeList[i].name)
+        }
+        
+        return scopeNameList
+    }
+    public static func getScopeIdList(from scopeTypeList: [Scope]) -> [String]
+    {
+        var scopeNameList: [String] = []
+        
+        for i in 0..<scopeTypeList.count
+        {
+            scopeNameList.append(scopeTypeList[i].id)
+        }
+        
+        return scopeNameList
+    }
+    
     
     private init()
     {
@@ -182,12 +208,11 @@ class GetContentManager
             
         case GetContentManager.CONTENT_TYPE_RAIONS:
             urlType = API_URL_GET_RAION_TYPES
-            
         default:
             return
         }
         
-        // create POST-request to API
+        // create GET-request to API
         guard let url = URL(string: urlType) else { return }
         
         var request = URLRequest(url: url)
@@ -221,7 +246,6 @@ class GetContentManager
             
             // read need headers
             self.apiANS = response.allHeaderFields["API-ans"] as? String ?? APIVals.API_ANS_TYPE_UNKNOWN_ERROR
-            
             
             if self.apiANS == APIVals.API_ANS_TYPE_SUCCESS_GET_CONTENT // success getting content
             {
@@ -259,7 +283,7 @@ class GetContentManager
                 
             }
             else                                                // fail getting content
-            { print("refresh NOT success")
+            { print("load not Success")
                 
                 print(self.apiANS)
                 errorFunc("error get content")

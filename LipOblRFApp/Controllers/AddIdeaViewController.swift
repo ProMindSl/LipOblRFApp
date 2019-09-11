@@ -99,7 +99,8 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
         // load
         updateViewState(signInCompletion:
         { text in
-            /*self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_SCOPES,
+            // load Scopes
+            self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_SCOPES,
                                        at: self.accMng.getAccessToken(),
                                        successCompletion:
                                        { text in
@@ -109,8 +110,8 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
                                        errorCompletion:
                                        { text in
                                         print("load NOT ok from add IDEA");
-                                       })*/
-            print(self.accMng.getAccessToken())
+                                       })
+            // load Raions
             self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_RAIONS,
                                         at: self.accMng.getAccessToken(),
                                         successCompletion:
