@@ -157,7 +157,7 @@ class GetContentManager
         {
             var nameVal = scopeTypeList[i].name
             
-            // remove some strange text from bd data
+            // remove some strange text from db data
             if nameVal.contains("&shy;")
             {
                 nameVal = nameVal.replacingOccurrences(of: "&shy;", with: "")
@@ -167,6 +167,7 @@ class GetContentManager
         
         return scopeNameList
     }
+    
     public static func getScopeIdList(from scopeTypeList: [Scope]) -> [String]
     {
         var scopeNameList: [String] = []
@@ -179,7 +180,39 @@ class GetContentManager
         return scopeNameList
     }
     
+    public static func getScopeIdByName(with name: String, from scopeTypeList: [Scope]) -> Int
+    {
+        var scopeID = 0
+        
+        for i in 0..<scopeTypeList.count
+        {
+            if scopeTypeList[i].name == name
+            {
+                scopeID = Int(scopeTypeList[i].id) ?? 0
+            }
+        }
+        
+        return scopeID
+    }
     
+    public static func getScopeNameById(with id: Int, from scopeTypeList: [Scope]) -> String
+    {
+        var scopeName = "none"
+        
+        for i in 0..<scopeTypeList.count
+        {
+            if Int(scopeTypeList[i].id) == id
+            {
+                scopeName = scopeTypeList[i].name
+            }
+        }
+        
+        return scopeName
+    }
+    
+    /*
+     *   -------- Init ----------
+    **/
     private init()
     {
         scopeTypesList = []
