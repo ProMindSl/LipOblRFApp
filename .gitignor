@@ -1,6 +1,6 @@
 # exclude log files
 *.log
-
+Vendor/
 .zip
 
 # General
@@ -10,5 +10,3 @@
 
 # Thumbnails
 ._*
-
-Vendor/
