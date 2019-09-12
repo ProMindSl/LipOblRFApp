@@ -109,7 +109,8 @@ class NewsDetailViewController: UITableViewController
 
 extension NewsDetailViewController: SidebarDelegate
 {
-    func sidbarDidOpen() {
+    func sidbarDidOpen()
+    {
         print("do nothing")
     }
     
