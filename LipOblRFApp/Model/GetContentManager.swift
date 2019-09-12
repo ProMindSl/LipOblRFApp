@@ -213,6 +213,26 @@ class GetContentManager
         return scopeName
     }
     
+    public static func clearTextFromHtmlTegs(htmlText: String) -> String
+    {
+        var clearText = htmlText
+        
+        if clearText.contains("<p style=\"text-align: justify;\">")
+        {
+            clearText = clearText.replacingOccurrences(of: "<p style=\"text-align: justify;\">", with: "")
+        }
+        if clearText.contains("</p>")
+        {
+            clearText = clearText.replacingOccurrences(of: "</p>", with: "")
+        }
+        clearText = clearText.replacingOccurrences(of: "\r", with: "", options: NSString.CompareOptions.literal, range: nil)
+        clearText = clearText.replacingOccurrences(of: "\n", with: "", options: NSString.CompareOptions.literal, range: nil)
+        clearText = clearText.replacingOccurrences(of: "\t", with: "", options: NSString.CompareOptions.literal, range: nil)
+        //.trimmingCharacters(in: .whitespaces)
+        
+        return clearText
+    }
+    
     /*
      *   -------- Init ----------
     **/

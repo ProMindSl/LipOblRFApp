@@ -58,8 +58,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let numOfRow = Int(indexPath.row)
         
+        // costomize cell by content from API
         cell.tfNewsLabel.text = self._getContMng.loadedNewsList[numOfRow].title
-        
+        cell.tfNewsText.text = GetContentManager.clearTextFromHtmlTegs(htmlText: self._getContMng.loadedNewsList[numOfRow].content) 
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
