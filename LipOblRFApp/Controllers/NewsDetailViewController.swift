@@ -75,21 +75,33 @@ class NewsDetailViewController: UITableViewController
         
         labelTitle.text = _getContMng.loadedNewsList[newsId].title
         
-        wvTextBody.loadHTMLString(_getContMng.loadedNewsList[newsId].content, baseURL: nil) 
+        wvTextBody.loadHTMLString(_getContMng.loadedNewsList[newsId].content, baseURL: nil)
+        
+        let urlStr = self._getContMng.loadedNewsList[newsId].imgs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let imgUrl = URL(string: urlStr)
+        
+        ivPic.kf.setImage(
+            with: imgUrl,
+            placeholder: UIImage(named: "placeholderImage"),
+            options: [
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
         
     }
     
     private func showActivityIndicatory()
     {
         DispatchQueue.main.async
-            {
+        {
                 self.loadActivityIndicator?.startAnimating()
         }
     }
     private func hideActivityIndicatory()
     {
         DispatchQueue.main.async
-            {
+        {
                 self.loadActivityIndicator?.stopAnimating()
         }
     }
