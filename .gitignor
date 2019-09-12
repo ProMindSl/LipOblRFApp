@@ -1,6 +1,6 @@
 # exclude log files
 *.log
-Vendor/
+
 .zip
 
 # General
@@ -10,3 +10,6 @@ Vendor/
 
 # Thumbnails
 ._*
+
+Carthage/
+Cartfile
