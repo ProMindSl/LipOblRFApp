@@ -228,8 +228,7 @@ class GetContentManager
         clearText = clearText.replacingOccurrences(of: "\r", with: "", options: NSString.CompareOptions.literal, range: nil)
         clearText = clearText.replacingOccurrences(of: "\n", with: "", options: NSString.CompareOptions.literal, range: nil)
         clearText = clearText.replacingOccurrences(of: "\t", with: "", options: NSString.CompareOptions.literal, range: nil)
-        //.trimmingCharacters(in: .whitespaces)
-        
+
         return clearText
     }
     
