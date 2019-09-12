@@ -61,7 +61,6 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //print(urlStr)
         //let imageUrl = URL(string: urlStr)!
         let urlStr = self._getContMng.loadedNewsList[numOfRow].imgs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        print(urlStr)
         let imgUrl = URL(string: urlStr)
         
         cell.ivNewsPic.kf.setImage(

@@ -16,8 +16,9 @@ class NewsDetailViewController: UITableViewController
     @IBOutlet weak var labelTag: UILabel!
     @IBOutlet weak var labelAutor: UILabel!
     @IBOutlet weak var labelTitle: UILabel!
-    @IBOutlet weak var labelTextBody: UILabel!
+    //@IBOutlet weak var labelTextBody: UILabel!
     @IBOutlet weak var ivPic: UIImageView!
+    @IBOutlet weak var wvTextBody: UIWebView!
     
     private let _getContMng = GetContentManager.shared
     private let _alertController = AlertController.shared
@@ -68,9 +69,13 @@ class NewsDetailViewController: UITableViewController
              self.view.addSubview(self.loadActivityIndicator!)
              self.loadActivityIndicator?.hidesWhenStopped = true
         }
+        
+        // set content from Model
         let newsId = _getContMng.currentNews
+        
         labelTitle.text = _getContMng.loadedNewsList[newsId].title
         
+        wvTextBody.loadHTMLString(_getContMng.loadedNewsList[newsId].content, baseURL: nil) 
         
     }
     
