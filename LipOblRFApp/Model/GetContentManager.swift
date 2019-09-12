@@ -114,6 +114,10 @@ class GetContentManager
     
     static let AJWT_WORD = "d1fsdHDSsad62lh8ksdf"
     
+    public var currentNews: Int
+    public var currentIdea: Int
+    public var currentClaim: Int
+    
     public private(set) var currentMsg: String
     public private(set) var apiANS: String
     
@@ -123,6 +127,7 @@ class GetContentManager
     public private(set) var loadedNewsList:[News]
     public private(set) var loadedIdeasList:[Idea]
     public private(set) var loadedClaimList:[Idea]
+    
     
     
     /*
@@ -237,6 +242,10 @@ class GetContentManager
     **/
     private init()
     {
+        currentNews = 0
+        currentIdea = 0
+        currentClaim = 0
+        
         scopeTypesList = []
         raionTypeList = []
         categoryTypeList = []

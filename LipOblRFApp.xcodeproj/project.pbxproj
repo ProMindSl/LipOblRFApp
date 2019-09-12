@@ -50,6 +50,7 @@
 		D22D6CA623042D4D00DDA0E1 /* AddIdeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */; };
 		D22D6CA823083EA800DDA0E1 /* TypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA723083EA800DDA0E1 /* TypePickerView.swift */; };
 		D22D6CAA23084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA923084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift */; };
+		D265D9B2232A92A70049EDC3 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D265D9B1232A92A70049EDC3 /* Kingfisher.framework */; };
 		D2730EA6230FFCD600714639 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2730EA5230FFCD600714639 /* NewsDetailViewController.swift */; };
 		D2730EA923100C1B00714639 /* barIconNewsNA.png in Resources */ = {isa = PBXBuildFile; fileRef = D2730EA723100C1B00714639 /* barIconNewsNA.png */; };
 		D2730EAC23100C4D00714639 /* barIconNews.png in Resources */ = {isa = PBXBuildFile; fileRef = D2730EAB23100C4D00714639 /* barIconNews.png */; };
@@ -130,6 +131,8 @@
 		D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdeaViewController.swift; sourceTree = "<group>"; };
 		D22D6CA723083EA800DDA0E1 /* TypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePickerView.swift; sourceTree = "<group>"; };
 		D22D6CA923084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaClaimMenuViewController.swift; sourceTree = "<group>"; };
+		D24D22A0232A8B3D0025CB39 /* Checkouts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Checkouts; path = Carthage/Checkouts; sourceTree = "<group>"; };
+		D265D9B1232A92A70049EDC3 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		D2730EA5230FFCD600714639 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		D2730EA723100C1B00714639 /* barIconNewsNA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barIconNewsNA.png; sourceTree = "<group>"; };
 		D2730EAB23100C4D00714639 /* barIconNews.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barIconNews.png; sourceTree = "<group>"; };
@@ -160,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D265D9B2232A92A70049EDC3 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +265,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D24D229F232A8B3D0025CB39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D265D9B1232A92A70049EDC3 /* Kingfisher.framework */,
+				D24D22A0232A8B3D0025CB39 /* Checkouts */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D274FD2D230304F500485D89 = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +281,7 @@
 				D274FD4D230304F600485D89 /* LipOblRFAppTests */,
 				D274FD58230304F600485D89 /* LipOblRFAppUITests */,
 				D274FD37230304F500485D89 /* Products */,
+				D24D229F232A8B3D0025CB39 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -326,6 +340,7 @@
 				D274FD32230304F500485D89 /* Sources */,
 				D274FD33230304F500485D89 /* Frameworks */,
 				D274FD34230304F500485D89 /* Resources */,
+				D2B749AE232A9403008FC437 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -476,6 +491,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D2B749AE232A9403008FC437 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework\n",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D274FD32230304F500485D89 /* Sources */ = {
@@ -678,6 +715,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-lipobl";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2L25M55KTC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LipOblRFApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -697,6 +738,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-lipobl";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2L25M55KTC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LipOblRFApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (

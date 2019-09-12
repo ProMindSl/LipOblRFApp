@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
@@ -56,38 +57,58 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let numOfRow = Int(indexPath.row)
         
         // costomize image content from API
-        let urlStr = "https://admlip.ru/upload/iblock/77a/21ET-hjXO8o%20(1).jpg"//self._getContMng.loadedNewsList[numOfRow].imgs[0]
+        //let urlStr = "https://admlip.ru/upload/iblock/77a/21ET-hjXO8o%20(1).jpg"//self._getContMng.loadedNewsList[numOfRow].imgs[0]
+        //print(urlStr)
+        //let imageUrl = URL(string: urlStr)!
+        let urlStr = self._getContMng.loadedNewsList[numOfRow].imgs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         print(urlStr)
-        let imageUrl = URL(string: urlStr)!
+        let imgUrl = URL(string: urlStr)
         
-        getData(from: imageUrl)
-        { data, response, error in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? imageUrl.lastPathComponent)
-            print("Download Finished")
-            DispatchQueue.main.async()
-            {
-                cell.ivNewsPic.image = UIImage(data: data)
-            }
-        }
-        /*if let filePath = Bundle.main.path(forResource: imageUrl, ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
-            cell.ivNewsPic.contentMode = .scaleAspectFit
-            cell.ivNewsPic.image = image
-        }
-        else
+        cell.ivNewsPic.kf.setImage(
+            with: imgUrl,
+            placeholder: UIImage(named: "placeholderImage"),
+            options: [
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])//(with: imgUrl)
+        cell.ivNewsPic.layer.cornerRadius = 8
+        /*let processor = DownsamplingImageProcessor(size: cell.ivNewsPic.size)
+            >> RoundCornerImageProcessor(cornerRadius: 20)
+        cell.ivNewsPic.kf.indicatorType = .activity
+        cell.ivNewsPic.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "placeholderImage"),
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
         {
-            cell.ivNewsPic.image = UIImage(named: "newsImageCut.jpg")
-            cell.ivNewsPic.layer.cornerRadius = 8
+            result in
+            switch result {
+            case .success(let value):
+                print("Task done for: \(value.source.url?.absoluteString ?? "")")
+            case .failure(let error):
+                print("Job failed: \(error.localizedDescription)")
+            }
         }*/
         
+        /*cell.ivNewsPic.image = UIImage(named: "newsImageCut.jpg")
+            cell.ivNewsPic.layer.cornerRadius = 8
+        */
+        
         // costomize text content from API
+        cell.tfNewsLabel.layer.cornerRadius = 8
         cell.tfNewsLabel.text = self._getContMng.loadedNewsList[numOfRow].title
+        
         cell.tfNewsText.text = GetContentManager.clearTextFromHtmlTegs(htmlText: self._getContMng.loadedNewsList[numOfRow].content) 
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        
+        self._getContMng.currentNews = indexPath.row
         sidebarDidClose(with: UIStoryboard.VIEW_TYPE_NEWS_DETAIL)
     }
     

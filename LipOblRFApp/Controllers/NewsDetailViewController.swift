@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewsDetailViewController: UITableViewController
 {
@@ -18,10 +19,16 @@ class NewsDetailViewController: UITableViewController
     @IBOutlet weak var labelTextBody: UILabel!
     @IBOutlet weak var ivPic: UIImageView!
     
+    private let _getContMng = GetContentManager.shared
+    private let _alertController = AlertController.shared
+    
+    var loadActivityIndicator:UIActivityIndicatorView?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         addListeners()
+        initUI()
     }
     
     /*
@@ -32,6 +39,8 @@ class NewsDetailViewController: UITableViewController
     /*
      *   -------- Privete func ----------
      **/
+    
+    
     private func addListeners()
     {
         btnBack.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
@@ -45,6 +54,38 @@ class NewsDetailViewController: UITableViewController
             sidebarDidClose(with: UIStoryboard.VIEW_TYPE_NEWS_LIST)
         default:
             break
+        }
+    }
+    
+    
+    private func initUI()
+    {
+        // init ai
+        DispatchQueue.main.async
+        {
+             self.loadActivityIndicator = UIActivityIndicatorView(style: .gray)
+             self.loadActivityIndicator?.center = self.view.center
+             self.view.addSubview(self.loadActivityIndicator!)
+             self.loadActivityIndicator?.hidesWhenStopped = true
+        }
+        let newsId = _getContMng.currentNews
+        labelTitle.text = _getContMng.loadedNewsList[newsId].title
+        
+        
+    }
+    
+    private func showActivityIndicatory()
+    {
+        DispatchQueue.main.async
+            {
+                self.loadActivityIndicator?.startAnimating()
+        }
+    }
+    private func hideActivityIndicatory()
+    {
+        DispatchQueue.main.async
+            {
+                self.loadActivityIndicator?.stopAnimating()
         }
     }
 }
