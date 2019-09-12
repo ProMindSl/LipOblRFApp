@@ -52,13 +52,35 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: _cellReuseIdentifier, for: indexPath) as! NewsViewCell
-        cell.ivNewsPic.image = UIImage(named: "newsImageCut.jpg")
-        cell.ivNewsPic.layer.cornerRadius = 8
-        // add listener for news discription
         
         let numOfRow = Int(indexPath.row)
         
-        // costomize cell by content from API
+        // costomize image content from API
+        let urlStr = "https://admlip.ru/upload/iblock/77a/21ET-hjXO8o%20(1).jpg"//self._getContMng.loadedNewsList[numOfRow].imgs[0]
+        print(urlStr)
+        let imageUrl = URL(string: urlStr)!
+        
+        getData(from: imageUrl)
+        { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? imageUrl.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async()
+            {
+                cell.ivNewsPic.image = UIImage(data: data)
+            }
+        }
+        /*if let filePath = Bundle.main.path(forResource: imageUrl, ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
+            cell.ivNewsPic.contentMode = .scaleAspectFit
+            cell.ivNewsPic.image = image
+        }
+        else
+        {
+            cell.ivNewsPic.image = UIImage(named: "newsImageCut.jpg")
+            cell.ivNewsPic.layer.cornerRadius = 8
+        }*/
+        
+        // costomize text content from API
         cell.tfNewsLabel.text = self._getContMng.loadedNewsList[numOfRow].title
         cell.tfNewsText.text = GetContentManager.clearTextFromHtmlTegs(htmlText: self._getContMng.loadedNewsList[numOfRow].content) 
         return cell
@@ -157,6 +179,11 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                                                                     self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
                                                                                })
                                                 })
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ())
+    {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }
 
