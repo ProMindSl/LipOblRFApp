@@ -29,16 +29,16 @@ struct News: Codable
     let content: String
     let slug: String
     let order: String
-    let active: String
-    let main: String
-    let title_file: String
+    let active: Bool?
+    let main: Bool?
+    let title_file: String?
     let created_by: String
     let modified_by: String
     let modified_at: String
     let external_id: String
     let created_at: String
     let updated_at: String
-    let imgs: String
+    let imgs: [String]
 }
 
 struct Idea: Codable
@@ -112,6 +112,8 @@ class GetContentManager
     static let CONTENT_TYPE_NEWS = 5
     static let CONTENT_TYPE_CATEGORY = 6
     
+    static let AJWT_WORD = "d1fsdHDSsad62lh8ksdf"
+    
     public private(set) var currentMsg: String
     public private(set) var apiANS: String
     
@@ -121,6 +123,7 @@ class GetContentManager
     public private(set) var loadedNewsList:[News]
     public private(set) var loadedIdeasList:[Idea]
     public private(set) var loadedClaimList:[Idea]
+    
     
     /*
      *   -------- Private const ----------
@@ -132,8 +135,6 @@ class GetContentManager
     private let API_URL_GET_RAION_TYPES = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_raion_types.php"
     private let API_URL_GET_CATEGORY_TYPES = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_category_types.php"
     private let API_URL_GET_NEWS = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_news.php"
-    
-    private let AJWT_WORD = "d1fsdHDSsad62lh8ksdf"
     
     private let PAGE_COUNT_NEWS = 15
     private let PAGE_COUNT_IDEAS = 15

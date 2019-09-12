@@ -15,11 +15,15 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tabBtnIdeaClimeMenu: UIButton!
     @IBOutlet weak var tvNewsList: UITableView!
     
+    var loadActivityIndicator:UIActivityIndicatorView?
     
     // cell count from Model
-    private var _cellCount = 5
+    private var _cellCount = 0
     private var _cellReuseIdentifier = "newsCell"
     private var _cellHeight = 358.0
+    
+    private let _getContMng = GetContentManager.shared
+    private let _alertController = AlertController.shared
     
     override func viewDidLoad()
     {
@@ -27,6 +31,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         addListeners()
         
         tvNewsList?.separatorStyle = .none
+        
+        initUI()
+        showNextNewsPage()
     }
     
     /*
@@ -49,9 +56,14 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.ivNewsPic.layer.cornerRadius = 8
         // add listener for news discription
         
+        let numOfRow = Int(indexPath.row)
+        
+        cell.tfNewsLabel.text = self._getContMng.loadedNewsList[numOfRow].title
+        
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
         
         sidebarDidClose(with: UIStoryboard.VIEW_TYPE_NEWS_DETAIL)
     }
@@ -70,7 +82,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     {
         [tabBtnNews,tabBtnIdeaClimeMenu].forEach(
         {
-                $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
+            $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         })
     }
     @objc func didSelect(_ sender: UIButton)
@@ -84,6 +96,66 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         default:
             break
         }
+    }
+    
+    private func initUI()
+    {
+        // init ai
+        DispatchQueue.main.async
+        {
+            self.loadActivityIndicator = UIActivityIndicatorView(style: .gray)
+            self.loadActivityIndicator?.center = self.view.center
+            self.view.addSubview(self.loadActivityIndicator!)
+            self.loadActivityIndicator?.hidesWhenStopped = true
+        }
+        
+    }
+    
+    private func showActivityIndicatory()
+    {
+        DispatchQueue.main.async
+        {
+            self.loadActivityIndicator?.startAnimating()
+        }
+    }
+    private func hideActivityIndicatory()
+    {
+        DispatchQueue.main.async
+        {
+            self.loadActivityIndicator?.stopAnimating()
+        }
+    }
+    
+    private func showNextNewsPage()
+    {
+        self.showActivityIndicatory()
+        
+        self._getContMng.loadNextContentSegment(byType: GetContentManager.CONTENT_TYPE_NEWS,
+                                                at: GetContentManager.AJWT_WORD,
+                                                successCompletion:
+                                                { text in
+                                                    self.hideActivityIndicatory()
+                                                    print("ok show news")
+                                                    //print(self._getContMng.loadedNewsList)
+                                                    self._cellCount = self._getContMng.loadedNewsList.count
+                                                    
+                                                    DispatchQueue.main.async
+                                                    {
+                                                        self.tvNewsList?.reloadData()
+                                                    }
+                                                    
+                                                },
+                                                errorCompletion:
+                                                { text in
+                                                    self._alertController.alert(in: self,
+                                                                               withTitle: "Ошибка!",
+                                                                               andMsg: "Не удалось загрузить новости, повторите попытку позже.",
+                                                                               andActionTitle: "Ок",
+                                                                               completion:
+                                                                               { [unowned self] text in
+                                                                                    self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
+                                                                               })
+                                                })
     }
 }
 
