@@ -15,6 +15,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tabBtnNews: UIButton!
     @IBOutlet weak var tabBtnIdeaClimeMenu: UIButton!
     @IBOutlet weak var tvNewsList: UITableView!
+    @IBOutlet weak var currNewsDate: UILabel!
     
     var loadActivityIndicator:UIActivityIndicatorView?
     
@@ -82,7 +83,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let indexEnd: String.Index = dateStr.index(dateStr.endIndex, offsetBy: -3)
         cell.tfTime.text = String(dateStr[indexStart..<indexEnd])
         
-        
+        setDateLabel(with: dateStr)
         
         return cell
     }
@@ -182,10 +183,47 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                                 })
     }
     
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ())
+    /*
+     *   Actualize date label
+    **/
+    private func setDateLabel(with dateStr: String)
     {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+        // get current date string
+        let date = Date()
+        let calendar = Calendar.current
+        let currYear = String(calendar.component(.year, from: date))
+        let currMonth = String(calendar.component(.month, from: date))
+        let currDay = String(calendar.component(.day, from: date))
+        let currDateStr = currYear + "-" + addZeroToSingleChar(to: currMonth) + "-" + addZeroToSingleChar(to: currDay)
+        
+        // get news date string
+        let indexEnd: String.Index = dateStr.index(dateStr.startIndex, offsetBy: 10)
+        let newsDateStr = String(dateStr[..<indexEnd])
+        
+        if currDateStr == newsDateStr
+        {
+            self.currNewsDate.text = "Сегодня"
+        }
+        else
+        {
+            self.currNewsDate.text = newsDateStr
+        }
+        
     }
+    
+    private func addZeroToSingleChar(to oneCharString: String) -> String
+    {
+        var readyStr = oneCharString
+        
+        if readyStr.count == 1
+        {
+            readyStr = "0" + readyStr
+        }
+        
+        return readyStr
+    }
+    
+    
 }
 
 extension NewsViewController: SidebarDelegate
