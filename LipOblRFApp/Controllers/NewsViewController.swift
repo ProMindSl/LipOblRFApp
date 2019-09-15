@@ -27,15 +27,17 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private let _getContMng = GetContentManager.shared
     private let _alertController = AlertController.shared
     
+    private var _loadingState: Bool = false
+    private var _count = 0
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         addListeners()
-        
         tvNewsList?.separatorStyle = .none
-        
         initUI()
-        showNextNewsPage()
+        
+        initShowNews()
     }
     
     /*
@@ -128,6 +130,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // init ai
         DispatchQueue.main.async
         {
+            self.tvNewsList?.separatorStyle = .none
+            
             self.loadActivityIndicator = UIActivityIndicatorView(style: .gray)
             self.loadActivityIndicator?.center = self.view.center
             self.view.addSubview(self.loadActivityIndicator!)
@@ -151,27 +155,52 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    private func initShowNews()
+    {
+        if self._getContMng.loadedNewsList.count == 0
+        {
+            showNextNewsPage()
+        }
+        else
+        { print("Second show news")
+            self.hideActivityIndicatory()
+            self._cellCount = self._getContMng.loadedNewsList.count
+            DispatchQueue.main.async
+            {
+                self.tvNewsList?.reloadData()
+            }
+
+        }
+    }
+    
     private func showNextNewsPage()
     {
-        self.showActivityIndicatory()
+_count += 1
+print(_count)
+print("pre num of PAGE \(self._getContMng.getLoadedPageNum(of: GetContentManager.CONTENT_TYPE_NEWS))")
+        showActivityIndicatory()
         
-        self._getContMng.loadNextContentSegment(byType: GetContentManager.CONTENT_TYPE_NEWS,
+        
+        _getContMng.loadNextContentSegment(byType: GetContentManager.CONTENT_TYPE_NEWS,
                                                 at: GetContentManager.AJWT_WORD,
                                                 successCompletion:
                                                 { text in
+                                                    
                                                     self.hideActivityIndicatory()
                                                     print("ok show news")
-                                                    //print(self._getContMng.loadedNewsList)
                                                     self._cellCount = self._getContMng.loadedNewsList.count
                                                     
+                                                    print(self._getContMng.loadedNewsList.count)
                                                     DispatchQueue.main.async
                                                     {
                                                         self.tvNewsList?.reloadData()
                                                     }
                                                     
+                                                    
                                                 },
                                                 errorCompletion:
                                                 { text in
+                                                    
                                                     self._alertController.alert(in: self,
                                                                                withTitle: "Ошибка!",
                                                                                andMsg: "Не удалось загрузить новости, повторите попытку позже.",
@@ -181,6 +210,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                                                                     self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
                                                                                })
                                                 })
+
     }
     
     /*

@@ -111,6 +111,8 @@ class GetContentManager
     static let CONTENT_TYPE_CLAIMS = 4
     static let CONTENT_TYPE_NEWS = 5
     static let CONTENT_TYPE_CATEGORY = 6
+    static let CONTENT_TYPE_IDEAS_OWN = 7
+    static let CONTENT_TYPE_CLAIMS_OWN = 8
     
     static let AJWT_WORD = "d1fsdHDSsad62lh8ksdf"
     
@@ -124,6 +126,8 @@ class GetContentManager
     public private(set) var scopeTypesList:[Scope]
     public private(set) var raionTypeList:[Raion]
     public private(set) var categoryTypeList:[Category]
+    public private(set) var ideasOwnList:[Idea]
+    public private(set) var claimOwnList:[Idea]
     public private(set) var loadedNewsList:[News]
     public private(set) var loadedIdeasList:[Idea]
     public private(set) var loadedClaimList:[Idea]
@@ -230,6 +234,10 @@ class GetContentManager
         {
             clearText = clearText.replacingOccurrences(of: "</p>", with: "")
         }
+        if clearText.contains("<p>")
+        {
+            clearText = clearText.replacingOccurrences(of: "<p>", with: "")
+        }
         clearText = clearText.replacingOccurrences(of: "\r", with: "", options: NSString.CompareOptions.literal, range: nil)
         clearText = clearText.replacingOccurrences(of: "\n", with: "", options: NSString.CompareOptions.literal, range: nil)
         clearText = clearText.replacingOccurrences(of: "\t", with: "", options: NSString.CompareOptions.literal, range: nil)
@@ -252,6 +260,8 @@ class GetContentManager
         loadedNewsList = []
         loadedIdeasList = []
         loadedClaimList = []
+        ideasOwnList = []
+        claimOwnList = []
         
         currentMsg = ""
         apiANS = ""
@@ -382,6 +392,7 @@ class GetContentManager
             urlType = API_URL_GET_NEWS
             offset = loadedNewsList.count
             
+            
         default:
             return
         }
@@ -393,6 +404,7 @@ class GetContentManager
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue(accessT, forHTTPHeaderField: "at")
         request.httpMethod = "POST"
+        
         
         let parameters: [String: Any] = [
             "offset": offset,
@@ -438,8 +450,14 @@ class GetContentManager
                         {
                         case GetContentManager.CONTENT_TYPE_NEWS:             // load news
                             
+                            if offset == 0 && self.loadedNewsList.count > 0 // !!!!!! CURRENTLY !!!!!!!! fix double first load BUG 
+                            {
+                                successFunc("ok")
+                                return
+                            }
                             let res = try JSONDecoder().decode([News].self, from: data)
                             self.loadedNewsList.append(contentsOf: res)
+                            print("load NEWS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
                             successFunc("ok")
                             
                         
@@ -467,13 +485,41 @@ class GetContentManager
     }
     
     /*
+     *   Get num of loaded page
+     *   @arguments: type of content
+     *   @returns: String of formated request data
+     **/
+    public func getLoadedPageNum(of contentType: Int) -> Int
+    {
+        var numOfPage = 0
+        
+        switch contentType
+        {
+        case GetContentManager.CONTENT_TYPE_NEWS:
+            numOfPage = self.loadedNewsList.count
+            
+        case GetContentManager.CONTENT_TYPE_IDEAS:
+            numOfPage = self.loadedIdeasList.count
+            
+        default:
+            return 0
+        }
+        
+        numOfPage = Int((numOfPage-1)/PAGE_COUNT_NEWS)+1
+                        
+        return numOfPage
+    }
+    
+    
+    
+    /*
      *   -------- Private methods ----------
      **/
     /*
      *   Convert data to POST request string format
      *   @arguments: Dictionary with parameters
      *   @returns: String of formated request data
-     **/
+    **/
     private func getPostString(params:[String:Any]) -> String
     {
         var data = [String]()
