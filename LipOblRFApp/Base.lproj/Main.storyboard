@@ -349,14 +349,31 @@
                                             <outlet property="tfTime" destination="Jde-sN-lFI" id="auo-A4-uPd"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsLoad" rowHeight="75" id="RsG-Xx-hbX">
+                                        <rect key="frame" x="0.0" y="386" width="375" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RsG-Xx-hbX" id="BB8-Ca-Qno">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iGQ-IB-vjt">
+                                                    <rect key="frame" x="177.5" y="27.5" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iGQ-IB-vjt" firstAttribute="centerX" secondItem="BB8-Ca-Qno" secondAttribute="centerX" id="g9K-cR-E9v"/>
+                                                <constraint firstItem="iGQ-IB-vjt" firstAttribute="centerY" secondItem="BB8-Ca-Qno" secondAttribute="centerY" id="jYM-Q2-Fix"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="D08-Np-jC8" id="DDu-2g-4oP"/>
                                     <outlet property="delegate" destination="D08-Np-jC8" id="5qc-dC-vWI"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пятница, 13 сентября" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y18-0N-yra">
-                                <rect key="frame" x="58" y="42" width="137" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y18-0N-yra">
+                                <rect key="frame" x="58" y="42" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -431,6 +448,7 @@
                     </view>
                     <connections>
                         <outlet property="currNewsDate" destination="nl6-XY-8iU" id="dsv-TU-KWM"/>
+                        <outlet property="currNewsDateSmall" destination="y18-0N-yra" id="Qfd-cU-ok4"/>
                         <outlet property="tabBtnIdeaClimeMenu" destination="xm3-2h-ZOo" id="Oxe-6V-TLy"/>
                         <outlet property="tabBtnNews" destination="FoD-Qs-SYL" id="uf2-8g-Byt"/>
                         <outlet property="tvNewsList" destination="Vi4-No-NXQ" id="Qb9-Ci-noB"/>

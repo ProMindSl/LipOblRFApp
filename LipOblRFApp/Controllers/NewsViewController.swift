@@ -16,6 +16,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tabBtnIdeaClimeMenu: UIButton!
     @IBOutlet weak var tvNewsList: UITableView!
     @IBOutlet weak var currNewsDate: UILabel!
+    @IBOutlet weak var currNewsDateSmall: UILabel!
     
     var loadActivityIndicator:UIActivityIndicatorView?
     
@@ -23,12 +24,12 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var _cellCount = 0
     private var _cellReuseIdentifier = "newsCell"
     private var _cellHeight = 358.0
+    private var _cellReuseIdentifierLoad = "newsLoad"
+    private var _cellHeightLoad = 100.0
     
     private let _getContMng = GetContentManager.shared
     private let _alertController = AlertController.shared
     
-    private var _loadingState: Bool = false
-    private var _count = 0
     
     override func viewDidLoad()
     {
@@ -45,16 +46,27 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     **/
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return _cellCount
+        return _cellCount //_getContMng.loadedNewsList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
+        if indexPath.row == _getContMng.loadedIdeasList.count  && _getContMng.loadedIdeasList.count != 0
+        {
+            return CGFloat(_cellHeightLoad)
+        }
         return CGFloat(_cellHeight);
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        if indexPath.row == _getContMng.loadedIdeasList.count && _getContMng.loadedIdeasList.count != 0
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: _cellReuseIdentifierLoad, for: indexPath)
+            showNextNewsPage()
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: _cellReuseIdentifier, for: indexPath) as! NewsViewCell
         
         let numOfRow = Int(indexPath.row)
@@ -158,7 +170,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func initShowNews()
     {
         if self._getContMng.loadedNewsList.count == 0
-        {
+        {showActivityIndicatory()
             showNextNewsPage()
         }
         else
@@ -175,10 +187,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private func showNextNewsPage()
     {
-_count += 1
-print(_count)
 print("pre num of PAGE \(self._getContMng.getLoadedPageNum(of: GetContentManager.CONTENT_TYPE_NEWS))")
-        showActivityIndicatory()
+        //showActivityIndicatory()
         
         
         _getContMng.loadNextContentSegment(byType: GetContentManager.CONTENT_TYPE_NEWS,
@@ -221,23 +231,99 @@ print("pre num of PAGE \(self._getContMng.getLoadedPageNum(of: GetContentManager
         // get current date string
         let date = Date()
         let calendar = Calendar.current
-        let currYear = String(calendar.component(.year, from: date))
-        let currMonth = String(calendar.component(.month, from: date))
-        let currDay = String(calendar.component(.day, from: date))
-        let currDateStr = currYear + "-" + addZeroToSingleChar(to: currMonth) + "-" + addZeroToSingleChar(to: currDay)
+        let currYear = Int(calendar.component(.year, from: date))
+        let currMonth = Int(calendar.component(.month, from: date))
+        let currDay = Int(calendar.component(.day, from: date))
         
         // get news date string
         let indexEnd: String.Index = dateStr.index(dateStr.startIndex, offsetBy: 10)
         let newsDateStr = String(dateStr[..<indexEnd])
+        let dateArr = newsDateStr.split(separator: "-")
+        let inputYear = Int(dateArr[0])!
+        let inputMonth = Int(dateArr[1])!
+        let inputDay = Int(dateArr[2])!
         
-        if currDateStr == newsDateStr
+        // set big date-verb label
+        if currYear == inputYear
+        && currMonth == inputMonth
+        && currDay == inputDay
         {
             self.currNewsDate.text = "Сегодня"
         }
-        else
+        else if currYear == inputYear
+            && currMonth == inputMonth
+            && currDay == (inputDay + 1)
         {
-            self.currNewsDate.text = newsDateStr
+            self.currNewsDate.text = "Вчера"
         }
+        else if currYear == inputYear
+            && currMonth == inputMonth
+            && currDay == (inputDay + 2)
+        {
+            self.currNewsDate.text = "Позавчера"
+        }
+        else if currYear == inputYear
+            && currMonth == inputMonth
+            && (currDay < (inputDay + 7)) && (currDay >= (inputDay + 3))
+        {
+            self.currNewsDate.text = "На этой неделе"
+        }
+        else if currYear == inputYear
+            && currMonth == inputMonth
+            && (currDay >= (inputDay + 7)) && (currDay <= (inputDay + 14))
+        {
+            self.currNewsDate.text = "На прошлой неделе неделе"
+        }
+        else if currYear == inputYear
+            && currMonth == inputMonth
+            && currDay > (inputDay + 14)
+        {
+            self.currNewsDate.text = "В этом месяце"
+        }
+        else if currYear == inputYear
+            && currMonth == (inputMonth+1)
+        {
+            self.currNewsDate.text = "В прошлом месяце"
+        }
+        else if currYear == (inputYear - 1)
+        {
+            self.currNewsDate.text = "В прошлом году"
+        }
+        
+        // set small date numeric label
+        var monthStr: String
+        switch inputMonth
+        {
+        case 1:
+            monthStr = "Января"
+        case 2:
+            monthStr = "Февраля"
+        case 3:
+            monthStr = "Марта"
+        case 4:
+            monthStr = "Апреля"
+        case 5:
+            monthStr = "Мая"
+        case 6:
+            monthStr = "Июня"
+        case 7:
+            monthStr = "Июля"
+        case 8:
+            monthStr = "Августа"
+        case 9:
+            monthStr = "Сентября"
+        case 10:
+            monthStr = "Октября"
+        case 11:
+            monthStr = "Ноября"
+        case 12:
+            monthStr = "Декабря"
+            
+        default:
+            monthStr = "none"
+        }
+        
+        self.currNewsDateSmall.text = String(inputDay) + " " + monthStr + " " + String(inputYear)
         
     }
     
