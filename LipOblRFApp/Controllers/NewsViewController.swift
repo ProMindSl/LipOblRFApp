@@ -170,7 +170,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func initShowNews()
     {
         if self._getContMng.loadedNewsList.count == 0
-        {showActivityIndicatory()
+        {
+            showActivityIndicatory()
             showNextNewsPage()
         }
         else
@@ -187,10 +188,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private func showNextNewsPage()
     {
-print("pre num of PAGE \(self._getContMng.getLoadedPageNum(of: GetContentManager.CONTENT_TYPE_NEWS))")
         //showActivityIndicatory()
-        
-        
+                
         _getContMng.loadNextContentSegment(byType: GetContentManager.CONTENT_TYPE_NEWS,
                                                 at: GetContentManager.AJWT_WORD,
                                                 successCompletion:
