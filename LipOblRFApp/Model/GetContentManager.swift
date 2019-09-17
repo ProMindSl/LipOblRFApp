@@ -92,6 +92,7 @@ struct Raion: Codable
     let ord: String
     let note: String
     let namepo: String
+    let eng_name: String
 }
 
 class GetContentManager
@@ -524,6 +525,10 @@ class GetContentManager
             for raion in self.raionTypeList
             {
                 if raion.name == strVal
+                {
+                    raionId = Int(raion.id) ?? 0
+                }
+                if raion.eng_name == strVal
                 {
                     raionId = Int(raion.id) ?? 0
                 }

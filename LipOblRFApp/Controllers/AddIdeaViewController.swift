@@ -219,6 +219,17 @@ class AddIdeaViewController: UITableViewController,
                     print(raion)
                     self._currRaionFromMap = raion
                     self._currRaionId = self._getContMng.getRaionIdByString(by: String(raion))
+                    if self._currRaionId == 0
+                    {
+                        self._alertController.alert(in: self,
+                                               withTitle: "Ошибка определения района",
+                                               andMsg: "Убедитесь, что метка определена в границах Липецкой области",
+                                               andActionTitle: "Понятно",
+                                               completion:
+                                               { text in
+                                                
+                        })
+                    }
                 }
                 // Zip code
                 if let countryCode = placeMark.isoCountryCode
@@ -405,7 +416,7 @@ class AddIdeaViewController: UITableViewController,
         {
             errMsg = "Поле с описанием идеи пустое"
         }
-        else if raion == 0 
+        else if raion == 0
         {
             errMsg = "Район (адрес) не определен"
         }
