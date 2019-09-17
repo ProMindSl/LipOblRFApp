@@ -26,11 +26,11 @@ class AddIdeaViewController: UITableViewController,
     @IBOutlet weak var indLoadState: UIActivityIndicatorView!
     
     // st links
-    private let accMng = AccountManager.shared
-    private let getContMng = GetContentManager.shared
-    private let alertController = AlertController.shared
-    
-    private let setController = SetContentManager()
+    private let _accMng = AccountManager.shared
+    private let _getContMng = GetContentManager.shared
+    private let _alertController = AlertController.shared
+    // other mngs init
+    private let _setController = SetContentManager()
     
     // type picker vars
     var picker: TypePickerView?
@@ -40,6 +40,9 @@ class AddIdeaViewController: UITableViewController,
     private var _currLatitude: Double = 0.0
     private var _currLongitude: Double = 0.0
     private var _currRaionFromMap: String = ""
+    private var _currRaionId = 0
+    private var _currCountryCode: String = "none"
+    private var _currStreet = "none"
     
     override func viewDidLoad()
     {
@@ -60,28 +63,7 @@ class AddIdeaViewController: UITableViewController,
     /*
      *   -------- Public func ----------
     **/
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
-//    {
-//        guard annotation is MKPointAnnotation else { return nil }
-//
-//        let identifier = "Annotation"
-//        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-//
-//        if annotationView == nil
-//        {
-//            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-//            annotationView!.canShowCallout = true
-//        }
-//        else
-//        {
-//            annotationView!.annotation = annotation
-//        }
-//
-//        return annotationView
-//    }
-    
 
-    
     /*
      *   -------- Privete func ----------
     **/
@@ -127,17 +109,17 @@ class AddIdeaViewController: UITableViewController,
         signInCompletion:
         { text in
                                                                                                         // load Scopes
-            if self.getContMng.scopeTypesList.count == 0
+            if self._getContMng.scopeTypesList.count == 0
             {
-                self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_SCOPES,
-                                           at: self.accMng.getAccessToken(),
+                self._getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_SCOPES,
+                                           at: self._accMng.getAccessToken(),
                                            successCompletion:
                                            { text in
                                             print("load ok from add IDEA");
                                             // set picker for scope types
                                             DispatchQueue.main.async
                                             {
-                                                self.picker?.data = GetContentManager.getScopeStringList(from: self.getContMng.scopeTypesList)
+                                                self.picker?.data = self._getContMng.getScopeStringList()
                                             }
                                            },
                                            errorCompletion:
@@ -149,15 +131,15 @@ class AddIdeaViewController: UITableViewController,
             {
                 DispatchQueue.main.async
                 {
-                    self.picker?.data = GetContentManager.getScopeStringList(from: self.getContMng.scopeTypesList)
+                    self.picker?.data = self._getContMng.getScopeStringList()
                 }
             }
 
                                                                                                             // load Raions
-            if self.getContMng.raionTypeList.count == 0
+            if self._getContMng.raionTypeList.count == 0
             {
-                self.getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_RAIONS,
-                                            at: self.accMng.getAccessToken(),
+                self._getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_RAIONS,
+                                            at: self._accMng.getAccessToken(),
                                             successCompletion:
                                             { text in
                                                 print("load ok from add IDEA");
@@ -179,7 +161,7 @@ class AddIdeaViewController: UITableViewController,
         signOutCompletion:
         { text in
             // exit from add idea form if signuot status
-            self.alertController.alert(in: self,
+            self._alertController.alert(in: self,
                                        withTitle: "Вход не выполнен",
                                        andMsg: "Раздел доступен только для зарегистрированных пользователей",
                                        andActionTitle: "Войти",
@@ -223,32 +205,28 @@ class AddIdeaViewController: UITableViewController,
                 
                 // Place details
                 guard let placeMark = placemarks?.first else { return }
-                
-                // Location name
-                if let locationName = placeMark.location
-                {
-                    print(locationName)
-                }
+
+            
                 // Street address
                 if let street = placeMark.thoroughfare
                 {
                     print(street)
+                    self._currStreet = street
                 }
                 // City
-                if let city = placeMark.subAdministrativeArea
+                if let raion = placeMark.subAdministrativeArea
                 {
-                    print(city)
+                    print(raion)
+                    self._currRaionFromMap = raion
+                    self._currRaionId = self._getContMng.getRaionIdByString(by: String(raion))
                 }
                 // Zip code
-                if let zip = placeMark.isoCountryCode
+                if let countryCode = placeMark.isoCountryCode
                 {
-                    print(zip)
+                    print(countryCode)
+                    self._currCountryCode = countryCode
                 }
-                // Country
-                if let country = placeMark.country
-                {
-                    print(country)
-                }
+            
         })
     }
     
@@ -307,22 +285,10 @@ class AddIdeaViewController: UITableViewController,
         }
     }
     
-//    @objc func handleTap(gestureReconizer: UILongPressGestureRecognizer)
-//    {
-//        print("ok taaaab")
-//        let location = gestureReconizer.location(in: mvIdeaLocation)
-//        let coordinate = mvIdeaLocation.convert(location,toCoordinateFrom: mvIdeaLocation)
-//
-//        // Add annotation:
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = coordinate
-//        mvIdeaLocation.addAnnotation(annotation)
-//    }
-    
     private func updateViewState(signInCompletion signInCompFunc: @escaping ((String) -> ()),
                                  signOutCompletion signOutCompFunc: @escaping ((String) -> ()))
     {
-        let signInStatus = accMng.getAccessToken()
+        let signInStatus = _accMng.getAccessToken()
         self.stopLoadIndication()
         
         if signInStatus == AccountManager.REQUEST_LOGIN
@@ -331,7 +297,7 @@ class AddIdeaViewController: UITableViewController,
             signOutCompFunc("not signIn")
             
             // show error alert and relocate to login
-            self.alertController.alert(in: self,
+            self._alertController.alert(in: self,
                                        withTitle: "Вход не выполнен",
                                        andMsg: "Раздел доступен только для зарегистрированных пользователей",
                                        andActionTitle: "Войти",
@@ -344,7 +310,7 @@ class AddIdeaViewController: UITableViewController,
         {
             initLoadIndication()
             
-            accMng.refreshAccessToken(
+            _accMng.refreshAccessToken(
             successCompletion:
             { [unowned self] text in
                 self.stopLoadIndication()
@@ -358,7 +324,7 @@ class AddIdeaViewController: UITableViewController,
                 self.setViewState(in: AccountManager.STATE_SIGNOUT)
                     
                 // show error alert and relocate to login
-                self.alertController.alert(in: self,
+                self._alertController.alert(in: self,
                                            withTitle: "Вход не выполнен",
                                            andMsg: "Раздел доступен только для зарегистрированных пользователей",
                                            andActionTitle: "Войти",
@@ -403,7 +369,7 @@ class AddIdeaViewController: UITableViewController,
     **/
     private func initLoadContentErrorAlert()
     {
-        self.alertController.alert(in: self,
+        self._alertController.alert(in: self,
                                    withTitle: "Ошибка загрузки данных",
                                    andMsg: "Загрузка данных с сервера произошла с ошибкой, повторите позже!",
                                    andActionTitle: "Выйти из формы",
@@ -418,11 +384,10 @@ class AddIdeaViewController: UITableViewController,
     **/
     @IBAction func didSelectAddIdea(_ sender: Any)
     {
-        let scope = GetContentManager.getScopeIdByName(with: tfIdeaScope.text ?? "none",
-                                                       from: getContMng.scopeTypesList)  // gettiog input data
+        let scope = _getContMng.getScopeIdByName(with: tfIdeaScope.text ?? "none")  // gettiog input data
         let title = tfIdeaTitle.text ?? "Пустой заголовок"
         let body = tfIdeaTxtBody.text ?? "Пустое описание"
-        let raion = 1 // currently!!!!!
+        let raion = _currRaionId
         let longitude = _currLongitude
         let latitude = _currLatitude
         
@@ -440,7 +405,7 @@ class AddIdeaViewController: UITableViewController,
         {
             errMsg = "Поле с описанием идеи пустое"
         }
-        else if raion == 0 // !!!!!! внести проверку с запросом в API на принадлежность к одному из типов
+        else if raion == 0 
         {
             errMsg = "Район (адрес) не определен"
         }
@@ -453,8 +418,8 @@ class AddIdeaViewController: UITableViewController,
             // Check SignIn status and get at from account manager
             updateViewState(signInCompletion:                                           // signIn status - ok
             { [unowned self] text in
-                let at = self.accMng.getAccessToken()
-                self.setController.createIdea(withTitle: title,
+                let at = self._accMng.getAccessToken()
+                self._setController.createIdea(withTitle: title,
                                              body: body,
                                              scope: scope,
                                              region: raion,
@@ -464,7 +429,7 @@ class AddIdeaViewController: UITableViewController,
                                              successCompletion:                         // add idea success complete
                                              { [unowned self] text in
                                                 // present alert about success Idea add
-                                                self.alertController.alert(in: self,
+                                                self._alertController.alert(in: self,
                                                                       withTitle: "Получилось!",
                                                                       andMsg: "Ваша идея успешно отправлена на модерацию",
                                                                       andActionTitle: "Ок",
@@ -481,7 +446,7 @@ class AddIdeaViewController: UITableViewController,
                                                 
                                                 // create api answer type string
                                                 var ansMsg = ""
-                                                switch self.accMng.apiANS
+                                                switch self._accMng.apiANS
                                                 {
                                                 case APIVals.API_ANS_TYPE_NOT_DB_CONNECTION:
                                                     ansMsg = "Нет соединения с базой данных"
@@ -497,7 +462,7 @@ class AddIdeaViewController: UITableViewController,
                                                 }
                                                 
                                                 // present alert about error Idea add
-                                                self.alertController.alert(in: self,
+                                                self._alertController.alert(in: self,
                                                                            withTitle: "Ошибка!",
                                                                            andMsg: ansMsg,
                                                                            andActionTitle: "Ок",
@@ -523,7 +488,7 @@ class AddIdeaViewController: UITableViewController,
         
         if errMsg != ""                                                               // if One of requared inputs - not ok
         {
-            alertController.alert(in: self,
+            _alertController.alert(in: self,
                                   withTitle: "Не все поля заполнены",
                                   andMsg: errMsg,
                                   andActionTitle: "Заполнить",

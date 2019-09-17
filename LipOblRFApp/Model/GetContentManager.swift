@@ -161,66 +161,66 @@ class GetContentManager
     /*
      *   -------- Static methods ----------
     **/
-    public static func getScopeStringList(from scopeTypeList: [Scope]) -> [String]
-    {
-        var scopeNameList: [String] = []
-        
-        for i in 0..<scopeTypeList.count
-        {
-            var nameVal = scopeTypeList[i].name
-            
-            // remove some strange text from db data
-            if nameVal.contains("&shy;")
-            {
-                nameVal = nameVal.replacingOccurrences(of: "&shy;", with: "")
-            }
-            scopeNameList.append(nameVal)
-        }
-        
-        return scopeNameList
-    }
-    
-    public static func getScopeIdList(from scopeTypeList: [Scope]) -> [String]
-    {
-        var scopeNameList: [String] = []
-        
-        for i in 0..<scopeTypeList.count
-        {
-            scopeNameList.append(scopeTypeList[i].id)
-        }
-        
-        return scopeNameList
-    }
-    
-    public static func getScopeIdByName(with name: String, from scopeTypeList: [Scope]) -> Int
-    {
-        var scopeID = 0
-        
-        for i in 0..<scopeTypeList.count
-        {
-            if scopeTypeList[i].name == name
-            {
-                scopeID = Int(scopeTypeList[i].id) ?? 0
-            }
-        }
-        
-        return scopeID
-    }
-    
-    public static func getScopeNameById(with id: Int, from scopeTypeList: [Scope]) -> String
-    {
-        var scopeName = "none"
-        
-        for i in 0..<scopeTypeList.count
-        {
-            if Int(scopeTypeList[i].id) == id
-            {
-                scopeName = scopeTypeList[i].name
-            }
-        }
-        
-        return scopeName
-    }
+//    public static func getScopeStringList(from scopeTypeList: [Scope]) -> [String]
+//    {
+//        var scopeNameList: [String] = []
+//
+//        for i in 0..<scopeTypeList.count
+//        {
+//            var nameVal = scopeTypeList[i].name
+//
+//            // remove some strange text from db data
+//            if nameVal.contains("&shy;")
+//            {
+//                nameVal = nameVal.replacingOccurrences(of: "&shy;", with: "")
+//            }
+//            scopeNameList.append(nameVal)
+//        }
+//
+//        return scopeNameList
+//    }
+//
+//    public static func getScopeIdList(from scopeTypeList: [Scope]) -> [String]
+//    {
+//        var scopeNameList: [String] = []
+//
+//        for i in 0..<scopeTypeList.count
+//        {
+//            scopeNameList.append(scopeTypeList[i].id)
+//        }
+//
+//        return scopeNameList
+//    }
+//
+//    public static func getScopeIdByName(with name: String, from scopeTypeList: [Scope]) -> Int
+//    {
+//        var scopeID = 0
+//
+//        for i in 0..<scopeTypeList.count
+//        {
+//            if scopeTypeList[i].name == name
+//            {
+//                scopeID = Int(scopeTypeList[i].id) ?? 0
+//            }
+//        }
+//
+//        return scopeID
+//    }
+//
+//    public static func getScopeNameById(with id: Int, from scopeTypeList: [Scope]) -> String
+//    {
+//        var scopeName = "none"
+//
+//        for i in 0..<scopeTypeList.count
+//        {
+//            if Int(scopeTypeList[i].id) == id
+//            {
+//                scopeName = scopeTypeList[i].name
+//            }
+//        }
+//
+//        return scopeName
+//    }
     
     public static func clearTextFromHtmlTegs(htmlText: String) -> String
     {
@@ -450,7 +450,7 @@ class GetContentManager
                         {
                         case GetContentManager.CONTENT_TYPE_NEWS:             // load news
                             
-                            if offset == 0 && self.loadedNewsList.count > 0 // !!!!!! CURRENTLY !!!!!!!! fix double first load BUG 
+                            if offset == 0 && self.loadedNewsList.count > 0 // !!!!!! CURRENTLY !!!!!!!! fix first double load BUG 
                             {
                                 successFunc("ok")
                                 return
@@ -510,7 +510,116 @@ class GetContentManager
         return numOfPage
     }
     
+    /*
+     *   Get raion id by string value
+     *   @arguments: string value of raion
+     *   @returns: int value if raion id
+     **/
+    public func getRaionIdByString(by strVal: String) -> Int
+    {
+        var raionId = 0
+        
+        if self.raionTypeList.count != 0
+        {
+            for raion in self.raionTypeList
+            {
+                if raion.name == strVal
+                {
+                    raionId = Int(raion.id) ?? 0
+                }
+            }
+        }
+                
+        return raionId
+    }
     
+    /*
+     *   Get specific values methods for Scope Data
+     *
+     **/
+    public func getScopeStringList() -> [String]
+    {
+        var scopeNameList: [String] = []
+        
+        if self.scopeTypesList.count != 0
+        {
+            for scope in self.scopeTypesList
+            {
+                var nameVal = scope.name
+                
+                // remove some strange text from db data
+                if nameVal.contains("&shy;")
+                {
+                    nameVal = nameVal.replacingOccurrences(of: "&shy;", with: "")
+                }
+                if nameVal.contains("--")
+                {
+                    nameVal = nameVal.replacingOccurrences(of: "--", with: "")
+                }
+                scopeNameList.append(nameVal)
+            }
+        }
+        
+        return scopeNameList
+    }
+    
+    public func getScopeIdList() -> [String]
+    {
+        var scopeIdList: [String] = []
+        
+        if self.scopeTypesList.count != 0
+        {
+            for scope in self.scopeTypesList
+            {
+                scopeIdList.append(scope.id)
+            }
+        }
+        return scopeIdList
+    }
+    
+    public func getScopeIdByName(with name: String) -> Int
+    {
+        var scopeID = 0
+        
+        if self.scopeTypesList.count != 0
+        {
+            for scope in self.scopeTypesList
+            {
+                var fixName = scope.name
+                if fixName.contains("&shy;")
+                {
+                    fixName = fixName.replacingOccurrences(of: "&shy;", with: "")
+                }
+                if fixName.contains("--")
+                {
+                    fixName = fixName.replacingOccurrences(of: "--", with: "")
+                }
+                
+                if fixName == name
+                {
+                    scopeID = Int(scope.id) ?? 0
+                }
+            }
+        }
+        return scopeID
+    }
+    
+    public func getScopeNameById(with id: Int) -> String
+    {
+        var scopeName = "none"
+        
+        if self.scopeTypesList.count != 0
+        {
+            for scope in self.scopeTypesList
+            {
+                if Int(scope.id) == id
+                {
+                    scopeName = scope.name
+                }
+            }
+        }
+        return scopeName
+    }
     
     /*
      *   -------- Private methods ----------
