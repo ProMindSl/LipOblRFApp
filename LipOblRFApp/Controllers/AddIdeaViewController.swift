@@ -9,9 +9,11 @@
 import UIKit
 import MapKit
 
-class AddIdeaViewController: UITableViewController, UITextFieldDelegate
+class AddIdeaViewController: UITableViewController,
+                             UITextFieldDelegate,
+                             MKMapViewDelegate
+    
 {
-
     // outlets
     @IBOutlet weak var tfIdeaScope: UITextField!
     @IBOutlet weak var tfMapSearch: UITextField!
@@ -34,6 +36,10 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
     var picker: TypePickerView?
     var pickerAccessory: UIToolbar?
     
+    // current idea input vars
+    private var _currLatitude: Double = 0.0
+    private var _currLongitude: Double = 0.0
+    private var _currRaionFromMap: String = ""
     
     override func viewDidLoad()
     {
@@ -54,7 +60,27 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
     /*
      *   -------- Public func ----------
     **/
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+//    {
+//        guard annotation is MKPointAnnotation else { return nil }
+//
+//        let identifier = "Annotation"
+//        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+//
+//        if annotationView == nil
+//        {
+//            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//            annotationView!.canShowCallout = true
+//        }
+//        else
+//        {
+//            annotationView!.annotation = annotation
+//        }
+//
+//        return annotationView
+//    }
     
+
     
     /*
      *   -------- Privete func ----------
@@ -65,7 +91,7 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
         picker = TypePickerView()
         picker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         picker?.backgroundColor = UIColor.white
-        picker?.data = ["Категории"]
+        picker?.data = ["Загрузка категорий"]
         
         tfIdeaScope.inputView = picker
         
@@ -126,7 +152,7 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
                     self.picker?.data = GetContentManager.getScopeStringList(from: self.getContMng.scopeTypesList)
                 }
             }
-            
+
                                                                                                             // load Raions
             if self.getContMng.raionTypeList.count == 0
             {
@@ -135,8 +161,8 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
                                             successCompletion:
                                             { text in
                                                 print("load ok from add IDEA");
-                                                
-                                                
+
+
                                             },
                                             errorCompletion:
                                             { text in
@@ -145,10 +171,10 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
             }
             else
             {
-                
+
             }
-            
-            
+
+
         },
         signOutCompletion:
         { text in
@@ -163,7 +189,69 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
                                        })
         })
         
+        // init Map recognizer
+        let recognizer = UILongPressGestureRecognizer()
+        recognizer.addTarget(self, action: #selector(handleLongPressGesture(_:)))
+        mvIdeaLocation.addGestureRecognizer(recognizer)
     }
+    
+    @objc func handleLongPressGesture(_ gestureRecognizer: UILongPressGestureRecognizer)
+    {
+        // remove old annotation
+        let allAnnotations = mvIdeaLocation.annotations
+        mvIdeaLocation.removeAnnotations(allAnnotations)
+        
+        // get coords
+        let location = gestureRecognizer.location(in: mvIdeaLocation)
+        let coordinate = mvIdeaLocation.convert(location,toCoordinateFrom: mvIdeaLocation)
+        // update global coords
+        _currLatitude = coordinate.latitude
+        _currLongitude = coordinate.longitude
+        
+        
+        // Add annotation:
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        mvIdeaLocation.addAnnotation(annotation)
+        
+        // get address for touch coordinates.
+        let geoCoder = CLGeocoder()
+        let locationT = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        geoCoder.reverseGeocodeLocation(locationT, completionHandler:
+        {
+                placemarks, error -> Void in
+                
+                // Place details
+                guard let placeMark = placemarks?.first else { return }
+                
+                // Location name
+                if let locationName = placeMark.location
+                {
+                    print(locationName)
+                }
+                // Street address
+                if let street = placeMark.thoroughfare
+                {
+                    print(street)
+                }
+                // City
+                if let city = placeMark.subAdministrativeArea
+                {
+                    print(city)
+                }
+                // Zip code
+                if let zip = placeMark.isoCountryCode
+                {
+                    print(zip)
+                }
+                // Country
+                if let country = placeMark.country
+                {
+                    print(country)
+                }
+        })
+    }
+    
     @objc func didSelect(_ sender: UIButton)
     {
         switch sender
@@ -218,6 +306,19 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
             }
         }
     }
+    
+//    @objc func handleTap(gestureReconizer: UILongPressGestureRecognizer)
+//    {
+//        print("ok taaaab")
+//        let location = gestureReconizer.location(in: mvIdeaLocation)
+//        let coordinate = mvIdeaLocation.convert(location,toCoordinateFrom: mvIdeaLocation)
+//
+//        // Add annotation:
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = coordinate
+//        mvIdeaLocation.addAnnotation(annotation)
+//    }
+    
     private func updateViewState(signInCompletion signInCompFunc: @escaping ((String) -> ()),
                                  signOutCompletion signOutCompFunc: @escaping ((String) -> ()))
     {
@@ -322,8 +423,8 @@ class AddIdeaViewController: UITableViewController, UITextFieldDelegate
         let title = tfIdeaTitle.text ?? "Пустой заголовок"
         let body = tfIdeaTxtBody.text ?? "Пустое описание"
         let raion = 1 // currently!!!!!
-        let longitude = 52.322343
-        let latitude = 53.231232
+        let longitude = _currLongitude
+        let latitude = _currLatitude
         
         var errMsg = ""
         
