@@ -16,6 +16,13 @@ class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var tabBtnNews: UIButton!
     @IBOutlet weak var tabBtnIdeaClimeMenu: UIButton!
     
+    var loadActivityIndicator:UIActivityIndicatorView?
+    
+    // st links
+    private let _accMng = AccountManager.shared
+    private let _getContMng = GetContentManager.shared
+    private let _alertController = AlertController.shared
+    
     // cell count from Model
     private var _cellCount = 5
     private var _cellReuseIdentifier = "ideaCell"
@@ -33,6 +40,8 @@ class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // other options
         tvIdeaList.separatorStyle = .none
+        initUI()
+        
     }
     
     /*
@@ -90,6 +99,110 @@ class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewD
             sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEACLIME_MENU)
         default:
             break
+        }
+    }
+    
+    /*
+     *   Signin status checking method
+     **/
+    private func updateViewState(signInCompletion signInCompFunc: @escaping ((String) -> ()),
+                                 signOutCompletion signOutCompFunc: @escaping ((String) -> ()))
+    {
+        let signInStatus = _accMng.getAccessToken()
+        self.stopLoadIndication()
+        
+        if signInStatus == AccountManager.REQUEST_LOGIN
+        {
+            signOutCompFunc("not signIn")
+            
+            // show error alert and relocate to login
+            self._alertController.alert(in: self,
+                                        withTitle: "Вход не выполнен",
+                                        andMsg: "Раздел доступен только для зарегистрированных пользователей",
+                                        andActionTitle: "Войти",
+                                        completion:
+                { [unowned self] text in
+                    self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
+            })
+        }
+        else if signInStatus == AccountManager.REQUEST_REFRESH_AT
+        {
+            initLoadIndication()
+            
+            _accMng.refreshAccessToken(
+                successCompletion:
+                { [unowned self] text in
+                    self.stopLoadIndication()
+                    signInCompFunc("signIn ok")
+                },
+                errorCompletion:
+                { [unowned self] text in
+                    self.stopLoadIndication()
+                    
+                    // show error alert and relocate to login
+                    self._alertController.alert(in: self,
+                                                withTitle: "Вход не выполнен",
+                                                andMsg: "Раздел доступен только для зарегистрированных пользователей",
+                                                andActionTitle: "Войти",
+                                                completion:
+                        { [unowned self] text in
+                            signOutCompFunc("not signIn")
+                            self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
+                    })
+                    
+            })
+        }
+        else
+        {
+            signInCompFunc("signIn ok")
+        }
+    }
+    
+    /*
+     *   First init UI
+     **/
+    private func initUI()
+    {
+        // init ai
+        DispatchQueue.main.async
+        {
+                
+            self.loadActivityIndicator = UIActivityIndicatorView(style: .gray)
+            self.loadActivityIndicator?.center = self.view.center
+            self.view.addSubview(self.loadActivityIndicator!)
+            self.loadActivityIndicator?.hidesWhenStopped = true
+        }
+        
+        initLoadIndication()
+        
+        // check/update signin status
+        updateViewState(
+        signInCompletion:
+        { text in
+            self.stopLoadIndication()
+            
+        },
+        signOutCompletion:
+        { text in
+            self.stopLoadIndication()
+        })
+    }
+    
+    /*
+     *   Load indication
+     **/
+    private func initLoadIndication()
+    {
+        DispatchQueue.main.async
+        {
+            self.loadActivityIndicator?.startAnimating()
+        }
+    }
+    private func stopLoadIndication()
+    {
+        DispatchQueue.main.async
+        {
+            self.loadActivityIndicator?.stopAnimating()
         }
     }
 }
