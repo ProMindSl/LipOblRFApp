@@ -139,8 +139,8 @@ class GetContentManager
      *   -------- Private const ----------
     **/
     // API urls
-    private let API_URL_GET_OWN_IDEASCLAIM = ""
-    private let API_URL_GET_ALL_IDEASCLAIM = ""
+    private let API_URL_GET_OWN_IDEASCLAIM = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_user_ideas.php"
+    private let API_URL_GET_ALL_IDEASCLAIM = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_ideas.php"
     private let API_URL_GET_SCOPE_TYPES = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_scope_types.php"
     private let API_URL_GET_RAION_TYPES = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_raion_types.php"
     private let API_URL_GET_CATEGORY_TYPES = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/get_category_types.php"
@@ -290,6 +290,10 @@ class GetContentManager
             
         case GetContentManager.CONTENT_TYPE_CATEGORY:
             urlType = API_URL_GET_CATEGORY_TYPES
+        
+        case GetContentManager.CONTENT_TYPE_IDEAS_OWN,
+             GetContentManager.CONTENT_TYPE_CLAIMS_OWN:
+            urlType = API_URL_GET_OWN_IDEASCLAIM
             
         default:
             return
@@ -354,7 +358,19 @@ class GetContentManager
                             let res = try JSONDecoder().decode([Category].self, from: data)
                             self.categoryTypeList = res
                             successFunc("ok")
+                        
+                        case GetContentManager.CONTENT_TYPE_IDEAS_OWN:             // update Own Ideas
                             
+                            let res = try JSONDecoder().decode([Idea].self, from: data)
+                            self.ideasOwnList = res
+                            successFunc("ok")
+                        
+                        case GetContentManager.CONTENT_TYPE_IDEAS_OWN:             // update Own Claims
+                            
+                            let res = try JSONDecoder().decode([Idea].self, from: data)
+                            self.claimOwnList = res
+                            successFunc("ok")
+                        
                         default:
                             return
                         }
@@ -528,10 +544,10 @@ class GetContentManager
                 {
                     raionId = Int(raion.id) ?? 0
                 }
-                /*if raion.eng_name == strVal
-                {
-                    raionId = Int(raion.id) ?? 0
-                }*/
+//                if raion.eng_name == strVal
+//                {
+//                    raionId = Int(raion.id) ?? 0
+//                }
             }
         }
                 

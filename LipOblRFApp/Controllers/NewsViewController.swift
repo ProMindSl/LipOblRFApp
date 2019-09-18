@@ -72,8 +72,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let numOfRow = Int(indexPath.row)
         
         // costomize image content from API
-        if let urlStr = self._getContMng.loadedNewsList[numOfRow].imgs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        if var urlStr = (self._getContMng.loadedNewsList[numOfRow].imgs[0]) as String?
         {
+            urlStr = urlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
             let imgUrl = URL(string: urlStr)
             cell.ivNewsPic.kf.indicatorType = .activity
             cell.ivNewsPic.kf.setImage(

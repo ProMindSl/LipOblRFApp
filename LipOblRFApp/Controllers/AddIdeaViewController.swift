@@ -224,10 +224,21 @@ class AddIdeaViewController: UITableViewController,
                         self._alertController.alert(in: self,
                                                withTitle: "Ошибка определения района",
                                                andMsg: "Убедитесь, что метка определена в границах Липецкой области",
-                                               andActionTitle: "Понятно",
+                                               andActionTitle: "Повторить",
                                                completion:
                                                { text in
                                                 
+                        })
+                    }
+                    else
+                    {
+                        self._alertController.alert(in: self,
+                                                    withTitle: "Район определен",
+                                                    andMsg: "\(self._currRaionFromMap) \((self._currStreet != "none" ? ", "+self._currStreet : ""))",
+                                                    andActionTitle: "Продолжить",
+                                                    completion:
+                            { text in
+                                
                         })
                     }
                 }
