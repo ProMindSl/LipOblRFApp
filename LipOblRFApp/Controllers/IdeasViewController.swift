@@ -24,7 +24,7 @@ class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewD
     private let _alertController = AlertController.shared
     
     // cell count from Model
-    private var _cellCount = 5
+    private var _cellCount = 0
     private var _cellReuseIdentifier = "ideaCell"
     private var _cellHeight = 180.0
     
@@ -61,6 +61,8 @@ class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewD
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: _cellReuseIdentifier, for: indexPath) as! IdeaViewCell
         
+        let numOfRow = indexPath.row
+        
         // set bg for cell
         if (indexPath.row % 2) == 0
         {
@@ -70,6 +72,15 @@ class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewD
         {
             cell.ivBG.image = UIImage(named: "btn_bg_idea2.png")
         }
+        // autor name
+        cell.labelAutor.text = _accMng.getUserParsms()["fio"] as? String
+        let ideaId = Int(_getContMng.ideasOwnList[numOfRow].sphera)!
+        // scope label
+        cell.labelScope.text = _getContMng.getScopeNameById(with: ideaId)
+        // idea label
+        cell.lablelTitle.text = _getContMng.ideasOwnList[numOfRow].name
+        // idea text
+        cell.labelTextBody.text = _getContMng.ideasOwnList[numOfRow].txt
         
         return cell
     }
@@ -165,8 +176,7 @@ class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewD
     {
         // init ai
         DispatchQueue.main.async
-        {
-                
+        {                
             self.loadActivityIndicator = UIActivityIndicatorView(style: .gray)
             self.loadActivityIndicator?.center = self.view.center
             self.view.addSubview(self.loadActivityIndicator!)
@@ -181,6 +191,46 @@ class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewD
         { text in
             self.stopLoadIndication()
             
+            if self._getContMng.ideasOwnList.count == 0                         // load user ideas (if needed)
+            {
+                self._getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_IDEAS_OWN,
+                                             at: self._accMng.getAccessToken(),
+                                             successCompletion:
+                                             { text in
+                                                print(self._getContMng.ideasOwnList)
+                                                self._cellCount = self._getContMng.ideasOwnList.count
+                                                
+                                                DispatchQueue.main.async
+                                                {
+                                                    self.tvIdeaList.reloadData()
+                                                }
+                                             },
+                                             errorCompletion:
+                                             { text in
+                                                print("error load ideas list")
+                                             }
+                )
+            }
+            
+            if self._getContMng.scopeTypesList.count == 0
+            {
+                self._getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_SCOPES,
+                                             at: self._accMng.getAccessToken(),
+                                             successCompletion:
+                                             { text in
+                                                    self._cellCount = self._getContMng.ideasOwnList.count
+                                                
+                                                    DispatchQueue.main.async
+                                                    {
+                                                       self.tvIdeaList.reloadData()
+                                                    }
+                                              },
+                                              errorCompletion:
+                                              { text in
+                                                    print("error load ideas list")
+                                              }
+                )
+            }
         },
         signOutCompletion:
         { text in

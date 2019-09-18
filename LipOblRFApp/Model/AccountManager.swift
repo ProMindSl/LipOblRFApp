@@ -270,8 +270,6 @@ class AccountManager
             && self._accessToken != "none-AT"
             && self._refreshToken != "none-RT"
         {
-            print("user params OK")
-            
             return [
                 "userID" : _atPayload["uid"] ?? "none",
                 "userLogin" : _rtPayload["uln"] ?? "none",

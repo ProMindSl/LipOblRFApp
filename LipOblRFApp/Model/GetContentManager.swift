@@ -70,11 +70,11 @@ struct Idea: Codable
     let date_plan: String
     let flagkrest: String
     let flagsmi: String
-    let idtagrepl: String
+    let idtagrepl: String?
     let flagtodo: String
     let flagreply: String
     let flagnocomp: String
-    let resolu: String
+    let resolu: String?
     let socnick: String
     let flagdate: String
     let forget: String
