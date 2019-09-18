@@ -72,17 +72,23 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let numOfRow = Int(indexPath.row)
         
         // costomize image content from API
-        let urlStr = self._getContMng.loadedNewsList[numOfRow].imgs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let imgUrl = URL(string: urlStr)
-        cell.ivNewsPic.kf.indicatorType = .activity
-        cell.ivNewsPic.kf.setImage(
-            with: imgUrl,
-            placeholder: UIImage(named: "placeholderImage"),
-            options: [
-                .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1)),
-                .cacheOriginalImage
-            ])
+        if let urlStr = self._getContMng.loadedNewsList[numOfRow].imgs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        {
+            let imgUrl = URL(string: urlStr)
+            cell.ivNewsPic.kf.indicatorType = .activity
+            cell.ivNewsPic.kf.setImage(
+                with: imgUrl,
+                placeholder: UIImage(named: "placeholderImage"),
+                options: [
+                    .scaleFactor(UIScreen.main.scale),
+                    .transition(.fade(1)),
+                    .cacheOriginalImage
+                ])
+        }
+        else
+        {
+            cell.ivNewsPic.image = UIImage(named: "btn_bg_2.png")
+        }
         cell.ivNewsPic.layer.cornerRadius = 8
         
         // costomize text content from API

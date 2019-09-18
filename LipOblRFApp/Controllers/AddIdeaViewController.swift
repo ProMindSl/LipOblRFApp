@@ -143,7 +143,7 @@ class AddIdeaViewController: UITableViewController,
                                             successCompletion:
                                             { text in
                                                 print("load ok from add IDEA");
-
+                                                print(self._getContMng.scopeTypesList)
 
                                             },
                                             errorCompletion:

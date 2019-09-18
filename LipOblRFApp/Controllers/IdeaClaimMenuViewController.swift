@@ -49,7 +49,7 @@ class IdeaClaimMenuViewController: UIViewController
     {
         [btnIdeaList,btnIdeaCreate].forEach(
         {
-                $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
+            $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         })
     }
     @objc private func didSelect(_ sender: UIButton)
@@ -106,10 +106,11 @@ class IdeaClaimMenuViewController: UIViewController
                                   withTitle: "Вход не выполнен",
                                   andMsg: "Раздел доступен только для зарегистрированных пользователей",
                                   andActionTitle: "Войти",
-                                  completion: { [unowned self] text in
+                                  completion:
+                                  { [unowned self] text in
                                     
                                         self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
-                                   })
+                                  })
             
         }
         else if signInStatus == AccountManager.REQUEST_REFRESH_AT
