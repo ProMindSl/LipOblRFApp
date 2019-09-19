@@ -11,7 +11,8 @@ import MapKit
 
 class AddIdeaViewController: UITableViewController,
                              UITextFieldDelegate,
-                             MKMapViewDelegate
+                             MKMapViewDelegate,
+                             CLLocationManagerDelegate
     
 {
     // outlets
@@ -35,6 +36,8 @@ class AddIdeaViewController: UITableViewController,
     // type picker vars
     var picker: TypePickerView?
     var pickerAccessory: UIToolbar?
+    
+    var locationManager = CLLocationManager()
     
     // current idea input vars
     private var _currLatitude: Double = 0.0
@@ -63,7 +66,16 @@ class AddIdeaViewController: UITableViewController,
     /*
      *   -------- Public func ----------
     **/
-
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        if let location = locations.last
+        {
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.mvIdeaLocation.setRegion(region, animated: true)
+        }
+    }
+    
     /*
      *   -------- Privete func ----------
     **/
@@ -175,6 +187,26 @@ class AddIdeaViewController: UITableViewController,
         let recognizer = UILongPressGestureRecognizer()
         recognizer.addTarget(self, action: #selector(handleLongPressGesture(_:)))
         mvIdeaLocation.addGestureRecognizer(recognizer)
+        
+        mvIdeaLocation.showsUserLocation = true
+        
+        if CLLocationManager.locationServicesEnabled() == true
+        {
+            
+            if CLLocationManager.authorizationStatus() == .restricted
+            || CLLocationManager.authorizationStatus() == .denied
+            ||  CLLocationManager.authorizationStatus() == .notDetermined
+            {
+                locationManager.requestWhenInUseAuthorization()
+            }
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()
+        }
+        else
+        {
+            print("location services or GPS is off")
+        }
     }
     
     @objc func handleLongPressGesture(_ gestureRecognizer: UILongPressGestureRecognizer)
