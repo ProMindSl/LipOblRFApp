@@ -113,7 +113,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
             && accMng.currentSignState == AccountManager.STATE_SIGNIN
         {
             msgTitle = "Вход выполнен"
-            message = "Добро пожаловать, \(self.loginUserParams["fio"] as! String) !"
+            message = "Добро пожаловать, \(self.loginUserParams["fio"] as! String)!"
         }
         else // not success authentication
         {

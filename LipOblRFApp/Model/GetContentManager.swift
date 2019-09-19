@@ -162,67 +162,6 @@ class GetContentManager
     /*
      *   -------- Static methods ----------
     **/
-//    public static func getScopeStringList(from scopeTypeList: [Scope]) -> [String]
-//    {
-//        var scopeNameList: [String] = []
-//
-//        for i in 0..<scopeTypeList.count
-//        {
-//            var nameVal = scopeTypeList[i].name
-//
-//            // remove some strange text from db data
-//            if nameVal.contains("&shy;")
-//            {
-//                nameVal = nameVal.replacingOccurrences(of: "&shy;", with: "")
-//            }
-//            scopeNameList.append(nameVal)
-//        }
-//
-//        return scopeNameList
-//    }
-//
-//    public static func getScopeIdList(from scopeTypeList: [Scope]) -> [String]
-//    {
-//        var scopeNameList: [String] = []
-//
-//        for i in 0..<scopeTypeList.count
-//        {
-//            scopeNameList.append(scopeTypeList[i].id)
-//        }
-//
-//        return scopeNameList
-//    }
-//
-//    public static func getScopeIdByName(with name: String, from scopeTypeList: [Scope]) -> Int
-//    {
-//        var scopeID = 0
-//
-//        for i in 0..<scopeTypeList.count
-//        {
-//            if scopeTypeList[i].name == name
-//            {
-//                scopeID = Int(scopeTypeList[i].id) ?? 0
-//            }
-//        }
-//
-//        return scopeID
-//    }
-//
-//    public static func getScopeNameById(with id: Int, from scopeTypeList: [Scope]) -> String
-//    {
-//        var scopeName = "none"
-//
-//        for i in 0..<scopeTypeList.count
-//        {
-//            if Int(scopeTypeList[i].id) == id
-//            {
-//                scopeName = scopeTypeList[i].name
-//            }
-//        }
-//
-//        return scopeName
-//    }
-    
     public static func clearTextFromHtmlTegs(htmlText: String) -> String
     {
         var clearText = htmlText
@@ -245,6 +184,32 @@ class GetContentManager
 
         return clearText
     }
+    
+    public static func getShortFio(from fullFio: String) -> String
+    {
+        let fioArr = fullFio.split(separator: " ")
+        var shortFio = ""
+        
+        for i in 0..<fioArr.count //if fioArr.count == 3
+        {
+//            let fam = fioArr[0]
+//            let shortName = fioArr[1].prefix(1) + "."
+//            let shortOtch = fioArr[2].prefix(1) + "."
+//
+//            return String(fam + shortName + shortOtch)
+            if i == 0
+            {
+                shortFio = String(fioArr[0])
+            }
+            else
+            {
+                shortFio.append(" " + fioArr[i].prefix(1) + ".")
+            }
+        }
+        
+        return shortFio
+    }
+        
     
     /*
      *   -------- Init ----------

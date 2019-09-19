@@ -16,6 +16,7 @@ class IdeaViewCell: UITableViewCell
     @IBOutlet weak var labelAutor: UILabel!
     @IBOutlet weak var labelScope: UILabel!
     @IBOutlet weak var ivBG: UIImageView!
+    @IBOutlet weak var labelOpenStatus: UILabel!
     
     
     override func awakeFromNib()

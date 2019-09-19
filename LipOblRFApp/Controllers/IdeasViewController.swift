@@ -73,7 +73,8 @@ class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewD
             cell.ivBG.image = UIImage(named: "btn_bg_idea2.png")
         }
         // autor name
-        cell.labelAutor.text = _accMng.getUserParsms()["fio"] as? String
+        let fullFio = _accMng.getUserParsms()["fio"] as? String
+        cell.labelAutor.text = GetContentManager.getShortFio(from: fullFio!)
         let ideaId = Int(_getContMng.ideasOwnList[numOfRow].sphera)!
         // scope label
         cell.labelScope.text = _getContMng.getScopeNameById(with: ideaId)
