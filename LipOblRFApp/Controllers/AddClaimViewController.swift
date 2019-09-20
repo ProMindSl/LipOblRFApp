@@ -117,7 +117,7 @@ class AddClaimViewController:   UITableViewController,
                                                  at: self._accMng.getAccessToken(),
                                                  successCompletion:
                                                 { text in
-                                                    print("load ok from add IDEA");
+                                                    print("load ok from add CLAIM");
                                                     // set picker for scope types
                                                     DispatchQueue.main.async
                                                     {
@@ -419,11 +419,16 @@ class AddClaimViewController:   UITableViewController,
         let scope = _getContMng.getScopeIdByName(with: tfClaimCategory.text ?? "none")  // gettiog input data
         let title = tfClaimTitle.text ?? "Пустой заголовок"
         let body = tfClaimTxtBody.text ?? "Пустое описание"
-        let raion = _currRaionId
+        var raion = _currRaionId
         let longitude = _currLongitude
         let latitude = _currLatitude
         
         var errMsg = ""
+        // correct raion
+        if raion == 0
+        {
+            raion = 21 // CURRENT !!! need get from getContMng
+        }
         
         if scope == 0                                                                   // check data in inputs
         {
@@ -437,16 +442,12 @@ class AddClaimViewController:   UITableViewController,
         {
             errMsg = "Поле с описанием жалобы пустое"
         }
-        else if raion == 0
-        {
-            errMsg = "Район (адрес) не определен"
-        }
-        else if longitude == 0 || latitude == 0
-        {
-            errMsg = "Метка расположения не задана на карте"
-        }
+//        else if longitude == 0 || latitude == 0
+//        {
+//            errMsg = "Метка расположения не задана на карте"
+//        }
         else                                                                            // if all requared inputs - ok
-        { print("in here")
+        { print("add claim OK")
             // Check SignIn status and get at from account manager
             updateViewState(
                 signInCompletion:                                                       // signIn status - ok
@@ -464,7 +465,7 @@ class AddClaimViewController:   UITableViewController,
                             // present alert about success Idea add
                             self._alertController.alert(in: self,
                                                         withTitle: "Получилось!",
-                                                        andMsg: "Ваша идея успешно отправлена на модерацию",
+                                                        andMsg: "Ваша жалоба успешно отправлена на модерацию",
                                                         andActionTitle: "Ок",
                                                         completion:
                                                         { [unowned self] text in
