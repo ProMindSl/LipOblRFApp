@@ -500,19 +500,19 @@ class AddClaimViewController:   UITableViewController,
                                                         andMsg: ansMsg,
                                                         andActionTitle: "Ок",
                                                         completion:
-                                { [unowned self] text in
-                                    DispatchQueue.main.async
-                                    {
-                                        self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
-                                    }
-                                })
-                    })
+                                                        { [unowned self] text in
+                                                            DispatchQueue.main.async
+                                                            {
+                                                                self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                            }
+                                                        })
+                        })
                     
-                },
-                signOutCompletion:                                                        // signOut status
-                { text in
-                    print("out from form")
-                })
+                    },
+                    signOutCompletion:                                                        // signOut status
+                    { text in
+                        print("out from form")
+                    })
             
             
             
