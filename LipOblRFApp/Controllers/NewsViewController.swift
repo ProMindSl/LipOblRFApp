@@ -258,45 +258,53 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         && currDay == inputDay
         {
             self.currNewsDate.text = "Сегодня"
+            _getContMng.currentNewsDateStr = "Сегодня"
         }
         else if currYear == inputYear
             && currMonth == inputMonth
             && currDay == (inputDay + 1)
         {
             self.currNewsDate.text = "Вчера"
+            _getContMng.currentNewsDateStr = "Вчера"
         }
         else if currYear == inputYear
             && currMonth == inputMonth
             && currDay == (inputDay + 2)
         {
             self.currNewsDate.text = "Позавчера"
+            _getContMng.currentNewsDateStr = "Позавчера"
         }
         else if currYear == inputYear
             && currMonth == inputMonth
             && (currDay < (inputDay + 7)) && (currDay >= (inputDay + 3))
         {
             self.currNewsDate.text = "На этой неделе"
+            _getContMng.currentNewsDateStr = "На этой неделе"
         }
         else if currYear == inputYear
             && currMonth == inputMonth
             && (currDay >= (inputDay + 7)) && (currDay <= (inputDay + 14))
         {
             self.currNewsDate.text = "На прошлой неделе неделе"
+            _getContMng.currentNewsDateStr = "На прошлой неделе неделе"
         }
         else if currYear == inputYear
             && currMonth == inputMonth
             && currDay > (inputDay + 14)
         {
             self.currNewsDate.text = "В этом месяце"
+            _getContMng.currentNewsDateStr = "В этом месяце"
         }
         else if currYear == inputYear
             && currMonth == (inputMonth+1)
         {
             self.currNewsDate.text = "В прошлом месяце"
+            _getContMng.currentNewsDateStr = "В прошлом месяце"
         }
         else if currYear == (inputYear - 1)
         {
             self.currNewsDate.text = "В прошлом году"
+            _getContMng.currentNewsDateStr = "В прошлом году"
         }
         
         // set small date numeric label
@@ -333,7 +341,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         self.currNewsDateSmall.text = String(inputDay) + " " + monthStr + " " + String(inputYear)
-        
+        _getContMng.currentNewsDateTime = String(inputDay) + " " + monthStr + " " + String(inputYear)
     }
     
     private func addZeroToSingleChar(to oneCharString: String) -> String

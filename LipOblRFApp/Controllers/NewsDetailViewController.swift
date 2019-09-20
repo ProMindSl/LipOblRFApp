@@ -13,8 +13,8 @@ class NewsDetailViewController: UITableViewController
 {
     // outlets
     @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var labelTag: UILabel!
-    @IBOutlet weak var labelAutor: UILabel!
+    @IBOutlet weak var labelDataStr: UILabel!
+    @IBOutlet weak var labelTime: UILabel!
     @IBOutlet weak var labelTitle: UILabel!
     //@IBOutlet weak var labelTextBody: UILabel!
     @IBOutlet weak var ivPic: UIImageView!
@@ -76,6 +76,9 @@ class NewsDetailViewController: UITableViewController
         labelTitle.text = _getContMng.loadedNewsList[newsId].title
         
         wvTextBody.loadHTMLString(_getContMng.loadedNewsList[newsId].content, baseURL: nil)
+        
+        labelDataStr.text = _getContMng.currentNewsDateStr
+        labelTime.text = _getContMng.currentNewsDateTime
         
         let urlStr = self._getContMng.loadedNewsList[newsId].imgs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let imgUrl = URL(string: urlStr)
