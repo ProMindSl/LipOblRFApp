@@ -68,6 +68,7 @@
 		D2863CE2230DC08A00393186 /* APIVals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CE1230DC08A00393186 /* APIVals.swift */; };
 		D2863CE4230EBD0300393186 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CE3230EBD0300393186 /* RootViewController.swift */; };
 		D2A9FAB5231260F300BC09CC /* IdeaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A9FAB4231260F300BC09CC /* IdeaViewCell.swift */; };
+		D2B6F4C52334AED600FD0D8A /* AddClaimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6F4C42334AED600FD0D8A /* AddClaimViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,7 @@
 		D2863CE1230DC08A00393186 /* APIVals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIVals.swift; sourceTree = "<group>"; };
 		D2863CE3230EBD0300393186 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		D2A9FAB4231260F300BC09CC /* IdeaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaViewCell.swift; sourceTree = "<group>"; };
+		D2B6F4C42334AED600FD0D8A /* AddClaimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClaimViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 				D22D6C9F230419DF00DDA0E1 /* IdeasViewController.swift */,
 				D22D6CA123041AB500DDA0E1 /* LoginViewController.swift */,
 				D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */,
+				D2B6F4C42334AED600FD0D8A /* AddClaimViewController.swift */,
 				D22D6CA923084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift */,
 				D2863CDD230DA90900393186 /* AlertController.swift */,
 			);
@@ -526,6 +529,7 @@
 				D22D6C98230415A700DDA0E1 /* NavigationExtensions.swift in Sources */,
 				D2863CDE230DA90900393186 /* AlertController.swift in Sources */,
 				D2730EA6230FFCD600714639 /* NewsDetailViewController.swift in Sources */,
+				D2B6F4C52334AED600FD0D8A /* AddClaimViewController.swift in Sources */,
 				D22D6CAA23084F0F00DDA0E1 /* IdeaClaimMenuViewController.swift in Sources */,
 				D274FD3A230304F500485D89 /* AppDelegate.swift in Sources */,
 				D22D6C9A2304162000DDA0E1 /* NewsViewController.swift in Sources */,
