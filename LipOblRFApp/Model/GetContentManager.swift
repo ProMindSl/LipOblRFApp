@@ -608,6 +608,94 @@ class GetContentManager
     }
     
     /*
+     *   Get specific values methods for Category Data
+     *
+     **/
+    public func getCategoryStringList() -> [String]
+    {
+        var categoryNameList: [String] = []
+        
+        if self.categoryTypeList.count != 0
+        {
+            for category in self.categoryTypeList
+            {
+                var nameVal = category.name
+                
+                // remove some strange text from db data
+                if nameVal.contains("&shy;")
+                {
+                    nameVal = nameVal.replacingOccurrences(of: "&shy;", with: "")
+                }
+                if nameVal.contains("--")
+                {
+                    nameVal = nameVal.replacingOccurrences(of: "--", with: "")
+                }
+                categoryNameList.append(nameVal)
+            }
+        }
+        
+        return categoryNameList
+    }
+    
+    public func getCategoryIdList() -> [String]
+    {
+        var categoryIdList: [String] = []
+        
+        if self.categoryTypeList.count != 0
+        {
+            for scope in self.categoryTypeList
+            {
+                categoryIdList.append(scope.id)
+            }
+        }
+        return categoryIdList
+    }
+    
+    public func getCategoryIdByName(with name: String) -> Int
+    {
+        var categoryID = 0
+        
+        if self.categoryTypeList.count != 0
+        {
+            for claim in self.categoryTypeList
+            {
+                var fixName = claim.name
+                if fixName.contains("&shy;")
+                {
+                    fixName = fixName.replacingOccurrences(of: "&shy;", with: "")
+                }
+                if fixName.contains("--")
+                {
+                    fixName = fixName.replacingOccurrences(of: "--", with: "")
+                }
+                
+                if fixName == name
+                {
+                    categoryID = Int(claim.id) ?? 0
+                }
+            }
+        }
+        return categoryID
+    }
+    
+    public func getCategoryNameById(with id: Int) -> String
+    {
+        var categoryName = "none"
+        
+        if self.categoryTypeList.count != 0
+        {
+            for scope in self.categoryTypeList
+            {
+                if Int(scope.id) == id
+                {
+                    categoryName = scope.name
+                }
+            }
+        }
+        return categoryName
+    }
+    
+    /*
      *   -------- Private methods ----------
      **/
     /*
