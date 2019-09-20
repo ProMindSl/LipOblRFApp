@@ -15,6 +15,8 @@ class NewsViewCell: UITableViewCell {
     @IBOutlet weak var tfTime: UILabel!
     @IBOutlet weak var tfNewsLabel: UILabel!
     @IBOutlet weak var tfNewsText: UILabel!
+    @IBOutlet weak var ivNewsBGUp: UIImageView!
+    @IBOutlet weak var ivNewsBGBottom: UIImageView!
     
     
     override func awakeFromNib()

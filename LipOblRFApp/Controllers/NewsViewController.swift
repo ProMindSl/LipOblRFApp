@@ -18,6 +18,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var currNewsDate: UILabel!
     @IBOutlet weak var currNewsDateSmall: UILabel!
     
+    
     var loadActivityIndicator:UIActivityIndicatorView?
     
     // cell count from Model
@@ -91,6 +92,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.ivNewsPic.image = UIImage(named: "btn_bg_2.png")
         }
         cell.ivNewsPic.layer.cornerRadius = 8
+        cell.ivNewsBGUp.layer.cornerRadius = 8
+        cell.ivNewsBGBottom.layer.cornerRadius = 8
         
         // costomize text content from API
         cell.tfNewsLabel.layer.cornerRadius = 8
