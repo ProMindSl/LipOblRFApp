@@ -573,9 +573,11 @@ extension AddClaimViewController: SidebarDelegate
         case UIStoryboard.VIEW_TYPE_LOGIN:
             rootVC.showLoginScreen()
         case UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM:
-            break
+            rootVC.showAddIdeaForm()
         case UIStoryboard.VIEW_TYPE_IDEACLIME_MENU:
             rootVC.showIdeaClimeMenu()
+        case UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM:
+            break
         default:
             break
         }

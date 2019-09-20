@@ -186,12 +186,8 @@ extension LoginViewController: SidebarDelegate{
         switch item
         {
         case UIStoryboard.VIEW_TYPE_NEWS_LIST:
-            //let v = UIStoryboard.main.LaunchNewsVC()
-            //present(v!, animated: true)
             rootVC.showNewsList()
         case UIStoryboard.VIEW_TYPE_IDEAS_LIST:
-            //let v = UIStoryboard.main.IdeasVC()
-            //present(v!, animated: true)
             rootVC.showIdeaList()
         case 2:
             break
@@ -199,6 +195,8 @@ extension LoginViewController: SidebarDelegate{
             rootVC.showAddIdeaForm()
         case UIStoryboard.VIEW_TYPE_IDEACLIME_MENU:
             rootVC.showIdeaClimeMenu()
+        case UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM:
+            rootVC.showAddClaimForm()
         default:
             break
         }

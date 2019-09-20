@@ -375,6 +375,8 @@ extension NewsViewController: SidebarDelegate
             rootVC.showIdeaClimeMenu()
         case UIStoryboard.VIEW_TYPE_NEWS_DETAIL:
             rootVC.showNewsDitail()
+        case UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM:
+            rootVC.showAddClaimForm()
         default:
             break
         }

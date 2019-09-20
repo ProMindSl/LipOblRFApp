@@ -47,7 +47,7 @@ class IdeaClaimMenuViewController: UIViewController
     **/
     private func addListeners()
     {
-        [btnIdeaList,btnIdeaCreate].forEach(
+        [btnIdeaList,btnIdeaCreate, btnClimeCreate].forEach(
         {
             $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         })
@@ -60,8 +60,8 @@ class IdeaClaimMenuViewController: UIViewController
             sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
         case btnIdeaCreate:
             sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM)
-        //case btnClimeCreate:
-        //    sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM)
+        case btnClimeCreate:
+            sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM)
         default:
             break
         }
@@ -194,6 +194,8 @@ extension IdeaClaimMenuViewController: SidebarDelegate
             rootVC.showAddIdeaForm()
         case UIStoryboard.VIEW_TYPE_IDEACLIME_MENU:
             break
+        case UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM:
+            rootVC.showAddClaimForm()
         default:
             break
         }

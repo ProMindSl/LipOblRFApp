@@ -144,6 +144,8 @@ class NavigationMenuViewController: UIViewController{
             delegate?.navigation(didSelect: UIStoryboard.VIEW_TYPE_LOGIN)
         case btnCreateIdea:
             delegate?.navigation(didSelect: UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM)
+        case btnCreateClaim:
+            delegate?.navigation(didSelect: UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM)
         default:
             break
         }
@@ -154,7 +156,7 @@ class NavigationMenuViewController: UIViewController{
     **/
     private func setListenersForNavBtns()
     {
-        [btnNewsList,btnIdeasList,btnSignIn,btnCreateIdea].forEach(
+        [btnNewsList,btnIdeasList,btnSignIn,btnCreateIdea, btnCreateClaim].forEach(
         {
             $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         })
