@@ -453,7 +453,7 @@ class AddClaimViewController:   UITableViewController,
                 signInCompletion:                                                       // signIn status - ok
                 { [unowned self] text in
                     let at = self._accMng.getAccessToken()
-                    self._setController.createIdea(withTitle: title,
+                    self._setController.createClaim(withTitle: title,
                                                    body: body,
                                                    scope: scope,
                                                    region: raion,

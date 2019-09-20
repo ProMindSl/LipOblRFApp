@@ -113,6 +113,78 @@ class SetContentManager
             task.resume()
         }
     }
+    
+    public func createClaim(withTitle title: String,
+                           body inputBody: String,
+                           scope inputScope: Int,
+                           region inputRegion: Int,
+                           longitude inputLong: Double,
+                           latitude inputLat: Double,
+                           at accessT: String,
+                           successCompletion successFunc: @escaping ((String) -> ()),
+                           errorCompletion errorFunc: @escaping ((String) -> ()))
+    {
+        if accMng.currentSignState == AccountManager.STATE_SIGNIN
+        {
+            // create POST-request to API
+            guard let url = URL(string: API_URL_CREATE_CLAIM) else { return }
+            
+            var request = URLRequest(url: url)
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue(accessT, forHTTPHeaderField: "at")
+            request.httpMethod = "POST"
+            
+            let parameters: [String: Any] = [
+                "claim_title": title,
+                "claim_text_body": inputBody,
+                "raion": inputRegion,
+                "scope": inputScope,
+                "longitude": inputLong,
+                "latitude": inputLat
+            ]
+            
+            let postString = self.getPostString(params: parameters)
+            request.httpBody = postString.data(using: .utf8)
+            
+            let task = URLSession.shared.dataTask(with: request)
+            { data, response, error in
+                guard                                     // check for fundamental networking error
+                    let response = response as? HTTPURLResponse,
+                    error == nil
+                    else
+                {
+                    print("error", error ?? "Unknown error")
+                    self.currentMsg = AccountManager.ERROR_NETWORK
+                    return
+                }
+                
+                guard (200 ... 299) ~= response.statusCode  // check for http errors
+                    else
+                {
+                    print("statusCode is \(response.statusCode)")
+                    print("response = \(response)")
+                    self.currentMsg = AccountManager.ERROR_HTTP
+                    return
+                }
+                
+                // read ans header
+                self.apiANS = response.allHeaderFields["API-ans"] as? String ?? APIVals.API_ANS_TYPE_UNKNOWN_ERROR
+                
+                
+                if self.apiANS == APIVals.API_ANS_TYPE_SUCCESS_SET_CONTENT // success add claim
+                {print("success add idea (from SetContentContr)")
+                    self.currentMsg = AccountManager.ERROR_NONE
+                    successFunc("ok")
+                }
+                else                                                       // fail add claim
+                {print("error add idea (from SetContentContr)")
+                    errorFunc("not ok")
+                }
+            }
+            
+            task.resume()
+        }
+    }
 
     
     /*
