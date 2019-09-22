@@ -312,9 +312,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_bg_bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="qZY-Gr-MdK">
-                                                    <rect key="frame" x="16" y="251" width="344" height="96"/>
+                                                    <rect key="frame" x="16" y="267" width="344" height="80"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="96" id="3m7-BE-XdR"/>
+                                                        <constraint firstAttribute="height" constant="80" id="3m7-BE-XdR"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1003" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jde-sN-lFI">
