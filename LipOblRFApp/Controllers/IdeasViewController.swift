@@ -212,23 +212,24 @@ class IdeasViewController: UIViewController, UITableViewDataSource, UITableViewD
                                              }
                 )
             }
+            else
+            {
+                self._cellCount = self._getContMng.ideasOwnList.count
+                DispatchQueue.main.async
+                {
+                    self.tvIdeaList.reloadData()
+                }
+            }
             
             if self._getContMng.scopeTypesList.count == 0
             {
                 self._getContMng.loadContent(byType: GetContentManager.CONTENT_TYPE_SCOPES,
                                              at: self._accMng.getAccessToken(),
                                              successCompletion:
-                                             { text in
-                                                    self._cellCount = self._getContMng.ideasOwnList.count
-                                                
-                                                    DispatchQueue.main.async
-                                                    {
-                                                       self.tvIdeaList.reloadData()
-                                                    }
-                                              },
+                                             { text in },
                                               errorCompletion:
                                               { text in
-                                                    print("error load ideas list")
+                                                    print("error load scope list from IDEA list controller")
                                               }
                 )
             }
