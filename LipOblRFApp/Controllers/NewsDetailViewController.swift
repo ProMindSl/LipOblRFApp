@@ -80,18 +80,25 @@ class NewsDetailViewController: UITableViewController
         labelDataStr.text = _getContMng.currentNewsDateStr
         labelTime.text = _getContMng.currentNewsDateTime
         
-        let urlStr = self._getContMng.loadedNewsList[newsId].imgs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let imgUrl = URL(string: urlStr)
+        if self._getContMng.loadedNewsList[newsId].imgs.count > 0
+        {
+            let urlStr = self._getContMng.loadedNewsList[newsId].imgs[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let imgUrl = URL(string: urlStr)
         
-        ivPic.kf.setImage(
-            with: imgUrl,
-            placeholder: UIImage(named: "placeholderImage"),
-            options: [
-                .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1)),
-                .cacheOriginalImage
-            ])
         
+            ivPic.kf.setImage(
+                with: imgUrl,
+                placeholder: UIImage(named: "placeholderImage"),
+                options: [
+                    .scaleFactor(UIScreen.main.scale),
+                    .transition(.fade(1)),
+                    .cacheOriginalImage
+                ])
+        }
+        else
+        {
+            ivPic.image = UIImage(named: "btn_bg_2.png")
+        }
     }
     
     private func showActivityIndicatory()
