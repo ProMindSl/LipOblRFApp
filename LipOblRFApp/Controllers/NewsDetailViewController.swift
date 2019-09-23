@@ -97,7 +97,7 @@ class NewsDetailViewController: UITableViewController
         }
         else
         {
-            ivPic.image = UIImage(named: "btn_bg_2.png")
+            ivPic.image = UIImage(named: "tree_lip_image.png")
         }
     }
     

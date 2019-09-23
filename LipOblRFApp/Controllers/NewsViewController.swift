@@ -73,7 +73,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let numOfRow = Int(indexPath.row)
         
         // costomize image content from API
-        if self._getContMng.loadedNewsList[numOfRow].imgs.count > 0//var urlStr = (self._getContMng.loadedNewsList[numOfRow].imgs[0]) as String?
+        if self._getContMng.loadedNewsList[numOfRow].imgs.count > 0
         {
             let urlStr = (self._getContMng.loadedNewsList[numOfRow].imgs[0]).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             let imgUrl = URL(string: urlStr!)
@@ -89,7 +89,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         else
         {
-            cell.ivNewsPic.image = UIImage(named: "btn_bg_2.png")
+            cell.ivNewsPic.image = UIImage(named: "tree_lip_image.png")
         }
         cell.ivNewsPic.layer.cornerRadius = 8
         cell.ivNewsBGUp.layer.cornerRadius = 8
