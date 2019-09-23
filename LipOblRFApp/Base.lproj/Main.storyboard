@@ -249,19 +249,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lip_tree_light_stroke.png" translatesAutoresizingMaskIntoConstraints="NO" id="z0r-KJ-Lw6">
+                                <rect key="frame" x="136.5" y="82" width="102" height="106"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="106" id="KWP-BF-Ijv"/>
+                                    <constraint firstAttribute="width" constant="102" id="opF-Tw-qrb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="OsH-LO-xgJ" firstAttribute="top" secondItem="PEe-Cg-aEo" secondAttribute="bottom" constant="19" id="5tJ-Xa-DPc"/>
-                            <constraint firstItem="cMe-jg-BuQ" firstAttribute="top" secondItem="05t-kH-1Dc" secondAttribute="bottom" constant="26" id="7Rv-5Q-dZv"/>
+                            <constraint firstItem="05t-kH-1Dc" firstAttribute="top" secondItem="z0r-KJ-Lw6" secondAttribute="bottom" constant="8" id="6Oa-PM-oCc"/>
                             <constraint firstItem="8x2-3n-LWw" firstAttribute="top" secondItem="Opr-Z0-fEe" secondAttribute="top" constant="10" id="FSe-OF-alu"/>
-                            <constraint firstItem="PEe-Cg-aEo" firstAttribute="top" secondItem="cMe-jg-BuQ" secondAttribute="bottom" constant="18" id="Kxg-Ng-eWw"/>
-                            <constraint firstItem="PEe-Cg-aEo" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="V0K-6k-eVJ"/>
+                            <constraint firstItem="z0r-KJ-Lw6" firstAttribute="top" secondItem="Opr-Z0-fEe" secondAttribute="top" constant="62" id="RYd-Cq-UB1"/>
+                            <constraint firstItem="05t-kH-1Dc" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="Sr5-03-XOo"/>
+                            <constraint firstItem="OsH-LO-xgJ" firstAttribute="top" secondItem="PEe-Cg-aEo" secondAttribute="bottom" constant="19" id="Ygf-nt-SuF"/>
+                            <constraint firstItem="PEe-Cg-aEo" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="ZjO-7X-eJT"/>
                             <constraint firstItem="8x2-3n-LWw" firstAttribute="leading" secondItem="Opr-Z0-fEe" secondAttribute="leading" constant="20" id="bMJ-sG-wde"/>
-                            <constraint firstItem="05t-kH-1Dc" firstAttribute="top" secondItem="Opr-Z0-fEe" secondAttribute="top" constant="176" id="be9-Jo-ccb"/>
-                            <constraint firstItem="cMe-jg-BuQ" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="cBZ-VO-y3z"/>
-                            <constraint firstItem="OsH-LO-xgJ" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="fHH-Ag-6YJ"/>
-                            <constraint firstItem="05t-kH-1Dc" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="jFP-SK-7ka"/>
+                            <constraint firstItem="PEe-Cg-aEo" firstAttribute="top" secondItem="cMe-jg-BuQ" secondAttribute="bottom" constant="18" id="ddX-uz-Pk8"/>
+                            <constraint firstItem="z0r-KJ-Lw6" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="dpm-af-3Ja"/>
+                            <constraint firstItem="cMe-jg-BuQ" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="iFz-2f-whW"/>
+                            <constraint firstItem="cMe-jg-BuQ" firstAttribute="top" secondItem="05t-kH-1Dc" secondAttribute="bottom" constant="26" id="qRB-eT-C6e"/>
+                            <constraint firstItem="OsH-LO-xgJ" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="wB4-Li-ogd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Opr-Z0-fEe"/>
                     </view>
@@ -273,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ja0-Zb-Ya9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1647" y="-265"/>
+            <point key="canvasLocation" x="-1647.2" y="-265.81709145427288"/>
         </scene>
         <!--News View Controller-->
         <scene sceneID="9Bn-G2-Z2n">
@@ -1597,6 +1606,7 @@
         <image name="comments_a.png" width="18" height="18"/>
         <image name="file_pic.png" width="16" height="20"/>
         <image name="lamp.png" width="19" height="19"/>
+        <image name="lip_tree_light_stroke.png" width="427" height="493"/>
         <image name="menu.png" width="18" height="12"/>
         <image name="newsImage.jpg" width="375" height="360"/>
         <image name="news_bg.png" width="120" height="96"/>
