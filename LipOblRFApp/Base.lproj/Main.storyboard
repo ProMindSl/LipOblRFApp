@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D08-Np-jC8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="itW-Pw-jRw">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -211,7 +211,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VCO-ii-Otu">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.9225565791" green="0.37425619360000001" blue="0.31369084120000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="1" green="0.40652223679999999" blue="0.35027288130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -226,12 +226,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7xh-7I-3HR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2386.4000000000001" y="-923.38830584707648"/>
+            <point key="canvasLocation" x="-2484" y="-923"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="DBf-QF-AN2">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="56f-Yq-a0m" customClass="LoginViewController" customModule="LipOblRFApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController_old" id="56f-Yq-a0m" customClass="LoginViewController" customModule="LipOblRFApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JT8-F7-RGV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1608,11 +1608,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDN-zU-pLc">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.9225565791" green="0.37425619360000001" blue="0.31369084120000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZBC-RD-Ayn">
                                 <rect key="frame" x="69.5" y="223" width="236" height="34"/>
                                 <constraints>
@@ -1627,13 +1622,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cK-1S-IXk">
-                                <rect key="frame" x="20" y="10" width="18" height="22"/>
-                                <state key="normal" image="menu.png"/>
-                                <connections>
-                                    <action selector="OpenMenu:" destination="ptB-Av-WLH" eventType="touchUpInside" id="KKY-mP-bqO"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAV-dI-QQ8">
                                 <rect key="frame" x="165.5" y="328" width="44" height="30"/>
                                 <state key="normal" title="Войти"/>
@@ -1662,7 +1650,6 @@
                             <constraint firstItem="PAV-dI-QQ8" firstAttribute="centerX" secondItem="ISV-t4-t6W" secondAttribute="centerX" id="7XY-gX-2FE"/>
                             <constraint firstItem="Wq2-A3-6Lo" firstAttribute="centerX" secondItem="ISV-t4-t6W" secondAttribute="centerX" id="8Il-fA-Ps7"/>
                             <constraint firstItem="iGq-tR-k8d" firstAttribute="centerX" secondItem="ISV-t4-t6W" secondAttribute="centerX" id="Fgs-ea-sPM"/>
-                            <constraint firstItem="3cK-1S-IXk" firstAttribute="top" secondItem="L7Z-j4-Bg2" secondAttribute="top" constant="10" id="HKY-l8-Lus"/>
                             <constraint firstItem="Wq2-A3-6Lo" firstAttribute="top" secondItem="hQZ-Hj-j3S" secondAttribute="bottom" constant="8" id="MEu-pI-zA5"/>
                             <constraint firstItem="iGq-tR-k8d" firstAttribute="top" secondItem="ZBC-RD-Ayn" secondAttribute="bottom" constant="18" id="Uua-rl-IeR"/>
                             <constraint firstItem="ZBC-RD-Ayn" firstAttribute="centerX" secondItem="ISV-t4-t6W" secondAttribute="centerX" id="VUO-wt-op2"/>
@@ -1670,7 +1657,6 @@
                             <constraint firstItem="hQZ-Hj-j3S" firstAttribute="top" secondItem="L7Z-j4-Bg2" secondAttribute="top" constant="62" id="Yst-B8-cXK"/>
                             <constraint firstItem="hQZ-Hj-j3S" firstAttribute="centerX" secondItem="ISV-t4-t6W" secondAttribute="centerX" id="hly-Fj-DRp"/>
                             <constraint firstItem="PAV-dI-QQ8" firstAttribute="top" secondItem="iGq-tR-k8d" secondAttribute="bottom" constant="19" id="ira-2C-sBM"/>
-                            <constraint firstItem="3cK-1S-IXk" firstAttribute="leading" secondItem="L7Z-j4-Bg2" secondAttribute="leading" constant="20" id="ox9-SC-7m1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L7Z-j4-Bg2"/>
                     </view>
@@ -1682,7 +1668,79 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54Z-fh-Rkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1476" y="-923"/>
+            <point key="canvasLocation" x="-727" y="-923"/>
+        </scene>
+        <!--Sign In View Controller-->
+        <scene sceneID="BmI-yp-dhQ">
+            <objects>
+                <viewController storyboardIdentifier="SignInMenuController2" id="itW-Pw-jRw" customClass="SignInViewController" customModule="LipOblRFApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zfs-UC-THO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Липецкая область" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhM-h9-jvH">
+                                <rect key="frame" x="88" y="319" width="199" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="zfb-Xj-g3P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lip_yellow.png" translatesAutoresizingMaskIntoConstraints="NO" id="mA9-eq-WKY">
+                                <rect key="frame" x="130" y="177" width="115" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="DD4-d3-U8V"/>
+                                    <constraint firstAttribute="width" constant="115" id="LUw-Yw-6V5"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUu-Qn-hX2">
+                                <rect key="frame" x="40" y="491" width="295" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eBD-fd-ve8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Вход">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lY-8p-Lh2">
+                                <rect key="frame" x="40" y="561" width="295" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="R6G-qk-wyM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Регистрация">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.40652223679999999" blue="0.35027288130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="abh-xs-P1n" firstAttribute="trailing" secondItem="BUu-Qn-hX2" secondAttribute="trailing" constant="40" id="BQe-TD-CFe"/>
+                            <constraint firstItem="abh-xs-P1n" firstAttribute="trailing" secondItem="7lY-8p-Lh2" secondAttribute="trailing" constant="40" id="EyG-ek-fiO"/>
+                            <constraint firstItem="mA9-eq-WKY" firstAttribute="centerX" secondItem="Zfs-UC-THO" secondAttribute="centerX" id="Fvf-TZ-JB5"/>
+                            <constraint firstItem="BUu-Qn-hX2" firstAttribute="leading" secondItem="abh-xs-P1n" secondAttribute="leading" constant="40" id="Rfd-1m-itB"/>
+                            <constraint firstItem="HhM-h9-jvH" firstAttribute="centerX" secondItem="Zfs-UC-THO" secondAttribute="centerX" id="a1l-xy-PQa"/>
+                            <constraint firstItem="abh-xs-P1n" firstAttribute="bottom" secondItem="7lY-8p-Lh2" secondAttribute="bottom" constant="56" id="deO-hZ-9GU"/>
+                            <constraint firstItem="HhM-h9-jvH" firstAttribute="top" secondItem="mA9-eq-WKY" secondAttribute="bottom" constant="20" id="fsf-Vk-NR5"/>
+                            <constraint firstItem="7lY-8p-Lh2" firstAttribute="top" secondItem="BUu-Qn-hX2" secondAttribute="bottom" constant="20" id="mqQ-71-Q0e"/>
+                            <constraint firstItem="HhM-h9-jvH" firstAttribute="centerY" secondItem="Zfs-UC-THO" secondAttribute="centerY" id="pyq-0T-Hun"/>
+                            <constraint firstItem="7lY-8p-Lh2" firstAttribute="leading" secondItem="abh-xs-P1n" secondAttribute="leading" constant="40" id="yiF-GF-PQu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="abh-xs-P1n"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnSignIn" destination="BUu-Qn-hX2" id="kad-Fa-L6Z"/>
+                        <outlet property="btnSignUp" destination="7lY-8p-Lh2" id="swb-IY-eIu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V6N-Yc-TNK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1476" y="-904.49775112443785"/>
         </scene>
     </scenes>
     <resources>
@@ -1706,6 +1764,7 @@
         <image name="file_pic.png" width="16" height="20"/>
         <image name="lamp.png" width="19" height="19"/>
         <image name="lip_tree_light_stroke.png" width="427" height="493"/>
+        <image name="lip_yellow.png" width="115.5" height="122"/>
         <image name="menu.png" width="18" height="12"/>
         <image name="newsImage.jpg" width="375" height="360"/>
         <image name="news_bg.png" width="120" height="96"/>

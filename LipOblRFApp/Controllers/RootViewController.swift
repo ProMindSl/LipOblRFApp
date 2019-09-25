@@ -32,8 +32,15 @@ class RootViewController: UIViewController
         view.addSubview(current.view)
         current.didMove(toParent: self)
         
-        showNewsList()
+        showSignInMenu()
     }
+    
+    public func showSignInMenu()
+    {
+        let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInMenuController2") as? SignInViewController)!
+        animateWithTransition(to: new, withAnimationType: .transitionCurlUp)
+    }
+    
     
     public func showLoginScreen()
     {
