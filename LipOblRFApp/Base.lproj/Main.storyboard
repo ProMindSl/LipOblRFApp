@@ -306,7 +306,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" tag="1001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tree_lip_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="htV-Tq-wRg">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" tag="1001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tree_lip_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="htV-Tq-wRg">
                                                     <rect key="frame" x="16" y="10" width="343" height="338"/>
                                                     <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
