@@ -8,6 +8,9 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
 class TabMainMenuView: UIView
 {
     public static let MENU_STATE_NONE = 0
@@ -24,8 +27,11 @@ class TabMainMenuView: UIView
     
     override func draw(_ rect: CGRect)
     {
+        let borderColorFromHash = hexStringToUIColor(hex: "#808080") as UIColor
+        self.layer.borderWidth = 1
+        self.layer.borderColor = borderColorFromHash.cgColor
+        
         addListeners()
-        //setState(withType: TabMainMenuView.MENU_STATE_NONE)
     }
     
     public func setState(withType type: Int)
@@ -86,5 +92,28 @@ class TabMainMenuView: UIView
         }
     }
     
-    
+    private func hexStringToUIColor (hex:String) -> UIColor
+    {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if (cString.hasPrefix("#"))
+        {
+            cString.remove(at: cString.startIndex)
+        }
+
+        if ((cString.count) != 6)
+        {
+            return UIColor.gray
+        }
+
+        var rgbValue:UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
 }
