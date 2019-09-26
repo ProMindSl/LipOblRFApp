@@ -25,6 +25,7 @@ class TabMainMenuView: UIView
     override func draw(_ rect: CGRect)
     {
         addListeners()
+        //setState(withType: TabMainMenuView.MENU_STATE_NONE)
     }
     
     public func setState(withType type: Int)
@@ -32,13 +33,30 @@ class TabMainMenuView: UIView
         switch type
         {
         case TabMainMenuView.MENU_STATE_NONE:
-            btnMenuMain.setImage(UIImage(named: "tab_btn_active_main.png"), for: .normal)
-            btnMenuServices.setImage(UIImage(named: "tab_btn_active_main.png"), for: .normal)
-            btnMenuServices.setImage(UIImage(named: "tab_btn_active_main.png"), for: .normal)
-            btnMenuProfile.setImage(UIImage(named: "tab_btn_active_main.png"), for: .normal)
+            btnMenuMain.setImage(UIImage(named: "tab_btn_main.png"), for: .normal)
+            btnMenuServices.setImage(UIImage(named: "tab_btn_services.png"), for: .normal)
+            btnMenuServices.setImage(UIImage(named: "tab_btn_news.png"), for: .normal)
+            btnMenuProfile.setImage(UIImage(named: "tab_btn_profile.png"), for: .normal)
         case TabMainMenuView.MENU_STATE_MAIN:
-        btnMenuMain.setImage(UIImage(named: "tab_btn_active_main.png"), for: .normal)
-            
+            btnMenuMain.setImage(UIImage(named: "tab_btn_active_main.png"), for: .normal)
+            btnMenuServices.setImage(UIImage(named: "tab_btn_services.png"), for: .normal)
+            btnMenuServices.setImage(UIImage(named: "tab_btn_news.png"), for: .normal)
+            btnMenuProfile.setImage(UIImage(named: "tab_btn_profile.png"), for: .normal)
+        case TabMainMenuView.MENU_STATE_SERVICES:
+            btnMenuMain.setImage(UIImage(named: "tab_btn_active_main.png"), for: .normal)
+            btnMenuServices.setImage(UIImage(named: "tab_btn_active_services.png"), for: .normal)
+            btnMenuServices.setImage(UIImage(named: "tab_btn_news.png"), for: .normal)
+            btnMenuProfile.setImage(UIImage(named: "tab_btn_profile.png"), for: .normal)
+        case TabMainMenuView.MENU_STATE_NEWS:
+            btnMenuMain.setImage(UIImage(named: "tab_btn_main.png"), for: .normal)
+            btnMenuServices.setImage(UIImage(named: "tab_btn_services.png"), for: .normal)
+            btnMenuServices.setImage(UIImage(named: "tab_btn_active_news.png"), for: .normal)
+            btnMenuProfile.setImage(UIImage(named: "tab_btn_profile.png"), for: .normal)
+        case TabMainMenuView.MENU_STATE_PROFILE:
+            btnMenuMain.setImage(UIImage(named: "tab_btn_main.png"), for: .normal)
+            btnMenuServices.setImage(UIImage(named: "tab_btn_services.png"), for: .normal)
+            btnMenuServices.setImage(UIImage(named: "tab_btn_news.png"), for: .normal)
+            btnMenuProfile.setImage(UIImage(named: "tab_btn_active_profile.png"), for: .normal)
         default:
             break
         }

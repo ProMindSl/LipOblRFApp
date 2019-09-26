@@ -239,7 +239,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x2-3n-LWw">
-                                <rect key="frame" x="20" y="10" width="18" height="22"/>
+                                <rect key="frame" x="20" y="10" width="36" height="24"/>
                                 <state key="normal" image="menu.png"/>
                                 <connections>
                                     <action selector="OpenMenu:" destination="56f-Yq-a0m" eventType="touchUpInside" id="byE-cP-i3Z"/>
@@ -546,19 +546,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Спорт" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0DW-fN-NV7">
-                                                    <rect key="frame" x="46" y="17" width="50" height="21"/>
+                                                    <rect key="frame" x="66" y="17" width="50" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdU-Wh-eMw">
-                                                    <rect key="frame" x="116" y="17" width="52" height="21"/>
+                                                    <rect key="frame" x="136" y="17" width="52" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clocks_b.png" translatesAutoresizingMaskIntoConstraints="NO" id="icV-6R-wjc">
-                                                    <rect key="frame" x="16" y="21" width="20" height="12"/>
+                                                    <rect key="frame" x="16" y="21" width="40" height="24"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1012" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название новости" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3K-hX-sgr">
                                                     <rect key="frame" x="16" y="46" width="343" height="29"/>
@@ -625,7 +625,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFP-hi-OJq">
-                                <rect key="frame" x="20" y="20" width="18" height="22"/>
+                                <rect key="frame" x="20" y="20" width="36" height="24"/>
                                 <state key="normal" image="menu.png"/>
                                 <connections>
                                     <action selector="OpenMenu:" destination="qzc-wl-8eq" eventType="touchUpInside" id="sR4-vV-pd7"/>
@@ -668,13 +668,13 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Идеи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWF-Eb-O7G">
-                                <rect key="frame" x="20" y="54" width="88" height="41"/>
+                                <rect key="frame" x="20" y="56" width="88" height="41"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" tag="10" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q75-cJ-bbz">
-                                <rect key="frame" x="0.0" y="103" width="375" height="492"/>
+                                <rect key="frame" x="0.0" y="105" width="375" height="490"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ideaCell" rowHeight="211" id="njn-LD-zZp" customClass="IdeaViewCell" customModule="LipOblRFApp" customModuleProvider="target">
@@ -696,13 +696,13 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Спорт" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1k-VF-q4e">
-                                                    <rect key="frame" x="65" y="27" width="50" height="21"/>
+                                                    <rect key="frame" x="85" y="27" width="50" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Иванов И.И." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9J-Tg-3ew">
-                                                    <rect key="frame" x="135" y="27" width="97.5" height="21"/>
+                                                    <rect key="frame" x="155" y="27" width="97.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -720,13 +720,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clocks.png" translatesAutoresizingMaskIntoConstraints="NO" id="51C-DZ-KJj">
-                                                    <rect key="frame" x="35" y="31" width="20" height="12"/>
+                                                    <rect key="frame" x="35" y="31" width="40" height="24"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comments_a.png" translatesAutoresizingMaskIntoConstraints="NO" id="vPr-qV-koE">
-                                                    <rect key="frame" x="35" y="122.5" width="18" height="18"/>
+                                                    <rect key="frame" x="35" y="122.5" width="36" height="36"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="открыто" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe0-2K-0H4">
-                                                    <rect key="frame" x="56" y="119.5" width="66" height="21"/>
+                                                    <rect key="frame" x="74" y="119.5" width="66" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -856,7 +856,7 @@
                                 <state key="normal" title="Идеи и жалобы"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNP-es-AZd">
-                                <rect key="frame" x="20" y="20" width="18" height="22"/>
+                                <rect key="frame" x="20" y="20" width="36" height="22"/>
                                 <state key="normal" image="menu.png"/>
                                 <connections>
                                     <action selector="OpenMenu:" destination="D08-Np-jC8" eventType="touchUpInside" id="0Vq-sG-1EE"/>
@@ -864,7 +864,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Суббота, 7 июля" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duB-D5-Xl7">
-                                <rect key="frame" x="58" y="22" width="104" height="16"/>
+                                <rect key="frame" x="76" y="22" width="104" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -1126,7 +1126,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3P-mK-qq6">
-                                                    <rect key="frame" x="28" y="67" width="319" height="45"/>
+                                                    <rect key="frame" x="28" y="67" width="319" height="90"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Выбрать файлы" backgroundImage="btnBgBorder.png">
                                                         <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1159,7 +1159,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azi-de-f5m">
-                                                    <rect key="frame" x="28" y="18" width="319" height="45"/>
+                                                    <rect key="frame" x="28" y="-27" width="319" height="90"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Отправить на модерацию" backgroundImage="btnBgSolid.png">
                                                         <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1262,19 +1262,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Спорт" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="us2-TX-Qth">
-                                                    <rect key="frame" x="46" y="17" width="50" height="21"/>
+                                                    <rect key="frame" x="66" y="17" width="50" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Иванов И.И." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-2B-mRP">
-                                                    <rect key="frame" x="116" y="17" width="98" height="21"/>
+                                                    <rect key="frame" x="136" y="17" width="98" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clocks_b.png" translatesAutoresizingMaskIntoConstraints="NO" id="EGs-oD-0yz">
-                                                    <rect key="frame" x="16" y="21" width="20" height="12"/>
+                                                    <rect key="frame" x="16" y="21" width="40" height="24"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1012" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название новости" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lH3-nk-zdg">
                                                     <rect key="frame" x="16" y="46" width="343" height="29"/>
@@ -1286,10 +1286,10 @@
                                                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </webView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="file_pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="YDf-3k-Szk">
-                                                    <rect key="frame" x="16" y="500" width="16" height="20"/>
+                                                    <rect key="frame" x="16" y="500" width="32" height="40"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название документа" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVH-hD-Wty">
-                                                    <rect key="frame" x="40" y="500" width="168" height="21"/>
+                                                    <rect key="frame" x="56" y="500" width="168" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1500,7 +1500,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duP-o4-2GW">
-                                                    <rect key="frame" x="28" y="67" width="319" height="45"/>
+                                                    <rect key="frame" x="28" y="67" width="319" height="90"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Выбрать файлы" backgroundImage="btnBgBorder.png">
                                                         <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1533,7 +1533,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgX-SQ-HOQ">
-                                                    <rect key="frame" x="28" y="18" width="319" height="45"/>
+                                                    <rect key="frame" x="28" y="-27" width="319" height="90"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Отправить на модерацию" backgroundImage="btnBgSolid.png">
                                                         <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
