@@ -15,6 +15,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var tfLogin: UITextField!
     @IBOutlet weak var tfPass: UITextField!
     @IBOutlet weak var btnSignIn: UIButton!
+    @IBOutlet weak var menu: TabMainMenuView!
     
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
     
@@ -171,7 +172,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     
 }
 
-extension LoginViewController: SidebarDelegate{
+extension LoginViewController: SidebarDelegate
+{
     func sidbarDidOpen()
     {
         print("Sidebar opened")

@@ -216,85 +216,6 @@
             </objects>
             <point key="canvasLocation" x="-2484" y="-923"/>
         </scene>
-        <!--Login View Controller-->
-        <scene sceneID="DBf-QF-AN2">
-            <objects>
-                <viewController storyboardIdentifier="LoginViewController_old" id="56f-Yq-a0m" customClass="LoginViewController" customModule="LipOblRFApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JT8-F7-RGV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cMe-jg-BuQ">
-                                <rect key="frame" x="69.5" y="223" width="236" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="236" id="Hqk-Fz-yaT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="email"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вход в систему" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05t-kH-1Dc">
-                                <rect key="frame" x="125.5" y="176" width="124" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x2-3n-LWw">
-                                <rect key="frame" x="20" y="10" width="36" height="24"/>
-                                <state key="normal" image="menu.png"/>
-                                <connections>
-                                    <action selector="OpenMenu:" destination="56f-Yq-a0m" eventType="touchUpInside" id="byE-cP-i3Z"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsH-LO-xgJ">
-                                <rect key="frame" x="165.5" y="328" width="44" height="30"/>
-                                <state key="normal" title="Войти"/>
-                                <connections>
-                                    <action selector="signInAction:" destination="56f-Yq-a0m" eventType="touchUpInside" id="IKa-Xa-cSV"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="пароль" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PEe-Cg-aEo">
-                                <rect key="frame" x="69.5" y="275" width="236" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="236" id="6MP-NE-iVd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
-                            </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lip_tree_light_stroke.png" translatesAutoresizingMaskIntoConstraints="NO" id="z0r-KJ-Lw6">
-                                <rect key="frame" x="136.5" y="62" width="102" height="106"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="106" id="KWP-BF-Ijv"/>
-                                    <constraint firstAttribute="width" constant="102" id="opF-Tw-qrb"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="05t-kH-1Dc" firstAttribute="top" secondItem="z0r-KJ-Lw6" secondAttribute="bottom" constant="8" id="6Oa-PM-oCc"/>
-                            <constraint firstItem="8x2-3n-LWw" firstAttribute="top" secondItem="Opr-Z0-fEe" secondAttribute="top" constant="10" id="FSe-OF-alu"/>
-                            <constraint firstItem="z0r-KJ-Lw6" firstAttribute="top" secondItem="Opr-Z0-fEe" secondAttribute="top" constant="62" id="RYd-Cq-UB1"/>
-                            <constraint firstItem="05t-kH-1Dc" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="Sr5-03-XOo"/>
-                            <constraint firstItem="OsH-LO-xgJ" firstAttribute="top" secondItem="PEe-Cg-aEo" secondAttribute="bottom" constant="19" id="Ygf-nt-SuF"/>
-                            <constraint firstItem="PEe-Cg-aEo" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="ZjO-7X-eJT"/>
-                            <constraint firstItem="8x2-3n-LWw" firstAttribute="leading" secondItem="Opr-Z0-fEe" secondAttribute="leading" constant="20" id="bMJ-sG-wde"/>
-                            <constraint firstItem="PEe-Cg-aEo" firstAttribute="top" secondItem="cMe-jg-BuQ" secondAttribute="bottom" constant="18" id="ddX-uz-Pk8"/>
-                            <constraint firstItem="z0r-KJ-Lw6" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="dpm-af-3Ja"/>
-                            <constraint firstItem="cMe-jg-BuQ" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="iFz-2f-whW"/>
-                            <constraint firstItem="cMe-jg-BuQ" firstAttribute="top" secondItem="05t-kH-1Dc" secondAttribute="bottom" constant="26" id="qRB-eT-C6e"/>
-                            <constraint firstItem="OsH-LO-xgJ" firstAttribute="centerX" secondItem="JT8-F7-RGV" secondAttribute="centerX" id="wB4-Li-ogd"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Opr-Z0-fEe"/>
-                    </view>
-                    <connections>
-                        <outlet property="btnSignIn" destination="OsH-LO-xgJ" id="jUP-ew-9ES"/>
-                        <outlet property="tfLogin" destination="cMe-jg-BuQ" id="NVT-qG-KNE"/>
-                        <outlet property="tfPass" destination="PEe-Cg-aEo" id="YBP-UF-bYS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ja0-Zb-Ya9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2287" y="852"/>
-        </scene>
         <!--News View Controller-->
         <scene sceneID="9Bn-G2-Z2n">
             <objects>
@@ -1652,9 +1573,6 @@
                                 <state key="normal" title="Регистрация">
                                     <color key="titleColor" red="1" green="0.40652223679999999" blue="0.35027288130000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
-                                <connections>
-                                    <action selector="signInAction:" destination="ptB-Av-WLH" eventType="touchUpInside" id="cJr-lb-NAk"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="пароль" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iGq-tR-k8d">
                                 <rect key="frame" x="15" y="316.5" width="345" height="34"/>
@@ -1752,13 +1670,14 @@
                     </view>
                     <connections>
                         <outlet property="btnSignIn" destination="PAV-dI-QQ8" id="4CH-vi-9aC"/>
+                        <outlet property="menu" destination="P7d-RF-CFa" id="dY6-qB-NS3"/>
                         <outlet property="tfLogin" destination="ZBC-RD-Ayn" id="Pdb-pW-PFO"/>
                         <outlet property="tfPass" destination="iGq-tR-k8d" id="eaT-Zc-TfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54Z-fh-Rkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-796" y="-923.38830584707648"/>
+            <point key="canvasLocation" x="-873" y="-923"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="BmI-yp-dhQ">
@@ -1894,7 +1813,6 @@
         <image name="comments_a.png" width="18" height="18"/>
         <image name="file_pic.png" width="16" height="20"/>
         <image name="lamp.png" width="19" height="19"/>
-        <image name="lip_tree_light_stroke.png" width="427" height="493"/>
         <image name="lip_yellow.png" width="115.5" height="122"/>
         <image name="menu.png" width="18" height="12"/>
         <image name="newsImage.jpg" width="375" height="360"/>
