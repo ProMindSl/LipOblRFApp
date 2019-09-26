@@ -63,6 +63,7 @@
 		D274FD44230304F600485D89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D274FD42230304F600485D89 /* LaunchScreen.storyboard */; };
 		D274FD4F230304F600485D89 /* LipOblRFAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274FD4E230304F600485D89 /* LipOblRFAppTests.swift */; };
 		D274FD5A230304F600485D89 /* LipOblRFAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D274FD59230304F600485D89 /* LipOblRFAppUITests.swift */; };
+		D275736B233CA53F00155010 /* TabMainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D275736A233CA53F00155010 /* TabMainMenuView.swift */; };
 		D2863CDE230DA90900393186 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CDD230DA90900393186 /* AlertController.swift */; };
 		D2863CE0230DBF8700393186 /* SetContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CDF230DBF8700393186 /* SetContentManager.swift */; };
 		D2863CE2230DC08A00393186 /* APIVals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2863CE1230DC08A00393186 /* APIVals.swift */; };
@@ -167,6 +168,7 @@
 		D274FD55230304F600485D89 /* LipOblRFAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LipOblRFAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D274FD59230304F600485D89 /* LipOblRFAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipOblRFAppUITests.swift; sourceTree = "<group>"; };
 		D274FD5B230304F600485D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D275736A233CA53F00155010 /* TabMainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMainMenuView.swift; sourceTree = "<group>"; };
 		D2863CDD230DA90900393186 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		D2863CDF230DBF8700393186 /* SetContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContentManager.swift; sourceTree = "<group>"; };
 		D2863CE1230DC08A00393186 /* APIVals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIVals.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				D22D6CA323042CB600DDA0E1 /* NewsViewCell.swift */,
 				D22D6CA723083EA800DDA0E1 /* TypePickerView.swift */,
 				D2A9FAB4231260F300BC09CC /* IdeaViewCell.swift */,
+				D275736A233CA53F00155010 /* TabMainMenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				D2A9FAB5231260F300BC09CC /* IdeaViewCell.swift in Sources */,
 				D22D6CA823083EA800DDA0E1 /* TypePickerView.swift in Sources */,
 				D22D6C9E2304181700DDA0E1 /* NavigationMenuViewController.swift in Sources */,
+				D275736B233CA53F00155010 /* TabMainMenuView.swift in Sources */,
 				D2863CE0230DBF8700393186 /* SetContentManager.swift in Sources */,
 				D2730EB02310172F00714639 /* GetContentManager.swift in Sources */,
 			);
