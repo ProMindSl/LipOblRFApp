@@ -12,11 +12,10 @@ import Kingfisher
 class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     
-    @IBOutlet weak var tabBtnNews: UIButton!
-    @IBOutlet weak var tabBtnIdeaClimeMenu: UIButton!
     @IBOutlet weak var tvNewsList: UITableView!
     @IBOutlet weak var currNewsDate: UILabel!
     @IBOutlet weak var currNewsDateSmall: UILabel!
+    @IBOutlet weak var menu: TabMainMenuView!
     
     
     var loadActivityIndicator:UIActivityIndicatorView?
@@ -35,7 +34,6 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        addListeners()
         tvNewsList?.separatorStyle = .none
         initUI()
         
@@ -111,42 +109,16 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         self._getContMng.currentNews = indexPath.row
-        sidebarDidClose(with: UIStoryboard.VIEW_TYPE_NEWS_DETAIL)
+        showAppView(with: UIStoryboard.VIEW_TYPE_NEWS_DETAIL)
     }
-    
-    
-    @IBAction func openMenu(_ sender: Any)
-    {
-        SidebarLauncher(delegate: self ).show()
-    }
-    
     
     /*
      *   -------- Privete methods ----------
     **/
-    private func addListeners()
-    {
-        [tabBtnNews,tabBtnIdeaClimeMenu].forEach(
-        {
-            $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
-        })
-    }
-    @objc func didSelect(_ sender: UIButton)
-    {
-        switch sender
-        {
-        case tabBtnNews:
-            break
-        case tabBtnIdeaClimeMenu:
-            sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEACLIME_MENU)
-        default:
-            break
-        }
-    }
-    
     private func initUI()
     {
         // init ai
@@ -158,6 +130,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.loadActivityIndicator?.center = self.view.center
             self.view.addSubview(self.loadActivityIndicator!)
             self.loadActivityIndicator?.hidesWhenStopped = true
+            
+            self.menu?.setState(withType: TabMainMenuView.MENU_STATE_NEWS)
         }
         
     }
@@ -226,7 +200,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                                                                andActionTitle: "Ок",
                                                                                completion:
                                                                                { [unowned self] text in
-                                                                                    self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
+                                                                                    self.showAppView(with: UIStoryboard.VIEW_TYPE_LOGIN)
                                                                                })
                                                 })
 
@@ -358,15 +332,9 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
 }
-
-extension NewsViewController: SidebarDelegate
+extension NewsViewController: NavigateDelegate
 {
-    func sidbarDidOpen()
-    {
-        print("Sidebar opened")
-    }
-    
-    func sidebarDidClose(with item: Int?)
+    func showAppView(with item: Int?)
     {
         guard let item = item else {return}
         print("Did select \(item)")
@@ -374,20 +342,10 @@ extension NewsViewController: SidebarDelegate
         
         switch item
         {
-        case UIStoryboard.VIEW_TYPE_NEWS_LIST:
-            break
-        case UIStoryboard.VIEW_TYPE_IDEAS_LIST:
-            rootVC.showIdeaList()
         case UIStoryboard.VIEW_TYPE_LOGIN:
             rootVC.showLoginScreen()
-        case UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM:
-            rootVC.showAddIdeaForm()
-        case UIStoryboard.VIEW_TYPE_IDEACLIME_MENU:
-            rootVC.showIdeaClimeMenu()
         case UIStoryboard.VIEW_TYPE_NEWS_DETAIL:
             rootVC.showNewsDitail()
-        case UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM:
-            rootVC.showAddClaimForm()
         default:
             break
         }

@@ -36,6 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
         tfPass.isSecureTextEntry = true
         tfLogin.delegate = self
         tfPass.delegate = self
+        menu.setState(withType: TabMainMenuView.MENU_STATE_PROFILE)
     }
     
     /*

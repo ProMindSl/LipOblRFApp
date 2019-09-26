@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol NavigateDelegate
+{
+    func showAppView(with item: Int?)
+}
+
 class RootViewController: UIViewController
 {
     private var current: UIViewController

@@ -224,13 +224,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqe-bh-Dm7">
-                                <rect key="frame" x="20" y="20" width="18" height="22"/>
-                                <state key="normal" image="menu.png"/>
-                                <connections>
-                                    <action selector="openMenu:" destination="D08-Np-jC8" eventType="touchUpInside" id="0EZ-Kl-RA5"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vi4-No-NXQ">
                                 <rect key="frame" x="0.0" y="101" width="375" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -334,7 +327,10 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y18-0N-yra">
-                                <rect key="frame" x="58" y="22" width="0.0" height="0.0"/>
+                                <rect key="frame" x="20" y="20" width="0.0" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="PHB-Kr-ZbP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -345,79 +341,73 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1007" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_slidem.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Qe-9M-4Zw">
-                                <rect key="frame" x="0.0" y="595" width="375" height="72"/>
+                            <view contentMode="scaleToFill" restorationIdentifier="MenuView" translatesAutoresizingMaskIntoConstraints="NO" id="kK3-qe-wkc" customClass="TabMainMenuView" customModule="LipOblRFApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="604" width="375" height="63"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="center" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="pBF-n4-HTi">
+                                        <rect key="frame" x="35" y="8.5" width="305" height="46"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgZ-tJ-5YU">
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="46"/>
+                                                <state key="normal" image="tab_btn_main.png"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voj-Lx-mIy">
+                                                <rect key="frame" x="79" y="0.0" width="59" height="46"/>
+                                                <state key="normal" image="tab_btn_services.png"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QlU-Up-hcD">
+                                                <rect key="frame" x="161" y="0.0" width="59" height="46"/>
+                                                <state key="normal" image="tab_btn_news.png"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbu-uM-2jp">
+                                                <rect key="frame" x="243" y="0.0" width="62" height="46"/>
+                                                <state key="normal" image="tab_btn_profile.png"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="ZBL-IQ-BnF"/>
+                                    <constraint firstItem="pBF-n4-HTi" firstAttribute="centerY" secondItem="kK3-qe-wkc" secondAttribute="centerY" id="6wY-qd-7BJ"/>
+                                    <constraint firstAttribute="height" constant="63" id="MTc-aG-CYk"/>
+                                    <constraint firstItem="pBF-n4-HTi" firstAttribute="centerX" secondItem="kK3-qe-wkc" secondAttribute="centerX" id="pca-ex-7s5"/>
                                 </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barIconNews.png" translatesAutoresizingMaskIntoConstraints="NO" id="VCS-yT-TPV">
-                                <rect key="frame" x="81" y="611" width="18" height="22"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xm3-2h-ZOo">
-                                <rect key="frame" x="227" y="629" width="78" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="4QX-0K-RII"/>
-                                    <constraint firstAttribute="width" constant="78" id="orz-ap-yce"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <state key="normal" title="Идеи и жалобы">
-                                    <color key="titleColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoD-Qs-SYL">
-                                <rect key="frame" x="69" y="629" width="43" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <state key="normal" title="Новости"/>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="rfW-tx-MqQ">
-                                <rect key="frame" x="247" y="611" width="38" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="38" id="F3J-zO-ON9"/>
-                                    <constraint firstAttribute="height" constant="26" id="LR0-Tw-DfC"/>
-                                </constraints>
-                            </imageView>
+                                <connections>
+                                    <outlet property="btnMenuMain" destination="QgZ-tJ-5YU" id="G76-Qw-dED"/>
+                                    <outlet property="btnMenuNews" destination="QlU-Up-hcD" id="l9O-73-OVJ"/>
+                                    <outlet property="btnMenuProfile" destination="Tbu-uM-2jp" id="60K-Sm-qnR"/>
+                                    <outlet property="btnMenuServices" destination="voj-Lx-mIy" id="LrE-dg-7uX"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Iln-Z7-PFq" firstAttribute="bottom" secondItem="FoD-Qs-SYL" secondAttribute="bottom" constant="14" id="0Hw-gg-LeE"/>
                             <constraint firstItem="nl6-XY-8iU" firstAttribute="leading" secondItem="Iln-Z7-PFq" secondAttribute="leading" constant="20" id="6cW-fm-41T"/>
-                            <constraint firstItem="y18-0N-yra" firstAttribute="leading" secondItem="hqe-bh-Dm7" secondAttribute="trailing" constant="20" id="B0Q-5f-w30"/>
-                            <constraint firstItem="5Qe-9M-4Zw" firstAttribute="bottom" secondItem="Iln-Z7-PFq" secondAttribute="bottom" id="DXZ-dZ-Pae"/>
+                            <constraint firstItem="kK3-qe-wkc" firstAttribute="trailing" secondItem="Iln-Z7-PFq" secondAttribute="trailing" id="8i1-mi-2ce"/>
                             <constraint firstItem="Vi4-No-NXQ" firstAttribute="leading" secondItem="Iln-Z7-PFq" secondAttribute="leading" id="EFW-0K-Cbt"/>
                             <constraint firstItem="Vi4-No-NXQ" firstAttribute="top" secondItem="nl6-XY-8iU" secondAttribute="bottom" constant="8" id="Eaz-Kv-Ga3"/>
                             <constraint firstItem="Iln-Z7-PFq" firstAttribute="bottom" secondItem="Vi4-No-NXQ" secondAttribute="bottom" constant="72" id="Hlx-fL-faM"/>
                             <constraint firstItem="Vi4-No-NXQ" firstAttribute="leading" secondItem="Iln-Z7-PFq" secondAttribute="leading" id="IgL-tX-plg"/>
-                            <constraint firstItem="Iln-Z7-PFq" firstAttribute="trailing" secondItem="xm3-2h-ZOo" secondAttribute="trailing" constant="70" id="J6n-pi-EIg"/>
-                            <constraint firstItem="hqe-bh-Dm7" firstAttribute="top" secondItem="Iln-Z7-PFq" secondAttribute="top" constant="20" id="Jq9-fw-xET"/>
-                            <constraint firstItem="5Qe-9M-4Zw" firstAttribute="trailing" secondItem="Iln-Z7-PFq" secondAttribute="trailing" id="L3J-1c-6Oc"/>
-                            <constraint firstItem="Iln-Z7-PFq" firstAttribute="bottom" secondItem="xm3-2h-ZOo" secondAttribute="bottom" constant="14" id="SdG-Qz-y0M"/>
-                            <constraint firstItem="Iln-Z7-PFq" firstAttribute="bottom" secondItem="rfW-tx-MqQ" secondAttribute="bottom" constant="30" id="UpI-OT-r8A"/>
-                            <constraint firstItem="VCS-yT-TPV" firstAttribute="leading" secondItem="Iln-Z7-PFq" secondAttribute="leading" constant="81" id="V5W-Bm-Hfe"/>
-                            <constraint firstItem="hqe-bh-Dm7" firstAttribute="leading" secondItem="Iln-Z7-PFq" secondAttribute="leading" constant="20" id="ZVV-Qp-bzq"/>
-                            <constraint firstItem="Iln-Z7-PFq" firstAttribute="trailing" secondItem="rfW-tx-MqQ" secondAttribute="trailing" constant="90" id="bTn-7w-j0F"/>
-                            <constraint firstItem="nl6-XY-8iU" firstAttribute="top" secondItem="hqe-bh-Dm7" secondAttribute="bottom" constant="10" id="f87-Rt-SsH"/>
+                            <constraint firstItem="y18-0N-yra" firstAttribute="leading" secondItem="ysK-E7-nGO" secondAttribute="leading" constant="20" id="LNR-kz-9ow"/>
+                            <constraint firstItem="kK3-qe-wkc" firstAttribute="bottom" secondItem="Iln-Z7-PFq" secondAttribute="bottom" id="NDT-kQ-Y7N"/>
                             <constraint firstItem="Vi4-No-NXQ" firstAttribute="trailing" secondItem="Iln-Z7-PFq" secondAttribute="trailing" id="gLF-cZ-JqI"/>
-                            <constraint firstItem="y18-0N-yra" firstAttribute="top" secondItem="Iln-Z7-PFq" secondAttribute="top" constant="22" id="gWB-hN-GJk"/>
+                            <constraint firstItem="y18-0N-yra" firstAttribute="top" secondItem="Iln-Z7-PFq" secondAttribute="top" constant="20" id="gWB-hN-GJk"/>
                             <constraint firstAttribute="trailing" secondItem="Vi4-No-NXQ" secondAttribute="trailing" id="hlt-9e-Sdv"/>
-                            <constraint firstItem="xm3-2h-ZOo" firstAttribute="top" secondItem="rfW-tx-MqQ" secondAttribute="bottom" constant="-8" id="mHY-Er-kXV"/>
-                            <constraint firstItem="5Qe-9M-4Zw" firstAttribute="leading" secondItem="Iln-Z7-PFq" secondAttribute="leading" id="mVT-Dx-PrG"/>
-                            <constraint firstItem="VCS-yT-TPV" firstAttribute="top" secondItem="Vi4-No-NXQ" secondAttribute="bottom" constant="16" id="ogn-q5-Umv"/>
-                            <constraint firstItem="FoD-Qs-SYL" firstAttribute="leading" secondItem="Iln-Z7-PFq" secondAttribute="leading" constant="69" id="ubk-P2-0iw"/>
+                            <constraint firstItem="kK3-qe-wkc" firstAttribute="leading" secondItem="Iln-Z7-PFq" secondAttribute="leading" id="ngA-Jw-iWx"/>
+                            <constraint firstItem="nl6-XY-8iU" firstAttribute="top" secondItem="Iln-Z7-PFq" secondAttribute="top" constant="52" id="pGm-is-dQQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iln-Z7-PFq"/>
                     </view>
                     <connections>
                         <outlet property="currNewsDate" destination="nl6-XY-8iU" id="dsv-TU-KWM"/>
                         <outlet property="currNewsDateSmall" destination="y18-0N-yra" id="Qfd-cU-ok4"/>
-                        <outlet property="tabBtnIdeaClimeMenu" destination="xm3-2h-ZOo" id="Oxe-6V-TLy"/>
-                        <outlet property="tabBtnNews" destination="FoD-Qs-SYL" id="uf2-8g-Byt"/>
+                        <outlet property="menu" destination="kK3-qe-wkc" id="sfb-cJ-ptK"/>
                         <outlet property="tvNewsList" destination="Vi4-No-NXQ" id="Qb9-Ci-noB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecs-0s-KBu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1476" y="1218"/>
+            <point key="canvasLocation" x="-1626.4000000000001" y="-87.706146926536732"/>
         </scene>
         <!--News Detail View Controller-->
         <scene sceneID="meF-uB-BOw">
@@ -780,7 +770,6 @@
                                 <rect key="frame" x="20" y="20" width="36" height="22"/>
                                 <state key="normal" image="menu.png"/>
                                 <connections>
-                                    <action selector="OpenMenu:" destination="D08-Np-jC8" eventType="touchUpInside" id="0Vq-sG-1EE"/>
                                     <action selector="OpenMenu:" destination="0kB-eO-fBN" eventType="touchUpInside" id="BrN-c3-XVc"/>
                                 </connections>
                             </button>
@@ -1800,7 +1789,6 @@
         <image name="add.png" width="15" height="15"/>
         <image name="attantion.png" width="19" height="19"/>
         <image name="back.png" width="25" height="25"/>
-        <image name="barIconNews.png" width="18" height="22"/>
         <image name="barIconNewsNA.png" width="18" height="22"/>
         <image name="bg_slidem.png" width="82.5" height="72"/>
         <image name="btnBgBorder.png" width="338" height="45"/>
@@ -1821,7 +1809,6 @@
         <image name="preference.png" width="17" height="17"/>
         <image name="star.png" width="19" height="19"/>
         <image name="star_blue.png" width="30" height="26"/>
-        <image name="star_gray.png" width="30" height="26"/>
         <image name="tab_btn_main.png" width="14" height="11.5"/>
         <image name="tab_btn_news.png" width="14.75" height="11.5"/>
         <image name="tab_btn_profile.png" width="15.5" height="11.5"/>
