@@ -155,7 +155,7 @@
 		D2730EAB23100C4D00714639 /* barIconNews.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barIconNews.png; sourceTree = "<group>"; };
 		D2730EAD23100F0500714639 /* star_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_blue.png; sourceTree = "<group>"; };
 		D2730EAF2310172F00714639 /* GetContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContentManager.swift; sourceTree = "<group>"; };
-		D274FD36230304F500485D89 /* LipOblRFApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LipOblRFApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D274FD36230304F500485D89 /* ЛипОбласть.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ЛипОбласть.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D274FD39230304F500485D89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D274FD3B230304F500485D89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D274FD3E230304F500485D89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -339,7 +339,7 @@
 		D274FD37230304F500485D89 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D274FD36230304F500485D89 /* LipOblRFApp.app */,
+				D274FD36230304F500485D89 /* ЛипОбласть.app */,
 				D274FD4A230304F600485D89 /* LipOblRFAppTests.xctest */,
 				D274FD55230304F600485D89 /* LipOblRFAppUITests.xctest */,
 			);
@@ -399,7 +399,7 @@
 			);
 			name = LipOblRFApp;
 			productName = LipOblRFApp;
-			productReference = D274FD36230304F500485D89 /* LipOblRFApp.app */;
+			productReference = D274FD36230304F500485D89 /* ЛипОбласть.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D274FD49230304F600485D89 /* LipOblRFAppTests */ = {
@@ -780,7 +780,7 @@
 		D274FD5F230304F600485D89 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-lipobl";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-lipobl2.0";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2L25M55KTC;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -793,8 +793,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.itc48.LipOblRFApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.itc48.LipOblRF;
+				PRODUCT_NAME = "ЛипОбласть";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -803,7 +803,7 @@
 		D274FD60230304F600485D89 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-lipobl";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-lipobl2.0";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2L25M55KTC;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -816,8 +816,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.itc48.LipOblRFApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.itc48.LipOblRF;
+				PRODUCT_NAME = "ЛипОбласть";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
