@@ -11,12 +11,11 @@ import UIKit
 class IdeaClaimMenuViewController: UIViewController
 {
     // outlets
-    @IBOutlet weak var tfCurrDate: UILabel!
-    @IBOutlet weak var btnIdeaList: UIButton!
     @IBOutlet weak var btnIdeaCreate: UIButton!
     @IBOutlet weak var btnClimeCreate: UIButton!
     @IBOutlet weak var indViewCenter: UIActivityIndicatorView!
-    @IBOutlet weak var tabBtnNews: UIButton!
+    @IBOutlet weak var menu: TabMainMenuView!
+    
     
     
     
@@ -27,6 +26,7 @@ class IdeaClaimMenuViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        menu.setState(withType: TabMainMenuView.MENU_STATE_MAIN)
         updateViewState()
         addListeners()
     }
@@ -76,7 +76,6 @@ class IdeaClaimMenuViewController: UIViewController
         {
             DispatchQueue.main.async
             {
-                self.btnIdeaList.isEnabled = true
                 self.btnIdeaCreate.isEnabled = true
                 self.btnClimeCreate.isEnabled = true
                 
@@ -86,7 +85,6 @@ class IdeaClaimMenuViewController: UIViewController
         {
             DispatchQueue.main.async
             {
-                self.btnIdeaList.isEnabled = false
                 self.btnIdeaCreate.isEnabled = false
                 self.btnClimeCreate.isEnabled = false
                 
