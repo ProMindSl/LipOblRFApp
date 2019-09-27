@@ -231,53 +231,53 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         && currMonth == inputMonth
         && currDay == inputDay
         {
-            self.currNewsDate.text = "Сегодня"
+            self.currNewsDate.text = "Новости cегодня"
             _getContMng.currentNewsDateStr = "Сегодня"
         }
         else if currYear == inputYear
             && currMonth == inputMonth
             && currDay == (inputDay + 1)
         {
-            self.currNewsDate.text = "Вчера"
+            self.currNewsDate.text = "Новости вчера"
             _getContMng.currentNewsDateStr = "Вчера"
         }
         else if currYear == inputYear
             && currMonth == inputMonth
             && currDay == (inputDay + 2)
         {
-            self.currNewsDate.text = "Позавчера"
+            self.currNewsDate.text = "Новости позавчера"
             _getContMng.currentNewsDateStr = "Позавчера"
         }
         else if currYear == inputYear
             && currMonth == inputMonth
             && (currDay < (inputDay + 7)) && (currDay >= (inputDay + 3))
         {
-            self.currNewsDate.text = "На этой неделе"
+            self.currNewsDate.text = "Новости на этой неделе"
             _getContMng.currentNewsDateStr = "На этой неделе"
         }
         else if currYear == inputYear
             && currMonth == inputMonth
             && (currDay >= (inputDay + 7)) && (currDay <= (inputDay + 14))
         {
-            self.currNewsDate.text = "На прошлой неделе неделе"
+            self.currNewsDate.text = "Новости на прошлой неделе неделе"
             _getContMng.currentNewsDateStr = "На прошлой неделе неделе"
         }
         else if currYear == inputYear
             && currMonth == inputMonth
             && currDay > (inputDay + 14)
         {
-            self.currNewsDate.text = "В этом месяце"
+            self.currNewsDate.text = "Новости в этом месяце"
             _getContMng.currentNewsDateStr = "В этом месяце"
         }
         else if currYear == inputYear
             && currMonth == (inputMonth+1)
         {
-            self.currNewsDate.text = "В прошлом месяце"
+            self.currNewsDate.text = "Новости в прошлом месяце"
             _getContMng.currentNewsDateStr = "В прошлом месяце"
         }
         else if currYear == (inputYear - 1)
         {
-            self.currNewsDate.text = "В прошлом году"
+            self.currNewsDate.text = "Новости в прошлом году"
             _getContMng.currentNewsDateStr = "В прошлом году"
         }
         
