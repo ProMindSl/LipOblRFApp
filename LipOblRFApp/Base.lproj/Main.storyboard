@@ -720,10 +720,10 @@
             </objects>
             <point key="canvasLocation" x="-1476" y="2710"/>
         </scene>
-        <!--Idea Claim Menu View Controller-->
+        <!--Main Menu View Controller-->
         <scene sceneID="iaK-sU-uuu">
             <objects>
-                <viewController storyboardIdentifier="IdeaClaimMenuViewController" id="0kB-eO-fBN" customClass="IdeaClaimMenuViewController" customModule="ЛипОбласть" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IdeaClaimMenuViewController" id="0kB-eO-fBN" customClass="MainMenuViewController" customModule="ЛипОбласть" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fxk-S5-D9i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -876,15 +876,19 @@
                         <viewLayoutGuide key="safeArea" id="1xz-fo-qR0"/>
                     </view>
                     <connections>
+                        <outlet property="btnClaimCreateLong" destination="oRJ-sJ-37H" id="BWK-Oo-K7p"/>
                         <outlet property="btnClimeCreate" destination="BSe-yq-mfV" id="05g-gf-FBK"/>
                         <outlet property="btnIdeaCreate" destination="N5g-O4-xwu" id="cM0-Gt-6gI"/>
+                        <outlet property="btnIdeaCreateLong" destination="9Yf-z8-8GT" id="NFZ-g3-8zs"/>
+                        <outlet property="btnQuestionCreate" destination="VpU-rB-cv4" id="0Mv-TW-xKe"/>
+                        <outlet property="btnQuestionCreateLong" destination="CO3-Fr-nzM" id="yy0-rb-BJg"/>
                         <outlet property="indViewCenter" destination="x7S-hV-LMw" id="7H6-Bv-QaC"/>
                         <outlet property="menu" destination="FCC-BX-7NJ" id="xad-s2-WpI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gda-Tj-cp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1626.4000000000001" y="497.90104947526243"/>
+            <point key="canvasLocation" x="-1626" y="501"/>
         </scene>
         <!--Add Idea View Controller-->
         <scene sceneID="hE1-fi-1TX">

@@ -76,7 +76,7 @@ class RootViewController: UIViewController
     }
     public func showIdeaClimeMenu()
     {
-        let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IdeaClaimMenuViewController") as? IdeaClaimMenuViewController)!
+        let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IdeaClaimMenuViewController") as? MainMenuViewController)!
         animateWithTransition(to: new, withAnimationType: .transitionFlipFromRight)
     }
     public func showAddIdeaForm()

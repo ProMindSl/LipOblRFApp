@@ -8,11 +8,16 @@
 
 import UIKit
 
-class IdeaClaimMenuViewController: UIViewController
+class MainMenuViewController: UIViewController
 {
     // outlets
+    
+    @IBOutlet weak var btnQuestionCreate: UIButton!
+    @IBOutlet weak var btnQuestionCreateLong: UIButton!
     @IBOutlet weak var btnIdeaCreate: UIButton!
+    @IBOutlet weak var btnIdeaCreateLong: UIButton!
     @IBOutlet weak var btnClimeCreate: UIButton!
+    @IBOutlet weak var btnClaimCreateLong: UIButton!
     @IBOutlet weak var indViewCenter: UIActivityIndicatorView!
     @IBOutlet weak var menu: TabMainMenuView!
     
@@ -47,7 +52,7 @@ class IdeaClaimMenuViewController: UIViewController
     **/
     private func addListeners()
     {
-        [btnIdeaCreate, btnClimeCreate].forEach(
+        [btnIdeaCreate, btnIdeaCreateLong, btnClimeCreate, btnQuestionCreateLong].forEach(
         {
             $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         })
@@ -57,9 +62,9 @@ class IdeaClaimMenuViewController: UIViewController
         switch sender
         {
         
-        case btnIdeaCreate:
+        case btnIdeaCreate, btnIdeaCreateLong:
             sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM)
-        case btnClimeCreate:
+        case btnClimeCreate, btnClaimCreateLong:
             sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM)
         default:
             break
@@ -166,7 +171,7 @@ class IdeaClaimMenuViewController: UIViewController
 
 }
 
-extension IdeaClaimMenuViewController: SidebarDelegate
+extension MainMenuViewController: SidebarDelegate
 {
     func sidbarDidOpen()
     {
