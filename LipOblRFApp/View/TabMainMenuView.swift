@@ -86,6 +86,8 @@ class TabMainMenuView: UIView
             rootVC.showLoginScreen()
         case btnMenuNews:
             rootVC.showNewsList()
+        case btnMenuMain:
+            rootVC.showIdeaClimeMenu()
         default:
             break
         }

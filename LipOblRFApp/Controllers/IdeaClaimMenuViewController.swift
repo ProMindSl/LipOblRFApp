@@ -47,7 +47,7 @@ class IdeaClaimMenuViewController: UIViewController
     **/
     private func addListeners()
     {
-        [btnIdeaList,btnIdeaCreate, btnClimeCreate].forEach(
+        [btnIdeaCreate, btnClimeCreate].forEach(
         {
             $0?.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         })
@@ -56,8 +56,7 @@ class IdeaClaimMenuViewController: UIViewController
     {
         switch sender
         {
-        case btnIdeaList:
-            sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+        
         case btnIdeaCreate:
             sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM)
         case btnClimeCreate:
