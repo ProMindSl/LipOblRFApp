@@ -104,6 +104,8 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let indexStart: String.Index = dateStr.index(dateStr.endIndex, offsetBy: -8)
         let indexEnd: String.Index = dateStr.index(dateStr.endIndex, offsetBy: -3)
         cell.tfTime.text = String(dateStr[indexStart..<indexEnd])
+        // update curr time on contMng
+        _getContMng.currentNewsTime = String(dateStr[indexStart..<indexEnd])
         
         setDateLabel(with: dateStr)
         
@@ -315,7 +317,7 @@ class NewsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         self.currNewsDateSmall.text = String(inputDay) + " " + monthStr + " " + String(inputYear)
-        _getContMng.currentNewsDateTime = String(inputDay) + " " + monthStr + " " + String(inputYear)
+        _getContMng.currentNewsDate = String(inputDay) + " " + monthStr + " " + String(inputYear)
     }
     
     private func addZeroToSingleChar(to oneCharString: String) -> String

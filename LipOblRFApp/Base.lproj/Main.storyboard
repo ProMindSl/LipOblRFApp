@@ -458,21 +458,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Спорт" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0DW-fN-NV7">
-                                                    <rect key="frame" x="56" y="17" width="50" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdU-Wh-eMw">
+                                                    <rect key="frame" x="26" y="17" width="39" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdU-Wh-eMw">
-                                                    <rect key="frame" x="126" y="17" width="52" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clocks_b.png" translatesAutoresizingMaskIntoConstraints="NO" id="icV-6R-wjc">
-                                                    <rect key="frame" x="26" y="21" width="20" height="12"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1012" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название новости" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3K-hX-sgr">
                                                     <rect key="frame" x="26" y="46" width="333" height="25.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
@@ -482,16 +473,20 @@
                                                     <rect key="frame" x="19" y="81.5" width="343" height="453.5"/>
                                                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </webView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1013" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0DW-fN-NV7">
+                                                    <rect key="frame" x="80" y="17" width="52" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="MEy-Pn-cp6" firstAttribute="top" secondItem="n3K-hX-sgr" secondAttribute="bottom" constant="10" id="3J9-f3-Llj"/>
-                                                <constraint firstItem="icV-6R-wjc" firstAttribute="leading" secondItem="zLD-C4-Nkg" secondAttribute="leadingMargin" constant="10" id="869-LN-qcp"/>
+                                                <constraint firstItem="EdU-Wh-eMw" firstAttribute="leading" secondItem="zLD-C4-Nkg" secondAttribute="leadingMargin" constant="10" id="9d1-Mg-H3K"/>
                                                 <constraint firstItem="EdU-Wh-eMw" firstAttribute="top" secondItem="zLD-C4-Nkg" secondAttribute="topMargin" constant="6" id="ALs-hl-isH"/>
                                                 <constraint firstItem="MEy-Pn-cp6" firstAttribute="trailing" secondItem="zLD-C4-Nkg" secondAttribute="trailingMargin" constant="3" id="Bjq-Xb-d7X"/>
-                                                <constraint firstItem="icV-6R-wjc" firstAttribute="top" secondItem="zLD-C4-Nkg" secondAttribute="topMargin" constant="10" id="DqG-K7-h37"/>
                                                 <constraint firstItem="n3K-hX-sgr" firstAttribute="leading" secondItem="zLD-C4-Nkg" secondAttribute="leadingMargin" constant="10" id="Ehq-OC-qc9"/>
-                                                <constraint firstItem="EdU-Wh-eMw" firstAttribute="leading" secondItem="0DW-fN-NV7" secondAttribute="trailing" constant="20" id="JMZ-mc-mnI"/>
-                                                <constraint firstItem="0DW-fN-NV7" firstAttribute="leading" secondItem="icV-6R-wjc" secondAttribute="trailing" constant="10" id="Ol1-Lh-m6O"/>
+                                                <constraint firstItem="0DW-fN-NV7" firstAttribute="leading" secondItem="EdU-Wh-eMw" secondAttribute="trailing" constant="15" id="XkB-Po-MTy"/>
                                                 <constraint firstItem="MEy-Pn-cp6" firstAttribute="leading" secondItem="zLD-C4-Nkg" secondAttribute="leadingMargin" constant="3" id="ZyP-8z-nHm"/>
                                                 <constraint firstItem="n3K-hX-sgr" firstAttribute="trailing" secondItem="zLD-C4-Nkg" secondAttribute="trailingMargin" id="cTI-JW-k3K"/>
                                                 <constraint firstItem="0DW-fN-NV7" firstAttribute="top" secondItem="zLD-C4-Nkg" secondAttribute="topMargin" constant="6" id="kVz-kH-By0"/>
@@ -513,8 +508,8 @@
                     <connections>
                         <outlet property="btnBack" destination="gL7-nK-cbx" id="ubG-vp-Hif"/>
                         <outlet property="ivPic" destination="RQA-OZ-xe7" id="WTC-UT-pcH"/>
-                        <outlet property="labelDataStr" destination="0DW-fN-NV7" id="lWw-ej-3lF"/>
-                        <outlet property="labelTime" destination="EdU-Wh-eMw" id="f0p-sB-921"/>
+                        <outlet property="labelDate" destination="EdU-Wh-eMw" id="f0p-sB-921"/>
+                        <outlet property="labelTime" destination="0DW-fN-NV7" id="lWw-ej-3lF"/>
                         <outlet property="labelTitle" destination="n3K-hX-sgr" id="F4Y-h2-YAT"/>
                         <outlet property="wvTextBody" destination="MEy-Pn-cp6" id="wz9-w4-Wxc"/>
                     </connections>
@@ -910,7 +905,9 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LR-N2-apq">
                                                     <rect key="frame" x="26" y="11" width="45" height="30"/>
-                                                    <state key="normal" title="Назад"/>
+                                                    <state key="normal" title="Назад">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавить идею" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hER-sG-Vaa">
                                                     <rect key="frame" x="24" y="46" width="169" height="27"/>
@@ -1674,7 +1671,6 @@
     </scenes>
     <resources>
         <image name="Clocks.png" width="20" height="12"/>
-        <image name="Clocks_b.png" width="20" height="12"/>
         <image name="Userpic Icon.png" width="70" height="70"/>
         <image name="add.png" width="15" height="15"/>
         <image name="attantion.png" width="19" height="19"/>

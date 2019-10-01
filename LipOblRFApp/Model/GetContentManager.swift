@@ -121,7 +121,8 @@ class GetContentManager
     public var currentIdea: Int
     public var currentClaim: Int
     public var currentNewsDateStr: String
-    public var currentNewsDateTime: String
+    public var currentNewsDate: String
+    public var currentNewsTime: String
     
     public private(set) var currentMsg: String
     public private(set) var apiANS: String
@@ -221,8 +222,9 @@ class GetContentManager
         currentNews = 0
         currentIdea = 0
         currentClaim = 0
-        currentNewsDateTime = ""
+        currentNewsDate = ""
         currentNewsDateStr = ""
+        currentNewsTime = ""
         
         scopeTypesList = []
         raionTypeList = []

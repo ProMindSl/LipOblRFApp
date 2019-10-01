@@ -13,10 +13,9 @@ class NewsDetailViewController: UITableViewController
 {
     // outlets
     @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var labelDataStr: UILabel!
     @IBOutlet weak var labelTime: UILabel!
+    @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelTitle: UILabel!
-    //@IBOutlet weak var labelTextBody: UILabel!
     @IBOutlet weak var ivPic: UIImageView!
     @IBOutlet weak var wvTextBody: UIWebView!
     
@@ -77,8 +76,8 @@ class NewsDetailViewController: UITableViewController
         
         wvTextBody.loadHTMLString(_getContMng.loadedNewsList[newsId].content, baseURL: nil)
         
-        labelDataStr.text = _getContMng.currentNewsDateStr
-        labelTime.text = _getContMng.currentNewsDateTime
+        labelTime.text = _getContMng.currentNewsTime
+        labelDate.text = _getContMng.currentNewsDate
         
         if self._getContMng.loadedNewsList[newsId].imgs.count > 0
         {
