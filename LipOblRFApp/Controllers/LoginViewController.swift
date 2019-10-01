@@ -15,6 +15,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var tfLogin: UITextField!
     @IBOutlet weak var tfPass: UITextField!
     @IBOutlet weak var btnSignIn: UIButton!
+    @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var menu: TabMainMenuView!
     
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
@@ -37,6 +38,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate
         tfLogin.delegate = self
         tfPass.delegate = self
         menu.setState(withType: TabMainMenuView.MENU_STATE_PROFILE)
+        
+        btnSignIn.layer.cornerRadius = 8
+        btnSignUp.layer.cornerRadius = 8
+        btnSignUp.layer.borderColor = UIColor.gray.cgColor
+        //btnSignUp.layer.borderWidth = CGFloat(exactly: 1.0)!
     }
     
     /*

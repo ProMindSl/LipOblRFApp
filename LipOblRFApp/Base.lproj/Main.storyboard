@@ -1551,6 +1551,7 @@
                     </view>
                     <connections>
                         <outlet property="btnSignIn" destination="PAV-dI-QQ8" id="4CH-vi-9aC"/>
+                        <outlet property="btnSignUp" destination="5o9-No-nLP" id="tTA-Rr-aHv"/>
                         <outlet property="menu" destination="P7d-RF-CFa" id="dY6-qB-NS3"/>
                         <outlet property="tfLogin" destination="ZBC-RD-Ayn" id="Pdb-pW-PFO"/>
                         <outlet property="tfPass" destination="iGq-tR-k8d" id="eaT-Zc-TfB"/>
