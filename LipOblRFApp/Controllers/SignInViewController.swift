@@ -7,12 +7,13 @@
 //
 
 import UIKit
+//import
 
 class SignInViewController: UIViewController
 {
     
-    @IBOutlet weak var btnSignIn: UIButton!
-    @IBOutlet weak var btnSignUp: UIButton!
+    @IBOutlet weak var btnSignIn: LRAppButton!
+    @IBOutlet weak var btnSignUp: LRAppButton!
     
     
     override func viewDidLoad()
@@ -23,11 +24,8 @@ class SignInViewController: UIViewController
     
     private func addListeners()
     {
-        // configure ui view
-        btnSignIn.layer.cornerRadius = 6
-        btnSignUp.layer.cornerRadius = 6
-        btnSignUp.layer.borderColor = UIColor.white.cgColor
-        btnSignUp.layer.borderWidth = CGFloat(exactly: 1.0)! 
+        btnSignUp.setViewType(with: LRAppButton.TYPE_ALPHA_WHITE_TITLE)
+        btnSignIn.setViewType(with: LRAppButton.TYPE_WHITE)
         
         [btnSignIn, btnSignUp].forEach(
         {
