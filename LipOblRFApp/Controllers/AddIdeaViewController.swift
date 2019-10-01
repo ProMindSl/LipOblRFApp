@@ -94,8 +94,8 @@ class AddIdeaViewController: UITableViewController,
         
         //this customization is optional
         pickerAccessory?.barStyle = .default
-        pickerAccessory?.barTintColor = UIColor.blue
-        pickerAccessory?.backgroundColor = UIColor.blue
+        pickerAccessory?.barTintColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
+        pickerAccessory?.backgroundColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
         pickerAccessory?.isTranslucent = false
         var frame = pickerAccessory?.frame
         frame?.size.height = 44.0
