@@ -46,7 +46,7 @@ class TabMainMenuView: UIView
             btnMenuNews.setImage(UIImage(named: "tab_btn_news.png"), for: .normal)
             btnMenuProfile.setImage(UIImage(named: "tab_btn_profile.png"), for: .normal)
         case TabMainMenuView.MENU_STATE_SERVICES:
-            btnMenuMain.setImage(UIImage(named: "tab_btn_active_main.png"), for: .normal)
+            btnMenuMain.setImage(UIImage(named: "tab_btn_main.png"), for: .normal)
             btnMenuServices.setImage(UIImage(named: "tab_btn_active_services.png"), for: .normal)
             btnMenuNews.setImage(UIImage(named: "tab_btn_news.png"), for: .normal)
             btnMenuProfile.setImage(UIImage(named: "tab_btn_profile.png"), for: .normal)
@@ -87,7 +87,7 @@ class TabMainMenuView: UIView
         case btnMenuNews:
             rootVC.showNewsList()
         case btnMenuMain:
-            rootVC.showIdeaClimeMenu()
+            rootVC.showMainMenu()
         default:
             break
         }

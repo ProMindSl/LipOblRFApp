@@ -283,7 +283,7 @@ extension IdeasViewController: SidebarDelegate
         case UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM:
             rootVC.showAddIdeaForm()
         case UIStoryboard.VIEW_TYPE_IDEACLIME_MENU:
-            rootVC.showIdeaClimeMenu()
+            rootVC.showMainMenu()
         case UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM:
             rootVC.showAddClaimForm()
         default:

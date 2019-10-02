@@ -63,7 +63,7 @@ class MainMenuViewController: UIViewController
         {
         
         case btnIdeaCreate, btnIdeaCreateLong:
-            sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM)
+            sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_IDEA_STEP_1)
         case btnClimeCreate, btnClaimCreateLong:
             sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM)
         default:
@@ -186,7 +186,7 @@ extension MainMenuViewController: SidebarDelegate
         
         switch item
         {
-        case UIStoryboard.VIEW_TYPE_NEWS_LIST:
+        /*case UIStoryboard.VIEW_TYPE_NEWS_LIST:
             rootVC.showNewsList()
         case UIStoryboard.VIEW_TYPE_IDEAS_LIST:
             rootVC.showIdeaList()
@@ -197,7 +197,11 @@ extension MainMenuViewController: SidebarDelegate
         case UIStoryboard.VIEW_TYPE_IDEACLIME_MENU:
             break
         case UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM:
-            rootVC.showAddClaimForm()
+            rootVC.showAddClaimForm()*/
+        case UIStoryboard.VIEW_TYPE_ADD_IDEA_STEP_1:
+            rootVC.showAddIdeaStep1()
+        case UIStoryboard.VIEW_TYPE_LOGIN:
+            rootVC.showLoginScreen()
         default:
             break
         }

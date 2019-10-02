@@ -90,6 +90,8 @@
 		D2D06B44233E4BC30080AF64 /* btn_mainpage_gis.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D06B3E233E4BC20080AF64 /* btn_mainpage_gis.png */; };
 		D2D06B46234341650080AF64 /* LRAppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D06B45234341650080AF64 /* LRAppButton.swift */; };
 		D2D06B48234370CB0080AF64 /* UIMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D06B47234370CB0080AF64 /* UIMethods.swift */; };
+		D2D06B4A2343D0F90080AF64 /* MapPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D06B492343D0F90080AF64 /* MapPickerController.swift */; };
+		D2D06B5223448BEA0080AF64 /* AddIdeaStepOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D06B5123448BEA0080AF64 /* AddIdeaStepOneViewController.swift */; };
 		D2E4165F23394B37002C0327 /* lip_tree_light_stroke.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E4165C23394B37002C0327 /* lip_tree_light_stroke.png */; };
 		D2E4166023394B37002C0327 /* lip_tree_width_stroke.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E4165D23394B37002C0327 /* lip_tree_width_stroke.png */; };
 		D2E4166123394B37002C0327 /* tree_lip_image.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E4165E23394B37002C0327 /* tree_lip_image.png */; };
@@ -203,6 +205,8 @@
 		D2D06B3E233E4BC20080AF64 /* btn_mainpage_gis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_mainpage_gis.png; sourceTree = "<group>"; };
 		D2D06B45234341650080AF64 /* LRAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRAppButton.swift; sourceTree = "<group>"; };
 		D2D06B47234370CB0080AF64 /* UIMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMethods.swift; sourceTree = "<group>"; };
+		D2D06B492343D0F90080AF64 /* MapPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickerController.swift; sourceTree = "<group>"; };
+		D2D06B5123448BEA0080AF64 /* AddIdeaStepOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdeaStepOneViewController.swift; sourceTree = "<group>"; };
 		D2E4165C23394B37002C0327 /* lip_tree_light_stroke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lip_tree_light_stroke.png; sourceTree = "<group>"; };
 		D2E4165D23394B37002C0327 /* lip_tree_width_stroke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lip_tree_width_stroke.png; sourceTree = "<group>"; };
 		D2E4165E23394B37002C0327 /* tree_lip_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree_lip_image.png; sourceTree = "<group>"; };
@@ -323,6 +327,8 @@
 				D2B6F4C42334AED600FD0D8A /* AddClaimViewController.swift */,
 				D22D6CA923084F0F00DDA0E1 /* MainMenuViewController.swift */,
 				D2863CDD230DA90900393186 /* AlertController.swift */,
+				D2D06B492343D0F90080AF64 /* MapPickerController.swift */,
+				D2D06B5123448BEA0080AF64 /* AddIdeaStepOneViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -330,12 +336,12 @@
 		D22D6C062303FB9E00DDA0E1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D2D06B47234370CB0080AF64 /* UIMethods.swift */,
 				D22D6CA323042CB600DDA0E1 /* NewsViewCell.swift */,
 				D22D6CA723083EA800DDA0E1 /* TypePickerView.swift */,
 				D2A9FAB4231260F300BC09CC /* IdeaViewCell.swift */,
 				D275736A233CA53F00155010 /* TabMainMenuView.swift */,
 				D2D06B45234341650080AF64 /* LRAppButton.swift */,
-				D2D06B47234370CB0080AF64 /* UIMethods.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 				D2D06B46234341650080AF64 /* LRAppButton.swift in Sources */,
 				D2730EA6230FFCD600714639 /* NewsDetailViewController.swift in Sources */,
 				D2B6F4C52334AED600FD0D8A /* AddClaimViewController.swift in Sources */,
+				D2D06B4A2343D0F90080AF64 /* MapPickerController.swift in Sources */,
 				D22D6CAA23084F0F00DDA0E1 /* MainMenuViewController.swift in Sources */,
 				D274FD3A230304F500485D89 /* AppDelegate.swift in Sources */,
 				D22D6C9A2304162000DDA0E1 /* NewsViewController.swift in Sources */,
@@ -631,6 +638,7 @@
 				D2863CE2230DC08A00393186 /* APIVals.swift in Sources */,
 				D22D6C9C230417BC00DDA0E1 /* SidebarLauncher.swift in Sources */,
 				D22D6CA0230419DF00DDA0E1 /* IdeasViewController.swift in Sources */,
+				D2D06B5223448BEA0080AF64 /* AddIdeaStepOneViewController.swift in Sources */,
 				D22D6CA423042CB600DDA0E1 /* NewsViewCell.swift in Sources */,
 				D22D6C8C2304106D00DDA0E1 /* AccountManager.swift in Sources */,
 				D2A9FAB5231260F300BC09CC /* IdeaViewCell.swift in Sources */,

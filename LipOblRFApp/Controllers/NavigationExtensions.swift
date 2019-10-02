@@ -17,5 +17,9 @@ extension UIStoryboard{
     public static let VIEW_TYPE_IDEACLIME_MENU = 5
     public static let VIEW_TYPE_NEWS_DETAIL = 6
     public static let VIEW_TYPE_ADD_CLAIM_FORM = 7
+    public static let VIEW_TYPE_ADD_IDEA_STEP_1 = 8
+    public static let VIEW_TYPE_ADD_IDEA_STEP_2 = 9
+    public static let VIEW_TYPE_ADD_IDEA_STEP_3 = 10
+    public static let VIEW_TYPE_ADD_IDEA_STEP_FINAL = 11
 }
 

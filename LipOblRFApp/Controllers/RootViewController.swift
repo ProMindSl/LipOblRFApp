@@ -74,7 +74,7 @@ class RootViewController: UIViewController
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IdeasViewController") as? IdeasViewController)!
         animateWithTransition(to: new, withAnimationType: .transitionFlipFromRight)
     }
-    public func showIdeaClimeMenu()
+    public func showMainMenu()
     {
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainMenuViewController") as? MainMenuViewController)!
         animateWithTransition(to: new, withAnimationType: .transitionFlipFromRight)
@@ -92,6 +92,12 @@ class RootViewController: UIViewController
     public func showNewsDitail()
     {
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsDetailViewController") as? NewsDetailViewController)!
+        animateWithTransition(to: new, withAnimationType: .transitionFlipFromTop)
+    }
+    public func showAddIdeaStep1()
+    {
+        let new = (UIStoryboard(name: "Main",
+                                bundle: nil).instantiateViewController(withIdentifier: "AddIdeaStepOneViewController") as? AddIdeaStepOneViewController)!
         animateWithTransition(to: new, withAnimationType: .transitionFlipFromTop)
     }
     

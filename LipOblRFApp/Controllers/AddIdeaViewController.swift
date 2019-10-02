@@ -19,7 +19,7 @@ class AddIdeaViewController: UITableViewController,
     @IBOutlet weak var tfIdeaScope: UITextField!
     @IBOutlet weak var tfMapSearch: UITextField!
     @IBOutlet weak var mvIdeaLocation: MKMapView!
-    @IBOutlet weak var tfIdeaTitle: UITextField!
+    //@IBOutlet weak var tfIdeaTitle: UITextField!
     @IBOutlet weak var tfIdeaTxtBody: UITextField!
     @IBOutlet weak var btnAddIdea: UIButton!
     @IBOutlet weak var btnAddFiles: UIButton!
@@ -31,7 +31,7 @@ class AddIdeaViewController: UITableViewController,
     private let _getContMng = GetContentManager.shared
     private let _alertController = AlertController.shared
     // other mngs init
-    private let _setController = SetContentManager()
+    private let _setController = SetContentManager.shared
     
     // type picker vars
     var picker: TypePickerView?
@@ -72,7 +72,7 @@ class AddIdeaViewController: UITableViewController,
         {
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            self.mvIdeaLocation.setRegion(region, animated: true)
+            self.mvIdeaLocation?.setRegion(region, animated: true)
         }
     }
     
@@ -113,7 +113,7 @@ class AddIdeaViewController: UITableViewController,
         btnBack.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         
         // set text field keyboard settings
-        tfIdeaTitle.delegate = self
+        //tfIdeaTitle.delegate = self
         tfIdeaTxtBody.delegate = self
         
         // load
@@ -185,9 +185,9 @@ class AddIdeaViewController: UITableViewController,
         // init Map recognizer
         let recognizer = UILongPressGestureRecognizer()
         recognizer.addTarget(self, action: #selector(handleLongPressGesture(_:)))
-        mvIdeaLocation.addGestureRecognizer(recognizer)
+        mvIdeaLocation?.addGestureRecognizer(recognizer)
         
-        mvIdeaLocation.showsUserLocation = true
+        mvIdeaLocation?.showsUserLocation = true
         
         if CLLocationManager.locationServicesEnabled() == true
         {
@@ -316,7 +316,7 @@ class AddIdeaViewController: UITableViewController,
                 //self.btnAddIdea.isEnabled = true
                 self.tfIdeaScope.isEnabled = true
                 self.tfMapSearch.isEnabled = true
-                self.tfIdeaTitle.isEnabled = true
+                //self.tfIdeaTitle.isEnabled = true
                 self.tfIdeaTxtBody.isEnabled = true
                 
                 //self.btnAddIdea.isHidden = false
@@ -330,7 +330,7 @@ class AddIdeaViewController: UITableViewController,
                 //self.btnAddIdea.isEnabled = false
                 self.tfIdeaScope.isEnabled = false
                 self.tfMapSearch.isEnabled = false
-                self.tfIdeaTitle.isEnabled = false
+                //self.tfIdeaTitle.isEnabled = false
                 self.tfIdeaTxtBody.isEnabled = false
                 
                 //self.btnAddIdea.isHidden = true
@@ -438,7 +438,7 @@ class AddIdeaViewController: UITableViewController,
     @IBAction func didSelectAddIdea(_ sender: Any)
     {
         let scope = _getContMng.getScopeIdByName(with: tfIdeaScope.text ?? "none")  // gettiog input data
-        let title = tfIdeaTitle.text ?? "Пустой заголовок"
+        let title = "CURR" //tfIdeaTitle.text ?? "Пустой заголовок"
         let body = tfIdeaTxtBody.text ?? "Пустое описание"
         let raion = _currRaionId
         let longitude = _currLongitude
@@ -595,7 +595,7 @@ extension AddIdeaViewController: SidebarDelegate
         case UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM:
             break
         case UIStoryboard.VIEW_TYPE_IDEACLIME_MENU:
-            rootVC.showIdeaClimeMenu()
+            rootVC.showMainMenu()
         default:
             break
         }

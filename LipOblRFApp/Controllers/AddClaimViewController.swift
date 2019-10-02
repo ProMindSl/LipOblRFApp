@@ -29,7 +29,7 @@ class AddClaimViewController:   UITableViewController,
     private let _getContMng = GetContentManager.shared
     private let _alertController = AlertController.shared
     // other mngs init
-    private let _setController = SetContentManager()
+    private let _setController = SetContentManager.shared
     
     // type picker vars
     var picker: TypePickerView?
@@ -576,7 +576,7 @@ extension AddClaimViewController: SidebarDelegate
         case UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM:
             rootVC.showAddIdeaForm()
         case UIStoryboard.VIEW_TYPE_IDEACLIME_MENU:
-            rootVC.showIdeaClimeMenu()
+            rootVC.showMainMenu()
         case UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM:
             break
         default:
