@@ -35,42 +35,50 @@ class AddIdeaStepOneViewController: UIViewController,
     }
     
     /*
-     *   -------- Privete func ----------
+     *   -------- Public methods ----------
+    **/
+    
+    
+    /*
+     *   -------- Privete methods ----------
     **/
     private func initUI()
     {
         self.menu.setState(withType: TabMainMenuView.MENU_STATE_SERVICES)
         self.btnNextStep.setViewType(with: LRAppButton.TYPE_RED)
-           // init picker
-           picker = TypePickerView()
-           picker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-           picker?.backgroundColor = UIColor.white
-           picker?.data = ["Загрузка категорий"]
+       
+        // init picker
+        picker = TypePickerView()
+        picker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        picker?.backgroundColor = UIColor.white
+        picker?.data = ["Загрузка категорий"]
            
-           tfIdeaScope.inputView = picker
+        tfIdeaScope.inputView = picker
            
-           pickerAccessory = UIToolbar()
-           pickerAccessory?.autoresizingMask = .flexibleHeight
+        pickerAccessory = UIToolbar()
+        pickerAccessory?.autoresizingMask = .flexibleHeight
+          
+        //this customization is optional
+        pickerAccessory?.barStyle = .default
+        pickerAccessory?.barTintColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
+        pickerAccessory?.backgroundColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
+        pickerAccessory?.isTranslucent = false
+        var frame = pickerAccessory?.frame
+        frame?.size.height = 44.0
+        pickerAccessory?.frame = frame!
+        let cancelButton = UIBarButtonItem(title: "Отмена", style: .done, target: self, action: #selector(AddIdeaStepOneViewController.cancelBtnClicked(_:)))// barButtonSystemItem: .cancel, target: self, action: #selector(AddIdeaStepOneViewController.cancelBtnClicked(_:)))
+        cancelButton.tintColor = UIColor.white
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //a flexible space between the two buttons
+        let doneButton = UIBarButtonItem(title: "Выбрать", style: .done, target: self, action: #selector(AddIdeaStepOneViewController.doneBtnClicked(_:))) //(barButtonSystemItem: .done, target: self, action: #selector(AddIdeaStepOneViewController.doneBtnClicked(_:)))
+        doneButton.tintColor = UIColor.white
+        //Add the items to the toolbar
+        pickerAccessory?.items = [cancelButton, flexSpace, doneButton]
+        
+        tfIdeaScope.inputAccessoryView = pickerAccessory
            
-           //this customization is optional
-           pickerAccessory?.barStyle = .default
-           pickerAccessory?.barTintColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
-           pickerAccessory?.backgroundColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
-           pickerAccessory?.isTranslucent = false
-           var frame = pickerAccessory?.frame
-           frame?.size.height = 44.0
-           pickerAccessory?.frame = frame!
-           let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(AddIdeaStepOneViewController.cancelBtnClicked(_:)))
-           cancelButton.tintColor = UIColor.white
-           let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //a flexible space between the two buttons
-           let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AddIdeaStepOneViewController.doneBtnClicked(_:)))
-           doneButton.tintColor = UIColor.white
-           //Add the items to the toolbar
-           pickerAccessory?.items = [cancelButton, flexSpace, doneButton]
-           tfIdeaScope.inputAccessoryView = pickerAccessory
-           
-           // load
-           updateViewState(
+        // load
+        updateViewState(
            signInCompletion:
            { text in
                                                                                                            // load Scopes
@@ -214,14 +222,14 @@ class AddIdeaStepOneViewController: UIViewController,
         }
     }
     
-    func startActivityIndicate()
+    private func startActivityIndicate()
     {
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
     }
-    func stopActivityIndicate()
+    private func stopActivityIndicate()
     {
         activityIndicator.stopAnimating()
     }
