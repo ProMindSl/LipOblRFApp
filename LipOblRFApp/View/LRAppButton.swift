@@ -52,5 +52,15 @@ class LRAppButton: UIButton
         }
         
     }
-
+    
+    public func setEnable()
+    {
+        self.isEnabled = true
+        self.alpha = 1
+    }
+    public func setDisable()
+    {
+        self.isEnabled = false
+        self.alpha = 0.5
+    }
 }

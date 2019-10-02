@@ -35,6 +35,22 @@ class SetContentManager
     public private(set) var currentMsg: String
     public private(set) var apiANS: String
     
+    // Idea create attributes
+    public var currIdeaTitle = ""
+    public var currIdeaTxtBody = ""
+    public var currIdeaScope = 0
+    public var currIdeaRaion = 0
+    public var currIdeaLongitude = 0.0
+    public var currIdeaLatitude = 0.0
+    
+    // Idea create attributes
+    public var currClaimTitle = ""
+    public var currClaimTxtBody = ""
+    public var currClaimScope = 0
+    public var currClaimRaion = 0
+    public var currClaimLongitude = 0.0
+    public var currClaimLatitude = 0.0
+    
     private init()
     {
         currentMsg = SetContentManager.ERROR_NONE

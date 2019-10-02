@@ -32,6 +32,7 @@ class AddIdeaStepOneViewController: UIViewController,
     {
         super.viewDidLoad()
         initUI()
+        updateCompleteStepStatus()
     }
     
     /*
@@ -42,6 +43,25 @@ class AddIdeaStepOneViewController: UIViewController,
     /*
      *   -------- Privete methods ----------
     **/
+    private func updateCompleteStepStatus()
+    {
+        if _setController.currIdeaScope != 0
+        {
+            DispatchQueue.main.async
+            {
+                self.btnNextStep.setEnable()
+            }
+        }
+        else
+        {
+            DispatchQueue.main.async
+            {
+                self.btnNextStep.setDisable()
+            }
+        }
+    }
+    
+    
     private func initUI()
     {
         self.menu.setState(withType: TabMainMenuView.MENU_STATE_SERVICES)
@@ -58,7 +78,7 @@ class AddIdeaStepOneViewController: UIViewController,
         pickerAccessory = UIToolbar()
         pickerAccessory?.autoresizingMask = .flexibleHeight
           
-        //this customization is optional
+        // this customization is optional
         pickerAccessory?.barStyle = .default
         pickerAccessory?.barTintColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
         pickerAccessory?.backgroundColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
@@ -162,7 +182,10 @@ class AddIdeaStepOneViewController: UIViewController,
     @objc func doneBtnClicked(_ button: UIBarButtonItem?)
     {
         tfIdeaScope?.resignFirstResponder()
-        tfIdeaScope.text = picker?.selectedValue
+        tfIdeaScope?.text = picker?.selectedValue
+        
+        _setController.currIdeaScope = _getContMng.getScopeIdByName(with: picker?.selectedValue ?? "")
+        updateCompleteStepStatus()
     }
     
     private func updateViewState(signInCompletion signInCompFunc: @escaping ((String) -> ()),
