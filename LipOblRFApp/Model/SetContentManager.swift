@@ -13,6 +13,8 @@ class SetContentManager
     /*
      *   -------- Static const ----------
     **/
+    static let shared = SetContentManager()
+    
     static let ERROR_NONE = "00"
     static let ERROR_NETWORK = "19"
     static let ERROR_HTTP = "21"
@@ -33,7 +35,7 @@ class SetContentManager
     public private(set) var currentMsg: String
     public private(set) var apiANS: String
     
-    init()
+    private init()
     {
         currentMsg = SetContentManager.ERROR_NONE
         apiANS = ""
