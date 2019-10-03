@@ -24,8 +24,9 @@ class AlertController: NSObject
                                           style: .default,
                                           handler:
                                           { (alert: UIAlertAction!) in
-                                            complFunc("Conplete")
+                                            complFunc("Complete")
                                           })
+        defaultAction.setValue(UIMethods.hexStringToUIColor(hex: "#FE5347"), forKey: "titleTextColor")
         alert.addAction(defaultAction)
         DispatchQueue.main.async(execute:
         {

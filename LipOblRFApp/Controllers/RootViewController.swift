@@ -66,7 +66,8 @@ class RootViewController: UIViewController
     {
         //let new = UINavigationController(rootViewController: NewsViewController())
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsViewController") as? NewsViewController)!
-        animateWithTransition(to: new, withAnimationType: .transitionFlipFromRight)
+        animateWithTransition(to: new, withAnimationType: .transitionFlipFromTop)
+        
     }
     
     public func showIdeaList()
@@ -92,13 +93,13 @@ class RootViewController: UIViewController
     public func showNewsDitail()
     {
         let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsDetailViewController") as? NewsDetailViewController)!
-        animateWithTransition(to: new, withAnimationType: .transitionFlipFromTop)
+        animateWithCurveFromRight(to: new)
     }
     public func showAddIdeaStep1()
     {
         let new = (UIStoryboard(name: "Main",
                                 bundle: nil).instantiateViewController(withIdentifier: "AddIdeaStepOneViewController") as? AddIdeaStepOneViewController)!
-        animateWithTransition(to: new, withAnimationType: .transitionFlipFromTop)
+        animateWithTransition(to: new, withAnimationType: .transitionFlipFromRight)
     }
     
     
@@ -123,11 +124,10 @@ class RootViewController: UIViewController
     
     private func animateDismissTransition(to new: UIViewController, completion: (() -> Void)? = nil)
     {
-        let initialFrame = CGRect(x: -view.bounds.width,
-                                  y: 0, width: view.bounds.width,
-                                  height: view.bounds.height)
         current.willMove(toParent: nil)
         addChild(new)
+        
+        
         transition(from: current,
                    to: new,
                    duration: 0.3,
@@ -136,6 +136,54 @@ class RootViewController: UIViewController
                    {
                     new.view.frame = self.view.bounds
                    })
+        { completed in
+            self.current.removeFromParent()
+            new.didMove(toParent: self)
+            self.current = new
+            completion?()
+        }
+    }
+    
+    private func animateWithCurveFromRight(to new: UIViewController,  completion: (() -> Void)? = nil)
+    {
+        let initialFrame = CGRect(x: +view.bounds.width,
+                                  y: 0, width: view.bounds.width,
+                                  height: view.bounds.height)
+               
+        current.willMove(toParent: nil)
+        
+        addChild(new)
+        new.view.frame =  initialFrame
+                
+        transition(from: current,
+                   to: new,
+                   duration: 0.3,
+                   options: [.curveEaseOut, .transitionCrossDissolve],
+                   animations:
+            {  new.view.frame.origin.x = 0 })
+        { completed in
+            self.current.removeFromParent()
+            new.didMove(toParent: self)
+            self.current = new
+            completion?()
+        }
+    }
+    
+    private func animateWithCurveFromLeft(to new: UIViewController,  completion: (() -> Void)? = nil)
+    {
+        let initialFrame = CGRect(x: -view.bounds.width,
+                                  y: 0, width: view.bounds.width,
+                                  height: view.bounds.height)
+        current.willMove(toParent: nil)
+        addChild(new)
+        new.view.frame =  initialFrame
+        
+        transition(from: current,
+                   to: new,
+                   duration: 0.3,
+                   options: [.beginFromCurrentState, .curveEaseOut, .transitionCrossDissolve],
+                   animations:
+                   { new.view.frame.origin.x = 0 })
         { completed in
             self.current.removeFromParent()
             new.didMove(toParent: self)

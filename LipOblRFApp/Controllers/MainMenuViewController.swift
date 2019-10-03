@@ -35,13 +35,7 @@ class MainMenuViewController: UIViewController
         updateViewState()
         addListeners()
     }
-    
-    
-    // handlers
-    @IBAction func OpenMenu(_ sender: Any)
-    {
-        SidebarLauncher(delegate: self ).show()
-    }
+        
     
     /*
      *   -------- Private methods ----------
@@ -63,9 +57,9 @@ class MainMenuViewController: UIViewController
         {
         
         case btnIdeaCreate, btnIdeaCreateLong:
-            sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_IDEA_STEP_1)
+            showAppView(with: UIStoryboard.VIEW_TYPE_ADD_IDEA_STEP_1)
         case btnClimeCreate, btnClaimCreateLong:
-            sidebarDidClose(with: UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM)
+            showAppView(with: UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM)
         default:
             break
         }
@@ -111,7 +105,7 @@ class MainMenuViewController: UIViewController
                                   completion:
                                   { [unowned self] text in
                                     
-                                        self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
+                                        self.showAppView(with: UIStoryboard.VIEW_TYPE_LOGIN)
                                   })
             
         }
@@ -138,7 +132,7 @@ class MainMenuViewController: UIViewController
                                           completion:
                                           { [unowned self] text in
                                             
-                                            self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_LOGIN)
+                                            self.showAppView(with: UIStoryboard.VIEW_TYPE_LOGIN)
                                            })
                 })
         }
@@ -171,15 +165,11 @@ class MainMenuViewController: UIViewController
 
 }
 
-extension MainMenuViewController: SidebarDelegate
-{
-    func sidbarDidOpen()
+
+ extension MainMenuViewController: NavigateDelegate
     {
-        print("Sidebar opened")
-    }
-    
-    func sidebarDidClose(with item: Int?)
-    {
+        func showAppView(with item: Int?)
+        {
         guard let item = item else {return}
         print("Did select \(item)")
         let rootVC = AppDelegate.shared.rootViewController

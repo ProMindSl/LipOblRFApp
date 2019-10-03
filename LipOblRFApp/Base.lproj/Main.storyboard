@@ -454,11 +454,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="263"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tree_lip_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="RQA-OZ-xe7">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tree_lip_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="RQA-OZ-xe7">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="263"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="263" id="YbT-kY-rnm"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RQA-OZ-xe7" firstAttribute="top" secondItem="NJd-zL-dTS" secondAttribute="top" id="IeF-sz-evF"/>
+                                                <constraint firstAttribute="trailing" secondItem="RQA-OZ-xe7" secondAttribute="trailing" id="TXz-Cj-bya"/>
+                                                <constraint firstItem="RQA-OZ-xe7" firstAttribute="leading" secondItem="NJd-zL-dTS" secondAttribute="leading" id="Ven-Sq-q9I"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="555" id="K5F-2t-yAv">

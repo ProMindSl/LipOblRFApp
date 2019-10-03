@@ -15,6 +15,9 @@ class SetContentManager
     **/
     static let shared = SetContentManager()
     
+    static let SET_CONTENT_TYPE_IDEA = 1
+    static let SET_CONTENT_TYPE_CLAIM = 2
+    
     static let ERROR_NONE = "00"
     static let ERROR_NETWORK = "19"
     static let ERROR_HTTP = "21"
@@ -43,7 +46,7 @@ class SetContentManager
     public var currIdeaLongitude = 0.0
     public var currIdeaLatitude = 0.0
     
-    // Idea create attributes
+    // Claim create attributes
     public var currClaimTitle = ""
     public var currClaimTxtBody = ""
     public var currClaimScope = 0
@@ -203,7 +206,31 @@ class SetContentManager
             task.resume()
         }
     }
-
+    
+    
+    public func resetCurrAttributes(for type: Int)
+    {
+        switch type
+        {
+        case SetContentManager.SET_CONTENT_TYPE_IDEA:
+            currIdeaTitle = ""
+            currIdeaTxtBody = ""
+            currIdeaScope = 0
+            currIdeaRaion = 0
+            currIdeaLongitude = 0.0
+            currIdeaLatitude = 0.0
+        case SetContentManager.SET_CONTENT_TYPE_CLAIM:
+            currClaimTitle = ""
+            currClaimTxtBody = ""
+            currClaimScope = 0
+            currClaimRaion = 0
+            currClaimLongitude = 0.0
+            currClaimLatitude = 0.0
+            
+        default:
+            break
+        }
+    }
     
     /*
      *   -------- Private methods ----------
