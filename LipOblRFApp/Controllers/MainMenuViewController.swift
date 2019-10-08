@@ -189,7 +189,7 @@ class MainMenuViewController: UIViewController
         case UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM:
             rootVC.showAddClaimForm()*/
         case UIStoryboard.VIEW_TYPE_ADD_IDEA_STEP_1:
-            rootVC.showAddIdeaStep1()
+            rootVC.showAddIdeaClaimShortForm()
         case UIStoryboard.VIEW_TYPE_LOGIN:
             rootVC.showLoginScreen()
         default:

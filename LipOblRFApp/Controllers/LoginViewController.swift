@@ -199,7 +199,7 @@ extension LoginViewController: SidebarDelegate
         case 2:
             break
         case UIStoryboard.VIEW_TYPE_ADD_IDEA_FORM:
-            rootVC.showAddIdeaForm()
+            rootVC.showAddIdeaClaimShortForm()
         case UIStoryboard.VIEW_TYPE_IDEACLIME_MENU:
             rootVC.showMainMenu()
         case UIStoryboard.VIEW_TYPE_ADD_CLAIM_FORM:

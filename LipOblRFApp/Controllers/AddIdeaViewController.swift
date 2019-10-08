@@ -17,7 +17,8 @@ class AddIdeaViewController: UITableViewController,
 {
     // outlets
     @IBOutlet weak var tfIdeaScope: UITextField!
-    @IBOutlet weak var tfMapSearch: UITextField!
+    @IBOutlet weak var tfIdeaTitle: UITextField!
+    @IBOutlet weak var tfType: UITextField!
     @IBOutlet weak var mvIdeaLocation: MKMapView!
     //@IBOutlet weak var tfIdeaTitle: UITextField!
     @IBOutlet weak var tfIdeaTxtBody: UITextField!
@@ -36,6 +37,9 @@ class AddIdeaViewController: UITableViewController,
     // type picker vars
     var picker: TypePickerView?
     var pickerAccessory: UIToolbar?
+    
+    var picker2: TypePickerView?
+    var pickerAccessory2: UIToolbar?
     
     var locationManager = CLLocationManager()
     
@@ -81,17 +85,14 @@ class AddIdeaViewController: UITableViewController,
     **/
     private func initUI()
     {
-        // init picker
+        // init picker for scope switcher
         picker = TypePickerView()
         picker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         picker?.backgroundColor = UIColor.white
         picker?.data = ["Загрузка категорий"]
-        
         tfIdeaScope.inputView = picker
-        
         pickerAccessory = UIToolbar()
         pickerAccessory?.autoresizingMask = .flexibleHeight
-        
         //this customization is optional
         pickerAccessory?.barStyle = .default
         pickerAccessory?.barTintColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
@@ -100,10 +101,10 @@ class AddIdeaViewController: UITableViewController,
         var frame = pickerAccessory?.frame
         frame?.size.height = 44.0
         pickerAccessory?.frame = frame!
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(AddIdeaViewController.cancelBtnClicked(_:)))
+        let cancelButton = UIBarButtonItem(title: "Отмена", style: .done, target: self, action: #selector(AddIdeaViewController.cancelBtnClicked(_:)))
         cancelButton.tintColor = UIColor.white
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //a flexible space between the two buttons
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AddIdeaViewController.doneBtnClicked(_:)))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Выбрать", style: .done, target: self, action: #selector(AddIdeaViewController.doneBtnClicked(_:)))
         doneButton.tintColor = UIColor.white
         //Add the items to the toolbar
         pickerAccessory?.items = [cancelButton, flexSpace, doneButton]
@@ -112,8 +113,29 @@ class AddIdeaViewController: UITableViewController,
         // listeners
         btnBack.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         
+        // init picker for type switcher
+        picker2 = TypePickerView()
+        picker2?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        picker2?.backgroundColor = UIColor.white
+        picker2?.data = ["Идея", "Жалоба"]
+        tfType.inputView = picker2
+        pickerAccessory2 = UIToolbar()
+        pickerAccessory2?.autoresizingMask = .flexibleHeight
+        pickerAccessory2?.barStyle = .default
+        pickerAccessory2?.barTintColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
+        pickerAccessory2?.backgroundColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
+        pickerAccessory2?.isTranslucent = false
+        pickerAccessory2?.frame = frame!
+        let cancelButton2 = UIBarButtonItem(title: "Отмена", style: .done, target: self, action: #selector(AddIdeaViewController.cancelBtnClickedForTypeSwitcher(_:)))
+        cancelButton2.tintColor = UIColor.white
+        let doneButton2 = UIBarButtonItem(title: "Выбрать", style: .done, target: self, action: #selector(AddIdeaViewController.doneBtnClickedForTypeSwitcher(_:)))
+        doneButton2.tintColor = UIColor.white
+        //Add the items to the toolbar
+        pickerAccessory2?.items = [cancelButton2, flexSpace, doneButton2]
+        tfType.inputAccessoryView = pickerAccessory2
+                        
         // set text field keyboard settings
-        //tfIdeaTitle.delegate = self
+        tfIdeaTitle.delegate = self
         tfIdeaTxtBody.delegate = self
         
         // load
@@ -315,8 +337,7 @@ class AddIdeaViewController: UITableViewController,
                 self.btnAddFiles.isEnabled = true
                 //self.btnAddIdea.isEnabled = true
                 self.tfIdeaScope.isEnabled = true
-                self.tfMapSearch.isEnabled = true
-                //self.tfIdeaTitle.isEnabled = true
+                self.tfIdeaTitle.isEnabled = true
                 self.tfIdeaTxtBody.isEnabled = true
                 
                 //self.btnAddIdea.isHidden = false
@@ -329,8 +350,7 @@ class AddIdeaViewController: UITableViewController,
                 self.btnAddFiles.isEnabled = false
                 //self.btnAddIdea.isEnabled = false
                 self.tfIdeaScope.isEnabled = false
-                self.tfMapSearch.isEnabled = false
-                //self.tfIdeaTitle.isEnabled = false
+                self.tfIdeaTitle.isEnabled = false
                 self.tfIdeaTxtBody.isEnabled = false
                 
                 //self.btnAddIdea.isHidden = true
@@ -438,7 +458,7 @@ class AddIdeaViewController: UITableViewController,
     @IBAction func didSelectAddIdea(_ sender: Any)
     {
         let scope = _getContMng.getScopeIdByName(with: tfIdeaScope.text ?? "none")  // gettiog input data
-        let title = "CURR" //tfIdeaTitle.text ?? "Пустой заголовок"
+        let title = tfIdeaTitle.text ?? "Адрес отсутствует"
         let body = tfIdeaTxtBody.text ?? "Пустое описание"
         let raion = _currRaionId
         let longitude = _currLongitude
@@ -559,6 +579,10 @@ class AddIdeaViewController: UITableViewController,
     {
         tfIdeaScope?.resignFirstResponder()
     }
+    @objc func cancelBtnClickedForTypeSwitcher(_ button: UIBarButtonItem?)
+    {
+        tfType?.resignFirstResponder()
+    }
     
     /**
     * Called when the done button of the `pickerAccessory` was clicked. Dismisses the picker and puts the selected value into the textField
@@ -567,6 +591,11 @@ class AddIdeaViewController: UITableViewController,
     {
         tfIdeaScope?.resignFirstResponder()
         tfIdeaScope.text = picker?.selectedValue
+    }
+    @objc func doneBtnClickedForTypeSwitcher(_ button: UIBarButtonItem?)
+    {
+        tfType?.resignFirstResponder()
+        tfType.text = picker2?.selectedValue
     }
     
 }
