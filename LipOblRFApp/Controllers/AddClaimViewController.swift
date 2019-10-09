@@ -90,10 +90,10 @@ class AddClaimViewController:   UITableViewController,
         var frame = pickerAccessory?.frame
         frame?.size.height = 44.0
         pickerAccessory?.frame = frame!
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(AddIdeaViewController.cancelBtnClicked(_:)))
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(AddIdeaClaimShortViewController.cancelBtnClicked(_:)))
         cancelButton.tintColor = UIColor.white
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //a flexible space between the two buttons
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AddIdeaViewController.doneBtnClicked(_:)))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AddIdeaClaimShortViewController.doneBtnClicked(_:)))
         doneButton.tintColor = UIColor.white
         //Add the items to the toolbar
         pickerAccessory?.items = [cancelButton, flexSpace, doneButton]

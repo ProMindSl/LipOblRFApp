@@ -935,10 +935,10 @@
             </objects>
             <point key="canvasLocation" x="-1626.4000000000001" y="500.59970014992507"/>
         </scene>
-        <!--Add Idea View Controller-->
+        <!--Add Idea Claim Short View Controller-->
         <scene sceneID="hE1-fi-1TX">
             <objects>
-                <tableViewController storyboardIdentifier="AddIdeaViewController" id="dwN-fa-NgX" customClass="AddIdeaViewController" customModule="ЛипОбласть" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddIdeaViewController" id="dwN-fa-NgX" customClass="AddIdeaClaimShortViewController" customModule="ЛипОбласть" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e2p-go-MLs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1110,7 +1110,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" textContentType="location"/>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Адрес идеи/жалобы:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfC-Ct-N9O">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите адрес идеи/жалобы:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfC-Ct-N9O">
                                                     <rect key="frame" x="26" y="11" width="323" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="Qfc-jV-8hC"/>
@@ -1158,8 +1158,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="127"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3P-mK-qq6">
-                                                    <rect key="frame" x="28" y="60" width="319" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3P-mK-qq6" customClass="LRAppButton" customModule="ЛипОбласть" customModuleProvider="target">
+                                                    <rect key="frame" x="28" y="60" width="319" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="rzD-lh-l5T"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <state key="normal" title="Выбрать файлы">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1188,15 +1191,18 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="87" id="m1Y-V9-VPp">
-                                        <rect key="frame" x="0.0" y="954" width="375" height="87"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="96" id="m1Y-V9-VPp">
+                                        <rect key="frame" x="0.0" y="954" width="375" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m1Y-V9-VPp" id="2qm-WM-TfE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azi-de-f5m" customClass="LRAppButton" customModule="ЛипОбласть" customModuleProvider="target">
-                                                    <rect key="frame" x="28" y="33" width="319" height="30"/>
+                                                    <rect key="frame" x="28" y="22" width="319" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="80o-2K-G7b"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <state key="normal" title="Подать идею">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1220,7 +1226,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="55" id="T3e-WX-4C4">
-                                        <rect key="frame" x="0.0" y="1041" width="375" height="55"/>
+                                        <rect key="frame" x="0.0" y="1050" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T3e-WX-4C4" id="clc-U2-L66">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>

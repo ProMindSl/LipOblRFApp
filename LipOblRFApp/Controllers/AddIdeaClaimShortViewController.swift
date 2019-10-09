@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class AddIdeaViewController: UITableViewController,
+class AddIdeaClaimShortViewController: UITableViewController,
                              UITextFieldDelegate,
                              MKMapViewDelegate,
                              CLLocationManagerDelegate
@@ -22,8 +22,8 @@ class AddIdeaViewController: UITableViewController,
     @IBOutlet weak var mvIdeaLocation: MKMapView!
     //@IBOutlet weak var tfIdeaTitle: UITextField!
     @IBOutlet weak var tfIdeaTxtBody: UITextField!
-    @IBOutlet weak var btnAddIdea: UIButton!
-    @IBOutlet weak var btnAddFiles: UIButton!
+    @IBOutlet weak var btnAddIdea: LRAppButton!
+    @IBOutlet weak var btnAddFiles: LRAppButton!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var indLoadState: UIActivityIndicatorView!
     
@@ -85,6 +85,10 @@ class AddIdeaViewController: UITableViewController,
     **/
     private func initUI()
     {
+        // init btns
+        btnAddIdea.setViewType(with: LRAppButton.TYPE_RED)
+        btnAddFiles.setViewType(with: LRAppButton.TYPE_ALPHA_RED_TITLE)
+        
         // init picker for scope switcher
         picker = TypePickerView()
         picker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -101,10 +105,10 @@ class AddIdeaViewController: UITableViewController,
         var frame = pickerAccessory?.frame
         frame?.size.height = 44.0
         pickerAccessory?.frame = frame!
-        let cancelButton = UIBarButtonItem(title: "Отмена", style: .done, target: self, action: #selector(AddIdeaViewController.cancelBtnClicked(_:)))
+        let cancelButton = UIBarButtonItem(title: "Отмена", style: .done, target: self, action: #selector(AddIdeaClaimShortViewController.cancelBtnClicked(_:)))
         cancelButton.tintColor = UIColor.white
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Выбрать", style: .done, target: self, action: #selector(AddIdeaViewController.doneBtnClicked(_:)))
+        let doneButton = UIBarButtonItem(title: "Выбрать", style: .done, target: self, action: #selector(AddIdeaClaimShortViewController.doneBtnClicked(_:)))
         doneButton.tintColor = UIColor.white
         //Add the items to the toolbar
         pickerAccessory?.items = [cancelButton, flexSpace, doneButton]
@@ -126,9 +130,9 @@ class AddIdeaViewController: UITableViewController,
         pickerAccessory2?.backgroundColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
         pickerAccessory2?.isTranslucent = false
         pickerAccessory2?.frame = frame!
-        let cancelButton2 = UIBarButtonItem(title: "Отмена", style: .done, target: self, action: #selector(AddIdeaViewController.cancelBtnClickedForTypeSwitcher(_:)))
+        let cancelButton2 = UIBarButtonItem(title: "Отмена", style: .done, target: self, action: #selector(AddIdeaClaimShortViewController.cancelBtnClickedForTypeSwitcher(_:)))
         cancelButton2.tintColor = UIColor.white
-        let doneButton2 = UIBarButtonItem(title: "Выбрать", style: .done, target: self, action: #selector(AddIdeaViewController.doneBtnClickedForTypeSwitcher(_:)))
+        let doneButton2 = UIBarButtonItem(title: "Выбрать", style: .done, target: self, action: #selector(AddIdeaClaimShortViewController.doneBtnClickedForTypeSwitcher(_:)))
         doneButton2.tintColor = UIColor.white
         //Add the items to the toolbar
         pickerAccessory2?.items = [cancelButton2, flexSpace, doneButton2]
@@ -600,7 +604,7 @@ class AddIdeaViewController: UITableViewController,
     
 }
 
-extension AddIdeaViewController: SidebarDelegate
+extension AddIdeaClaimShortViewController: SidebarDelegate
 {
     func sidbarDidOpen()
     {

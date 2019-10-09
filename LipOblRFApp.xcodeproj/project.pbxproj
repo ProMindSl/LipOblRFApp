@@ -47,7 +47,7 @@
 		D22D6CA0230419DF00DDA0E1 /* IdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6C9F230419DF00DDA0E1 /* IdeasViewController.swift */; };
 		D22D6CA223041AB500DDA0E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA123041AB500DDA0E1 /* LoginViewController.swift */; };
 		D22D6CA423042CB600DDA0E1 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA323042CB600DDA0E1 /* NewsViewCell.swift */; };
-		D22D6CA623042D4D00DDA0E1 /* AddIdeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */; };
+		D22D6CA623042D4D00DDA0E1 /* AddIdeaClaimShortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA523042D4D00DDA0E1 /* AddIdeaClaimShortViewController.swift */; };
 		D22D6CA823083EA800DDA0E1 /* TypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA723083EA800DDA0E1 /* TypePickerView.swift */; };
 		D22D6CAA23084F0F00DDA0E1 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D6CA923084F0F00DDA0E1 /* MainMenuViewController.swift */; };
 		D265D9B2232A92A70049EDC3 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D265D9B1232A92A70049EDC3 /* Kingfisher.framework */; };
@@ -155,7 +155,7 @@
 		D22D6C9F230419DF00DDA0E1 /* IdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasViewController.swift; sourceTree = "<group>"; };
 		D22D6CA123041AB500DDA0E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D22D6CA323042CB600DDA0E1 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
-		D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdeaViewController.swift; sourceTree = "<group>"; };
+		D22D6CA523042D4D00DDA0E1 /* AddIdeaClaimShortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdeaClaimShortViewController.swift; sourceTree = "<group>"; };
 		D22D6CA723083EA800DDA0E1 /* TypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePickerView.swift; sourceTree = "<group>"; };
 		D22D6CA923084F0F00DDA0E1 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		D24D22A0232A8B3D0025CB39 /* Checkouts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Checkouts; path = Carthage/Checkouts; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 				D22D6C9D2304181700DDA0E1 /* NavigationMenuViewController.swift */,
 				D22D6C9F230419DF00DDA0E1 /* IdeasViewController.swift */,
 				D22D6CA123041AB500DDA0E1 /* LoginViewController.swift */,
-				D22D6CA523042D4D00DDA0E1 /* AddIdeaViewController.swift */,
+				D22D6CA523042D4D00DDA0E1 /* AddIdeaClaimShortViewController.swift */,
 				D2B6F4C42334AED600FD0D8A /* AddClaimViewController.swift */,
 				D22D6CA923084F0F00DDA0E1 /* MainMenuViewController.swift */,
 				D2D06B492343D0F90080AF64 /* MapPickerController.swift */,
@@ -623,7 +623,7 @@
 				D2CC7311233BEEAA0074D5A2 /* SignInViewController.swift in Sources */,
 				D22D6CA223041AB500DDA0E1 /* LoginViewController.swift in Sources */,
 				D2863CE4230EBD0300393186 /* RootViewController.swift in Sources */,
-				D22D6CA623042D4D00DDA0E1 /* AddIdeaViewController.swift in Sources */,
+				D22D6CA623042D4D00DDA0E1 /* AddIdeaClaimShortViewController.swift in Sources */,
 				D274FD3C230304F500485D89 /* ViewController.swift in Sources */,
 				D22D6C98230415A700DDA0E1 /* NavigationExtensions.swift in Sources */,
 				D2863CDE230DA90900393186 /* AlertController.swift in Sources */,

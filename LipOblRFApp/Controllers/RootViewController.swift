@@ -82,7 +82,7 @@ class RootViewController: UIViewController
     }
     public func showAddIdeaClaimShortForm()
     {
-        let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddIdeaViewController") as? AddIdeaViewController)!
+        let new = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddIdeaViewController") as? AddIdeaClaimShortViewController)!
         animateWithTransition(to: new, withAnimationType: .transitionFlipFromRight)
     }
     public func showAddClaimForm()
