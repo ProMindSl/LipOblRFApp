@@ -17,7 +17,7 @@ class AddIdeaClaimShortViewController: UITableViewController,
 {
     // outlets
     @IBOutlet weak var tfIdeaScope: UITextField!
-    @IBOutlet weak var tfIdeaTitle: UITextField!
+    @IBOutlet weak var tfIdeaTitleAdress: UITextField!
     @IBOutlet weak var tfType: UITextField!
     @IBOutlet weak var mvIdeaLocation: MKMapView!
     //@IBOutlet weak var tfIdeaTitle: UITextField!
@@ -33,17 +33,19 @@ class AddIdeaClaimShortViewController: UITableViewController,
     private let _alertController = AlertController.shared
     // other mngs init
     private let _setController = SetContentManager.shared
-    
+        
     // type picker vars
-    var picker: TypePickerView?
-    var pickerAccessory: UIToolbar?
+    private var picker: TypePickerView?
+    private var pickerAccessory: UIToolbar?
     
-    var picker2: TypePickerView?
-    var pickerAccessory2: UIToolbar?
+    private var picker2: TypePickerView?
+    private var pickerAccessory2: UIToolbar?
     
-    var locationManager = CLLocationManager()
+    private var locationManager = CLLocationManager()
     
-    // current idea input vars
+    // current add type
+    private var _currentAddType = "none"
+    // current idea/claim input vars
     private var _currLatitude: Double = 0.0
     private var _currLongitude: Double = 0.0
     private var _currRaionFromMap: String = ""
@@ -55,7 +57,9 @@ class AddIdeaClaimShortViewController: UITableViewController,
     {
         super.viewDidLoad()
         
+        // init ui elements
         initUI()
+        
 //        updateViewState(
 //            signInCompletion:
 //            { text in
@@ -88,6 +92,8 @@ class AddIdeaClaimShortViewController: UITableViewController,
         // init btns
         btnAddIdea.setViewType(with: LRAppButton.TYPE_RED)
         btnAddFiles.setViewType(with: LRAppButton.TYPE_ALPHA_RED_TITLE)
+        // listeners
+        btnBack.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
         
         // init picker for scope switcher
         picker = TypePickerView()
@@ -97,7 +103,7 @@ class AddIdeaClaimShortViewController: UITableViewController,
         tfIdeaScope.inputView = picker
         pickerAccessory = UIToolbar()
         pickerAccessory?.autoresizingMask = .flexibleHeight
-        //this customization is optional
+        // view customization
         pickerAccessory?.barStyle = .default
         pickerAccessory?.barTintColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
         pickerAccessory?.backgroundColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
@@ -105,23 +111,28 @@ class AddIdeaClaimShortViewController: UITableViewController,
         var frame = pickerAccessory?.frame
         frame?.size.height = 44.0
         pickerAccessory?.frame = frame!
-        let cancelButton = UIBarButtonItem(title: "Отмена", style: .done, target: self, action: #selector(AddIdeaClaimShortViewController.cancelBtnClicked(_:)))
+        let cancelButton = UIBarButtonItem(title: "Отмена",
+                                           style: .done,
+                                           target: self,
+                                           action: #selector(AddIdeaClaimShortViewController.cancelBtnClicked(_:)))
         cancelButton.tintColor = UIColor.white
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Выбрать", style: .done, target: self, action: #selector(AddIdeaClaimShortViewController.doneBtnClicked(_:)))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                        target: nil,
+                                        action: nil)
+        let doneButton = UIBarButtonItem(title: "Выбрать",
+                                         style: .done,
+                                         target: self,
+                                         action: #selector(AddIdeaClaimShortViewController.doneBtnClicked(_:)))
         doneButton.tintColor = UIColor.white
         //Add the items to the toolbar
         pickerAccessory?.items = [cancelButton, flexSpace, doneButton]
         tfIdeaScope.inputAccessoryView = pickerAccessory
-        
-        // listeners
-        btnBack.addTarget(self, action: #selector(didSelect(_:)), for: .touchUpInside)
-        
+                
         // init picker for type switcher
         picker2 = TypePickerView()
         picker2?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         picker2?.backgroundColor = UIColor.white
-        picker2?.data = ["Идея", "Жалоба"]
+        picker2?.data = [GetContentManager.ADD_TYPE_IDEA, GetContentManager.ADD_TYPE_CLAIM]
         tfType.inputView = picker2
         pickerAccessory2 = UIToolbar()
         pickerAccessory2?.autoresizingMask = .flexibleHeight
@@ -130,16 +141,22 @@ class AddIdeaClaimShortViewController: UITableViewController,
         pickerAccessory2?.backgroundColor = UIMethods.hexStringToUIColor(hex: "#FE5347")
         pickerAccessory2?.isTranslucent = false
         pickerAccessory2?.frame = frame!
-        let cancelButton2 = UIBarButtonItem(title: "Отмена", style: .done, target: self, action: #selector(AddIdeaClaimShortViewController.cancelBtnClickedForTypeSwitcher(_:)))
+        let cancelButton2 = UIBarButtonItem(title: "Отмена",
+                                            style: .done,
+                                            target: self,
+                                            action: #selector(AddIdeaClaimShortViewController.cancelBtnClickedForTypeSwitcher(_:)))
         cancelButton2.tintColor = UIColor.white
-        let doneButton2 = UIBarButtonItem(title: "Выбрать", style: .done, target: self, action: #selector(AddIdeaClaimShortViewController.doneBtnClickedForTypeSwitcher(_:)))
+        let doneButton2 = UIBarButtonItem(title: "Выбрать",
+                                          style: .done,
+                                          target: self,
+                                          action: #selector(AddIdeaClaimShortViewController.doneBtnClickedForTypeSwitcher(_:)))
         doneButton2.tintColor = UIColor.white
         //Add the items to the toolbar
         pickerAccessory2?.items = [cancelButton2, flexSpace, doneButton2]
         tfType.inputAccessoryView = pickerAccessory2
                         
         // set text field keyboard settings
-        tfIdeaTitle.delegate = self
+        tfIdeaTitleAdress.delegate = self
         tfIdeaTxtBody.delegate = self
         
         // load
@@ -269,6 +286,7 @@ class AddIdeaClaimShortViewController: UITableViewController,
                 {
                     print(street)
                     self._currStreet = street
+                    self.tfIdeaTitleAdress.text = street
                 }
                 // City
                 if let raion = placeMark.subAdministrativeArea
@@ -341,7 +359,7 @@ class AddIdeaClaimShortViewController: UITableViewController,
                 self.btnAddFiles.isEnabled = true
                 //self.btnAddIdea.isEnabled = true
                 self.tfIdeaScope.isEnabled = true
-                self.tfIdeaTitle.isEnabled = true
+                self.tfIdeaTitleAdress.isEnabled = true
                 self.tfIdeaTxtBody.isEnabled = true
                 
                 //self.btnAddIdea.isHidden = false
@@ -354,7 +372,7 @@ class AddIdeaClaimShortViewController: UITableViewController,
                 self.btnAddFiles.isEnabled = false
                 //self.btnAddIdea.isEnabled = false
                 self.tfIdeaScope.isEnabled = false
-                self.tfIdeaTitle.isEnabled = false
+                self.tfIdeaTitleAdress.isEnabled = false
                 self.tfIdeaTxtBody.isEnabled = false
                 
                 //self.btnAddIdea.isHidden = true
@@ -462,7 +480,7 @@ class AddIdeaClaimShortViewController: UITableViewController,
     @IBAction func didSelectAddIdea(_ sender: Any)
     {
         let scope = _getContMng.getScopeIdByName(with: tfIdeaScope.text ?? "none")  // gettiog input data
-        let title = tfIdeaTitle.text ?? "Адрес отсутствует"
+        let title = tfIdeaTitleAdress.text ?? "Адрес отсутствует"
         let body = tfIdeaTxtBody.text ?? "Пустое описание"
         let raion = _currRaionId
         let longitude = _currLongitude
@@ -470,13 +488,17 @@ class AddIdeaClaimShortViewController: UITableViewController,
         
         var errMsg = ""
         
+        if _currentAddType == "none"
+        {
+            errMsg = "Тип предложения не выбран"
+        }
         if scope == 0                                                                   // check data in inputs
         {
             errMsg = "Категория идеи не выбрана"
         }
         else if title == "" || title == "Пустой заголовок"
         {
-            errMsg = "Поле названия идеи пустое"
+            errMsg = "Поле c адресом пустое"
         }
         else if body == "" || body == "Пустое описание"
         {
@@ -495,8 +517,12 @@ class AddIdeaClaimShortViewController: UITableViewController,
             // Check SignIn status and get at from account manager
             updateViewState(signInCompletion:                                           // signIn status - ok
             { [unowned self] text in
+                // get valid access token
                 let at = self._accMng.getAccessToken()
-                self._setController.createIdea(withTitle: title,
+                // for Idea-type form create IDEA
+                if self._currentAddType == GetContentManager.ADD_TYPE_IDEA
+                {
+                    self._setController.createIdea(withTitle: title,
                                              body: body,
                                              scope: scope,
                                              region: raion,
@@ -551,6 +577,66 @@ class AddIdeaClaimShortViewController: UITableViewController,
                                                         }
                                                     })
                                              })
+                }
+                // for Claim-type form create CLAIM
+                else if self._currentAddType == GetContentManager.ADD_TYPE_CLAIM
+                {
+                    self._setController.createClaim(withTitle: title,
+                                               body: body,
+                                               scope: scope,
+                                               region: raion,
+                                               longitude: longitude,
+                                               latitude: latitude,
+                                               at: at,
+                                               successCompletion:                         // add claim success complete
+                                               { [unowned self] text in
+                                                // present alert about success Idea add
+                                                self._alertController.alert(in: self,
+                                                                            withTitle: "Получилось!",
+                                                                            andMsg: "Ваша жалоба успешно отправлена на модерацию",
+                                                                            andActionTitle: "Ок",
+                                                                            completion:
+                                                                            { [unowned self] text in
+                                                                                DispatchQueue.main.async
+                                                                                {
+                                                                                    self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                                                }
+                                                                            })
+                                                },
+                                                errorCompletion:                                                    // add claim error complete
+                                                { [unowned self] text in
+                                                    
+                                                    // create api answer type string
+                                                    var ansMsg = ""
+                                                    switch self._accMng.apiANS
+                                                    {
+                                                    case APIVals.API_ANS_TYPE_NOT_DB_CONNECTION:
+                                                        ansMsg = "Нет соединения с базой данных"
+                                                    case APIVals.API_ANS_TYPE_ACCESS_TOKEN_INVALID:
+                                                        ansMsg = "Сессия недействительна"
+                                                    case APIVals.API_ANS_TYPE_HAS_NOT_CREDENTIALS:
+                                                        ansMsg = "Недостаточно прав у текущего пользователя"
+                                                    case APIVals.API_ANS_TYPE_INVALID_INPUT_DATA:
+                                                        ansMsg = "Ошибочные входные данные"
+                                                    default:
+                                                        ansMsg = "Неизвестная ошибка"
+                                                        break
+                                                    }
+                                                    
+                                                    // present alert about error Idea add
+                                                    self._alertController.alert(in: self,
+                                                                                withTitle: "Ошибка!",
+                                                                                andMsg: ansMsg,
+                                                                                andActionTitle: "Ок",
+                                                                                completion:
+                                                                                { [unowned self] text in
+                                                                                    DispatchQueue.main.async
+                                                                                    {
+                                                                                        self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                                                    }
+                                                                                })
+                                                })
+                }
                     
             },
             signOutCompletion:                                                        // signOut status
@@ -600,6 +686,7 @@ class AddIdeaClaimShortViewController: UITableViewController,
     {
         tfType?.resignFirstResponder()
         tfType.text = picker2?.selectedValue
+        _currentAddType = picker2?.selectedValue ?? "none"
     }
     
 }

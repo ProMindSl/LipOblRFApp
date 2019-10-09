@@ -100,6 +100,9 @@ class GetContentManager
     /*
      *   -------- Static const ----------
     **/
+    static let ADD_TYPE_IDEA = "Идея"
+    static let ADD_TYPE_CLAIM = "Жалоба"
+    
     static let ERROR_NONE = "00"
     static let ERROR_NETWORK = "19"
     static let ERROR_HTTP = "21"

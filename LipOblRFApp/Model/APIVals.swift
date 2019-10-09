@@ -45,4 +45,6 @@ class APIVals
     static let ROLE_TYPE_GUEST = "guest"
     static let ROLE_TYPE_USER = "user"
     static let ROLE_TYPE_ADMIN = "admin"
+    
+    
 }

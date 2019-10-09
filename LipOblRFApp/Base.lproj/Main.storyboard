@@ -1248,7 +1248,7 @@
                         <outlet property="indLoadState" destination="8We-SD-ann" id="qwL-K7-xbV"/>
                         <outlet property="mvIdeaLocation" destination="X6M-Jg-Rhh" id="Ecz-bm-h8C"/>
                         <outlet property="tfIdeaScope" destination="5b9-V0-f49" id="7Y6-VI-Htz"/>
-                        <outlet property="tfIdeaTitle" destination="l7y-Qs-DXk" id="cVE-9F-zSb"/>
+                        <outlet property="tfIdeaTitleAdress" destination="l7y-Qs-DXk" id="cVE-9F-zSb"/>
                         <outlet property="tfIdeaTxtBody" destination="Ec1-fV-1Um" id="ytT-WQ-D7P"/>
                         <outlet property="tfType" destination="qMS-hq-fCk" id="aWN-2a-pYE"/>
                     </connections>
