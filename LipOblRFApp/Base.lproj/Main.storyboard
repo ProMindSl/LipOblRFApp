@@ -1182,7 +1182,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMG-y0-iyV">
-                                                    <rect key="frame" x="26" y="118" width="64" height="64"/>
+                                                    <rect key="frame" x="26" y="118" width="192" height="64"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ano-Yb-vXK" customClass="ImgMiniView" customModule="ЛипОбласть" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
@@ -1215,6 +1215,72 @@
                                                             <connections>
                                                                 <outlet property="btnDel" destination="0EO-4a-9ZE" id="N2Y-Uy-t2R"/>
                                                                 <outlet property="imgPic" destination="BGL-Yv-Qq4" id="tiH-g1-2BX"/>
+                                                            </connections>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBk-Ur-JIj" customClass="ImgMiniView" customModule="ЛипОбласть" customModuleProvider="target">
+                                                            <rect key="frame" x="64" y="0.0" width="64" height="64"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_slidem.png" translatesAutoresizingMaskIntoConstraints="NO" id="YBW-2K-e5c">
+                                                                    <rect key="frame" x="2" y="2" width="60" height="60"/>
+                                                                </imageView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gx1-ek-ioo">
+                                                                    <rect key="frame" x="44" y="0.0" width="20" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="86A-7F-Xth"/>
+                                                                        <constraint firstAttribute="width" constant="20" id="8IJ-Ex-3mP"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="btn_mainpage_add_claim.png" backgroundImage="bg_slidem.png"/>
+                                                                </button>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="YBW-2K-e5c" secondAttribute="bottom" constant="2" id="1Zk-wy-APG"/>
+                                                                <constraint firstAttribute="height" constant="64" id="2Uf-9Y-afm"/>
+                                                                <constraint firstAttribute="trailing" secondItem="YBW-2K-e5c" secondAttribute="trailing" constant="2" id="3eu-qP-xNz"/>
+                                                                <constraint firstAttribute="trailing" secondItem="gx1-ek-ioo" secondAttribute="trailing" id="B8u-ta-MQ3"/>
+                                                                <constraint firstItem="gx1-ek-ioo" firstAttribute="leading" secondItem="cBk-Ur-JIj" secondAttribute="leading" constant="44" id="EI8-Rb-Wy7"/>
+                                                                <constraint firstAttribute="width" constant="64" id="ONv-fD-Isc"/>
+                                                                <constraint firstItem="YBW-2K-e5c" firstAttribute="leading" secondItem="cBk-Ur-JIj" secondAttribute="leading" constant="2" id="jdn-5M-z3f"/>
+                                                                <constraint firstItem="gx1-ek-ioo" firstAttribute="top" secondItem="cBk-Ur-JIj" secondAttribute="top" id="mVS-ea-RMv"/>
+                                                                <constraint firstAttribute="bottom" secondItem="gx1-ek-ioo" secondAttribute="bottom" constant="44" id="nzs-Em-Kov"/>
+                                                                <constraint firstItem="YBW-2K-e5c" firstAttribute="top" secondItem="cBk-Ur-JIj" secondAttribute="top" constant="2" id="whG-Hr-kGY"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="btnDel" destination="gx1-ek-ioo" id="5tI-Ws-3L0"/>
+                                                                <outlet property="imgPic" destination="YBW-2K-e5c" id="i7l-wF-HEZ"/>
+                                                            </connections>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYF-C7-62p" customClass="ImgMiniView" customModule="ЛипОбласть" customModuleProvider="target">
+                                                            <rect key="frame" x="128" y="0.0" width="64" height="64"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_slidem.png" translatesAutoresizingMaskIntoConstraints="NO" id="hyv-ds-ZfU">
+                                                                    <rect key="frame" x="2" y="2" width="60" height="60"/>
+                                                                </imageView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umr-nb-J63">
+                                                                    <rect key="frame" x="44" y="0.0" width="20" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="20" id="A7N-AW-1Qv"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="qvd-ol-vUb"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="btn_mainpage_add_claim.png" backgroundImage="bg_slidem.png"/>
+                                                                </button>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="umr-nb-J63" firstAttribute="top" secondItem="MYF-C7-62p" secondAttribute="top" id="31f-XO-xpp"/>
+                                                                <constraint firstAttribute="bottom" secondItem="hyv-ds-ZfU" secondAttribute="bottom" constant="2" id="7c2-BO-3No"/>
+                                                                <constraint firstAttribute="height" constant="64" id="A0g-T5-pC4"/>
+                                                                <constraint firstItem="hyv-ds-ZfU" firstAttribute="leading" secondItem="MYF-C7-62p" secondAttribute="leading" constant="2" id="Jqc-Bn-Fff"/>
+                                                                <constraint firstAttribute="trailing" secondItem="umr-nb-J63" secondAttribute="trailing" id="NO3-pH-jhi"/>
+                                                                <constraint firstAttribute="bottom" secondItem="umr-nb-J63" secondAttribute="bottom" constant="44" id="Nh9-9m-djs"/>
+                                                                <constraint firstItem="umr-nb-J63" firstAttribute="leading" secondItem="MYF-C7-62p" secondAttribute="leading" constant="44" id="VRc-8b-Cpy"/>
+                                                                <constraint firstItem="hyv-ds-ZfU" firstAttribute="top" secondItem="MYF-C7-62p" secondAttribute="top" constant="2" id="aHh-qZ-5kd"/>
+                                                                <constraint firstAttribute="width" constant="64" id="c1j-j6-beP"/>
+                                                                <constraint firstAttribute="trailing" secondItem="hyv-ds-ZfU" secondAttribute="trailing" constant="2" id="jrh-da-BKe"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="btnDel" destination="umr-nb-J63" id="swR-7E-nof"/>
+                                                                <outlet property="imgPic" destination="hyv-ds-ZfU" id="Bf4-Jl-OAW"/>
                                                             </connections>
                                                         </view>
                                                     </subviews>
@@ -1287,6 +1353,8 @@
                         <outlet property="btnAddIdea" destination="azi-de-f5m" id="L3v-jA-vrf"/>
                         <outlet property="btnBack" destination="0LR-N2-apq" id="V4t-nf-qxO"/>
                         <outlet property="imgMini1" destination="ano-Yb-vXK" id="t4D-tD-ICL"/>
+                        <outlet property="imgMini2" destination="cBk-Ur-JIj" id="WIg-Bc-DgM"/>
+                        <outlet property="imgMini3" destination="MYF-C7-62p" id="a1d-TP-u5D"/>
                         <outlet property="indLoadState" destination="8We-SD-ann" id="qwL-K7-xbV"/>
                         <outlet property="mvIdeaLocation" destination="X6M-Jg-Rhh" id="Ecz-bm-h8C"/>
                         <outlet property="tfIdeaScope" destination="5b9-V0-f49" id="7Y6-VI-Htz"/>

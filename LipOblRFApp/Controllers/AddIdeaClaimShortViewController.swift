@@ -29,8 +29,9 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var indLoadState: UIActivityIndicatorView!
     @IBOutlet weak var imgMini1: ImgMiniView!
-    
-    
+    @IBOutlet weak var imgMini2: ImgMiniView!
+    @IBOutlet weak var imgMini3: ImgMiniView!
+            
     // st links
     private let _accMng = AccountManager.shared
     private let _getContMng = GetContentManager.shared
@@ -58,6 +59,9 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     private var _currRaionId = 0
     private var _currCountryCode: String = "none"
     private var _currStreet = "none"
+    
+    // counters
+    private var _currImgMinForLoad = 1
     
     override func viewDidLoad()
     {
@@ -261,6 +265,8 @@ class AddIdeaClaimShortViewController:  UITableViewController,
         
         // init mini-img previews
         imgMini1.setDisable()
+        imgMini2.setDisable()
+        imgMini3.setDisable()
     }
     
     @objc func handleLongPressGesture(_ gestureRecognizer: UILongPressGestureRecognizer)
@@ -371,52 +377,64 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     // ui photo methods
     @IBAction func buttonOnClick(_ sender: UIButton)
     {
-        self.setOffBtnInterraction()
-        let color = #colorLiteral(red: 0.9973761439, green: 0.3234748244, blue: 0.2775879204, alpha: 1)
-        
-        let alert = UIAlertController(title: "Выбор фото",
-                                      message: nil,
-                                      preferredStyle: .actionSheet)
-        let actionCamera = UIAlertAction(title: "Камера",
-                                      style: .default,
-                                      handler:
-                                      { _ in
-                                        self.openCamera()
-                                      })
-        actionCamera.setValue(color, forKey: "titleTextColor")
-
-        let actionGalery = UIAlertAction(title: "Галерея",
-                                      style: .default,
-                                      handler:
-                                      { _ in
-                                        self.openGallary()
-                                      })
-        actionGalery.setValue(color, forKey: "titleTextColor")
-        
-        let actionCancel = UIAlertAction.init(title: "Отмена",
-                                           style: .cancel,
-                                           handler:
-                                           { _ in
-                                                self.setOnBtnInterraction()
-                                           })
-        actionCancel.setValue(color, forKey: "titleTextColor")
-        
-        alert.addAction(actionCamera)
-        alert.addAction(actionGalery)
-        alert.addAction(actionCancel)
-        
-        // Crash on iPad
-        switch UIDevice.current.userInterfaceIdiom
+        // check loaded photo limit
+        if _currImgMinForLoad >= 1 && _currImgMinForLoad <= 3
         {
-        case .pad:
-            alert.popoverPresentationController?.sourceView = sender
-            alert.popoverPresentationController?.sourceRect = sender.bounds
-            alert.popoverPresentationController?.permittedArrowDirections = .up
-        default:
-            break
-        }
+            self.setOffBtnInterraction()
+            let color = #colorLiteral(red: 0.9973761439, green: 0.3234748244, blue: 0.2775879204, alpha: 1)
+            
+            let alert = UIAlertController(title: "Выбор фото",
+                                          message: nil,
+                                          preferredStyle: .actionSheet)
+            let actionCamera = UIAlertAction(title: "Камера",
+                                          style: .default,
+                                          handler:
+                                          { _ in
+                                            self.openCamera()
+                                          })
+            actionCamera.setValue(color, forKey: "titleTextColor")
 
-        self.present(alert, animated: true, completion: nil)
+            let actionGalery = UIAlertAction(title: "Галерея",
+                                          style: .default,
+                                          handler:
+                                          { _ in
+                                            self.openGallary()
+                                          })
+            actionGalery.setValue(color, forKey: "titleTextColor")
+            
+            let actionCancel = UIAlertAction.init(title: "Отмена",
+                                               style: .cancel,
+                                               handler:
+                                               { _ in
+                                                    self.setOnBtnInterraction()
+                                               })
+            actionCancel.setValue(color, forKey: "titleTextColor")
+            
+            alert.addAction(actionCamera)
+            alert.addAction(actionGalery)
+            alert.addAction(actionCancel)
+            
+            // Crash on iPad
+            switch UIDevice.current.userInterfaceIdiom
+            {
+            case .pad:
+                alert.popoverPresentationController?.sourceView = sender
+                alert.popoverPresentationController?.sourceRect = sender.bounds
+                alert.popoverPresentationController?.permittedArrowDirections = .up
+            default:
+                break
+            }
+
+            self.present(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            _alertController.alert(in: self,
+                                   withTitle: "Внимание!",
+                                   andMsg: "Допустимое количество медиа для загрузки - 3",
+                                   andActionTitle: "Ок",
+                                   completion: {text in})
+        }
     }
 
     func openCamera()
@@ -450,11 +468,19 @@ class AddIdeaClaimShortViewController:  UITableViewController,
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
-            //self.imgMini1.imgPic imageView.contentMode = .scaleAspectFit
-            //imageView.image = pickedImage
-            imgMini1.setEnable(with: pickedImage)
-            let imgCount = pickedImage.size.debugDescription
-            print("photo ok! " + imgCount)
+            switch _currImgMinForLoad
+            {
+            case 1:
+                imgMini1.setEnable(with: pickedImage)
+            case 2:
+                imgMini2.setEnable(with: pickedImage)
+            case 3:
+                imgMini3.setEnable(with: pickedImage)
+            default:
+                break
+            }
+            //imgMini1.setEnable(with: pickedImage)
+            _currImgMinForLoad += 1
         }
      
         dismiss(animated: true, completion: nil)
