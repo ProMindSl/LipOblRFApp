@@ -28,6 +28,8 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     @IBOutlet weak var btnAddFiles: LRAppButton!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var indLoadState: UIActivityIndicatorView!
+    @IBOutlet weak var imgMini1: ImgMiniView!
+    
     
     // st links
     private let _accMng = AccountManager.shared
@@ -256,6 +258,9 @@ class AddIdeaClaimShortViewController:  UITableViewController,
         
         // init ui photo
         imagePicker.delegate = self
+        
+        // init mini-img previews
+        imgMini1.setDisable()
     }
     
     @objc func handleLongPressGesture(_ gestureRecognizer: UILongPressGestureRecognizer)
@@ -445,9 +450,11 @@ class AddIdeaClaimShortViewController:  UITableViewController,
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
-//            imageView.contentMode = .scaleAspectFit
-//            imageView.image = pickedImage
-            print("photo ok! ")
+            //self.imgMini1.imgPic imageView.contentMode = .scaleAspectFit
+            //imageView.image = pickedImage
+            imgMini1.setEnable(with: pickedImage)
+            let imgCount = pickedImage.size.debugDescription
+            print("photo ok! " + imgCount)
         }
      
         dismiss(animated: true, completion: nil)

@@ -1151,11 +1151,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="127" id="o0c-Au-jnM">
-                                        <rect key="frame" x="0.0" y="827" width="375" height="127"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="190" id="o0c-Au-jnM">
+                                        <rect key="frame" x="0.0" y="827" width="375" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o0c-Au-jnM" id="5P0-0a-nlx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="127"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3P-mK-qq6" customClass="LRAppButton" customModule="ЛипОбласть" customModuleProvider="target">
@@ -1172,7 +1172,7 @@
                                                         <action selector="buttonOnClick:" destination="dwN-fa-NgX" eventType="touchUpInside" id="Cyf-8b-euy"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Прикрепите нужные фотографии:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOt-Mx-8CA">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Прикрепите фото:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOt-Mx-8CA">
                                                     <rect key="frame" x="26" y="11" width="323" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="99v-yM-DXP"/>
@@ -1181,19 +1181,59 @@
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMG-y0-iyV">
+                                                    <rect key="frame" x="26" y="118" width="64" height="64"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ano-Yb-vXK" customClass="ImgMiniView" customModule="ЛипОбласть" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_slidem.png" translatesAutoresizingMaskIntoConstraints="NO" id="BGL-Yv-Qq4">
+                                                                    <rect key="frame" x="2" y="2" width="60" height="60"/>
+                                                                </imageView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EO-4a-9ZE">
+                                                                    <rect key="frame" x="44" y="0.0" width="20" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="20" id="V6I-xG-BK6"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="eec-xX-rBB"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="btn_mainpage_add_claim.png" backgroundImage="bg_slidem.png"/>
+                                                                </button>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="0EO-4a-9ZE" secondAttribute="trailing" id="2g5-4l-o2N"/>
+                                                                <constraint firstAttribute="bottom" secondItem="BGL-Yv-Qq4" secondAttribute="bottom" constant="2" id="4J6-g8-GLg"/>
+                                                                <constraint firstAttribute="trailing" secondItem="BGL-Yv-Qq4" secondAttribute="trailing" constant="2" id="6Q1-40-80c"/>
+                                                                <constraint firstItem="0EO-4a-9ZE" firstAttribute="leading" secondItem="ano-Yb-vXK" secondAttribute="leading" constant="44" id="Mnh-h3-Wez"/>
+                                                                <constraint firstAttribute="height" constant="64" id="Q5J-vJ-iLJ"/>
+                                                                <constraint firstItem="BGL-Yv-Qq4" firstAttribute="leading" secondItem="ano-Yb-vXK" secondAttribute="leading" constant="2" id="V1P-nr-8hX"/>
+                                                                <constraint firstAttribute="bottom" secondItem="0EO-4a-9ZE" secondAttribute="bottom" constant="44" id="XXc-bk-t1K"/>
+                                                                <constraint firstItem="BGL-Yv-Qq4" firstAttribute="top" secondItem="ano-Yb-vXK" secondAttribute="top" constant="2" id="e2p-hV-J6u"/>
+                                                                <constraint firstItem="0EO-4a-9ZE" firstAttribute="top" secondItem="ano-Yb-vXK" secondAttribute="top" id="mBy-Gr-E3s"/>
+                                                                <constraint firstAttribute="width" constant="64" id="sig-JS-Bwc"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="btnDel" destination="0EO-4a-9ZE" id="N2Y-Uy-t2R"/>
+                                                                <outlet property="imgPic" destination="BGL-Yv-Qq4" id="tiH-g1-2BX"/>
+                                                            </connections>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="A3P-mK-qq6" firstAttribute="top" secondItem="IOt-Mx-8CA" secondAttribute="bottom" constant="15" id="4Af-HC-lI3"/>
+                                                <constraint firstItem="sMG-y0-iyV" firstAttribute="top" secondItem="A3P-mK-qq6" secondAttribute="bottom" constant="8" id="4d8-dN-uVv"/>
                                                 <constraint firstItem="A3P-mK-qq6" firstAttribute="leading" secondItem="5P0-0a-nlx" secondAttribute="leadingMargin" constant="20" id="IJn-Uc-rbZ"/>
                                                 <constraint firstItem="IOt-Mx-8CA" firstAttribute="leading" secondItem="5P0-0a-nlx" secondAttribute="leadingMargin" constant="18" id="K0Q-Zx-YaQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="IOt-Mx-8CA" secondAttribute="trailing" constant="18" id="Oh3-tn-u2H"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="A3P-mK-qq6" secondAttribute="trailing" constant="20" id="Wcb-pQ-wzs"/>
                                                 <constraint firstItem="IOt-Mx-8CA" firstAttribute="top" secondItem="5P0-0a-nlx" secondAttribute="topMargin" id="WoK-z3-hzT"/>
+                                                <constraint firstItem="sMG-y0-iyV" firstAttribute="leading" secondItem="5P0-0a-nlx" secondAttribute="leading" constant="26" id="nc4-Vu-IWk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="96" id="m1Y-V9-VPp">
-                                        <rect key="frame" x="0.0" y="954" width="375" height="96"/>
+                                        <rect key="frame" x="0.0" y="1017" width="375" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m1Y-V9-VPp" id="2qm-WM-TfE">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
@@ -1227,7 +1267,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="55" id="T3e-WX-4C4">
-                                        <rect key="frame" x="0.0" y="1050" width="375" height="55"/>
+                                        <rect key="frame" x="0.0" y="1113" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T3e-WX-4C4" id="clc-U2-L66">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
@@ -1246,6 +1286,7 @@
                         <outlet property="btnAddFiles" destination="A3P-mK-qq6" id="bTJ-g7-7RQ"/>
                         <outlet property="btnAddIdea" destination="azi-de-f5m" id="L3v-jA-vrf"/>
                         <outlet property="btnBack" destination="0LR-N2-apq" id="V4t-nf-qxO"/>
+                        <outlet property="imgMini1" destination="ano-Yb-vXK" id="t4D-tD-ICL"/>
                         <outlet property="indLoadState" destination="8We-SD-ann" id="qwL-K7-xbV"/>
                         <outlet property="mvIdeaLocation" destination="X6M-Jg-Rhh" id="Ecz-bm-h8C"/>
                         <outlet property="tfIdeaScope" destination="5b9-V0-f49" id="7Y6-VI-Htz"/>
@@ -1256,7 +1297,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Fd-fS-yKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2442.4000000000001" y="1236.4317841079462"/>
+            <point key="canvasLocation" x="-2430" y="1236"/>
         </scene>
         <!--Add Idea Step One View Controller-->
         <scene sceneID="yHh-gS-N5L">
