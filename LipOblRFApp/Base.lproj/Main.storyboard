@@ -1164,19 +1164,20 @@
                                                         <constraint firstAttribute="height" constant="50" id="rzD-lh-l5T"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <state key="normal" title="Выбрать файлы">
+                                                    <state key="normal" title="Добавить фото">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="buttonOnClick:" destination="dwN-fa-NgX" eventType="touchUpInside" id="Cyf-8b-euy"/>
+                                                    </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOt-Mx-8CA">
-                                                    <rect key="frame" x="28" y="11" width="319" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Прикрепите нужные фотографии:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOt-Mx-8CA">
+                                                    <rect key="frame" x="26" y="11" width="323" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="99v-yM-DXP"/>
                                                     </constraints>
-                                                    <string key="text">Прикрепите нужные фотографии
-или файлы:</string>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1184,10 +1185,10 @@
                                             <constraints>
                                                 <constraint firstItem="A3P-mK-qq6" firstAttribute="top" secondItem="IOt-Mx-8CA" secondAttribute="bottom" constant="15" id="4Af-HC-lI3"/>
                                                 <constraint firstItem="A3P-mK-qq6" firstAttribute="leading" secondItem="5P0-0a-nlx" secondAttribute="leadingMargin" constant="20" id="IJn-Uc-rbZ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="IOt-Mx-8CA" secondAttribute="trailing" constant="12" id="K4V-RV-hlX"/>
+                                                <constraint firstItem="IOt-Mx-8CA" firstAttribute="leading" secondItem="5P0-0a-nlx" secondAttribute="leadingMargin" constant="18" id="K0Q-Zx-YaQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="IOt-Mx-8CA" secondAttribute="trailing" constant="18" id="Oh3-tn-u2H"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="A3P-mK-qq6" secondAttribute="trailing" constant="20" id="Wcb-pQ-wzs"/>
                                                 <constraint firstItem="IOt-Mx-8CA" firstAttribute="top" secondItem="5P0-0a-nlx" secondAttribute="topMargin" id="WoK-z3-hzT"/>
-                                                <constraint firstItem="IOt-Mx-8CA" firstAttribute="leading" secondItem="5P0-0a-nlx" secondAttribute="leadingMargin" constant="12" id="cbs-Ta-of2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

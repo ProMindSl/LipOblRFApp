@@ -9,7 +9,8 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate
+class LoginViewController:  UIViewController,
+                            UITextFieldDelegate
 {
     
     @IBOutlet weak var tfLogin: UITextField!

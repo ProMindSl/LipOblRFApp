@@ -9,10 +9,12 @@
 import UIKit
 import MapKit
 
-class AddIdeaClaimShortViewController: UITableViewController,
-                             UITextFieldDelegate,
-                             MKMapViewDelegate,
-                             CLLocationManagerDelegate
+class AddIdeaClaimShortViewController:  UITableViewController,
+                                        UITextFieldDelegate,
+                                        MKMapViewDelegate,
+                                        CLLocationManagerDelegate,
+                                        UIImagePickerControllerDelegate,
+                                        UINavigationControllerDelegate
     
 {
     // outlets
@@ -34,7 +36,7 @@ class AddIdeaClaimShortViewController: UITableViewController,
     // other mngs init
     private let _setController = SetContentManager.shared
         
-    // type picker vars
+    // ui view local vars
     private var picker: TypePickerView?
     private var pickerAccessory: UIToolbar?
     
@@ -42,6 +44,8 @@ class AddIdeaClaimShortViewController: UITableViewController,
     private var pickerAccessory2: UIToolbar?
     
     private var locationManager = CLLocationManager()
+    
+    private var imagePicker = UIImagePickerController()
     
     // current add type
     private var _currentAddType = "none"
@@ -249,6 +253,9 @@ class AddIdeaClaimShortViewController: UITableViewController,
         {
             print("location services or GPS is off")
         }
+        
+        // init ui photo
+        imagePicker.delegate = self
     }
     
     @objc func handleLongPressGesture(_ gestureRecognizer: UILongPressGestureRecognizer)
@@ -354,6 +361,61 @@ class AddIdeaClaimShortViewController: UITableViewController,
     {
         self.view.endEditing(true)
         return false
+    }
+    
+    // ui photo methods
+    @IBAction func buttonOnClick(_ sender: UIButton)
+    {
+        self.btnAddFiles.setTitleColor(UIColor.white, for: .normal)
+        self.btnAddFiles.isUserInteractionEnabled = true
+
+        let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            self.openCamera()
+        }))
+
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+            self.openGallary()
+        }))
+
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+
+        /*If you want work actionsheet on ipad
+        then you have to use popoverPresentationController to present the actionsheet,
+        otherwise app will crash on iPad */
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            alert.popoverPresentationController?.sourceView = sender
+            alert.popoverPresentationController?.sourceRect = sender.bounds
+            alert.popoverPresentationController?.permittedArrowDirections = .up
+        default:
+            break
+        }
+
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func openCamera()
+    {
+        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
+        {
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    func openGallary()
+    {
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true, completion: nil)
     }
     
     /*
