@@ -26,7 +26,8 @@ class AlertController: NSObject
                                           { (alert: UIAlertAction!) in
                                             complFunc("Complete")
                                           })
-        defaultAction.setValue(UIMethods.hexStringToUIColor(hex: "#FE5347"), forKey: "titleTextColor")
+        let color = #colorLiteral(red: 0.8015617728, green: 0.1342359483, blue: 0.1369217932, alpha: 1)
+        defaultAction.setValue(color, forKey: "titleTextColor")
         alert.addAction(defaultAction)
         DispatchQueue.main.async(execute:
         {

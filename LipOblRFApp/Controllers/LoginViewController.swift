@@ -154,7 +154,7 @@ class LoginViewController:  UIViewController,
                 
             }
         })
-        action.setValue(UIColor.black, forKey: "titleTextColor")
+        action.setValue(UIMethods.hexStringToUIColor(hex: "#FE5347"), forKey: "titleTextColor")
         
         alert.addAction(action)
         

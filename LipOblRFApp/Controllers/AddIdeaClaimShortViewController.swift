@@ -356,7 +356,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     
     /*
      *   Delegate methods
-     **/
+    **/
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         self.view.endEditing(true)
@@ -368,22 +368,39 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     {
         self.btnAddFiles.setTitleColor(UIColor.white, for: .normal)
         self.btnAddFiles.isUserInteractionEnabled = true
+        let color = #colorLiteral(red: 0.9973761439, green: 0.3234748244, blue: 0.2775879204, alpha: 1)
+        
+        let alert = UIAlertController(title: "Выбор фото",
+                                      message: nil,
+                                      preferredStyle: .actionSheet)
+        let actionCamera = UIAlertAction(title: "Камера",
+                                      style: .default,
+                                      handler:
+                                      { _ in
+                                        self.openCamera()
+                                      })
+        actionCamera.setValue(color, forKey: "titleTextColor")
 
-        let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-            self.openCamera()
-        }))
-
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-            self.openGallary()
-        }))
-
-        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
-
-        /*If you want work actionsheet on ipad
-        then you have to use popoverPresentationController to present the actionsheet,
-        otherwise app will crash on iPad */
-        switch UIDevice.current.userInterfaceIdiom {
+        let actionGalery = UIAlertAction(title: "Галерея",
+                                      style: .default,
+                                      handler:
+                                      { _ in
+                                        self.openGallary()
+                                      })
+        actionGalery.setValue(color, forKey: "titleTextColor")
+        
+        let actionCancel = UIAlertAction.init(title: "Отмена",
+                                           style: .cancel,
+                                           handler: nil)
+        actionCancel.setValue(color, forKey: "titleTextColor")
+        
+        alert.addAction(actionCamera)
+        alert.addAction(actionGalery)
+        alert.addAction(actionCancel)
+        
+        // Crash on iPad
+        switch UIDevice.current.userInterfaceIdiom
+        {
         case .pad:
             alert.popoverPresentationController?.sourceView = sender
             alert.popoverPresentationController?.sourceRect = sender.bounds
@@ -405,8 +422,8 @@ class AddIdeaClaimShortViewController:  UITableViewController,
         }
         else
         {
-            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let alert  = UIAlertController(title: "Внимание!", message: "Камера на устройстве отсутствует", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Назад", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
