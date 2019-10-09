@@ -281,23 +281,21 @@ class AddIdeaClaimShortViewController: UITableViewController,
                 guard let placeMark = placemarks?.first else { return }
 
             
-                // Street address
-                if let street = placeMark.thoroughfare
-                {
-                    print(street)
-                    self._currStreet = street
-                    self.tfIdeaTitleAdress.text = street
-                }
                 // City
                 if let raion = placeMark.subAdministrativeArea
                 {
                     print(raion)
                     self._currRaionFromMap = raion
+//                    if self.tfIdeaTitleAdress.text! != raion
+//                    {
+//                        self.tfIdeaTitleAdress.text! += raion
+//                    }
+                      self.tfIdeaTitleAdress.text! = raion
                     self._currRaionId = self._getContMng.getRaionIdByString(by: String(raion))
                     if self._currRaionId == 0
                     {
                         self._alertController.alert(in: self,
-                                               withTitle: "Ошибка определения района",
+                                               withTitle: "Ошибка определения Липецкого района",
                                                andMsg: "Убедитесь, что метка определена в границах Липецкой области",
                                                andActionTitle: "Повторить",
                                                completion:
@@ -315,6 +313,17 @@ class AddIdeaClaimShortViewController: UITableViewController,
                             { text in
                                 
                         })
+                    }
+                }
+                // Street address
+                if let street = placeMark.thoroughfare
+                {
+                    print(street)
+                    self._currStreet = street
+                    self.tfIdeaTitleAdress.text = street
+                    if let raion = placeMark.subAdministrativeArea
+                    {
+                        self.tfIdeaTitleAdress.text! += ", "+raion
                     }
                 }
                 // Zip code

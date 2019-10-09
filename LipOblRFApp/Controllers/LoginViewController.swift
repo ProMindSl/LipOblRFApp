@@ -46,11 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     /*
      *   Outlet methods
     **/
-    @IBAction func OpenMenu(_ sender: Any)
-    {
-        SidebarLauncher(delegate: self ).show()
-    }
-    
+       
     @IBAction func signInAction(_ sender: Any)
     {
         
@@ -66,7 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                 print(self.loginUserParams["fio"] ?? "none data")
                 // show success/fail alert
                 DispatchQueue.main.async
-                    {
+                {
                         self.stopActivityIndicate()
                         self.tfLogin.isUserInteractionEnabled = true
                         self.tfPass.isUserInteractionEnabled = true
@@ -78,7 +74,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                       errorCompletion:
             { [unowned self] text in
                 DispatchQueue.main.async
-                    {
+                {
                         self.stopActivityIndicate()
                         self.tfLogin.isUserInteractionEnabled = true
                         self.tfPass.isUserInteractionEnabled = true
@@ -157,6 +153,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                 
             }
         })
+        action.setValue(UIColor.black, forKey: "titleTextColor")
         
         alert.addAction(action)
         
