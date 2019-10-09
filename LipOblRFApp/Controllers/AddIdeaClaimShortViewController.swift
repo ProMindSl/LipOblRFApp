@@ -366,8 +366,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     // ui photo methods
     @IBAction func buttonOnClick(_ sender: UIButton)
     {
-        self.btnAddFiles.setTitleColor(UIColor.white, for: .normal)
-        self.btnAddFiles.isUserInteractionEnabled = true
+        self.setOffBtnInterraction()
         let color = #colorLiteral(red: 0.9973761439, green: 0.3234748244, blue: 0.2775879204, alpha: 1)
         
         let alert = UIAlertController(title: "Выбор фото",
@@ -391,7 +390,10 @@ class AddIdeaClaimShortViewController:  UITableViewController,
         
         let actionCancel = UIAlertAction.init(title: "Отмена",
                                            style: .cancel,
-                                           handler: nil)
+                                           handler:
+                                           { _ in
+                                                self.setOnBtnInterraction()
+                                           })
         actionCancel.setValue(color, forKey: "titleTextColor")
         
         alert.addAction(actionCamera)
@@ -433,6 +435,29 @@ class AddIdeaClaimShortViewController:  UITableViewController,
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.allowsEditing = true
         self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        self.setOnBtnInterraction()
+        
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        {
+//            imageView.contentMode = .scaleAspectFit
+//            imageView.image = pickedImage
+            print("photo ok! ")
+        }
+     
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
+    {
+        self.setOnBtnInterraction()
+        
+        dismiss(animated: true, completion: nil)
     }
     
     /*
@@ -527,6 +552,19 @@ class AddIdeaClaimShortViewController:  UITableViewController,
             signInCompFunc("signIn ok")
         }
     }
+    private func setOffBtnInterraction()
+    {
+        let color = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        self.btnAddFiles.setTitleColor(color, for: .normal)
+        self.btnAddFiles.isUserInteractionEnabled = false
+    }
+    private func setOnBtnInterraction()
+    {
+        let color = #colorLiteral(red: 0.9973761439, green: 0.3234748244, blue: 0.2775879204, alpha: 1)
+        self.btnAddFiles.setTitleColor(color, for: .normal)
+        self.btnAddFiles.isUserInteractionEnabled = true
+    }
+    
     /*
      *   Load indication
     **/
