@@ -502,7 +502,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEy-Pn-cp6">
+                                                <webView contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="MEy-Pn-cp6">
                                                     <rect key="frame" x="19" y="80" width="343" height="455"/>
                                                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </webView>
@@ -1311,7 +1311,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="80o-2K-G7b"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <state key="normal" title="Подать идею">
+                                                    <state key="normal" title="  Подать  идею  ">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>

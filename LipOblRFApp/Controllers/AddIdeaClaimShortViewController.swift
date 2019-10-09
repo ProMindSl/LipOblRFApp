@@ -844,8 +844,23 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     @objc func doneBtnClickedForTypeSwitcher(_ button: UIBarButtonItem?)
     {
         tfType?.resignFirstResponder()
-        tfType.text = picker2?.selectedValue
-        _currentAddType = picker2?.selectedValue ?? "none"
+        
+        let typeVal = picker2?.selectedValue ?? "none"
+        
+        tfType.text = typeVal
+        _currentAddType = typeVal
+        
+        switch typeVal
+        {
+        case GetContentManager.ADD_TYPE_IDEA:
+            self.btnAddIdea.titleLabel?.text = "Подать идею"
+            
+        case GetContentManager.ADD_TYPE_CLAIM:
+            self.btnAddIdea.titleLabel?.text = "Подать жалобу"
+            
+        default:
+            break
+        }
     }
     
 }
