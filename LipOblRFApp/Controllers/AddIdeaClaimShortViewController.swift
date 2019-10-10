@@ -911,30 +911,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
             break
         }
     }
-    
-//    /*
-//     * URL Delegate methods
-//     */
-//    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?)
-//    {
-//        self._alertController.alert(in: self,
-//                                    withTitle: "Ошибка сети!",
-//                                    andMsg: error?.localizedDescription ?? "Неизвестная ошибка",
-//                                    andActionTitle: "Продолжить",
-//                                    completion: {text in })
-//        print("Error Session load")
-//        
-//        // ENABLE BTNS!!!
-//    }
-//    
-//    func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64)
-//    {
-//        print("SEND Session load")
-//        
-//        let uploadProgress = Float(bytesSent)/Float(totalBytesExpectedToSend)
-//        print("uploadProgress \(uploadProgress)")
-//    }
-    
+
     
 }
 
