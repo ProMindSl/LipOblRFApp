@@ -7,8 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
-class SetContentManager
+class SetContentManager: NSObject,
+                         URLSessionDelegate,
+                         URLSessionTaskDelegate,
+                         URLSessionDataDelegate
 {
     /*
      *   -------- Static const ----------
@@ -26,8 +30,11 @@ class SetContentManager
      **/
     // API urls
     private let API_URL_CREATE_IDEA = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/create_idea.php"
-    //private let API_URL_CREATE_IDEA = "http://192.168.64.2/m/singleportal/appeals_test/content/create_idea.php"
     private let API_URL_CREATE_CLAIM = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/create_claim.php"
+//    private let API_URL_CREATE_IDEA = "http://192.168.64.2/master/singleportal/appeals_test/content/create_idea.php"
+//    private let API_URL_CREATE_CLAIM = "http://192.168.64.2/master/singleportal/appeals_test/content/create_claim.php"
+//    private let API_URL_UPLOAD_IMG = "http://192.168.64.2/master/singleportal/appeals_test/content/upload_img.php"
+    private let API_URL_UPLOAD_IMG = "http://xn--c1aj1aj.xn--p1ai/appeals_test/content/upload_img.php"
     
     private let accMng = AccountManager.shared
     private let alertController = AlertController.shared
@@ -54,10 +61,12 @@ class SetContentManager
     public var currClaimLongitude = 0.0
     public var currClaimLatitude = 0.0
     
-    private init()
+    private override init()
     {
+        
         currentMsg = SetContentManager.ERROR_NONE
         apiANS = ""
+        super.init()
     }
     
     /*
@@ -69,6 +78,7 @@ class SetContentManager
                            region inputRegion: Int,
                            longitude inputLong: Double,
                            latitude inputLat: Double,
+                           imgCount imgcount: Int,
                            at accessT: String,
                            successCompletion successFunc: @escaping ((String) -> ()),
                            errorCompletion errorFunc: @escaping ((String) -> ()))
@@ -89,7 +99,8 @@ class SetContentManager
                 "raion": inputRegion,
                 "scope": inputScope,
                 "longitude": inputLong,
-                "latitude": inputLat
+                "latitude": inputLat,
+                "img_count": imgcount
             ]
             
             let postString = self.getPostString(params: parameters)
@@ -124,6 +135,12 @@ class SetContentManager
                 {print("success add idea (from SetContentContr)")
                     self.currentMsg = AccountManager.ERROR_NONE
                     successFunc("ok")
+                    
+                    if let responseString = String(data: data!, encoding: .utf8)
+                    {
+                        print("ANSWER FROM SERVER !!!! to: \(responseString)")
+                                       
+                    }
                 }
                 else                                                       // fail add idea
                 {print("error add idea (from SetContentContr)")
@@ -141,6 +158,7 @@ class SetContentManager
                            region inputRegion: Int,
                            longitude inputLong: Double,
                            latitude inputLat: Double,
+                           imgCount imgcount: Int,
                            at accessT: String,
                            successCompletion successFunc: @escaping ((String) -> ()),
                            errorCompletion errorFunc: @escaping ((String) -> ()))
@@ -161,7 +179,8 @@ class SetContentManager
                 "raion": inputRegion,
                 "scope": inputScope,
                 "longitude": inputLong,
-                "latitude": inputLat
+                "latitude": inputLat,
+                "img_count": imgcount
             ]
             
             let postString = self.getPostString(params: parameters)
@@ -196,6 +215,11 @@ class SetContentManager
                 {print("success add idea (from SetContentContr)")
                     self.currentMsg = AccountManager.ERROR_NONE
                     successFunc("ok")
+                    if let responseString = String(data: data!, encoding: .utf8)
+                    {
+                        print("ANSWER FROM SERVER !!!! to: \(responseString)")
+                                       
+                    }
                 }
                 else                                                       // fail add claim
                 {print("error add idea (from SetContentContr)")
@@ -207,6 +231,126 @@ class SetContentManager
         }
     }
     
+    public func uploadImg( image img: UIImage,
+                           imageCount count: Int,
+                           at accessT: String,
+                           successCompletion successFunc: @escaping ((String) -> ()),
+                           errorCompletion errorFunc: @escaping ((String) -> ()))
+    {
+        if accMng.currentSignState == AccountManager.STATE_SIGNIN
+        {
+            // get jpeg image
+            guard let imgJPEG = img.jpegData(compressionQuality: 1) else
+            {
+                print("!!!!!!!!!!!!!!!!!!!!!error JPEG format")
+                return
+            }
+            
+            print("JPEG OK " + imgJPEG.description)
+            
+            // create POST-request to API
+            guard let url = URL(string: API_URL_UPLOAD_IMG) else { return }
+ 
+            let filename = String(count) + ".jpeg"
+
+            // generate boundary string using a unique per-app string
+            let boundary = UUID().uuidString
+
+            let fieldName = "reqtype"
+            let fieldValue = "fileupload"
+
+            let fieldName2 = "userhash"
+            let fieldValue2 = "caa3dce4fcb36cfdf9258ad9c"
+
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+
+            // Set the URLRequest to POST and to the specified URL
+            var urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = "POST"
+            
+            let parameters: [String: Any] =
+                            [
+                                "img_count": count
+                            ]
+            
+            let postString = self.getPostString(params: parameters)
+            urlRequest.httpBody = postString.data(using: .utf8)
+            
+            // Set Content-Type Header to multipart/form-data, this is equivalent to submitting form data with file upload in a web browser
+            // And the boundary is also set here
+            urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            
+            urlRequest.setValue(accessT, forHTTPHeaderField: "at")
+            
+            var data = Data()
+
+            // Add the reqtype field and its value to the raw http request data
+            data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+            data.append("Content-Disposition: form-data; name=\"\(fieldName)\"\r\n\r\n".data(using: .utf8)!)
+            data.append("\(fieldValue)".data(using: .utf8)!)
+
+            // Add the userhash field and its value to the raw http reqyest data
+            data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+            data.append("Content-Disposition: form-data; name=\"\(fieldName2)\"\r\n\r\n".data(using: .utf8)!)
+            data.append("\(fieldValue2)".data(using: .utf8)!)
+
+            // Add the image data to the raw http request data
+            data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+            data.append("Content-Disposition: form-data; name=\"fileToUpload\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+            data.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+            data.append(imgJPEG)
+
+            // End the raw http request data, note that there is 2 extra dash ("-") at the end, this is to indicate the end of the data
+            // According to the HTTP 1.1 specification https://tools.ietf.org/html/rfc7230
+            data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+
+            // Send a POST request to the URL, with the data we created earlier
+            session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
+                
+                if(error != nil){
+                    print("\(error!.localizedDescription)")
+                    errorFunc("not complete")
+                }
+                
+                guard let responseData = responseData else {
+                    print("no response data")
+                    errorFunc("not complete")
+                    return
+                }
+                
+                if let responseString = String(data: responseData, encoding: .utf8) {
+                    print("uploaded to: \(responseString)")
+                    successFunc("did load ok")
+                }
+            }).resume()
+            
+            
+        }
+    }
+    
+    /*
+     * URL Delegate methods
+     */
+//    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?)
+//    {
+////        self._alertController.alert(in: self,
+////                                    withTitle: "Ошибка сети!",
+////                                    andMsg: error?.localizedDescription ?? "Неизвестная ошибка",
+////                                    andActionTitle: "Продолжить",
+////                                    completion: {text in })
+//        print("Error Session NOT !!!!!!!!!!!!!!!!!!!!!!!!! load")
+//
+//        // ENABLE BTNS!!!
+//    }
+//
+//    func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64)
+//    {
+//        print("SEND Session load")
+//
+//        let uploadProgress = Float(bytesSent)/Float(totalBytesExpectedToSend)
+//        print("uploadProgress \(uploadProgress)")
+//    }
     
     public func resetCurrAttributes(for type: Int)
     {

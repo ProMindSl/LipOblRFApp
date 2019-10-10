@@ -21,26 +21,50 @@ class ImgMiniView: UIView
     
     override func draw(_ rect: CGRect)
     {
-        self.imgPic.contentMode = .scaleAspectFit
+        DispatchQueue.main.async
+        {
+            self.imgPic.contentMode = .scaleAspectFit
+        }
     }
     
     public func setImage(_ img: UIImage)
     {
-        self.imgPic.image = img
+        DispatchQueue.main.async
+        {
+            self.imgPic.image = img
+        }
     }
     
     public func setEnable(with image: UIImage)
     {
-        self.btnDel.isEnabled = true
-        self.btnDel.alpha = 1
+        DispatchQueue.main.async
+        {
+            self.btnDel.isEnabled = true
+            self.btnDel.alpha = 1
+        }
         
         setImage(image)
     }
     public func setDisable()
     {
-        self.btnDel.isEnabled = false
-        self.btnDel.alpha = 0.3
+        DispatchQueue.main.async
+        {
+            self.btnDel.isEnabled = false
+            self.btnDel.alpha = 0.3
+        }
         
         setImage(UIImage(named: _defaultBgImgName)!)
+    }
+    public func setLoading(with image: UIImage)
+    {
+        
+        
+        DispatchQueue.main.async
+        {
+            self.btnDel.isEnabled = false
+            self.btnDel.alpha = 0.3
+        }
+        
+        setImage(image)
     }
 }

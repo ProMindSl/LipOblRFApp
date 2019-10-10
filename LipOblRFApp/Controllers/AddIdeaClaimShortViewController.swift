@@ -14,7 +14,10 @@ class AddIdeaClaimShortViewController:  UITableViewController,
                                         MKMapViewDelegate,
                                         CLLocationManagerDelegate,
                                         UIImagePickerControllerDelegate,
-                                        UINavigationControllerDelegate
+                                        UINavigationControllerDelegate,
+                                        URLSessionDelegate,
+                                        URLSessionTaskDelegate,
+                                        URLSessionDataDelegate
     
 {
     // outlets
@@ -375,7 +378,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     }
     
     // ui photo methods
-    @IBAction func buttonOnClick(_ sender: UIButton)
+    @IBAction func addPhotoBtnClick(_ sender: UIButton)
     {
         // check loaded photo limit
         if _currImgMinForLoad >= 1 && _currImgMinForLoad <= 3
@@ -471,16 +474,59 @@ class AddIdeaClaimShortViewController:  UITableViewController,
             switch _currImgMinForLoad
             {
             case 1:
-                imgMini1.setEnable(with: pickedImage)
+                imgMini1.setLoading(with: pickedImage)
             case 2:
-                imgMini2.setEnable(with: pickedImage)
+                imgMini2.setLoading(with: pickedImage)
             case 3:
-                imgMini3.setEnable(with: pickedImage)
+                imgMini3.setLoading(with: pickedImage)
             default:
                 break
             }
-            //imgMini1.setEnable(with: pickedImage)
-            _currImgMinForLoad += 1
+            
+            updateViewState(signInCompletion:
+            { text in
+                
+                let at = self._accMng.getAccessToken()
+                
+                self._setController.uploadImg(image: pickedImage,
+                                              imageCount: self._currImgMinForLoad,
+                                              at: at,
+                                              successCompletion:
+                                              {text in
+                                                switch self._currImgMinForLoad
+                                                {
+                                                case 1:
+                                                    self.imgMini1.setEnable(with: pickedImage)
+                                                case 2:
+                                                    self.imgMini2.setEnable(with: pickedImage)
+                                                case 3:
+                                                    self.imgMini3.setEnable(with: pickedImage)
+                                                default:
+                                                    break
+                                                }
+                                                
+                                                self._currImgMinForLoad += 1
+                                              },
+                                              errorCompletion:
+                                              {text in
+                                                self._alertController.alert(in: self,
+                                                                            withTitle: "Ошибка загрузки фото",
+                                                                            andMsg: "При загрузке произошла ошибка",
+                                                                            andActionTitle: "Повторить",
+                                                                            completion: {text in})
+                                              })
+            },
+            signOutCompletion:
+            { text in
+                
+            })
+            
+//            self._setController.uploadImg(image: pickedImage,
+//                                          imageCount: _currImgMinForLoad,
+//                                          at: "",
+//                                          successCompletion: {text in}, errorCompletion: {text in})
+            
+            
         }
      
         dismiss(animated: true, completion: nil)
@@ -641,9 +687,10 @@ class AddIdeaClaimShortViewController:  UITableViewController,
         let scope = _getContMng.getScopeIdByName(with: tfIdeaScope.text ?? "none")  // gettiog input data
         let title = tfIdeaTitleAdress.text ?? "Адрес отсутствует"
         let body = tfIdeaTxtBody.text ?? "Пустое описание"
-        let raion = _currRaionId
+        let raion = _currRaionId == 0 ? 21 : _currRaionId
         let longitude = _currLongitude
         let latitude = _currLatitude
+        let imgcount = _currImgMinForLoad > 0 ? (_currImgMinForLoad - 1) : 0
         
         var errMsg = ""
         
@@ -687,6 +734,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
                                              region: raion,
                                              longitude: longitude,
                                              latitude: latitude,
+                                             imgCount: imgcount,
                                              at: at,
                                              successCompletion:                         // add idea success complete
                                              { [unowned self] text in
@@ -699,7 +747,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
                                                                       { [unowned self] text in
                                                                         DispatchQueue.main.async
                                                                         {
-                                                                            self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                                            self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEACLIME_MENU)
                                                                         }
                                                                       })
                                              },
@@ -732,7 +780,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
                                                     { [unowned self] text in
                                                         DispatchQueue.main.async
                                                         {
-                                                            self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                            self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEACLIME_MENU)
                                                         }
                                                     })
                                              })
@@ -746,6 +794,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
                                                region: raion,
                                                longitude: longitude,
                                                latitude: latitude,
+                                               imgCount: imgcount,
                                                at: at,
                                                successCompletion:                         // add claim success complete
                                                { [unowned self] text in
@@ -758,7 +807,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
                                                                             { [unowned self] text in
                                                                                 DispatchQueue.main.async
                                                                                 {
-                                                                                    self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                                                    self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEACLIME_MENU)
                                                                                 }
                                                                             })
                                                 },
@@ -791,7 +840,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
                                                                                 { [unowned self] text in
                                                                                     DispatchQueue.main.async
                                                                                     {
-                                                                                        self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEAS_LIST)
+                                                                                        self.sidebarDidClose(with: UIStoryboard.VIEW_TYPE_IDEACLIME_MENU)
                                                                                     }
                                                                                 })
                                                 })
@@ -862,6 +911,30 @@ class AddIdeaClaimShortViewController:  UITableViewController,
             break
         }
     }
+    
+//    /*
+//     * URL Delegate methods
+//     */
+//    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?)
+//    {
+//        self._alertController.alert(in: self,
+//                                    withTitle: "Ошибка сети!",
+//                                    andMsg: error?.localizedDescription ?? "Неизвестная ошибка",
+//                                    andActionTitle: "Продолжить",
+//                                    completion: {text in })
+//        print("Error Session load")
+//        
+//        // ENABLE BTNS!!!
+//    }
+//    
+//    func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64)
+//    {
+//        print("SEND Session load")
+//        
+//        let uploadProgress = Float(bytesSent)/Float(totalBytesExpectedToSend)
+//        print("uploadProgress \(uploadProgress)")
+//    }
+    
     
 }
 

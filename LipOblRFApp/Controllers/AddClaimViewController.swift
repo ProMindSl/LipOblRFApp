@@ -459,6 +459,7 @@ class AddClaimViewController:   UITableViewController,
                                                    region: raion,
                                                    longitude: longitude,
                                                    latitude: latitude,
+                                                   imgCount: 0,
                                                    at: at,
                                                    successCompletion:                         // add claim success complete
                         { [unowned self] text in
