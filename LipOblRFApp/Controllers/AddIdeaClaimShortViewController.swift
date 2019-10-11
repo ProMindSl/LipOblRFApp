@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class AddIdeaClaimShortViewController:  UITableViewController,
                                         UITextFieldDelegate,
@@ -84,18 +85,6 @@ class AddIdeaClaimShortViewController:  UITableViewController,
 //            })
     }
     
-    /*
-     *   -------- Public func ----------
-    **/
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
-        if let location = locations.last
-        {
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            self.mvIdeaLocation?.setRegion(region, animated: true)
-        }
-    }
     
     /*
      *   -------- Privete func ----------
@@ -243,25 +232,25 @@ class AddIdeaClaimShortViewController:  UITableViewController,
         recognizer.addTarget(self, action: #selector(handleLongPressGesture(_:)))
         mvIdeaLocation?.addGestureRecognizer(recognizer)
         
+        // init Position Location
         mvIdeaLocation?.showsUserLocation = true
-        
-        if CLLocationManager.locationServicesEnabled() == true
+        self.locationManager.requestAlwaysAuthorization()
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled()
         {
-            
-            if CLLocationManager.authorizationStatus() == .restricted
-            || CLLocationManager.authorizationStatus() == .denied
-            ||  CLLocationManager.authorizationStatus() == .notDetermined
-            {
-                locationManager.requestWhenInUseAuthorization()
-            }
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
-        else
+        mvIdeaLocation.delegate = self
+        mvIdeaLocation.mapType = .standard
+        mvIdeaLocation.isZoomEnabled = true
+        mvIdeaLocation.isScrollEnabled = true
+        if let coor = mvIdeaLocation.userLocation.location?.coordinate
         {
-            print("location services or GPS is off")
-        }
+            mvIdeaLocation.setCenter(coor, animated: true)
+        }        
         
         // init ui photo
         imagePicker.delegate = self
@@ -369,13 +358,35 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     }
     
     /*
-     *   Delegate methods
+     *  --------  Delegate methods Textfield ----------
     **/
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         self.view.endEditing(true)
         return false
     }
+    /*
+     *   -------- Delegate methods Map Location ----------
+    **/
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+
+        mvIdeaLocation.mapType = MKMapType.standard
+
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: locValue, span: span)
+        mvIdeaLocation.setRegion(region, animated: true)
+
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = locValue
+        annotation.title = "Javed Multani"
+        annotation.subtitle = "current location"
+        mvIdeaLocation.addAnnotation(annotation)
+
+        //centerMap(locValue)
+    }
+    
     
     // ui photo methods
     @IBAction func addPhotoBtnClick(_ sender: UIButton)
