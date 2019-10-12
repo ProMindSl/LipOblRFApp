@@ -8,7 +8,9 @@
 
 import UIKit
 
-class TypePickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate
+class TypePickerView: UIPickerView,
+                      UIPickerViewDataSource,
+                      UIPickerViewDelegate
 {
     /*
      *   -------- Public vars ----------

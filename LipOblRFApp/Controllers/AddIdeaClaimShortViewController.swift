@@ -56,6 +56,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     
     // current add type
     private var _currentAddType = "none"
+    private var _allowGeolocation = true
     // current idea/claim input vars
     private var _currLatitude: Double = 0.0
     private var _currLongitude: Double = 0.0
@@ -250,7 +251,7 @@ class AddIdeaClaimShortViewController:  UITableViewController,
         if let coor = mvIdeaLocation.userLocation.location?.coordinate
         {
             mvIdeaLocation.setCenter(coor, animated: true)
-        }        
+        }
         
         // init ui photo
         imagePicker.delegate = self
@@ -370,22 +371,21 @@ class AddIdeaClaimShortViewController:  UITableViewController,
     **/
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        if _allowGeolocation
+        {
+            let locValue:CLLocationCoordinate2D = manager.location!.coordinate
 
-        mvIdeaLocation.mapType = MKMapType.standard
+            mvIdeaLocation.mapType = MKMapType.standard
 
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: locValue, span: span)
-        mvIdeaLocation.setRegion(region, animated: true)
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: locValue, span: span)
+            mvIdeaLocation.setRegion(region, animated: true)
+            _allowGeolocation = false
+        }
 
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = locValue
-        annotation.title = "Javed Multani"
-        annotation.subtitle = "current location"
-        mvIdeaLocation.addAnnotation(annotation)
-
-        //centerMap(locValue)
     }
+    
+    
     
     
     // ui photo methods
